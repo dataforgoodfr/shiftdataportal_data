@@ -16,7 +16,7 @@ def main(source_list=None, raw=True, test=False):
             # extract the module name
             raw_name = module[:-3]
             
-            if any(f'raw_{source}' in raw_name for source in list(source_list)):
+            if source_list is not None and any(f'raw_{source}' in raw_name for source in list(source_list)):
                 
                 print()
                 print('------------------------------------------------------------------------------------')
