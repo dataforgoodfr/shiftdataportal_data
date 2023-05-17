@@ -158,7 +158,7 @@ class Wb_Api(raw.Api):
         # Ensure we have only one page (all results)
         if 'per_page' in data[0] and (int(data[0]["per_page"]) == self.max_results):
             if int(data[0]["pages"]) > 1:
-                raise Exception('ERROR: Several pages found. It is a bug!')
+                raise Exception('ERROR: Several pages found. Should not happen. It is a bug!')
         else:
             if 'total' in data[0]:
                 total = int(data[0]['total'])
@@ -180,9 +180,11 @@ class Wb_Api(raw.Api):
 #----------------------------------------------------------------
 def main(raw, test):
     Wb_Api().main(raw, test)
-    
-###########################################################################################################
 
+
+   
+###########################################################################################################
+# BACKUP CODE CHRISTOPHE
 import io
 import zipfile
 
@@ -190,7 +192,6 @@ import pandas as pd
 import requests
 from sqlalchemy import create_engine
 
-# BACKUP CODE CHRISTOPHE
 # EASY WAY TO POSTGRE
 def christophe():
     url = "https://api.worldbank.org/v2/en/indicator/'SP.POP.TOTL?downloadformat=csv"
