@@ -28,4 +28,4 @@ class Source_File(raw.File):
 # ---------------------------------------------------------------------------- 
 # MAIN  
 def main(raw, test):
-    Source_Api().main(raw, test)
+    Source_Api.main(raw, test)

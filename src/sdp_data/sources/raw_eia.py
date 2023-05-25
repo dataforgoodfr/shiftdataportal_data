@@ -1,20 +1,19 @@
 # EIA API
 # https://api.eia.gov/v2/international/data/?frequency=annual&data[0]=value&facets[activityId][]=34&facets[productId][]=4701&facets[countryRegionId][]=WORL&facets[unit][]=BDOLPPP&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000
 
-import requests
-import time
-
 import raw
 
 class Eia_Api(raw.Api):
     
     # API Limit : max results per request
     max_results = 5000
-        
+    max_retries = 3
+    retry_delay = 5
+            
     base_url = 'https://api.eia.gov/v2'
     base_params = {        
         # TODO CHANGE api_key WITH D4G OR SDP account 
-        # TODO API KEYS MANAGEMENT (indeed for EIA we see api_key clearly in url...)
+        # TODO API KEYS MANAGEMENT (indeed for EIA we see api_key clearly in url...just log response.url in code!)
         'api_key': 'TYUMyndQZkshGBZTAM0tUfslaM1pvIctp1bcK7iV',
         'data[0]': 'value',
         'frequency': 'annual',
@@ -25,125 +24,121 @@ class Eia_Api(raw.Api):
     routes =[
         {'route': '/international', 'csv_name': '/intl/region', 'data': True,
          'route_params': {
-             'facets[countryRegionTypeId][]': 'r', # regions only 
-             # Sorting 
-             # first by period DESC
-             'sort[0][column]': 'period', # sort by period
-             'sort[0][direction]': 'desc',
-             'sort[1][column]': 'activityId', # sort by activity
-             'sort[1][direction]': 'asc'             
+             'facets': [
+                 {'facet': 'countryRegionTypeId', 'value': 'r'}
+             ],                           
+             'sorts': [
+                 {'sort': 'period', 'value': 'desc'}
+                 ,{'sort': 'activityId', 'value': 'asc'}
+             ]
+                    
          }
         },
         {'route': '/ieo', 'csv_name': '/ieo/world', 'first' : True, 
          'route_params': {
-             'facets[regionId][]': '0-0', # WORLD 
-             # Sorting   
-             'sort[1][column]': 'period', # sort by period
-             'sort[1][direction]': 'desc',        
+             'facets': [
+                 {'facet': 'regionId', 'value': '0-0'}
+             ],                           
+             'sorts': [
+                 {'sort': 'period', 'value': 'desc'}
+             ]                  
          }
         }
     ]
     
+    @classmethod    
+    def _route_param(cls, param, index):
+        for key in param.keys():
+            if key=='facet':
+                return [{'key':'facets['+param[key]+'][]', 'value': param['value']}]
+            elif key=='sort':
+                return [{'key':'sort['+str(index)+'][column]', 'value': param[key]}
+                        ,{'key':'sort['+str(index)+'][direction]', 'value': param['value']}]
+                     
+    @classmethod            
+    def _route_params(cls, route):
+        _route_params = {}
+        route_params = route.get('route_params') or {}
+        #print(f'initial route_params: {route_params}')
+        for key in route_params.keys():
+            if key in ('facets','sorts'):
+                params = list(route_params[key])
+                # list of facets or sorts
+                for param in params:
+                   index = 0 
+                   # List of actual api route param to include
+                   # See _route_param for sort: returns 2 actual api route param definitions
+                   for _route_param in  cls._route_param(param, index):
+                    _route_params[_route_param['key']]=_route_param['value'] 
+                    index += 1
+                   
+        route['route_params']=_route_params                    
+        return _route_params    
+      
     @classmethod
-    def _routes(cls):
-        _routes = []
-        # Test first level for the route and deeper if sub routes
+    def _group_route_params(cls, _route, _group):
+        # Lowest per_page (default is 50, 1 not allowed)
+        params =  {'length': 1} 
+        if (not _group is not None):
+            return params
         
-        print('-- Analyzing routes, please wait...')
-        with requests.Session():
-            
-            for route in cls.routes:
-                
-                route_path = route['route']                                 
-                # Send the GET request
-                params = {}
-                if ('data' in route and bool(route['data'])):
-                    route_path += '/data'
-                    params = {'length': 1}
-                
-                route_params = route.get('route_params') or {}
-                    
-                response = requests.get(cls.base_url + route_path, {**(cls.base_params), **(route_params), **(params)})
-                
-                data, route =  cls()._response_data(response, dict(route))
-                
-                if not route:
-                    continue   
-                
-                #print(route)  
-                      
-                # ieo dataset case    
-                if 'routes' in data:  
-                    sub_routes = data['routes'] 
-                    if (sub_routes):
-                        # Sort sub_routes DESCENDING to ensure firsts datasets are the latest                            
-                        # Important: sub route for current year might be empty so we need to check
-                        sub_routes = sorted(sub_routes, key=lambda x: x['id'], reverse=True)                
-                        for sub in sub_routes:
-                            # API throttling (seems to reduce or done at different time of of day (morning after Api counter reset), no clue :()
-                            time.sleep(5)
-                            
-                            sub_path = route_path +'/'+ str(sub['id']) 
-                            sub_params = {'length': 1}
-                            
-                            # Here we can access /data path directly (actual api sub route)
-                            response = requests.get(cls.base_url + sub_path + '/data', {**(cls.base_params), **(route_params), **(sub_params)})
-                            #print('!!! response.url' + response.url)
-                            sub_data, sub_route =  cls()._response_data(response, dict(route))
-
-                            if not sub_route:
-                                continue  
-                            
-                            # Sub route returns results                                                                     
-                            _routes.append({**(sub_route), **({'route': sub_path})})
-                            # Test if route params includes 'first' to exit when first non zero dataset is found
-                            if (bool(sub_route.get('first'))):
-                                break
-                        
-                        # Skip appending base route        
-                        continue
-                
-                # Append base route                 
-                _routes.append(route) 
-                 
-                # API throttling 
-                time.sleep(5)
-                
-        print('Found routes: '+ str(_routes))                    
-        return _routes 
+        return {**(_group.get('route_params') or {}), **(params)}
+       
+    @classmethod
+    def _group_routes_paths(cls, _route, _group, _data):                       
+        # ieo dataset case    
+        if 'routes' in _data:  
+            sub_routes = _data['routes'] 
+            if (sub_routes):
+                sub_routes = sorted(sub_routes, key=lambda x: x['id'], reverse=True) 
+                group_routes = []
+                for sub in sub_routes:
+                    group_routes.append(str(sub['id']))
+                return group_routes
+        return []
     
+    @classmethod
+    def _route_analysis(cls, _route):
+        params = {}
+        route_path = _route['route']
+        if ('data' in _route and bool(_route['data'])):
+            route_path += '/data'
+            params = {'length': 1}
+                    
+        #response = requests.get(cls.base_url + route_path, {**(cls.base_params), **(cls._route_params(_route)), **(params)})
+        
+        data, _route =  cls()._response(cls.base_url + route_path, {**(cls.base_params), **(cls._route_params(_route)), **(params)}, _route)
+        return data, _route
+                            
     # Override method
     def _response_data(self, response, route = None):
         
         #print('- Getting response for url: ' +response.url)
         
-        data = response.json()
-        #print('route: '+ str(route)) 
-        #print('data: '+ str(data))
-                                                  
-        if 'error' in data:
-            print('[DEBUG]:\n' + str(data))
-            error = data['error']  
-            if type(error) is not dict:
-                error = {'code': data['code']  , 'message': error}
+        data, route = super()._response_data(response , route)
+        
+        if (data is not None):
             
-            # TODO if error['code']=='OVER_RATE_LIMIT'   
-            raise Exception('[FATAL] Error ' + error['code'] + ': ' + error['message'] )
+            #time.sleep(5)
+            
+            #print(f'route: {route}') 
+            #print(f'data: {data}') 
 
-        if 'response' in data:
-            # Get interesting data
-            data = data['response']
-            #print('data: '+ str(data))
-            
-            if 'total' in data:
-                total = int(data['total'])
-                # Skip this route if total results == 0
-                if not total :
-                    return None, None
-                elif route is not None:
-                    route['total'] = total   
-            
-            return data, route    
+            if 'response' in data:
+                # Get interesting data
+                data = data['response']
+                #print('data: '+ str(data))
+                
+                if 'total' in data:
+                    total = int(data['total'])
+                    # Skip this route if total results == 0
+                    if not total :
+                        # returning data but not route
+                        return data, None
+                    elif route is not None:
+                        route['total'] = total   
+                
+                return data, route    
         
         #print('Response data: None !!')
         return None, None
@@ -151,8 +146,9 @@ class Eia_Api(raw.Api):
     
     # Override method
     # Eia specific: /data path added to route to actually get it       
-    def _route_path(self):
-        route_path = super()._route_path()
+    @classmethod   
+    def _route_path(cls, _route=None):
+        route_path = super(Eia_Api, cls)._route_path(_route)
         if route_path:
             route_path += '/data'
         return route_path    
@@ -174,4 +170,4 @@ class Eia_Api(raw.Api):
 # --------------------------------------------------------------------------------------------------------                    
 def main(raw, test):
     Eia_Api().main(raw, test)
-    
+ 

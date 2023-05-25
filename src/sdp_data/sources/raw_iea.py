@@ -1,9 +1,10 @@
 #IEA : 
 import raw
 
-# No LICENCE nor REFERENCE (might become obsolete)
 class Iea_Api(raw.Api):
-    
+    # No LICENCE nor REFERENCE (might become obsolete)
+    # Url found by chance !! Might disappear !!
+    license = ('UNKNOWN')
     base_url = 'https://api.iea.org'      
     routes = [{'route' : '/eei-explorer', 'csv_name': '/eei'}]    
 
@@ -12,9 +13,11 @@ class Iea_Api(raw.Api):
 # See https://www.iea.org/terms
 class Iea_File(raw.File):
     
-    base_url = 'TODO?'      
-    routes = []    
-
+    license = ('CC BY-NC-SA 4.0')
+    base_url = 'https://www.iea.org'      
+    routes = [
+        # TODO OR NOT?
+    ] 
 
 #----------------------------------------------------------------
 def main(raw, test):
