@@ -21,6 +21,8 @@ Just RUN IT AS IS to loop over all "Raw" sources (BP, EIA, EMBER, IEA, WB), save
 
 ### /src/sdp_data/raw.py
 Core base classes for each "Raw Data" source 
+Define default default implementations for the two main base classes Api(Raw) and File(Raw)
 
-### /src/sdp_data/raw.py
-Core base classes for each "Raw Data" source
+### /src/sdp_data/sources/
+Folder containing "Raw Data" sources modules.
+Each raw_{source}.py define the class(es) for a specific "Raw Data" source
