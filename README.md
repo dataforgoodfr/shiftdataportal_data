@@ -24,5 +24,5 @@ Define default behaviour of the two main base classes Api(Raw) and File(Raw)
 
 ### /src/sdp_data/sources/
 Folder listing the "Raw Data" sources modules.<br>
-Each raw_{source}.py define configuration/implementation of the Api and/or File class(es) for a specific "Raw Data" {source} (raw_wb.py for World Bank "Raw Data" source)
+Each raw_{source}.py define configuration/implementation of the Api and/or File class(es) for a specific "Raw Data" {source} (ie: raw_wb.py for World Bank "Raw Data" source)
   
