@@ -32,8 +32,8 @@ class Eia_Api(raw.Api):
                  {'sort': 'period', 'value': 'desc'}
                  ,{'sort': 'activityId', 'value': 'asc'}
              ]
-             ,'start': 2020
-             ,'end': 2023       
+             ,'start': '2020'
+             ,'end': '2023'       
          }
         },
         # {'route': '/ieo', 'csv_name': '/ieo/world', 'first' : True, 
