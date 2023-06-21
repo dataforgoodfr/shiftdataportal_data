@@ -7,13 +7,14 @@ class Eia_Api(raw.Api):
     
     # API Limit : max results per request
     max_results = 5000
+    # API Throttling : max requests per period
     max_retries = 3
     retry_delay = 5
             
     base_url = 'https://api.eia.gov/v2'
     base_params = {        
-        # TODO CHANGE api_key WITH D4G OR SDP account 
-        # TODO API KEYS MANAGEMENT (indeed for EIA we see api_key clearly in url...just log response.url in code!)
+        # TODO CHANGE IT WITH D4G OR SDP account !!!!!
+        # TODO API KEYS MANAGEMENT OR NOT (indeed for EIA we see api_key clearly in url...just log response.url in code!)
         'api_key': 'TYUMyndQZkshGBZTAM0tUfslaM1pvIctp1bcK7iV',
         'data[0]': 'value',
         'frequency': 'annual',
@@ -22,28 +23,29 @@ class Eia_Api(raw.Api):
     }
 
     routes =[
-        {'route': '/international', 'csv_name': '/intl/region', 'data': True,
+        {'route': '/international', 'csv_name': '/intl/2023', 'data': True,
          'route_params': {
              'facets': [
-                 {'facet': 'countryRegionTypeId', 'value': 'r'}
+                 {'facet': 'countryRegionTypeId', 'value': 'c'}
              ],                           
              'sorts': [
                  {'sort': 'period', 'value': 'desc'}
                  ,{'sort': 'activityId', 'value': 'asc'}
              ]
-                    
+             ,'start': 2020
+             ,'end': 2023       
          }
         },
-        {'route': '/ieo', 'csv_name': '/ieo/world', 'first' : True, 
-         'route_params': {
-             'facets': [
-                 {'facet': 'regionId', 'value': '0-0'}
-             ],                           
-             'sorts': [
-                 {'sort': 'period', 'value': 'desc'}
-             ]                  
-         }
-        }
+        # {'route': '/ieo', 'csv_name': '/ieo/world', 'first' : True, 
+        #  'route_params': {
+        #      'facets': [
+        #          {'facet': 'regionId', 'value': '0-0'}
+        #      ],                           
+        #      'sorts': [
+        #          {'sort': 'period', 'value': 'desc'}
+        #      ]                  
+        #  }
+        # }
     ]
     
     @classmethod    
@@ -59,19 +61,22 @@ class Eia_Api(raw.Api):
     def _route_params(cls, route):
         _route_params = {}
         route_params = route.get('route_params') or {}
-        #print(f'initial route_params: {route_params}')
+        # print(f'initial route_params: {route_params}')
         for key in route_params.keys():
             if key in ('facets','sorts'):
                 params = list(route_params[key])
                 # list of facets or sorts
                 for param in params:
-                   index = 0 
-                   # List of actual api route param to include
-                   # See _route_param for sort: returns 2 actual api route param definitions
-                   for _route_param in  cls._route_param(param, index):
-                    _route_params[_route_param['key']]=_route_param['value'] 
-                    index += 1
-                   
+                    index = 0 
+                    # List of actual api route param to include
+                    # See _route_param for sort: returns 2 actual api route param definitions
+                    for _route_param in cls._route_param(param, index):
+                        _route_params[_route_param['key']]=_route_param['value'] 
+                        index += 1
+            else:
+                _route_params[key]=route_params[key]
+
+        # print(f'_route_params: {_route_params}')
         route['route_params']=_route_params                    
         return _route_params    
       
@@ -118,9 +123,6 @@ class Eia_Api(raw.Api):
         data, route = super()._response_data(response , route)
         
         if (data is not None):
-            
-            #time.sleep(5)
-            
             #print(f'route: {route}') 
             #print(f'data: {data}') 
 
