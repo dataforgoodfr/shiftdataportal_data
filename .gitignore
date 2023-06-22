@@ -134,3 +134,6 @@ dmypy.json
 
 data/_raw/**
 .github/workflows/api_key.yml
+_MISC.ipynb
+.~lock.*
+.idea
