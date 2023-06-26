@@ -23,7 +23,7 @@ class Eia_Api(raw.Api):
     }
 
     routes =[
-        {'route': '/international', 'csv_name': '/intl/2021_2022', 'data': True,
+        {'route': '/international', 'csv_name': '/intl/2020_2021', 'data': True,
          'route_params': {
              'facets': [
                  {'facet': 'countryRegionTypeId', 'value': 'c'}
@@ -32,7 +32,7 @@ class Eia_Api(raw.Api):
                  {'sort': 'period', 'value': 'desc'}
                  ,{'sort': 'activityId', 'value': 'asc'}
              ]
-             ,'start': '2020'
+             ,'start': '2019'
              ,'end': '2022'       
          }
         },
