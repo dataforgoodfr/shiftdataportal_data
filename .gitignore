@@ -134,4 +134,8 @@ dmypy.json
 
 data/_raw/**
 .github/workflows/api_key.yml
-data/_processed/eia_international_processed.csv
+
+_MISC.ipynb
+.~lock.*
+.idea
+
