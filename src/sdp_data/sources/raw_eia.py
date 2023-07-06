@@ -15,7 +15,7 @@ class Eia_Api(raw.Api):
     base_params = {        
         # TODO CHANGE IT WITH D4G OR SDP account !!!!!
         # TODO API KEYS MANAGEMENT OR NOT (indeed for EIA we see api_key clearly in url...just log response.url in code!)
-        'api_key': 'TYUMyndQZkshGBZTAM0tUfslaM1pvIctp1bcK7iV',
+        'api_key': '2Em3G72Wor6bHDwuTrjGoVOkKCcjHcHUPbMqZGb1',
         'data[0]': 'value',
         'frequency': 'annual',
         'offset': '0',
@@ -23,7 +23,7 @@ class Eia_Api(raw.Api):
     }
 
     routes =[
-        {'route': '/international', 'csv_name': '/intl/2023', 'data': True,
+        {'route': '/international', 'csv_name': '/intl/2020_2021', 'data': True,
          'route_params': {
              'facets': [
                  {'facet': 'countryRegionTypeId', 'value': 'c'}
@@ -32,8 +32,8 @@ class Eia_Api(raw.Api):
                  {'sort': 'period', 'value': 'desc'}
                  ,{'sort': 'activityId', 'value': 'asc'}
              ]
-             ,'start': '2020'
-             ,'end': '2023'       
+             ,'start': '2019'
+             ,'end': '2022'       
          }
         },
         # {'route': '/ieo', 'csv_name': '/ieo/world', 'first' : True, 
