@@ -34,7 +34,7 @@ First clone the git repository to your local machine.
 
 `git clone https://github.com/dataforgoodfr/shiftdataportal_data.git`
 
-Then you need to create a virtual environment in the repository you've just cloned and install the required packages.
+Then you need to create a virtual environment in the repository you have just cloned and install the required packages.
 
 ```
 cd shiftdataportal_data
@@ -42,6 +42,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -U pip
 pip install -r requirements.txt
+pip install -e .
 ```
 
 After this, you should be ready to contribute!
