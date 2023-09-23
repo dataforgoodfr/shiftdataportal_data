@@ -48,7 +48,7 @@ source venv/bin/activate
 
 ```
 python -m venv venv
-.\env\Scripts\activate
+.\venv\Scripts\activate
 ```
 
 If you use *pyenv* or *pyenv-win*, you can run this command to set the python version: `pyenv local 3.9.X`.
