@@ -26,22 +26,39 @@ Each raw_{source}.py define configuration/implementation of the Api and/or File 
 
 ## Contributing
 
-The next steps will use the Linux command lines. The documentation for Windows system will be added later, meanwhile, 
-you can have a look at this [documentation](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-to create your virtual environment and install the packages.
+We use Python 3.9, ensure you have this version on your computer. If you already have another version, you can manage several versions of Python with [pyenv](https://github.com/pyenv/pyenv) for Linux/MacOS or [pyenv-win](https://github.com/pyenv-win/pyenv-win) for Windows.
 
-First clone the git repository to your local machine.
-
-`git clone https://github.com/dataforgoodfr/shiftdataportal_data.git`
-
-Then you need to create a virtual environment in the repository you've just cloned and install the required packages.
+First clone the git repository to your local machine and go inside the project folder.
 
 ```
+git clone https://github.com/dataforgoodfr/shiftdataportal_data.git
 cd shiftdataportal_data
+```
+
+Then you can create the virtual environment and activate it.
+
+- On Linux/MacOS
+
+```
 python3 -m venv venv
 source venv/bin/activate
+```
+
+- On Windows
+
+```
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+If you use *pyenv* or *pyenv-win*, you can run this command to set the python version: `pyenv local 3.9.X`.
+
+And finally you can install all the packages needed, first *pip*, then the external packages and the local ones.
+
+```
 pip install -U pip
 pip install -r requirements.txt
+pip install -e .
 ```
 
 After this, you should be ready to contribute!
