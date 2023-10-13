@@ -131,8 +131,10 @@ dmypy.json
 # MacOS stuff
 .DS_Store
 
-
+# Large files of raw data
 data/_raw/**
+
+# API key
 .github/workflows/api_key.yml
 
 _MISC.ipynb
