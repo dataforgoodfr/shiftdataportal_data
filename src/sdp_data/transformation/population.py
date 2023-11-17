@@ -1,3 +1,4 @@
+import pandas as pd
 
 
 class GapMinderCleaner:
@@ -19,12 +20,12 @@ class GapMinderCleaner:
                 return int(units)
 
     @staticmethod
-    def unstack_dataframe_to_serie(df):
+    def unstack_dataframe_to_serie(df: pd.DataFrame):
         df = df.unstack().reset_index()
         df.columns = ["year", "country", "population"]
         return df
 
-    def run(self, df):
+    def run(self, df: pd.DataFrame) -> pd.DataFrame:
         """
 
         :return:
@@ -32,10 +33,34 @@ class GapMinderCleaner:
         # clean the numbers
         df = df.applymap(lambda element: self.dirty_string_to_int(element))
 
-        # convert to unique pandas serie
+        # unstack to a unique pandas serie
         df = self.unstack_dataframe_to_serie(df)
         df = df[df["year"] <= self.max_year]
 
         # TODO - ajouter la conversion en anglais ?
         return df
 
+
+class PopulationCleaner:
+
+    def __init__(self):
+        self.max_year = 2020
+
+    @staticmethod
+    def unstack_dataframe_to_serie(df: pd.Da):
+        df = df.unstack().reset_index()
+        df.columns = ["year", "country", "population"]
+        return df
+
+    def run(self, df_population: pd.DataFrame) -> pd.DataFrame:
+
+        # only keep useful columns
+        df_population = df_population.set_index("Country Name")
+        df_population = df_population.drop(["Country Code", "Indicator Name", "Indicator Code", "col_65"], axis=1)
+
+        # unstack to a unique pandas serie
+        df_population = self.unstack_dataframe_to_serie(df_population)
+        df_population = df_population[df_population["year"] <= self.max_year]
+
+        # TODO - ajouter la conversion en anglais ?
+        return df_population
