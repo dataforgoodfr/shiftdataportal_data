@@ -71,5 +71,18 @@ class PopulationCleaner:
         df_population = self.unstack_dataframe_to_serie(df_population)
         df_population = df_population[df_population["year"] <= self.max_year]
 
-        # TODO - ajouter la conversion en anglais ?
-        return df_population
+        # convert countries from french to english
+        df_population = self.convert_countries_from_french_to_english(df_population)
+
+        # compute total population per zone
+        df_total_population_per_zone = df_countries_and_zones.merge(df_population, how="left", left_on="country", right_on="country")
+        df_total_population_per_zone = df_total_population_per_zone.groupby(["group_type", "group_name", "year"])["population"].sum()
+
+        # compute total population per country
+        df_total_population_per_country = df_population.rename({"country": "group_name"})
+        df_total_population_per_country["group_type"] = "country"
+
+        # concatenate countries and zones populations
+        df_population_per_zone_and_countries = pd.concat([df_total_population_per_zone, df_total_population_per_country], axis=0)
+
+        return df_population_per_zone_and_countries
