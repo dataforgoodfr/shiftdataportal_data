@@ -1,5 +1,11 @@
 import pandas as pd
 
+# TODO - à revoir
+"""
+-> traduction des noms de pays FR -> EN avec un autre package.
+-> Revue des valeurs manquantes "zone supprimées".
+"""
+
 
 class GapMinderCleaner:
 
@@ -63,13 +69,15 @@ class PopulationCleaner:
         :param df_countries_and_zones: (dataframe) listing all countries through columns "group_type", "group_name" and "country"
         :return:
         """
-        # only keep useful columns for population
+        # only keep useful columns for population and unstack to a unique pandas serie
         df_population = df_population.set_index("Country Name")
         df_population = df_population.drop(["Country Code", "Indicator Name", "Indicator Code", "col_65"], axis=1)
-
-        # unstack to a unique pandas serie
         df_population = self.unstack_dataframe_to_serie(df_population)
-        df_population = df_population[df_population["year"] <= self.max_year]
+        df_population = df_population.dropna()
+
+        # filter time
+        df_population["year"] = pd.to_numeric(df_population["year"])
+        df_population = df_population[df_population["year"] < self.max_year]
 
         # convert countries from french to english
         df_population = self.convert_countries_from_french_to_english(df_population)
@@ -77,9 +85,10 @@ class PopulationCleaner:
         # compute total population per zone
         df_total_population_per_zone = df_countries_and_zones.merge(df_population, how="left", left_on="country", right_on="country")
         df_total_population_per_zone = df_total_population_per_zone.groupby(["group_type", "group_name", "year"])["population"].sum()
+        df_total_population_per_zone = df_total_population_per_zone.reset_index()
 
         # compute total population per country
-        df_total_population_per_country = df_population.rename({"country": "group_name"})
+        df_total_population_per_country = df_population.rename({"country": "group_name"}, axis=1)
         df_total_population_per_country["group_type"] = "country"
 
         # concatenate countries and zones populations
