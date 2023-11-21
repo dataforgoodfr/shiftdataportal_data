@@ -47,14 +47,23 @@ class PopulationCleaner:
         self.max_year = 2020
 
     @staticmethod
-    def unstack_dataframe_to_serie(df: pd.Da):
+    def unstack_dataframe_to_serie(df: pd.DataFrame):
         df = df.unstack().reset_index()
         df.columns = ["year", "country", "population"]
         return df
 
-    def run(self, df_population: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def convert_countries_from_french_to_english(df_population):
+        return df_population  # TODO - remettre en place la fonction ? Dans Dataiku, cela était utilisé dans une custom function Dataiku.
 
-        # only keep useful columns
+    def run(self, df_population: pd.DataFrame, df_countries_and_zones: pd.DataFrame) -> pd.DataFrame:
+        """
+        Computes the total population for each year, each country and each geographic zone.
+        :param df_population: (dataframe) where each row is a country, each column a year and each value, the population for this year and country.
+        :param df_countries_and_zones: (dataframe) listing all countries through columns "group_type", "group_name" and "country"
+        :return:
+        """
+        # only keep useful columns for population
         df_population = df_population.set_index("Country Name")
         df_population = df_population.drop(["Country Code", "Indicator Name", "Indicator Code", "col_65"], axis=1)
 
