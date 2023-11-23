@@ -1,7 +1,10 @@
 import pandas as pd
+
 # TODO - à revoir
 """
--> Revue des valeurs manquantes "zone supprimées".
+-> Revue des valeurs manquantes "zone supprimées" pour PopulationCleaner.
+-> ajouter des tests unitaires.
+-> mutuliser le code entre GapMinderCleaner et 
 """
 
 
@@ -25,6 +28,10 @@ class GapMinderCleaner:
                 units = float(dirty_string) * self.equivalence_dict[key]
                 return int(units)
 
+        return int(dirty_string)
+
+
+
     @staticmethod
     def unstack_dataframe_to_serie(df: pd.DataFrame):
         df = df.unstack().reset_index()
@@ -37,22 +44,39 @@ class GapMinderCleaner:
 
     def run(self, df_gapminder: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
         """
-
+        Computes the total gapminder for each year, each country and each geographic zone.
         :return:
         """
         # clean the numbers
         df_gapminder = df_gapminder.set_index("country")
         df_gapminder = df_gapminder.applymap(lambda element: self.dirty_string_to_int(element))
 
-        # unstack to a unique pandas serie
+        # unstack to a unique pandas serie and filter time
         df_gapminder = self.unstack_dataframe_to_serie(df_gapminder)
+        df_gapminder["year"] = pd.to_numeric(df_gapminder["year"])
         df_gapminder = df_gapminder[(df_gapminder["year"].astype(int) <= int(self.max_year)) & (df_gapminder['year'].notnull())]
+
 
         # convert countries from french to english
         df_gapminder = self.convert_countries_from_french_to_english(df_gapminder)
 
-        # TODO - ajouter la conversion en anglais ?
-        return df
+        # join with countries
+        df_total_gapminder_per_zone = (pd.merge(df_country, df_gapminder, how='left', left_on='country', right_on='country')
+                                       .groupby(['group_type', 'group_name', 'year'])
+                                       .agg({'population': 'sum'})
+                                       .reset_index()
+                                       )
+
+        # compute total gapminder per country
+        df_total_gapminder_per_country = df_gapminder.copy()
+        df_total_gapminder_per_country = df_total_gapminder_per_country.rename({"country": "group_name"}, axis=1)
+        df_total_gapminder_per_country["group_type"] = "country"
+        df_total_gapminder_per_country = df_total_gapminder_per_country[["group_type", "group_name", "year", "population"]]
+
+        # concatenate countries and zones populations
+        df_gapminder_per_zone_and_countries = pd.concat([df_total_gapminder_per_zone, df_total_gapminder_per_country], axis=0)
+
+        return df_gapminder_per_zone_and_countries
 
 
 class PopulationCleaner:
@@ -92,9 +116,12 @@ class PopulationCleaner:
         df_population = self.convert_countries_from_french_to_english(df_population)
 
         # compute total population per zone
-        df_total_population_per_zone = df_countries_and_zones.merge(df_population, how="left", left_on="country", right_on="country")
-        df_total_population_per_zone = df_total_population_per_zone.groupby(["group_type", "group_name", "year"])["population"].sum()
-        df_total_population_per_zone = df_total_population_per_zone.reset_index()
+        df_total_population_per_zone = (
+            pd.merge(df_countries_and_zones, df_population, how='left', left_on='country', right_on='country')
+            .groupby(['group_type', 'group_name', 'year'])
+            .agg({'population': 'sum'})
+            .reset_index()
+            )
 
         # compute total population per country
         df_total_population_per_country = df_population.rename({"country": "group_name"}, axis=1)
