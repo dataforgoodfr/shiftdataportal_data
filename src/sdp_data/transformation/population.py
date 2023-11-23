@@ -49,8 +49,9 @@ class GapMinderCleaner:
 
 class PopulationCleaner:
 
-    def __init__(self):
+    def __init__(self, country_translations):
         self.max_year = 2020
+        self.country_translations = country_translations
 
     @staticmethod
     def unstack_dataframe_to_serie(df: pd.DataFrame):
@@ -58,9 +59,9 @@ class PopulationCleaner:
         df.columns = ["year", "country", "population"]
         return df
 
-    @staticmethod
-    def convert_countries_from_french_to_english(df_population):
-        return df_population  # TODO - remettre en place la fonction ? Dans Dataiku, cela était utilisé dans une custom function Dataiku.
+    def convert_countries_from_french_to_english(self, df_population):
+        df_population["country"] = df_population["country"].replace(self.country_translations)
+        return df_population
 
     def run(self, df_population: pd.DataFrame, df_countries_and_zones: pd.DataFrame) -> pd.DataFrame:
         """
