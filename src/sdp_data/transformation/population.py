@@ -1,17 +1,16 @@
 import pandas as pd
-
 # TODO - à revoir
 """
--> traduction des noms de pays FR -> EN avec un autre package.
 -> Revue des valeurs manquantes "zone supprimées".
 """
 
 
 class GapMinderCleaner:
 
-    def __init__(self):
+    def __init__(self, country_translations):
         self.equivalence_dict = {'k': 1e3, 'M': 1e6, 'B': 1e9}
         self.max_year = 2021
+        self.country_translations = country_translations
 
     def dirty_string_to_int(self, dirty_string: str):
         """
@@ -19,6 +18,7 @@ class GapMinderCleaner:
         :param dirty_string: (str) the string to convert in integer
         :return:
         """
+        dirty_string = str(dirty_string)
         for key in self.equivalence_dict.keys():
             if key in dirty_string:
                 dirty_string = dirty_string.replace(key, '')
@@ -31,17 +31,25 @@ class GapMinderCleaner:
         df.columns = ["year", "country", "population"]
         return df
 
-    def run(self, df: pd.DataFrame) -> pd.DataFrame:
+    def convert_countries_from_french_to_english(self, df_population):  # TODO - ajouter un test au fil de l'eau pour vérifier si chaque pays a bien reçu une correspondance dans le dictionnaire.
+        df_population["country"] = df_population["country"].replace(self.country_translations)
+        return df_population
+
+    def run(self, df_gapminder: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
         """
 
         :return:
         """
         # clean the numbers
-        df = df.applymap(lambda element: self.dirty_string_to_int(element))
+        df_gapminder = df_gapminder.set_index("country")
+        df_gapminder = df_gapminder.applymap(lambda element: self.dirty_string_to_int(element))
 
         # unstack to a unique pandas serie
-        df = self.unstack_dataframe_to_serie(df)
-        df = df[df["year"] <= self.max_year]
+        df_gapminder = self.unstack_dataframe_to_serie(df_gapminder)
+        df_gapminder = df_gapminder[(df_gapminder["year"].astype(int) <= int(self.max_year)) & (df_gapminder['year'].notnull())]
+
+        # convert countries from french to english
+        df_gapminder = self.convert_countries_from_french_to_english(df_gapminder)
 
         # TODO - ajouter la conversion en anglais ?
         return df
@@ -59,7 +67,7 @@ class PopulationCleaner:
         df.columns = ["year", "country", "population"]
         return df
 
-    def convert_countries_from_french_to_english(self, df_population):
+    def convert_countries_from_french_to_english(self, df_population):  # TODO - ajouter un test au fil de l'eau pour vérifier si chaque pays a bien reçu une correspondance dans le dictionnaire.
         df_population["country"] = df_population["country"].replace(self.country_translations)
         return df_population
 
