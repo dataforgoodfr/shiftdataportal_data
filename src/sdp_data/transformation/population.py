@@ -30,8 +30,6 @@ class GapMinderCleaner:
 
         return int(dirty_string)
 
-
-
     @staticmethod
     def unstack_dataframe_to_serie(df: pd.DataFrame):
         df = df.unstack().reset_index()
