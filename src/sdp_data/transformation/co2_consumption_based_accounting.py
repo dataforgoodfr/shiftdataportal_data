@@ -120,8 +120,20 @@ class GcbPerZoneAndCountryProcessor:
         df_gcb["Source"] = "Global Carbon Budget"
         df_gcb["scope"] = df_gcb["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
 
+        # join with countries
+        df_gcb_per_zone = (pd.merge(df_country, df_gcb, on='country', how='left')
+                           .groupby(['group_type', 'group_name', 'year', 'scope', 'co2_unit', 'source'])
+                           .agg({'co2': "sum"})
+                           .reset_index()
+                           )
 
+        # compute total co2 per country
+        df_gcb_per_country = df_gcb.copy()
+        df_gcb_per_country = df_gcb_per_country.rename({"country": "group_name"}, axis=1)
+        df_gcb_per_country["group_type"] = "country"
+        df_gcb_per_country = df_gcb_per_country[["group_type", "group_name", "year", "scope",
+                                                 "co2", "co2_unit", "source"]]
 
-
-
-
+        # concatenate countries and zones populations
+        df_gcb_per_zone_and_countries = pd.concat([df_gcb_per_zone, df_gcb_per_country], axis=0)
+        return df_gcb_per_zone_and_countries
