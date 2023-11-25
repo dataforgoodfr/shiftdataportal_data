@@ -8,7 +8,7 @@ import pandas as pd
 """
 
 
-class GapMinderCleaner:
+class GapMinderPerZoneAndCountryProcessor:
 
     def __init__(self, country_translations):
         self.equivalence_dict = {'k': 1e3, 'M': 1e6, 'B': 1e9}
@@ -77,7 +77,7 @@ class GapMinderCleaner:
         return df_gapminder_per_zone_and_countries
 
 
-class PopulationCleaner:
+class PopulationPerZoneAndCountryProcessor:
 
     def __init__(self, country_translations):
         self.max_year = 2020

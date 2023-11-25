@@ -3,7 +3,7 @@ import pandas as pd
 # TODO - mutualiser la traduction dans une classe à part.
 
 
-class EoraCbaWithZonesProcessor:
+class EoraCbaPerZoneAndCountryProcessor:
 
     def __init__(self, country_translations):
         self.country_translations = country_translations
@@ -29,7 +29,7 @@ class EoraCbaWithZonesProcessor:
         return df_eora_cba
 
     @staticmethod
-    def unstack_dataframe_to_serie(df: pd.DataFrame):
+    def unstack_years_in_dataframe(df: pd.DataFrame):
         df = df.unstack().reset_index()
         df.columns = ["country", "record_code", "co2"]
         return df
@@ -49,7 +49,7 @@ class EoraCbaWithZonesProcessor:
 
     def run(self, df_eora_cba: pd.DataFrame, df_country: pd.DataFrame):
         """
-
+        Computes the CO2 consumption stastistics per country and zone.
         :param df_eora_cba:
         :param df_country:
         :return:
@@ -60,9 +60,9 @@ class EoraCbaWithZonesProcessor:
         df_eora_cba = df_eora_cba[~df_eora_cba["country"].contains("NOT FOUND")]
         df_eora_cba = self.convert_giga_units(df_eora_cba)
 
-        # unstack years on the row axis.
+        # unstack the years.
         df_eora_cba = df_eora_cba.set_index(["country", "record_code"])
-        df_eora_cba = self.unstack_dataframe_to_serie(df_eora_cba)
+        df_eora_cba = self.unstack_years_in_dataframe(df_eora_cba)
         df_eora_cba["year"] = pd.to_numeric(df_eora_cba["year"])
 
         # create new columns scope, co2_unit and Source
@@ -88,6 +88,39 @@ class EoraCbaWithZonesProcessor:
         # concatenate countries and zones populations
         df_eora_cba_per_zone_and_countries = pd.concat([df_eora_cba_per_zone, df_eora_cba_per_country], axis=0)
         return df_eora_cba_per_zone_and_countries
+
+
+class GcbPerZoneAndCountryProcessor:
+
+    @staticmethod
+    def unstack_years_in_dataframe(df: pd.DataFrame):
+        df = df.unstack().reset_index()
+        df.columns = ["country", "co2"]
+        return df
+
+    def run(self, df_gcb_territorial: pd.DataFrame, df_gcb_cba: pd.DataFrame):
+
+        # transpose and unstack years for the two datasets
+        df_gcb_territorial = df_gcb_territorial.transpose()
+        df_gcb_territorial = self.unstack_years_in_dataframe(df_gcb_territorial)
+        df_gcb_cba = df_gcb_cba.transpose()
+        df_gcb_cba = self.unstack_years_in_dataframe(df_gcb_cba)
+
+        # concat the two dataframes and filter time and missing values
+        df_gcb_territorial["scope"] = "Territorial Emissions"
+        df_gcb_cba["scope"] = "Carbon Footprint"
+        df_gcb = pd.concat([df_gcb_territorial, df_gcb_cba], axis=0)
+        df_gcb["year"] = pd.to_numeric(df_gcb["year"])
+        df_gcb = df_gcb[df_gcb["year"] >= 1990]
+        df_gcb = df_gcb.dropna(subset=["co2"], axis=1)
+
+        # create new columns scope, co2_unit and Source
+        df_gcb["co2"] *= 3.664
+        df_gcb["co2_unit"] = "MtCO2"
+        df_gcb["Source"] = "Global Carbon Budget"
+        df_gcb["scope"] = df_gcb["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
+
+
 
 
 
