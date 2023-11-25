@@ -1,6 +1,5 @@
 import pandas as pd
-
-# TODO - mutualiser la traduction dans une classe à part.
+from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 
 
 class EoraCbaPerZoneAndCountryProcessor:
@@ -23,10 +22,6 @@ class EoraCbaPerZoneAndCountryProcessor:
             "PBA_tCO2perCap": "tCO2 per capita",
             "CBA_tCO2perCap": "tCO2 per capita"
         }
-
-    def convert_countries_from_french_to_english(self, df_eora_cba):  # TODO - ajouter un test au fil de l'eau pour vérifier si chaque pays a bien reçu une correspondance dans le dictionnaire.
-        df_eora_cba["country"] = df_eora_cba["country"].replace(self.country_translations)
-        return df_eora_cba
 
     @staticmethod
     def unstack_years_in_dataframe(df: pd.DataFrame):
@@ -56,8 +51,8 @@ class EoraCbaPerZoneAndCountryProcessor:
         """
         # clean and filter countries
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
-        df_eora_cba["country"] = self.convert_countries_from_french_to_english(df_eora_cba["Country"])
-        df_eora_cba = df_eora_cba[~df_eora_cba["country"].contains("NOT FOUND")]
+        df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["Country"], raise_errors=False)
+        df_eora_cba = df_eora_cba.dropna(subset=["country"], axis=1)
         df_eora_cba = self.convert_giga_units(df_eora_cba)
 
         # unstack the years.
@@ -92,13 +87,16 @@ class EoraCbaPerZoneAndCountryProcessor:
 
 class GcbPerZoneAndCountryProcessor:
 
+    def __init__(self, country_translations):
+        self.country_translations = country_translations
+
     @staticmethod
     def unstack_years_in_dataframe(df: pd.DataFrame):
         df = df.unstack().reset_index()
         df.columns = ["country", "co2"]
         return df
 
-    def run(self, df_gcb_territorial: pd.DataFrame, df_gcb_cba: pd.DataFrame):
+    def run(self, df_gcb_territorial: pd.DataFrame, df_gcb_cba: pd.DataFrame, df_country: pd.DataFrame):
 
         # transpose and unstack years for the two datasets
         df_gcb_territorial = df_gcb_territorial.transpose()
@@ -113,6 +111,8 @@ class GcbPerZoneAndCountryProcessor:
         df_gcb["year"] = pd.to_numeric(df_gcb["year"])
         df_gcb = df_gcb[df_gcb["year"] >= 1990]
         df_gcb = df_gcb.dropna(subset=["co2"], axis=1)
+        df_gcb["country"] = CountryTranslatorFrenchToEnglish().run(df_gcb["Country"], raise_errors=False)
+        df_gcb = df_gcb.dropna(subset=["country"], axis=1)
 
         # create new columns scope, co2_unit and Source
         df_gcb["co2"] *= 3.664

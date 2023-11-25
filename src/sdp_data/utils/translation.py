@@ -1,3 +1,5 @@
+import pandas as pd
+
 # TODO - country_translations à refactoer plus proprement à l'aide d'un fichier JSON
 
 country_translations = {"ALM": "ALM SRES",
@@ -282,3 +284,25 @@ country_translations = {"ALM": "ALM SRES",
                         "Yougoslavie": "Yugoslavia", "Former Yugoslavia": "Yugoslavia", "Yugoslav SFR": "Yugoslavia",
                         "ex-Yougoslavie (Pas de détail)": "Yugoslavia", "Yugoslavia": "Yugoslavia", "Zambie": "Zambia",
                         "Zambia": "Zambia"}
+
+
+class CountryTranslatorFrenchToEnglish:
+
+    def __init__(self):
+        self.dict_country_translations = country_translations
+
+    def run(self, serie_country_to_translate: pd.Series, raise_errors: bool) -> pd.Series:
+        """
+        Translates the countris from French to English using country_translations. If no correspondance is found in the
+        dict, the country is replace by a NaN value.
+        :param serie_country_to_translate: (pandas Series) to translate.
+        :param raise_errors: (bool) True to raise error if no translation. Else False to ignore.
+        :return:
+        """
+        serie_country_translate = serie_country_to_translate.map(self.dict_country_translations)
+        countries_no_translating = serie_country_to_translate[serie_country_translate.isnull()].values.tolist()
+        print("WARN : no translating found for countries %s" % countries_no_translating)
+        if raise_errors and serie_country_translate.isnll().sum() > 0:
+            raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
+
+        return serie_country_translate
