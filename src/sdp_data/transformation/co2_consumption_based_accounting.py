@@ -4,8 +4,7 @@ from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 
 class EoraCbaPerZoneAndCountryProcessor:
 
-    def __init__(self, country_translations):
-        self.country_translations = country_translations
+    def __init__(self):
         self.dict_translation_record_code_to_scope = {
             "PBA_GgCO2PerBnUSDGDP": "Territorial Emissions per GDP",
             "CBA_GgCO2PerBnUSDGDP": "Carbon Footprint per GDP",
@@ -87,9 +86,6 @@ class EoraCbaPerZoneAndCountryProcessor:
 
 class GcbPerZoneAndCountryProcessor:
 
-    def __init__(self, country_translations):
-        self.country_translations = country_translations
-
     @staticmethod
     def unstack_years_in_dataframe(df: pd.DataFrame):
         df = df.unstack().reset_index()
@@ -137,3 +133,26 @@ class GcbPerZoneAndCountryProcessor:
         # concatenate countries and zones populations
         df_gcb_per_zone_and_countries = pd.concat([df_gcb_per_zone, df_gcb_per_country], axis=0)
         return df_gcb_per_zone_and_countries
+
+
+class Co2ConsumptionBasedAccountingProcessor:
+
+    def run(self, df_gcb_territorial: pd.DataFrame, df_gcb_cba: pd.DataFrame,
+            df_eora_cba: pd.DataFrame, df_country: pd.DataFrame):
+
+        # compute the EORA CBA per zones and countries
+        list_scope_to_filter = ["Territorial Emissions", "CO2 Footprint"]
+        df_eora_cba_per_zone_and_countries = EoraCbaPerZoneAndCountryProcessor().run(df_eora_cba, df_country)
+        df_eora_cba_per_zone_and_countries = df_eora_cba_per_zone_and_countries[df_eora_cba_per_zone_and_countries.isin(list_scope_to_filter)]
+
+        # compute the GCB per zones and countries
+        df_gcb_per_zone_and_countries = GcbPerZoneAndCountryProcessor().run(df_gcb_territorial, df_gcb_cba, df_country)
+
+        # stack the two datasets together
+        df_footprint_vs_territorial = pd.concat([df_eora_cba_per_zone_and_countries, df_gcb_per_zone_and_countries], axis=0)
+
+        return df_footprint_vs_territorial
+
+
+
+

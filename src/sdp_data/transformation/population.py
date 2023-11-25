@@ -10,10 +10,9 @@ from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 
 class GapMinderPerZoneAndCountryProcessor:
 
-    def __init__(self, country_translations):
+    def __init__(self):
         self.equivalence_dict = {'k': 1e3, 'M': 1e6, 'B': 1e9}
         self.max_year = 2021
-        self.country_translations = country_translations
 
     def dirty_string_to_int(self, dirty_string: str):
         """
@@ -75,9 +74,8 @@ class GapMinderPerZoneAndCountryProcessor:
 
 class PopulationPerZoneAndCountryProcessor:
 
-    def __init__(self, country_translations):
+    def __init__(self):
         self.max_year = 2020
-        self.country_translations = country_translations
 
     @staticmethod
     def unstack_dataframe_to_serie(df: pd.DataFrame):
