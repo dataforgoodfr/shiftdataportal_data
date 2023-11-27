@@ -1,5 +1,6 @@
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.utils.iso3166 import countries_by_alpha3
 
 
 class EoraCbaPerZoneAndCountryProcessor:
@@ -137,6 +138,68 @@ class GcbPerZoneAndCountryProcessor:
 
 
 class EoraCo2TradePerZoneAndCountryProcessor:
+
+    def __init__(self):
+        self.countries_by_alpha3 = countries_by_alpha3
+
+    def translate_country_code_to_country_name(self, serie_country_code_to_translate: pd.Series, raise_errors: bool):
+        serie_country_translated = serie_country_code_to_translate.map(self.countries_by_alpha3)
+        countries_no_translating = serie_country_translated[serie_country_translated.isnull()].values.tolist()
+        print("WARN : no translating found for countries %s" % countries_no_translating)
+        if raise_errors and serie_country_code_to_translate.isnll().sum() > 0:
+            raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
+
+        return serie_country_translated
+
+    @staticmethod
+    def unstack_countries_in_dataframe(df: pd.DataFrame):
+        df = df.unstack().reset_index()
+        df.columns = ["country_to", "ghg", "country_from", "sector"]
+        return df
+
+    def run(self, df_eora_co2_trade: pd.DataFrame, df_country: pd.DataFrame):
+
+        # translate the countries codes into countries names
+        df_eora_co2_trade = df_eora_co2_trade.drop("ROW", axis=1)
+        df_eora_co2_trade["country"] = self.translate_country_code_to_country_name(df_eora_co2_trade["country"], raise_errors=True)
+        df_eora_co2_trade = df_eora_co2_trade.set_index(["country", "sector"])
+        df_eora_co2_trade.columns = self.translate_country_code_to_country_name(df_eora_co2_trade.columns, raise_errors=True)
+
+        # unstack the dataframe on countries
+        df_eora_co2_trade = self.unstack_countries_in_dataframe(df_eora_co2_trade)
+        df_eora_co2_trade["ghg_unit"] = "MtCO2e"
+        df_eora_co2_trade = df_eora_co2_trade[['country_from', 'country_to', 'sector', 'ghg', 'ghg_unit']]
+
+        # compute imports between countries
+        df_exports = (df_eora_co2_trade
+                      .groupby(['country_from', 'country_to', 'ghg_unit'])
+                      .agg(co2=('ghg', 'sum')).reset_index()
+                      )
+        df_exports.loc[df_exports["country_from"] == df_exports["country_to"], "co2"] = 0.0
+        df_exports = df_exports.rename({"country_from": "country", "ghg_unit": "co2_unit"})
+        df_exports["type"] = "CO2 Exports"
+
+        # compute exports between countries
+        df_imports = (df_eora_co2_trade
+                      .groupby(['country_to', 'country_from', 'ghg_unit'])
+                      .agg(co2=('ghg', 'sum')).reset_index()
+                      )
+        df_imports.loc[df_exports["country_from"] == df_exports["country_to"], "co2"] = 0.0
+        df_imports = df_exports.rename({"country_from": "country", "ghg_unit": "co2_unit"})
+        df_exports["type"] = "CO2 Imports"
+
+        df_trade_by_country = pd.concat([df_imports, df_exports], axis=0)
+
+        # join and filter on the continent zones
+        df_zones = df_country[df_country["group_type"] == "zone"]
+        df_zones = df_zones[["country", "group_name"]]
+        df_trade_by_country = df_trade_by_country.merge(df_zones, how="left", left_on="country_to", right_on="country")
+        df_trade_by_country = df_trade_by_country.rename({"group_name": "continent_to"}, axis=1)
+        list_continents = ["North America", "Central and South America", "Asia and Oceania", "Europe", "Africa"]
+        df_trade_by_country = df_trade_by_country[df_trade_by_country["continent_to"].isin(list_continents)]
+
+
+        return df_trade_by_country
 
 
 
