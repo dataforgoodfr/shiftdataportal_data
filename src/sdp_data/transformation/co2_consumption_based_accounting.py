@@ -157,19 +157,13 @@ class EoraCo2TradePerZoneAndCountryProcessor:
         df.columns = ["country_to", "ghg", "country_from", "sector"]
         return df
 
-    def run(self, df_eora_co2_trade: pd.DataFrame, df_country: pd.DataFrame):
-
-        # translate the countries codes into countries names
-        df_eora_co2_trade = df_eora_co2_trade.drop("ROW", axis=1)
-        df_eora_co2_trade["country"] = self.translate_country_code_to_country_name(df_eora_co2_trade["country"], raise_errors=True)
-        df_eora_co2_trade = df_eora_co2_trade.set_index(["country", "sector"])
-        df_eora_co2_trade.columns = self.translate_country_code_to_country_name(df_eora_co2_trade.columns, raise_errors=True)
-
-        # unstack the dataframe on countries
-        df_eora_co2_trade = self.unstack_countries_in_dataframe(df_eora_co2_trade)
-        df_eora_co2_trade["ghg_unit"] = "MtCO2e"
-        df_eora_co2_trade = df_eora_co2_trade[['country_from', 'country_to', 'sector', 'ghg', 'ghg_unit']]
-
+    @staticmethod
+    def compute_co2_exchanges_between_countries(df_eora_co2_trade):
+        """
+        Compute the CO2 exchanges between countries by taking into account both exports and imports.
+        :param df_eora_co2_trade: (dataframe) containing the ghg for each pair of countries and sector.
+        :return: df_trade_by_country: contains the sum of exchange between each pair of countries.
+        """
         # compute imports between countries
         df_exports = (df_eora_co2_trade
                       .groupby(['country_from', 'country_to', 'ghg_unit'])
@@ -190,13 +184,39 @@ class EoraCo2TradePerZoneAndCountryProcessor:
 
         df_trade_by_country = pd.concat([df_imports, df_exports], axis=0)
 
-        # join and filter on the continent zones
+        return df_trade_by_country
+
+    def add_and_filter_on_continents(self, df_trade_by_country: pd.DataFrame, df_country: pd.DataFrame):
+        """
+        For each country, add the zone and filter only on the continents.
+        :param df_trade_by_country: (dataframe) containing the CO2 trade between each pair of countries.
+        :param df_country: (dataframe) containing all the countries and their respective zones.
+        :return: (dataframe) with zone added and filter on continent
+        """
         df_zones = df_country[df_country["group_type"] == "zone"]
         df_zones = df_zones[["country", "group_name"]]
         df_trade_by_country = df_trade_by_country.merge(df_zones, how="left", left_on="country_to", right_on="country")
         df_trade_by_country = df_trade_by_country.rename({"group_name": "continent_to"}, axis=1)
         list_continents = ["North America", "Central and South America", "Asia and Oceania", "Europe", "Africa"]
         df_trade_by_country = df_trade_by_country[df_trade_by_country["continent_to"].isin(list_continents)]
+        return df_trade_by_country
+
+    def run(self, df_eora_co2_trade: pd.DataFrame, df_country: pd.DataFrame):
+
+        # translate the countries codes into countries names
+        df_eora_co2_trade = df_eora_co2_trade.drop("ROW", axis=1)
+        df_eora_co2_trade["country"] = self.translate_country_code_to_country_name(df_eora_co2_trade["country"], raise_errors=True)
+        df_eora_co2_trade = df_eora_co2_trade.set_index(["country", "sector"])
+        df_eora_co2_trade.columns = self.translate_country_code_to_country_name(df_eora_co2_trade.columns, raise_errors=True)
+
+        # unstack the dataframe on countries
+        df_eora_co2_trade = self.unstack_countries_in_dataframe(df_eora_co2_trade)
+        df_eora_co2_trade["ghg_unit"] = "MtCO2e"
+        df_eora_co2_trade = df_eora_co2_trade[['country_from', 'country_to', 'sector', 'ghg', 'ghg_unit']]
+
+        # compute trade of CO2 between countries and filter on continents.
+        df_trade_by_country = self.compute_co2_exchanges_between_countries(df_eora_co2_trade)
+        df_trade_by_country = self.add_and_filter_on_continents(df_trade_by_country)
 
 
         return df_trade_by_country
