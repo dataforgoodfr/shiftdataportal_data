@@ -164,6 +164,7 @@ class EoraCo2TradePerZoneAndCountryProcessor:
         :param df_eora_co2_trade: (dataframe) containing the ghg for each pair of countries and sector.
         :return: df_trade_by_country: contains the sum of exchange between each pair of countries.
         """
+        # TODO - re-vérifier le calcul des exchanges entre pays.
         # compute imports between countries
         df_exports = (df_eora_co2_trade
                       .groupby(['country_from', 'country_to', 'ghg_unit'])
@@ -216,12 +217,30 @@ class EoraCo2TradePerZoneAndCountryProcessor:
 
         # compute trade of CO2 between countries and filter on continents.
         df_trade_by_country = self.compute_co2_exchanges_between_countries(df_eora_co2_trade)
-        df_trade_by_country = self.add_and_filter_on_continents(df_trade_by_country)
+        df_trade_by_country = self.add_and_filter_on_continents(df_trade_by_country, df_country)
 
+        # compute trade per sector
+        df_exports_sector = (df_eora_co2_trade[df_eora_co2_trade["country_from"] != df_eora_co2_trade["country_to"]]
+                             .groupby(['country_from', 'sector', 'ghg_unit'])
+                             .agg(co2=('ghg', 'sum')).reset_index()
+                             )
+        df_exports_sector = df_exports_sector.rename({"country_from": "country", "ghg_unit": "co2_unit"})
+        df_exports_sector["type"] = "CO2 Exports"
+
+        df_imports_sector = (df_eora_co2_trade[df_eora_co2_trade["country_from"] != df_eora_co2_trade["country_to"]]
+                             .groupby(['country_to', 'sector', 'ghg_unit'])
+                             .agg(co2=('ghg', 'sum')).reset_index()
+                             )
+        df_imports_sector = df_imports_sector.rename({"country_to": "country", "ghg_unit": "co2_unit"})
+        df_imports_sector["type"] = "CO2 Imports"
+
+        df_territorial_sector = df_imports_sector.copy(deep=True)
+        df_territorial_sector["type"] = "Territorial CO2 emissions"
+
+        df_trade_by_sector = pd.concat([df_exports_sector, df_imports_sector, df_territorial_sector], axis=0)
+        df_trade_by_sector["group_type"] = "country"
 
         return df_trade_by_country
-
-
 
 
 class Co2ConsumptionBasedAccountingProcessor:
