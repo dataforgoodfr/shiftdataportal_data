@@ -33,7 +33,7 @@ class EoraCbaPerZoneAndCountryProcessor:
         df_eora_cba.loc[df_eora_cba["record_code"].str.contains["Gg"], "co2"] /= 1000
         return df_eora_cba
 
-    def compute_scope_from_record_code(self, df_eora_cba):
+    def compute_scope_from_record_code(self, df_eora_cba): # TODO - ajouter un test de raise Value error
         df_eora_cba["scope"] = df_eora_cba["record_code"].replace(self.dict_translation_record_code_to_scope)
         return df_eora_cba
 
@@ -133,6 +133,12 @@ class GcbPerZoneAndCountryProcessor:
         # concatenate countries and zones populations
         df_gcb_per_zone_and_countries = pd.concat([df_gcb_per_zone, df_gcb_per_country], axis=0)
         return df_gcb_per_zone_and_countries
+
+
+
+class EoraCo2TradePerZoneAndCountryProcessor:
+
+
 
 
 class Co2ConsumptionBasedAccountingProcessor:
