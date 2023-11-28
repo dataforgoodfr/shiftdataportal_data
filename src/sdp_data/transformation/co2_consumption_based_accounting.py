@@ -31,7 +31,7 @@ class EoraCbaPerZoneAndCountryProcessor:
 
     @staticmethod
     def convert_giga_units(df_eora_cba):
-        df_eora_cba.loc[df_eora_cba["record_code"].str.contains["Gg"], "co2"] /= 1000
+        df_eora_cba.loc[df_eora_cba["record_code"].str.contains("Gg"), "co2"] /= 1000
         return df_eora_cba
 
     def compute_scope_from_record_code(self, df_eora_cba): # TODO - ajouter un test de raise Value error
@@ -51,8 +51,8 @@ class EoraCbaPerZoneAndCountryProcessor:
         """
         # clean and filter countries
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
-        df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["Country"], raise_errors=False)
-        df_eora_cba = df_eora_cba.dropna(subset=["country"], axis=1)
+        df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["country"], raise_errors=False)
+        df_eora_cba = df_eora_cba.dropna(subset=["country"])
         df_eora_cba = self.convert_giga_units(df_eora_cba)
 
         # unstack the years.
@@ -187,7 +187,8 @@ class EoraCo2TradePerZoneAndCountryProcessor:
 
         return df_trade_by_country
 
-    def add_and_filter_on_continents(self, df_trade_by_country: pd.DataFrame, df_country: pd.DataFrame):
+    @staticmethod
+    def add_and_filter_on_continents(df_trade_by_country: pd.DataFrame, df_country: pd.DataFrame):
         """
         For each country, add the zone and filter only on the continents.
         :param df_trade_by_country: (dataframe) containing the CO2 trade between each pair of countries.
@@ -240,7 +241,7 @@ class EoraCo2TradePerZoneAndCountryProcessor:
         df_trade_by_sector = pd.concat([df_exports_sector, df_imports_sector, df_territorial_sector], axis=0)
         df_trade_by_sector["group_type"] = "country"
 
-        return df_trade_by_country
+        return df_trade_by_country, df_trade_by_sector
 
 
 class Co2ConsumptionBasedAccountingProcessor:

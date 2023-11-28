@@ -300,7 +300,7 @@ class CountryTranslatorFrenchToEnglish:
         :return:
         """
         serie_country_translate = serie_country_to_translate.map(self.dict_country_translations)
-        countries_no_translating = serie_country_to_translate[serie_country_translate.isnull()].values.tolist()
+        countries_no_translating = list(set(serie_country_to_translate[serie_country_translate.isnull()].values.tolist()))
         print("WARN : no translating found for countries %s" % countries_no_translating)
         if raise_errors and serie_country_translate.isnll().sum() > 0:
             raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
