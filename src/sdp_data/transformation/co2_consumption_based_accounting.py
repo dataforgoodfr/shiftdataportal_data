@@ -24,17 +24,15 @@ class EoraCbaPerZoneAndCountryProcessor:
         }
 
     @staticmethod
-    def unstack_years_in_dataframe(df: pd.DataFrame):
-        df = df.unstack().reset_index()
-        df.columns = ["country", "record_code", "co2"]
-        return df
+    def melt_years(df: pd.DataFrame):
+        return pd.melt(df, id_vars=["country", "record_code"], var_name='year', value_name='co2')
 
     @staticmethod
     def convert_giga_units(df_eora_cba):
         df_eora_cba.loc[df_eora_cba["record_code"].str.contains("Gg"), "co2"] /= 1000
         return df_eora_cba
 
-    def compute_scope_from_record_code(self, df_eora_cba): # TODO - ajouter un test de raise Value error
+    def compute_scope_from_record_code(self, df_eora_cba):  # TODO - ajouter un test de raise Value error
         df_eora_cba["scope"] = df_eora_cba["record_code"].replace(self.dict_translation_record_code_to_scope)
         return df_eora_cba
 
@@ -44,27 +42,29 @@ class EoraCbaPerZoneAndCountryProcessor:
 
     def run(self, df_eora_cba: pd.DataFrame, df_country: pd.DataFrame):
         """
-        Computes the CO2 consumption stastistics per country and zone.
-        :param df_eora_cba:
-        :param df_country:
-        :return:
+        Computes the EORA CBA statistics per country and zone.
+        :param df_eora_cba: (dataframe) containing columns country + Record + years starting from 1970. Values are EORA CBA.
+        :param df_country: (dataframe) containing columns group_type, group_name and country.
+        :return: (dataframe) containing the EORA CBA fo each country and for each zone. Contains columns
+            group_type, group_name, year, scope, co2_unit, source and co2.
         """
         # clean and filter countries
+        print("\n----- compute EORA CBA for each country and each zone")
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
+        df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier avec la team que faire de l'URSS.
         df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["country"], raise_errors=False)
         df_eora_cba = df_eora_cba.dropna(subset=["country"])
-        df_eora_cba = self.convert_giga_units(df_eora_cba)
 
-        # unstack the years.
-        df_eora_cba = df_eora_cba.set_index(["country", "record_code"])
-        df_eora_cba = self.unstack_years_in_dataframe(df_eora_cba)
+        # melt the years so to get resulting columns country, record_code, year and co2
+        df_eora_cba = self.melt_years(df_eora_cba)
         df_eora_cba["year"] = pd.to_numeric(df_eora_cba["year"])
 
         # create new columns scope, co2_unit and Source
+        df_eora_cba = self.convert_giga_units(df_eora_cba)
         df_eora_cba["scope"] = self.compute_scope_from_record_code(df_eora_cba)
         df_eora_cba["scope"] = df_eora_cba["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
         df_eora_cba["co2_unit"] = self.compute_co2_unit_from_record_code(df_eora_cba)
-        df_eora_cba["Source"] = "Eora"
+        df_eora_cba["source"] = "Eora"
 
         # join with countries
         df_eora_cba_per_zone = (pd.merge(df_country, df_eora_cba, on='country', how='left')
@@ -82,6 +82,7 @@ class EoraCbaPerZoneAndCountryProcessor:
 
         # concatenate countries and zones populations
         df_eora_cba_per_zone_and_countries = pd.concat([df_eora_cba_per_zone, df_eora_cba_per_country], axis=0)
+
         return df_eora_cba_per_zone_and_countries
 
 
