@@ -89,44 +89,52 @@ class EoraCbaPerZoneAndCountryProcessor:
 class GcbPerZoneAndCountryProcessor:
 
     @staticmethod
-    def unstack_years_in_dataframe(df: pd.DataFrame):
-        df = df.unstack().reset_index()
-        df.columns = ["country", "co2"]
-        return df
+    def transpose_and_unstack_gcb(df_years_and_countries: pd.DataFrame):
+        df_years_and_countries = df_years_and_countries.set_index("year").transpose()
+        df_unstacked = df_years_and_countries.unstack().reset_index()
+        df_unstacked.columns = ["year", "country", "co2"]
+        return df_unstacked
 
     def run(self, df_gcb_territorial: pd.DataFrame, df_gcb_cba: pd.DataFrame, df_country: pd.DataFrame):
-
-        # transpose and unstack years for the two datasets
-        df_gcb_territorial = df_gcb_territorial.transpose()
-        df_gcb_territorial = self.unstack_years_in_dataframe(df_gcb_territorial)
-        df_gcb_cba = df_gcb_cba.transpose()
-        df_gcb_cba = self.unstack_years_in_dataframe(df_gcb_cba)
-
-        # concat the two dataframes and filter time and missing values
+        """
+        Computes the GCB statistics for each country and zone.
+        :param df_gcb_territorial: (dataframe) the Territorial GCB for each year (rows) and country (columns).
+        :param df_gcb_cba: (dataframe) the Territorial GCB-CBA for each year (row) and country (column).
+        :param df_country: (dataframe) containing each countries and zones
+        :return:
+        """
+        # transpose, unstack years and prepare concatenate df_gcb_territorial + df_gcb_cba
+        print("\n----- compute GCB Territorial for each country and each zone")
+        df_gcb_territorial = self.transpose_and_unstack_gcb(df_gcb_territorial)
         df_gcb_territorial["scope"] = "Territorial Emissions"
+        df_gcb_cba = self.transpose_and_unstack_gcb(df_gcb_cba)
         df_gcb_cba["scope"] = "Carbon Footprint"
-        df_gcb = pd.concat([df_gcb_territorial, df_gcb_cba], axis=0)
-        df_gcb["year"] = pd.to_numeric(df_gcb["year"])
-        df_gcb = df_gcb[df_gcb["year"] >= 1990]
-        df_gcb = df_gcb.dropna(subset=["co2"], axis=1)
-        df_gcb["country"] = CountryTranslatorFrenchToEnglish().run(df_gcb["Country"], raise_errors=False)
-        df_gcb = df_gcb.dropna(subset=["country"], axis=1)
+        df_gcb_stacked = pd.concat([df_gcb_territorial, df_gcb_cba], axis=0)
+
+        # clean dataframe and translate countries
+        df_gcb_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_gcb_stacked["country"], raise_errors=False)
+        df_gcb_stacked = df_gcb_stacked[df_gcb_stacked["country"] != "Delete"]  # TODO - vérifier avec la team que faire de Delete.
+        df_gcb_stacked = df_gcb_stacked.dropna(subset=["country", "co2"])
+
+        # filter time
+        df_gcb_stacked["year"] = df_gcb_stacked["year"].astype(int)
+        df_gcb_stacked = df_gcb_stacked[df_gcb_stacked["year"] >= 1990]
 
         # create new columns scope, co2_unit and Source
-        df_gcb["co2"] *= 3.664
-        df_gcb["co2_unit"] = "MtCO2"
-        df_gcb["Source"] = "Global Carbon Budget"
-        df_gcb["scope"] = df_gcb["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
+        df_gcb_stacked["co2"] *= 3.664
+        df_gcb_stacked["co2_unit"] = "MtCO2"
+        df_gcb_stacked["source"] = "Global Carbon Budget"
+        df_gcb_stacked["scope"] = df_gcb_stacked["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
 
         # join with countries
-        df_gcb_per_zone = (pd.merge(df_country, df_gcb, on='country', how='left')
+        df_gcb_per_zone = (pd.merge(df_country, df_gcb_stacked, on='country', how='left')
                            .groupby(['group_type', 'group_name', 'year', 'scope', 'co2_unit', 'source'])
                            .agg({'co2': "sum"})
                            .reset_index()
                            )
 
         # compute total co2 per country
-        df_gcb_per_country = df_gcb.copy()
+        df_gcb_per_country = df_gcb_stacked.copy()
         df_gcb_per_country = df_gcb_per_country.rename({"country": "group_name"}, axis=1)
         df_gcb_per_country["group_type"] = "country"
         df_gcb_per_country = df_gcb_per_country[["group_type", "group_name", "year", "scope",
@@ -134,6 +142,7 @@ class GcbPerZoneAndCountryProcessor:
 
         # concatenate countries and zones populations
         df_gcb_per_zone_and_countries = pd.concat([df_gcb_per_zone, df_gcb_per_country], axis=0)
+
         return df_gcb_per_zone_and_countries
 
 
