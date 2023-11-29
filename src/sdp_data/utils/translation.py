@@ -260,7 +260,8 @@ country_translations = {"ALM": "ALM SRES",
                         "Timor-Leste": "Timor-Leste", "Togo": "Togo", "Tonga": "Tonga",
                         "Trinidad & Tobago": "Trinidad and Tobago", "Trinidad": "Trinidad and Tobago",
                         "Trinité et Tobago": "Trinidad and Tobago", "Trinidad and Tobago": "Trinidad and Tobago",
-                        "Tunisia": "Tunisia", "Tunisie": "Tunisia", "Turquie": "Turkey", "Turkey": "Turkey",
+                        "Tunisia": "Tunisia", "Tunisie": "Tunisia",
+                        "Turquie": "Turkey", "Turkey": "Turkey", "Türkiye": "Turkey",
                         "Turkmenistan": "Turkmenistan", "Turkménistan": "Turkmenistan", "Tuvalu": "Tuvalu",
                         "Uganda": "Uganda", "Ouganda": "Uganda", "UAE": "United Arab Emirates", "Ukraine": "Ukraine",
                         "United Arab Emirates": "United Arab Emirates", "Uruguay": "Uruguay",
@@ -283,7 +284,7 @@ country_translations = {"ALM": "ALM SRES",
                         "Western Sahara": "Western Sahara", "Yemen": "Yemen", "Yémen": "Yemen",
                         "Yougoslavie": "Yugoslavia", "Former Yugoslavia": "Yugoslavia", "Yugoslav SFR": "Yugoslavia",
                         "ex-Yougoslavie (Pas de détail)": "Yugoslavia", "Yugoslavia": "Yugoslavia", "Zambie": "Zambia",
-                        "Zambia": "Zambia"}
+                        "Zambia": "Zambia", "Zimbabwe": "Zimbabwe"}
 
 
 class CountryTranslatorFrenchToEnglish:
@@ -301,8 +302,9 @@ class CountryTranslatorFrenchToEnglish:
         """
         serie_country_translate = serie_country_to_translate.map(self.dict_country_translations)
         countries_no_translating = list(set(serie_country_to_translate[serie_country_translate.isnull()].values.tolist()))
-        print("WARN : no translating found for countries %s" % countries_no_translating)
-        if raise_errors and serie_country_translate.isnll().sum() > 0:
-            raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
+        if serie_country_translate.isnull().sum() > 0:
+            print("WARN : no translating found for countries %s" % countries_no_translating)
+            if raise_errors:
+                raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
 
         return serie_country_translate

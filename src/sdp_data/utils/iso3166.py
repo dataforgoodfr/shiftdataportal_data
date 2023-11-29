@@ -426,6 +426,13 @@ _records = [
     Country("Yemen", "YE", "YEM", "887", "Yemen"),
     Country("Zambia", "ZM", "ZMB", "894", "Zambia"),
     Country("Zimbabwe", "ZW", "ZWE", "716", "Zimbabwe"),
+
+    # custom code added for the shift data portal
+    Country("Netherlands", "CUSTOM", "ANT", "CUSTOM", "Netherlands"),
+    Country("South Sudan", "CUSTOM", "SDS", "CUSTOM", "South Sudan"),
+    Country("Russian Federation & USSR", "CUSTOM", "USR", "CUSTOM", "Russian Federation & USSR"),
+    Country("Sudan", "CUSTOM", "SUD", "CUSTOM", "Sudan")
+
 ]
 
 
