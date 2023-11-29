@@ -42,7 +42,7 @@ class EoraCbaPerZoneAndCountryProcessor:
 
     def run(self, df_eora_cba: pd.DataFrame, df_country: pd.DataFrame):
         """
-        Computes the EORA CBA statistics per country and zone.
+        Computes the EORA CBA statistics for each country and zone.
         :param df_eora_cba: (dataframe) containing columns country + Record + years starting from 1970. Values are EORA CBA.
         :param df_country: (dataframe) containing columns group_type, group_name and country.
         :return: (dataframe) containing the EORA CBA fo each country and for each zone. Contains columns
@@ -51,19 +51,19 @@ class EoraCbaPerZoneAndCountryProcessor:
         # clean and filter countries
         print("\n----- compute EORA CBA for each country and each zone")
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
-        df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier avec la team que faire de l'URSS.
+        # df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier avec la team que faire de l'URSS.
         df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["country"], raise_errors=False)
         df_eora_cba = df_eora_cba.dropna(subset=["country"])
 
         # melt the years so to get resulting columns country, record_code, year and co2
         df_eora_cba = self.melt_years(df_eora_cba)
-        df_eora_cba["year"] = pd.to_numeric(df_eora_cba["year"])
+        df_eora_cba["year"] = df_eora_cba["year"].astype(int)
 
         # create new columns scope, co2_unit and Source
         df_eora_cba = self.convert_giga_units(df_eora_cba)
-        df_eora_cba["scope"] = self.compute_scope_from_record_code(df_eora_cba)
+        df_eora_cba = self.compute_scope_from_record_code(df_eora_cba)
         df_eora_cba["scope"] = df_eora_cba["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
-        df_eora_cba["co2_unit"] = self.compute_co2_unit_from_record_code(df_eora_cba)
+        df_eora_cba = self.compute_co2_unit_from_record_code(df_eora_cba)
         df_eora_cba["source"] = "Eora"
 
         # join with countries
