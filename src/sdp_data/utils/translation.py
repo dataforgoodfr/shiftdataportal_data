@@ -372,6 +372,61 @@ country_translations = {"ALM": "ALM SRES",
                         "Zimbabwe": "Zimbabwe"
                     }
 
+sector_translations = {
+    "1.A.1  Energy Industries": "Electricity & Heat",
+    "1.A.2  Manufacturing Industries and Construction": "Industry and Construction",
+    "1.A.3  Transport": "Transport",
+    "1.A.4  Other Sectors": "Other Energy",
+    "1.A.5  Other (Not specified elsewhere)": "Other Energy",
+    "1.A.5  Other (Not elsewhere specified)": "Other Energy",
+    "1.A.5 Other (Not elsewhere specified)": "Other Energy",
+    "1.B  Fugitive Emissions from Fuels": "Other Energy",
+    "1.C  CO₂ Transport and Storage": "Other Energy",
+    "2.A Mineral Products": "Industry and Construction",
+    "2.A  Mineral Products": "Industry and Construction",
+    "2.A  Mineral Industry": "Industry and Construction",
+    "2.B  Chemical Industry": "Industry and Construction",
+    "2.C  Metal Industry": "Industry and Construction",
+    "2.D  Non-energy Products from Fuels and Solvent Use": "Industry and Construction",
+    "2.E  Electronics Industry": "Industry and Construction",
+    "2.F  Product Uses as Substitutes for ODS": "Industry and Construction",
+    "2.G  Other Product Manufacture and Use": "Industry and Construction",
+    "2.H  Other": "Industry and Construction",
+    "3.A  Enteric Fermentation": "Agriculture",
+    "3.B  Manure Management": "Agriculture",
+    "3.C  Rice Cultivation": "Agriculture",
+    "3.D  Agricultural Soils": "Other Agriculture",
+    "3.E  Prescribed Burning of Savannas": "Other Agriculture",
+    "3.F  Field Burning of Agricultural Residues": "Other Agriculture",
+    "3.G  Liming": "Other Agriculture",
+    "4.  Land Use, Land-Use Change and Forestry": "Land-Use Change and Forestry",
+    "5.A  Solid Waste Disposal": "Waste",
+    "5.B  Biological Treatment of Solid Waste": "Waste",
+    "5.C  Incineration and Open Burning of Waste": "Waste",
+    "5.D  Wastewater Treatment and Discharge": "Waste",
+    "5.E  Other": "Waste",
+    "6.  Other": "Other Sectors",
+    "2.C  Metal Production": "Industry and Construction",
+    "2.D  Other Production": "Industry and Construction",
+    "2.E  Production of Halocarbons and SF₆": "Industry and Construction",
+    "2.F  Consumption of Halocarbons and SF₆": "Industry and Construction",
+    "2.G  Other": "Industry and Construction",
+    "3.  Solvent and Other Product Use": "Industry and Construction",
+    "4.A  Enteric Fermentation": "Agriculture",
+    "4.B  Manure Management": "Agriculture",
+    "4.C  Rice Cultivation": "Agriculture",
+    "4.E  Prescribed Burning of Savannas": "Other Agriculture",
+    "4.F  Field Burning of Agricultural Residues": "Other Agriculture",
+    "4.G  Other": "Other Agriculture",
+    "5.  Land-Use Change and Forestry": "Land-Use Change and Forestry",
+    "6.A  Solid Waste Disposal on Land": "Waste",
+    "6.B  Wastewater Handling": "Waste",
+    "6.C  Waste Incineration": "Waste",
+    "6.D  Other": "Waste",
+    "7.  Other": "Other Sectors"
+}
+
+
 class CountryTranslatorFrenchToEnglish:
 
     def __init__(self):
@@ -395,3 +450,26 @@ class CountryTranslatorFrenchToEnglish:
                 raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
 
         return serie_country_translate
+
+
+class CountryTranslatorSectors:
+
+    def __init__(self):
+        self.dict_sectors_translations = sector_translations
+
+    def run(self, serie_sector_to_translate: pd.Series, raise_errors: bool) -> pd.Series:
+        """
+        Translates the sectors usin sector_translations. If no correspondance is found in the
+        dict, the sector is replace by a NaN value.
+        :param serie_sector_to_translate: (pandas Series) to translate.
+        :param raise_errors: (bool) True to raise error if no translation. Else False to ignore.
+        :return:
+        """
+        serie_sector_translate = serie_sector_to_translate.map(self.dict_sectors_translations)
+        sectors_no_translating = list(set(serie_sector_to_translate[serie_sector_translate.isnull()].values.tolist()))
+        if serie_sector_translate.isnull().sum() > 0:
+            print("WARN : no translating found for sectors %s" % sectors_no_translating)
+            if raise_errors:
+                raise ValueError("ERROR : no translating found for sectors %s" % sectors_no_translating)
+
+        return serie_sector_translate
