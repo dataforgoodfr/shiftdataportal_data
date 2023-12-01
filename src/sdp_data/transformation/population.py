@@ -1,5 +1,5 @@
 import pandas as pd
-
+from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 # TODO - à revoir
 """
 -> Revue des valeurs manquantes "zone supprimées" pour PopulationCleaner.
@@ -8,12 +8,11 @@ import pandas as pd
 """
 
 
-class GapMinderCleaner:
+class GapMinderPerZoneAndCountryProcessor:
 
-    def __init__(self, country_translations):
+    def __init__(self):
         self.equivalence_dict = {'k': 1e3, 'M': 1e6, 'B': 1e9}
         self.max_year = 2021
-        self.country_translations = country_translations
 
     def dirty_string_to_int(self, dirty_string: str):
         """
@@ -30,17 +29,11 @@ class GapMinderCleaner:
 
         return int(dirty_string)
 
-
-
     @staticmethod
     def unstack_dataframe_to_serie(df: pd.DataFrame):
         df = df.unstack().reset_index()
         df.columns = ["year", "country", "population"]
         return df
-
-    def convert_countries_from_french_to_english(self, df_population):  # TODO - ajouter un test au fil de l'eau pour vérifier si chaque pays a bien reçu une correspondance dans le dictionnaire.
-        df_population["country"] = df_population["country"].replace(self.country_translations)
-        return df_population
 
     def run(self, df_gapminder: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
         """
@@ -58,7 +51,7 @@ class GapMinderCleaner:
 
 
         # convert countries from french to english
-        df_gapminder = self.convert_countries_from_french_to_english(df_gapminder)
+        df_gapminder["country"] = CountryTranslatorFrenchToEnglish().run(df_gapminder["country"], raise_errors=True)
 
         # join with countries
         df_total_gapminder_per_zone = (pd.merge(df_country, df_gapminder, how='left', left_on='country', right_on='country')
@@ -79,21 +72,16 @@ class GapMinderCleaner:
         return df_gapminder_per_zone_and_countries
 
 
-class PopulationCleaner:
+class PopulationPerZoneAndCountryProcessor:
 
-    def __init__(self, country_translations):
+    def __init__(self):
         self.max_year = 2020
-        self.country_translations = country_translations
 
     @staticmethod
     def unstack_dataframe_to_serie(df: pd.DataFrame):
         df = df.unstack().reset_index()
         df.columns = ["year", "country", "population"]
         return df
-
-    def convert_countries_from_french_to_english(self, df_population):  # TODO - ajouter un test au fil de l'eau pour vérifier si chaque pays a bien reçu une correspondance dans le dictionnaire.
-        df_population["country"] = df_population["country"].replace(self.country_translations)
-        return df_population
 
     def run(self, df_population: pd.DataFrame, df_countries_and_zones: pd.DataFrame) -> pd.DataFrame:
         """
@@ -113,7 +101,7 @@ class PopulationCleaner:
         df_population = df_population[df_population["year"] < self.max_year]
 
         # convert countries from french to english
-        df_population = self.convert_countries_from_french_to_english(df_population)
+        df_population["country"] = CountryTranslatorFrenchToEnglish().run(df_population["country"], raise_errors=True)
 
         # compute total population per zone
         df_total_population_per_zone = (

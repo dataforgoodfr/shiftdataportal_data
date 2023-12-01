@@ -1,3 +1,5 @@
+import pandas as pd
+
 # TODO - country_translations à refactoer plus proprement à l'aide d'un fichier JSON
 
 country_translations = {"ALM": "ALM SRES",
@@ -258,7 +260,8 @@ country_translations = {"ALM": "ALM SRES",
                         "Timor-Leste": "Timor-Leste", "Togo": "Togo", "Tonga": "Tonga",
                         "Trinidad & Tobago": "Trinidad and Tobago", "Trinidad": "Trinidad and Tobago",
                         "Trinité et Tobago": "Trinidad and Tobago", "Trinidad and Tobago": "Trinidad and Tobago",
-                        "Tunisia": "Tunisia", "Tunisie": "Tunisia", "Turquie": "Turkey", "Turkey": "Turkey",
+                        "Tunisia": "Tunisia", "Tunisie": "Tunisia",
+                        "Turquie": "Turkey", "Turkey": "Turkey", "Türkiye": "Turkey",
                         "Turkmenistan": "Turkmenistan", "Turkménistan": "Turkmenistan", "Tuvalu": "Tuvalu",
                         "Uganda": "Uganda", "Ouganda": "Uganda", "UAE": "United Arab Emirates", "Ukraine": "Ukraine",
                         "United Arab Emirates": "United Arab Emirates", "Uruguay": "Uruguay",
@@ -281,4 +284,27 @@ country_translations = {"ALM": "ALM SRES",
                         "Western Sahara": "Western Sahara", "Yemen": "Yemen", "Yémen": "Yemen",
                         "Yougoslavie": "Yugoslavia", "Former Yugoslavia": "Yugoslavia", "Yugoslav SFR": "Yugoslavia",
                         "ex-Yougoslavie (Pas de détail)": "Yugoslavia", "Yugoslavia": "Yugoslavia", "Zambie": "Zambia",
-                        "Zambia": "Zambia"}
+                        "Zambia": "Zambia", "Zimbabwe": "Zimbabwe"}
+
+
+class CountryTranslatorFrenchToEnglish:
+
+    def __init__(self):
+        self.dict_country_translations = country_translations
+
+    def run(self, serie_country_to_translate: pd.Series, raise_errors: bool) -> pd.Series:
+        """
+        Translates the countris from French to English using country_translations. If no correspondance is found in the
+        dict, the country is replace by a NaN value.
+        :param serie_country_to_translate: (pandas Series) to translate.
+        :param raise_errors: (bool) True to raise error if no translation. Else False to ignore.
+        :return:
+        """
+        serie_country_translate = serie_country_to_translate.map(self.dict_country_translations)
+        countries_no_translating = list(set(serie_country_to_translate[serie_country_translate.isnull()].values.tolist()))
+        if serie_country_translate.isnull().sum() > 0:
+            print("WARN : no translating found for countries %s" % countries_no_translating)
+            if raise_errors:
+                raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
+
+        return serie_country_translate
