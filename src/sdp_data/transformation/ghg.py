@@ -1,5 +1,5 @@
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
 
 
 class PikCleaner:
@@ -47,18 +47,18 @@ class PikCleaner:
 class UnfcccCleaner:
 
     def __init__(self):
-        self.list_sectors_to_replace =
+        pass
+
     @staticmethod
     def melt_years_and_gas(df_unfccc_stacked: pd.DataFrame):
-        return pd.melt(df_unfccc_stacked, id_vars=["country", "source", "sector", "gas", "ghg_unit"], var_name='year', value_name='ghg')
-
+        return pd.melt(df_unfccc_stacked, id_vars=["country", "sector"], var_name='year_gas', value_name='ghg')
 
     def run(self, df_unfccc_annex_1: pd.DataFrame, df_unfccc_annex_2: pd.DataFrame):
         """
-
-        :param df_unfccc_annex_1:
-        :param df_unfccc_annex_2:
-        :return:
+        Cleans the Unfccc data
+        :param df_unfccc_annex_1: (dataframe) contains the first part of Unfccc data.
+        :param df_unfccc_annex_2: (dataframe) contains the second part of Unfccc data.
+        :return: dataframe Unfccc data cleaned.
         """
         list_cols_annex_1 = [col for col in df_unfccc_annex_1.columns if "Last Inventory" not in col]
         list_cols_annex_2 = [col for col in df_unfccc_annex_2.columns if "Last Inventory" not in col]
@@ -66,14 +66,22 @@ class UnfcccCleaner:
         df_unfccc_annex_2 = df_unfccc_annex_2[list_cols_annex_2]
         df_unfccc_stacked = pd.concat([df_unfccc_annex_1, df_unfccc_annex_2], axis=0)
 
-        # clean dataset
-        df_pik = df_pik.rename({"Party": "country", 'Category \ Unit': "sector"}, axis=1)
+        # clean dataset and melt
+        df_unfccc_stacked = df_unfccc_stacked.rename({"Party": "country", 'Category \ Unit': "sector"}, axis=1)
+        df_unfccc_stacked = self.melt_years_and_gas(df_unfccc_stacked)
+        df_unfccc_stacked["sector"] = SectorTranslator().run(df_unfccc_stacked["sector"], raise_errors=False)
+        df_unfccc_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_unfccc_stacked["country"], raise_errors=False)
 
+        # split years and gas
+        df_unfccc_stacked["year"] = df_unfccc_stacked["year_gas"].str.split(" ").map(lambda x: x[0])
+        df_unfccc_stacked["gas"] = df_unfccc_stacked["year_gas"].str.split(" ").map(lambda x: x[1])
+        df_unfccc_stacked = df_unfccc_stacked.drop("year_gas", axis=1)
 
+        # convert ghg and drop missing values
+        df_unfccc_stacked["ghg"] = 0.001 * pd.to_numeric(df_unfccc_stacked["ghg"], errors="coerce")
+        df_unfccc_stacked["ghg_unit"] = "MtCO2eq"
+        df_unfccc_stacked = df_unfccc_stacked.dropna(subset=["country", "ghg"], axis=0)
 
-
-
-def addition(a, b):
-    return a + b
+        return df_unfccc_stacked
 
 

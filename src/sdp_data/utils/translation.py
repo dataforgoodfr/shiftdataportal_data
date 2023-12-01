@@ -452,7 +452,7 @@ class CountryTranslatorFrenchToEnglish:
         return serie_country_translate
 
 
-class CountryTranslatorSectors:
+class SectorTranslator:
 
     def __init__(self):
         self.dict_sectors_translations = sector_translations
