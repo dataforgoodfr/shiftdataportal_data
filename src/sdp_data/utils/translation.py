@@ -372,7 +372,7 @@ country_translations = {"ALM": "ALM SRES",
                         "Zimbabwe": "Zimbabwe"
                     }
 
-sector_translations = {
+sector_translations_unfccc = {
     "1.A.1  Energy Industries": "Electricity & Heat",
     "1.A.2  Manufacturing Industries and Construction": "Industry and Construction",
     "1.A.3  Transport": "Transport",
@@ -426,6 +426,57 @@ sector_translations = {
     "7.  Other": "Other Sectors"
 }
 
+sector_translations_edgar = {
+    "Public electricity and heat production": "Electricity & Heat",
+    "Other Energy Industries": "Other Energy",
+    "Manufacturing Industries and Construction": "Industry and Construction",
+    "Domestic aviation": "Transport",
+    "Road transportation": "Transport",
+    "Rail transportation": "Transport",
+    "Inland navigation": "Transport",
+    "Other transportation": "Transport",
+    "Residential and other sectors": "Other Energy",
+    "Fugitive emissions from solid fuels": "Other Energy",
+    "Fugitive emissions from oil and gas": "Other Energy",
+    "Fugitive emissions from gaseous fuels": "Other Energy",
+    "Memo: International aviation": "Transport",
+    "Memo: International navigation": "Transport",
+    "Cement production": "Industry and Construction",
+    "Lime production": "Industry and Construction",
+    "Limestone and dolomite use": "Industry and Construction",
+    "Soda ash production and use": "Industry and Construction",
+    "Production of other minerals": "Industry and Construction",
+    "Production of chemicals": "Industry and Construction",
+    "Production of metals": "Industry and Construction",
+    "Non-energy use of lubricants/waxes (CO2)": "Industry and Construction",
+    "Solvent and other product use: paint": "Industry and Construction",
+    "Solvent and other product use: degrease": "Industry and Construction",
+    "Solvent and other product use: chemicals": "Industry and Construction",
+    "Solvent and other product use: other": "Industry and Construction",
+    "Enteric fermentation": "Agriculture",
+    "Manure management": "Agriculture",
+    "Rice cultivation": "Agriculture",
+    "Direct soil emissions": "Other Agriculture",
+    "Manure in pasture/range/paddock": "Other Agriculture",
+    "Indirect N2O from agriculture": "Other Agriculture",
+    "Other direct soil emissions": "Other Agriculture",
+    "Agricultural waste burning": "Other Agriculture",
+    "Solid waste disposal on land": "Waste",
+    "Wastewater handling": "Waste",
+    "Waste incineration": "Waste",
+    "Other waste handling": "Waste",
+    "Fossil fuel fires": "Other Sectors",
+    "Indirect N2O from non-agricultural NOx": "Other Sectors",
+    "Indirect N2O from non-agricultural NH3": "Other Sectors",
+    "Other F-gas use": "Other Sectors",
+    "Semiconductor/Electronics Manufacture": "Industry and Construction",
+    "F-gas as Solvent": "Industry and Construction",
+    "Electrical Equipment": "Industry and Construction",
+    "Refrigeration and Air Conditioning": "Industry and Construction",
+    "Fire Extinguishers": "Industry and Construction",
+    "Production of halocarbons and SF6": "Industry and Construction"
+}
+
 
 class CountryTranslatorFrenchToEnglish:
 
@@ -455,17 +506,20 @@ class CountryTranslatorFrenchToEnglish:
 class SectorTranslator:
 
     def __init__(self):
-        self.dict_sectors_translations = sector_translations
+        self.dict_sectors_translations_edgar = sector_translations_edgar
+        self.dict_sectors_translations_unfccc = sector_translations_unfccc
 
-    def run(self, serie_sector_to_translate: pd.Series, raise_errors: bool) -> pd.Series:
+    @staticmethod
+    def translate_sector(serie_sector_to_translate: pd.Series, raise_errors: bool, dict_translate: dict) -> pd.Series:
         """
-        Translates the sectors usin sector_translations. If no correspondance is found in the
+        Translates the sectors using sector_translations. If no correspondance is found in the
         dict, the sector is replace by a NaN value.
         :param serie_sector_to_translate: (pandas Series) to translate.
         :param raise_errors: (bool) True to raise error if no translation. Else False to ignore.
+        :param dict_translate: (dict) which dict is used to translate
         :return:
         """
-        serie_sector_translate = serie_sector_to_translate.map(self.dict_sectors_translations)
+        serie_sector_translate = serie_sector_to_translate.map(dict_translate)
         sectors_no_translating = list(set(serie_sector_to_translate[serie_sector_translate.isnull()].values.tolist()))
         if serie_sector_translate.isnull().sum() > 0:
             print("WARN : no translating found for sectors %s" % sectors_no_translating)
@@ -473,3 +527,9 @@ class SectorTranslator:
                 raise ValueError("ERROR : no translating found for sectors %s" % sectors_no_translating)
 
         return serie_sector_translate
+
+    def translate_sector_unfccc_data(self, serie_sector_to_translate: pd.Series, raise_errors: bool):
+        return self.translate_sector(serie_sector_to_translate, raise_errors, self.dict_sectors_translations_unfccc)
+
+    def translate_sector_edgar_data(self, serie_sector_to_translate: pd.Series, raise_errors: bool):
+        return self.translate_sector(serie_sector_to_translate, raise_errors, self.dict_sectors_translations_edgar)

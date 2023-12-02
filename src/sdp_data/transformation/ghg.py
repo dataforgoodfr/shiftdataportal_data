@@ -69,7 +69,7 @@ class UnfcccCleaner:
         # clean dataset and melt
         df_unfccc_stacked = df_unfccc_stacked.rename({"Party": "country", 'Category \ Unit': "sector"}, axis=1)
         df_unfccc_stacked = self.melt_years_and_gas(df_unfccc_stacked)
-        df_unfccc_stacked["sector"] = SectorTranslator().run(df_unfccc_stacked["sector"], raise_errors=False)
+        df_unfccc_stacked["sector"] = SectorTranslator().translate_sector_unfccc_data(df_unfccc_stacked["sector"], raise_errors=False)
         df_unfccc_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_unfccc_stacked["country"], raise_errors=False)
 
         # split years and gas
@@ -77,7 +77,7 @@ class UnfcccCleaner:
         df_unfccc_stacked["gas"] = df_unfccc_stacked["year_gas"].str.split(" ").map(lambda x: x[1])
         df_unfccc_stacked = df_unfccc_stacked.drop("year_gas", axis=1)
 
-        # convert ghg and drop missing values
+        # convert ghg and drop missing values # TODO - ajouter la conversion des données non CO2 comme dans les données Edgar ?
         df_unfccc_stacked["ghg"] = 0.001 * pd.to_numeric(df_unfccc_stacked["ghg"], errors="coerce")
         df_unfccc_stacked["ghg_unit"] = "MtCO2eq"
         df_unfccc_stacked = df_unfccc_stacked.dropna(subset=["country", "ghg"], axis=0)
@@ -85,3 +85,55 @@ class UnfcccCleaner:
         return df_unfccc_stacked
 
 
+class EdgarCleaner:
+
+    @staticmethod
+    def melt_years(df_edgar_stacked: pd.DataFrame):
+        return pd.melt(df_edgar_stacked, id_vars=["country", "sector", "gas"], var_name='year', value_name='ghg')
+
+    @staticmethod
+    def convert_ghg_with_gas(ghg, gas):
+        if gas == "N2O":
+            return ghg * 298
+        elif gas == "CH4":
+            return ghg * 25
+        elif gas == "CO2":
+            return ghg
+        else:
+            raise ValueError("ERR : unknown gas : %s" % gas)
+
+    def run(self, df_edgar_gases, df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle, df_edgar_co2_short_without_cycle):
+        """
+
+        :param df_edgar_n2o:
+        :param df_edgar_ch4:
+        :param df_edgar_co2_short_cycle:
+        :param df_edgar_co2_short_without_cycle:
+        :param df_edgar_gases:
+        :return:
+        """
+        # stack the different gas together
+        df_edgar_n2o["gas"] = "N2O"
+        df_edgar_ch4["gas"] = "CH4"
+        df_edgar_co2_short_cycle["gas"] = "CO2"
+        df_edgar_co2_short_without_cycle["gas"] = "CO2"
+        df_edgar_stacked = pd.concat([df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle,
+                                      df_edgar_co2_short_without_cycle, df_edgar_gases])
+
+        # melt years and create new columns
+        df_edgar_stacked = df_edgar_stacked.rename({"Name": "country", "IPCC_description": "sector"}, axis=1)
+        df_edgar_stacked = df_edgar_stacked.drop(["IPCC-Annex", "ISO_A3", "World Region", "IPCC"], axis=1)
+        df_edgar_stacked = self.melt_years(df_edgar_stacked)
+        df_edgar_stacked["sector"] = SectorTranslator().translate_sector_edgar_data(df_edgar_stacked["sector"], raise_errors=False)
+        df_edgar_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_edgar_stacked["country"], raise_errors=False)
+
+        # convert ghg and drop missing values # TODO - ajouter la conversion des données non CO2 comme dans les données Edgar ?
+        df_edgar_stacked["ghg"] = 0.001 * pd.to_numeric(df_edgar_stacked["ghg"], errors="coerce")
+        df_edgar_stacked["ghg"] = df_edgar_stacked.apply(lambda row: self.convert_ghg_with_gas(row["ghg"], row["gas"]), axis=1)
+        df_edgar_stacked["ghg_unit"] = "MtCO2eq"
+
+        # some all ghg
+        list_groupby = ["country", "sector", "gas", "year", "ghg_unit"]
+        df_edgar_stacked = df_edgar_stacked.groupby(list_groupby)["ghg"].sum()
+
+        return df_edgar_stacked
