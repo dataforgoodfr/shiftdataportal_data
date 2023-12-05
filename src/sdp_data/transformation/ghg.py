@@ -1,5 +1,6 @@
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
+import numpy as np
 
 
 class PikCleaner:
@@ -88,7 +89,7 @@ class UnfcccCleaner:
 class EdgarCleaner:
 
     def __init__(self):
-        self.dict_gas_to_replace = {"PFC": "F-Gases", "HFC": "F-Gases", "SF6": "F-Gases"}
+        self.dict_gas_to_replace = {"PFC": "F-Gas", "HFC": "F-Gas", "SF6": "F-Gas"}
 
     @staticmethod
     def melt_years(df_edgar_stacked: pd.DataFrame):
@@ -102,10 +103,16 @@ class EdgarCleaner:
             return ghg * 25
         elif gas == "CO2":
             return ghg
-        elif gas in ["SF6", "HFC", "PFC", "F-Gases"]:  # TODO - ajouter une conversion pour ces gas ?
+        elif gas in ["SF6", "HFC", "PFC", "F-Gas"]:  # TODO - ajouter une conversion pour ces gas ?
             return ghg
         else:
             raise ValueError("ERR : unknown gas : %s" % gas)
+
+    @staticmethod
+    def custom_sum_sentive_nan(series):
+        if series.isna().all():
+            return np.nan
+        return series.sum()
 
     def run(self, df_edgar_gases, df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle, df_edgar_co2_short_without_cycle):
         """
@@ -139,7 +146,10 @@ class EdgarCleaner:
 
         # some all ghg and clean countries
         list_groupby = ["country", "sector", "gas", "year", "ghg_unit"]
-        df_edgar_stacked = df_edgar_stacked.groupby(list_groupby).agg(ghg=('ghg', 'sum')).reset_index()
+        df_edgar_stacked = df_edgar_stacked.groupby(list_groupby)["ghg"].agg(self.custom_sum_sentive_nan).reset_index()
         df_edgar_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_edgar_stacked["country"], raise_errors=False)
+        df_edgar_stacked["country"] = df_edgar_stacked["country"].replace({"Reunion": "Réunion"})  # TODO - à corriger dans fichier translation
+        df_edgar_stacked = df_edgar_stacked.dropna(subset=["country"])
+        df_edgar_stacked["year"] = df_edgar_stacked["year"].astype(int)
 
         return df_edgar_stacked
