@@ -1,0 +1,35 @@
+from sdp_data.transformation.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
+from sdp_data.transformation.population import StatisticsPerCapitaJoiner
+from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
+from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
+import pandas as pd
+
+
+class TransformationPipeline:
+
+    def run(self):
+        """
+
+        :return:
+        """
+        # Compute populations
+        df_gapminder = pd.read_excel("../../data/thibaud/gapminder_population_raw_2.xlsx")
+        df_population = pd.read_excel("../../data/thibaud/population_raw_2.xlsx")
+        df_country = pd.read_excel("../../data/thibaud/country_groups.xlsx")
+        df_gapminder_per_zone_and_countries = GapMinderPerZoneAndCountryProcessor().run(df_gapminder, df_country)
+        df_population_per_zone_and_countries = PopulationPerZoneAndCountryProcessor().run(df_population, df_country)
+
+        # Compute CO2 consumption based accounting
+        df_gcb_territorial = pd.read_excel("../../data/thibaud/co2_consumption_based_accounting/gcb_territorial.xlsx")
+        df_gcb_cba = pd.read_excel("../../data/thibaud/co2_consumption_based_accounting/gcb_cba.xlsx")
+        df_eora_cba = pd.read_excel("../../data/thibaud/co2_consumption_based_accounting/eora_cba.xlsx")
+        df_eora_co2_trade = pd.read_excel("../../data/thibaud/co2_consumption_based_accounting/eora_co2_trade_sectorwise.xlsx")
+        df_footprint_vs_territorial = FootprintVsTerrotorialProcessor().run(df_gcb_territorial, df_gcb_cba, df_eora_cba, df_country)
+        df_trade_by_country, df_trade_by_sector = EoraCo2TradePerZoneAndCountryProcessor().run(df_eora_co2_trade, df_country)
+
+        # compute statistics per capita
+        df_eora_cba_per_capita = StatisticsPerCapitaJoiner().run_eora_cba_per_capita(df_footprint_vs_territorial, df_population)
+
+
+if __name__ == "__main__":
+    TransformationPipeline().run()
