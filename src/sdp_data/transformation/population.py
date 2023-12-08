@@ -150,7 +150,8 @@ class StatisticsPerCapitaJoiner:
         return df_stats_per_capita
 
     def run_ghg_per_capita(self, df_ghg_by_sector, df_population):
-        df_ghg_by_sector = df_ghg_by_sector.groupby(["source", "group_type", "group_name", "year"]).agg({'co2': "sum", "ghg_unit": "first"})
+        df_ghg_by_sector = df_ghg_by_sector.groupby(["source", "group_type", "group_name", "year"]).agg(ghg=('ghg', 'sum'), ghg_unit=("ghg_unit", "first"))
+        df_ghg_by_sector = df_ghg_by_sector.reset_index()
         df_ghg_per_capita = self.join_inner(df_ghg_by_sector, df_population)
         df_ghg_per_capita["ghg_per_capita"] = df_ghg_per_capita["ghg"] / df_ghg_per_capita["population"]
         return df_ghg_per_capita
