@@ -9,7 +9,7 @@ def _add_new_members_to_group(
         group_name: str,
 ) -> pd.DataFrame:
     """
-    Returns True if the group or organisation of countries contains only country, False otherwise.
+    TODO.
     """
     if isinstance(new_members, str):
         new_members = [new_members]
@@ -28,7 +28,7 @@ def _add_new_members_to_group(
 
 def update_country_groups(raw_country_groups: pd.DataFrame) -> pd.DataFrame:
     """
-    Returns the final processed dataset containing the multi-selection country groups.
+    TODO.
     :param raw_country_groups: DataFrame that contains the raw data of the multi-selection country groups.
     :return: DataFrame with the final data of the multi-selection country groups.
     """
