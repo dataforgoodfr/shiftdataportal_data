@@ -22,13 +22,13 @@ country_groups.to_csv(
 # Multi-selection groups
 ###########################
 
-# df = pd.read_csv(
-#     "../data/dataiku/raw/country_project/multiselect_groups.csv",
-#     sep=",",
-# )
-# multi_selection_country_groups = process_multi_selection_country_groups(df)
-# multi_selection_country_groups.to_csv(
-#     "../data/final/multiselect_groups_prod.csv",
-#     sep=",",
-#     index=False,
-# )
+df = pd.read_csv(
+    "../data/dataiku/raw/country_project/multiselect_groups.csv",
+    sep=",",
+)
+multi_selection_country_groups = process_multi_selection_country_groups(df)
+multi_selection_country_groups.to_csv(
+    "../data/final/multiselect_groups_prod.csv",
+    sep=",",
+    index=False,
+)
