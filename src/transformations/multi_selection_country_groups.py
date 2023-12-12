@@ -19,6 +19,10 @@ def process_multi_selection_country_groups(raw_multi_selection_country_groups: p
 
 
 def _update_multi_selection_country_groups(raw_multi_selection_country_groups: pd.DataFrame) -> pd.DataFrame:
+    """
+    Returns the multi-selection country group dataset with the most up-to-date data.
+    :param raw_multi_selection_country_groups: DataFrame that contains the raw data of the multi-selection country groups.
+    """
     multi_selection_country_groups = raw_multi_selection_country_groups.copy()
 
     # Removal of UK from EU

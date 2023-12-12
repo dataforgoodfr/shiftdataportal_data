@@ -5,9 +5,8 @@ from src.transformations.new_country_group_member import add_new_members_to_grou
 
 def update_country_groups(raw_country_groups: pd.DataFrame) -> pd.DataFrame:
     """
-    TODO.
-    :param raw_country_groups: DataFrame that contains the raw data of the multi-selection country groups.
-    :return: DataFrame with the final data of the multi-selection country groups.
+    Returns the country group dataset with the most up-to-date data.
+    :param raw_country_groups: DataFrame that contains the raw data of the country groups.
     """
     country_groups = raw_country_groups.copy()
 
