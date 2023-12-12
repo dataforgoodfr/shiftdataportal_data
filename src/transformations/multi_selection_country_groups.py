@@ -1,14 +1,21 @@
 import pandas as pd
 
+from src.transformations.new_country_group_member import add_new_members_to_group
 
-def _get_country_only(row: pd.Series) -> bool:
+
+def process_multi_selection_country_groups(raw_multi_selection_country_groups: pd.DataFrame) -> pd.DataFrame:
     """
-    Returns True if the group or organisation of countries contains only country, False otherwise.
-    :param row: Series representing one group or organisation of countries as a row.
-    :return: True or False.
+    Returns the final processed dataset containing the multi-selection country groups.
+    :param raw_multi_selection_country_groups: DataFrame that contains the raw data of the multi-selection country groups.
+    :return: DataFrame with the final data of the multi-selection country groups.
     """
-    group = row["group"]
-    return False if group.startswith("Top GHG Emitters") or group == "Continents" else True
+    multi_selection_country_groups = _update_multi_selection_country_groups(raw_multi_selection_country_groups)
+    multi_selection_country_groups["country_only"] = multi_selection_country_groups.apply(
+        _get_country_only,
+        axis="columns",
+    )
+    multi_selection_country_groups["group"] = "Quickselect " + multi_selection_country_groups["group"]
+    return multi_selection_country_groups
 
 
 def _update_multi_selection_country_groups(raw_multi_selection_country_groups: pd.DataFrame) -> pd.DataFrame:
@@ -26,12 +33,12 @@ def _update_multi_selection_country_groups(raw_multi_selection_country_groups: p
     multi_selection_country_groups.loc[multi_selection_country_groups.group == "EU28", "group"] = "EU27"
 
     # Add Indonesia to Top GHG Emitters
-    new_row = {
-        "group": "Top GHG Emitters in 2022",
-        "country": "Indonesia",
-    }
-    new_emitter_to_add = pd.DataFrame(data=new_row, index=[0])
-    multi_selection_country_groups = pd.concat([multi_selection_country_groups, new_emitter_to_add], ignore_index=True)
+    multi_selection_country_groups = add_new_members_to_group(
+        multi_selection_country_groups,
+        new_members="Indonesia",
+        group_name="Top GHG Emitters in 2022",
+        is_country_group=False,
+    )
 
     # Update the year for Top GHG Emitters
     multi_selection_country_groups.loc[
@@ -42,16 +49,11 @@ def _update_multi_selection_country_groups(raw_multi_selection_country_groups: p
     return multi_selection_country_groups
 
 
-def process_multi_selection_country_groups(raw_multi_selection_country_groups: pd.DataFrame) -> pd.DataFrame:
+def _get_country_only(row: pd.Series) -> bool:
     """
-    Returns the final processed dataset containing the multi-selection country groups.
-    :param raw_multi_selection_country_groups: DataFrame that contains the raw data of the multi-selection country groups.
-    :return: DataFrame with the final data of the multi-selection country groups.
+    Returns True if the group or organisation of countries contains only country, False otherwise.
+    :param row: Series representing one group or organisation of countries as a row.
+    :return: True or False.
     """
-    multi_selection_country_groups = _update_multi_selection_country_groups(raw_multi_selection_country_groups)
-    multi_selection_country_groups["country_only"] = multi_selection_country_groups.apply(
-        _get_country_only,
-        axis="columns",
-    )
-    multi_selection_country_groups["group"] = "Quickselect " + multi_selection_country_groups["group"]
-    return multi_selection_country_groups
+    group = row["group"]
+    return False if group.startswith("Top GHG Emitters") or group == "Continents" else True
