@@ -336,29 +336,42 @@ class FaoDataProcessor:
         :return:
         """
         # clean dataframe
-        df_fao["Area"] = self.translate_country_code_to_country_name(df_fao["Area Code"], raise_errors=False)
-        df_fao["Area"] = CountryTranslatorFrenchToEnglish().run(df_fao["Area"], raise_errors=False)
+        # df_fao["Area"] = df_fao["Area"].fillna(self.translate_country_code_to_country_name(df_fao["Area Code"], raise_errors=False))
+        df_fao["Area"] = self.translate_country_code_to_country_name(df_fao["Area"], raise_errors=False)
         df_fao = df_fao.rename({"Area": "country", "Item": "sector", "Year": "year", "Unit": "ghg_unit",
                                 "Value": "ghg", "Element": "gas_before", "1": "gas"}, axis=1)
         df_fao["ghg_unit"] = "MtCO2eq"
         df_fao["source"] = "FAO"
         df_fao["ghg"] = df_fao["ghg"] * 0.001
 
-        # filter on the right sectors, gas and countries
+        # Extract gas
+        df_fao = df_fao[df_fao["gas_before"].str.contains("Share") == False]
+        df_fao = df_fao[df_fao["gas_before"] != "Emissions (CO2eq)"]
+        df_fao["gas"] = df_fao["gas_before"].str.split(' ').str[-1]
+        df_fao["gas"] = df_fao["gas"].replace({"F-gases": "F-Gases"})  # TODO - ajouter un vrai module commun de traduction des gaz.
+
+        # filter on the right sectors and countries
         df_fao = df_fao.dropna(subset=["country"])
         df_fao = df_fao[df_fao["country"] != "China"]  # TODO - re-challenger les filtres mis sur les pays ou les secteurs.
-        df_fao["country"] = df_fao["country"].replace({"China, mainland": "China"}, axis=1)
-        df_fao["gas"] = df_fao["gas"].replace({"F-gases": "F-Gases"}, axis=1) # TODO - ajouter un vrai module commun de traduction des gaz.
-        df_fao = df_fao[~df_fao["sector"].isin(self.list_sectors_to_exclude)]
-        df_fao = df_fao[df_fao["gas_before"].isin(["share", "Emissions (CO2eq)"])]
+        df_fao["country"] = df_fao["country"].replace({"China, mainland": "China"})
+        df_fao = df_fao[df_fao["sector"].isin(self.list_sectors_to_exclude)]
         df_fao = df_fao.drop(["Area Code", "Item Code", "Element Code", "Year Code", "Flag", "gas_before"], axis=1)
         df_fao["sector"] = df_fao["sector"].replace(self.dict_translation_sectors)  # TODO - ajouter un vrai module commun de traduction de secteurs.
         # TODO - ajouter le filtrage Regex.
 
         # join with countries
-        df_total_fao_per_country = (
+        df_fao_per_zones = (
             pd.merge(df_country, df_fao, how='left', left_on='country', right_on='country')
             .groupby(['group_type', 'group_name', 'year', "sector", "gas", "ghg_unit", "source"])
             .agg({'ghg': 'sum'})
             .reset_index()
         )
+
+        # compute FAO per country
+        df_fao_per_country = df_fao.copy()
+        df_fao_per_country = df_fao_per_country.rename({"country": "group_name"}, axis=1)
+        df_fao_per_country["group_type"] = "country"
+        df_fao_per_country = df_fao_per_country[["source", "group_type", "group_name", "year", "sector", "gas", "ghg", "ghg_unit"]]
+        df_fao_per_country_and_zones = pd.concat([df_fao_per_zones, df_fao_per_country], axis=0)
+
+        return df_fao_per_country_and_zones
