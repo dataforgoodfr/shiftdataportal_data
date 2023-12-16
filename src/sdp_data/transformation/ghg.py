@@ -337,7 +337,7 @@ class FaoDataProcessor:
         """
         # clean dataframe
         # df_fao["Area"] = df_fao["Area"].fillna(self.translate_country_code_to_country_name(df_fao["Area Code"], raise_errors=False))
-        df_fao["Area"] = self.translate_country_code_to_country_name(df_fao["Area"], raise_errors=False)
+        # df_fao["Area"] = self.translate_country_code_to_country_name(df_fao["Area"], raise_errors=False)
         df_fao = df_fao.rename({"Area": "country", "Item": "sector", "Year": "year", "Unit": "ghg_unit",
                                 "Value": "ghg", "Element": "gas_before", "1": "gas"}, axis=1)
         df_fao["ghg_unit"] = "MtCO2eq"
