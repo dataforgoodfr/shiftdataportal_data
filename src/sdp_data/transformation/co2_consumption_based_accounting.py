@@ -146,22 +146,3 @@ class EoraCo2TradePerZoneAndCountryProcessor:
         df_trade_by_sector = df_trade_by_sector.rename({"country": "group_name"}, axis=1)  # TODO - à vérifier par rapport ax dernier ajouts de Theo.
 
         return df_trade_by_country, df_trade_by_sector
-
-
-class EoraCo2CbaPerCapitaJoiner:
-
-    @staticmethod
-    def run(df_footprint_vs_territorial: pd.DataFrame, df_population_per_zone_and_countries: pd.DataFrame):
-        """
-        Computes EORA-CBa per capita
-        :param df_footprint_vs_territorial:
-        :param df_population_per_zone_and_countries:
-        :return:
-        """
-        df_eora_cba_per_capita = df_footprint_vs_territorial.merge(df_population_per_zone_and_countries, how="inner",
-                                                                   left_on=["group_type", "group_name", "year"],
-                                                                   right_on=["group_type", "group_name", "year"])
-        df_eora_cba_per_capita["co2_per_capita"] = df_eora_cba_per_capita["co2"] / df_eora_cba_per_capita["population"]
-        df_eora_cba_per_capita["co2_per_capita_unit"] = "MtCO2 per capita"
-
-        return df_eora_cba_per_capita

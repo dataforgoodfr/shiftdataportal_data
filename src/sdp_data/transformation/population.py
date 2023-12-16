@@ -41,6 +41,7 @@ class GapMinderPerZoneAndCountryProcessor:
         :return:
         """
         # clean the numbers
+        print("\n----- compute GapMinder for each country and each zone")
         df_gapminder = df_gapminder.set_index("country")
         df_gapminder = df_gapminder.applymap(lambda element: self.dirty_string_to_int(element))
 
@@ -51,7 +52,7 @@ class GapMinderPerZoneAndCountryProcessor:
 
 
         # convert countries from french to english
-        df_gapminder["country"] = CountryTranslatorFrenchToEnglish().run(df_gapminder["country"], raise_errors=True)
+        df_gapminder["country"] = CountryTranslatorFrenchToEnglish().run(df_gapminder["country"], raise_errors=False)
 
         # join with countries
         df_total_gapminder_per_zone = (pd.merge(df_country, df_gapminder, how='left', left_on='country', right_on='country')
@@ -91,6 +92,7 @@ class PopulationPerZoneAndCountryProcessor:
         :return:
         """
         # only keep useful columns for population and unstack to a unique pandas serie
+        print("\n----- compute Population for each country and each zone")
         df_population = df_population.set_index("Country Name")
         df_population = df_population.drop(["Country Code", "Indicator Name", "Indicator Code", "col_65"], axis=1)
         df_population = self.unstack_dataframe_to_serie(df_population)
@@ -101,7 +103,7 @@ class PopulationPerZoneAndCountryProcessor:
         df_population = df_population[df_population["year"] < self.max_year]
 
         # convert countries from french to english
-        df_population["country"] = CountryTranslatorFrenchToEnglish().run(df_population["country"], raise_errors=True)
+        df_population["country"] = CountryTranslatorFrenchToEnglish().run(df_population["country"], raise_errors=False)
 
         # compute total population per zone
         df_total_population_per_zone = (
@@ -119,3 +121,49 @@ class PopulationPerZoneAndCountryProcessor:
         df_population_per_zone_and_countries = pd.concat([df_total_population_per_zone, df_total_population_per_country], axis=0)
 
         return df_population_per_zone_and_countries
+
+
+class StatisticsPerCapitaJoiner:
+
+    @staticmethod
+    def join_inner(df_statistics: pd.DataFrame, df_population_per_zone_and_countries: pd.DataFrame):
+        """
+        Computes statistics per capita by joinining on the population dataframe
+        :param df_statistics: (dataframe) containing statistics and columns ["group_type", "group_name", "year"]
+        :param df_population_per_zone_and_countries: (dataframe) containing population and columns ["group_type", "group_name", "year"]
+        :return:
+        """
+        df_stats_per_capita = df_statistics.merge(df_population_per_zone_and_countries, how="inner",
+                                                                   left_on=["group_type", "group_name", "year"],
+                                                                   right_on=["group_type", "group_name", "year"])
+        return df_stats_per_capita
+
+    def run_historical_emissions_per_capita(self, df_historical_co2, df_population):
+        df_stats_per_capita = self.join_inner(df_historical_co2, df_population)
+        df_stats_per_capita["co2_per_capita"] = df_stats_per_capita["co2"] / df_stats_per_capita["population"]
+        return df_stats_per_capita
+
+    def run_eora_cba_per_capita(self, df_footprint_vs_territorial, df_population):
+        df_stats_per_capita = self.join_inner(df_footprint_vs_territorial, df_population)
+        df_stats_per_capita["co2_per_capita"] = df_stats_per_capita["co2"] / df_stats_per_capita["population"]
+        df_stats_per_capita["co2_per_capita_unit"] = "MtCO2 per capita"
+        return df_stats_per_capita
+
+    def run_ghg_per_capita(self, df_ghg_by_sector, df_population):
+        df_ghg_by_sector = df_ghg_by_sector.groupby(["source", "group_type", "group_name", "year"]).agg(ghg=('ghg', 'sum'), ghg_unit=("ghg_unit", "first"))
+        df_ghg_by_sector = df_ghg_by_sector.reset_index()
+        df_ghg_per_capita = self.join_inner(df_ghg_by_sector, df_population)
+        df_ghg_per_capita["ghg_per_capita"] = df_ghg_per_capita["ghg"] / df_ghg_per_capita["population"]
+        return df_ghg_per_capita
+
+    def run_final_energy_consumption_per_capita(self, df_final_energy_consumption, df_population):
+        df_statistics_per_capita = self.join_inner(df_final_energy_consumption, df_population)
+        df_statistics_per_capita["final_energy_per_capita"] = df_statistics_per_capita["final_energy"] / df_statistics_per_capita["population"]
+        return df_statistics_per_capita
+
+    def run_energy_per_capita(self, df_final_energy_consumption, df_population):
+        df_statistics_per_capita = self.join_inner(df_final_energy_consumption, df_population)
+        df_statistics_per_capita["energy_per_capita"] = df_statistics_per_capita["energy"] / df_statistics_per_capita["population"]
+        return df_statistics_per_capita
+
+
