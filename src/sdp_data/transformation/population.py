@@ -75,15 +75,6 @@ class GapMinderPerZoneAndCountryProcessor:
 
 class PopulationPerZoneAndCountryProcessor:
 
-    def __init__(self):
-        self.max_year = 2020
-
-    @staticmethod
-    def unstack_dataframe_to_serie(df: pd.DataFrame):
-        df = df.unstack().reset_index()
-        df.columns = ["year", "country", "population"]
-        return df
-
     def run(self, df_population: pd.DataFrame, df_countries_and_zones: pd.DataFrame) -> pd.DataFrame:
         """
         Computes the total population for each year, each country and each geographic zone.
@@ -93,17 +84,14 @@ class PopulationPerZoneAndCountryProcessor:
         """
         # only keep useful columns for population and unstack to a unique pandas serie
         print("\n----- compute Population for each country and each zone")
-        df_population = df_population.set_index("Country Name")
-        df_population = df_population.drop(["Country Code", "Indicator Name", "Indicator Code", "col_65"], axis=1)
-        df_population = self.unstack_dataframe_to_serie(df_population)
+        df_population = df_population.drop(["country_code_a3"], axis=1)
+        df_population = df_population.rename({"country_name": "country"}, axis=1)
         df_population = df_population.dropna()
-
-        # filter time
-        df_population["year"] = pd.to_numeric(df_population["year"])
-        df_population = df_population[df_population["year"] < self.max_year]
 
         # convert countries from french to english
         df_population["country"] = CountryTranslatorFrenchToEnglish().run(df_population["country"], raise_errors=False)
+        df_population = df_population.dropna(axis=0, subset=["country"])
+        df_population = df_population[df_population["country"] != "Delete"]
 
         # compute total population per zone
         df_total_population_per_zone = (

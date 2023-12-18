@@ -481,42 +481,50 @@ group,OECD,Switzerland
 group,OECD,Turkey
 group,OECD,United Kingdom
 group,OECD,United States of America
-group,EU28,Austria
-group,EU28,Belgium
-group,EU28,Bulgaria
-group,EU28,Cyprus
-group,EU28,Czechia
-group,EU28,Denmark
-group,EU28,Estonia
-group,EU28,Finland
-group,EU28,France
-group,EU28,Germany
-group,EU28,Greece
-group,EU28,Hungary
-group,EU28,Ireland
-group,EU28,Italy
-group,EU28,Latvia
-group,EU28,Lithuania
-group,EU28,Luxembourg
-group,EU28,Malta
-group,EU28,Netherlands
-group,EU28,Poland
-group,EU28,Portugal
-group,EU28,Romania
-group,EU28,Slovakia
-group,EU28,Slovenia
-group,EU28,Spain
-group,EU28,Sweden
-group,EU28,United Kingdom
-group,EU28,Croatia
+group,EU27,Austria
+group,EU27,Belgium
+group,EU27,Bulgaria
+group,EU27,Cyprus
+group,EU27,Czechia
+group,EU27,Denmark
+group,EU27,Estonia
+group,EU27,Finland
+group,EU27,France
+group,EU27,Germany
+group,EU27,Greece
+group,EU27,Hungary
+group,EU27,Ireland
+group,EU27,Italy
+group,EU27,Latvia
+group,EU27,Lithuania
+group,EU27,Luxembourg
+group,EU27,Malta
+group,EU27,Netherlands
+group,EU27,Poland
+group,EU27,Portugal
+group,EU27,Romania
+group,EU27,Slovakia
+group,EU27,Slovenia
+group,EU27,Spain
+group,EU27,Sweden
+group,EU27,Croatia
 group,OPEC,Algeria
 group,OPEC,Angola
-group,OPEC,Ecuador
 group,OPEC,Iran
 group,OPEC,Iraq
 group,OPEC,Kuwait
 group,OPEC,Nigeria
-group,OPEC,Qatar
 group,OPEC,Saudi Arabia
 group,OPEC,United Arab Emirates
 group,OPEC,Venezuela
+group,OECD,Colombia
+group,OECD,Costa Rica
+group,OECD,Estonia
+group,OECD,Israel
+group,OECD,Latvia
+group,OECD,Lithuania
+group,OECD,Slovenia
+group,OPEC,Congo
+group,OPEC,Equatorial Guinea
+group,OPEC,Gabon
+group,OPEC,Libya

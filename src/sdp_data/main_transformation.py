@@ -14,7 +14,7 @@ class TransformationPipeline:
         """
         # Compute populations
         df_gapminder = pd.read_excel("../../data/thibaud/gapminder_population_raw_2.xlsx")
-        df_population = pd.read_excel("../../data/thibaud/population_raw_2.xlsx")
+        df_population = pd.read_csv(f"../../data/_processed/_processed/processed_population_worldbank.csv")
         df_country = pd.read_excel("../../data/thibaud/country_groups.xlsx")
         df_gapminder_per_zone_and_countries = GapMinderPerZoneAndCountryProcessor().run(df_gapminder, df_country)
         df_population_per_zone_and_countries = PopulationPerZoneAndCountryProcessor().run(df_population, df_country)

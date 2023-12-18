@@ -1,14 +1,14 @@
 country_code_a3,year,country_name,population
-AFE,2022,Africa Eastern and Southern,
-AFE,2021,Africa Eastern and Southern,702976832.0
-AFE,2020,Africa Eastern and Southern,685112705.0
-AFE,2019,Africa Eastern and Southern,667242712.0
-AFE,2018,Africa Eastern and Southern,649756874.0
-AFE,2017,Africa Eastern and Southern,632746296.0
-AFE,2016,Africa Eastern and Southern,616377331.0
-AFE,2015,Africa Eastern and Southern,600008150.0
-AFE,2014,Africa Eastern and Southern,583650827.0
-AFE,2013,Africa Eastern and Southern,567891875.0
+AFE,2022,Africa Eastern and Southern,720839314.0
+AFE,2021,Africa Eastern and Southern,702977106.0
+AFE,2020,Africa Eastern and Southern,685112979.0
+AFE,2019,Africa Eastern and Southern,667242986.0
+AFE,2018,Africa Eastern and Southern,649757148.0
+AFE,2017,Africa Eastern and Southern,632746570.0
+AFE,2016,Africa Eastern and Southern,616377605.0
+AFE,2015,Africa Eastern and Southern,600008424.0
+AFE,2014,Africa Eastern and Southern,583651101.0
+AFE,2013,Africa Eastern and Southern,567892149.0
 AFE,2012,Africa Eastern and Southern,552530654.0
 AFE,2011,Africa Eastern and Southern,537792950.0
 AFE,2010,Africa Eastern and Southern,523459657.0
@@ -62,7 +62,7 @@ AFE,1963,Africa Eastern and Southern,141630546.0
 AFE,1962,Africa Eastern and Southern,137835590.0
 AFE,1961,Africa Eastern and Southern,134169237.0
 AFE,1960,Africa Eastern and Southern,130692579.0
-AFW,2022,Africa Western and Central,
+AFW,2022,Africa Western and Central,490330870.0
 AFW,2021,Africa Western and Central,478185907.0
 AFW,2020,Africa Western and Central,466189102.0
 AFW,2019,Africa Western and Central,454306063.0
@@ -125,7 +125,7 @@ AFW,1963,Africa Western and Central,103667517.0
 AFW,1962,Africa Western and Central,101445032.0
 AFW,1961,Africa Western and Central,99314028.0
 AFW,1960,Africa Western and Central,97256290.0
-ARB,2022,Arab World,
+ARB,2022,Arab World,464684914.0
 ARB,2021,Arab World,456520777.0
 ARB,2020,Arab World,449228296.0
 ARB,2019,Arab World,441467739.0
@@ -188,7 +188,7 @@ ARB,1963,Arab World,100892507.0
 ARB,1962,Arab World,98268683.0
 ARB,1961,Arab World,95760348.0
 ARB,1960,Arab World,93359407.0
-CSS,2022,Caribbean small states,
+CSS,2022,Caribbean small states,7505478.0
 CSS,2021,Caribbean small states,7481877.0
 CSS,2020,Caribbean small states,7444768.0
 CSS,2019,Caribbean small states,7424102.0
@@ -251,8 +251,8 @@ CSS,1963,Caribbean small states,4443544.0
 CSS,1962,Caribbean small states,4366420.0
 CSS,1961,Caribbean small states,4289429.0
 CSS,1960,Caribbean small states,4209141.0
-CEB,2022,Central Europe and the Baltics,
-CEB,2021,Central Europe and the Baltics,101430997.0
+CEB,2022,Central Europe and the Baltics,100648571.0
+CEB,2021,Central Europe and the Baltics,101410997.0
 CEB,2020,Central Europe and the Baltics,102180124.0
 CEB,2019,Central Europe and the Baltics,102398537.0
 CEB,2018,Central Europe and the Baltics,102538451.0
@@ -314,8 +314,8 @@ CEB,1963,Central Europe and the Baltics,93840016.0
 CEB,1962,Central Europe and the Baltics,93009498.0
 CEB,1961,Central Europe and the Baltics,92232738.0
 CEB,1960,Central Europe and the Baltics,91401764.0
-EAR,2022,Early-demographic dividend,
-EAR,2021,Early-demographic dividend,3411889059.0
+EAR,2022,Early-demographic dividend,3447753080.0
+EAR,2021,Early-demographic dividend,3411889759.0
 EAR,2020,Early-demographic dividend,3375134276.0
 EAR,2019,Early-demographic dividend,3335463995.0
 EAR,2018,Early-demographic dividend,3294298709.0
@@ -377,10 +377,10 @@ EAR,1963,Early-demographic dividend,1056327420.0
 EAR,1962,Early-demographic dividend,1029962253.0
 EAR,1961,Early-demographic dividend,1004319366.0
 EAR,1960,Early-demographic dividend,979461502.0
-EAS,2022,East Asia & Pacific,
-EAS,2021,East Asia & Pacific,2370204347.0
-EAS,2020,East Asia & Pacific,2363940425.0
-EAS,2019,East Asia & Pacific,2353862247.0
+EAS,2022,East Asia & Pacific,2375143162.0
+EAS,2021,East Asia & Pacific,2370196777.0
+EAS,2020,East Asia & Pacific,2363941755.0
+EAS,2019,East Asia & Pacific,2353862257.0
 EAS,2018,East Asia & Pacific,2341387076.0
 EAS,2017,East Asia & Pacific,2327134580.0
 EAS,2016,East Asia & Pacific,2310721864.0
@@ -440,70 +440,70 @@ EAS,1963,East Asia & Pacific,1085398906.0
 EAS,1962,East Asia & Pacific,1059600211.0
 EAS,1961,East Asia & Pacific,1045203037.0
 EAS,1960,East Asia & Pacific,1043333636.0
-EAP,2022,East Asia & Pacific (excluding high income),
-EAP,2021,East Asia & Pacific (excluding high income),2123673456.0
-EAP,2020,East Asia & Pacific (excluding high income),2116424876.0
-EAP,2019,East Asia & Pacific (excluding high income),2106439246.0
-EAP,2018,East Asia & Pacific (excluding high income),2094573278.0
-EAP,2017,East Asia & Pacific (excluding high income),2080968782.0
-EAP,2016,East Asia & Pacific (excluding high income),2065223450.0
-EAP,2015,East Asia & Pacific (excluding high income),2049809214.0
-EAP,2014,East Asia & Pacific (excluding high income),2034317097.0
-EAP,2013,East Asia & Pacific (excluding high income),2018121456.0
-EAP,2012,East Asia & Pacific (excluding high income),2001317846.0
-EAP,2011,East Asia & Pacific (excluding high income),1984322091.0
-EAP,2010,East Asia & Pacific (excluding high income),1969241762.0
-EAP,2009,East Asia & Pacific (excluding high income),1955097471.0
-EAP,2008,East Asia & Pacific (excluding high income),1940824032.0
-EAP,2007,East Asia & Pacific (excluding high income),1926362850.0
-EAP,2006,East Asia & Pacific (excluding high income),1911778513.0
-EAP,2005,East Asia & Pacific (excluding high income),1896845515.0
-EAP,2004,East Asia & Pacific (excluding high income),1881619185.0
-EAP,2003,East Asia & Pacific (excluding high income),1866298799.0
-EAP,2002,East Asia & Pacific (excluding high income),1850531105.0
-EAP,2001,East Asia & Pacific (excluding high income),1834160201.0
-EAP,2000,East Asia & Pacific (excluding high income),1817064785.0
-EAP,1999,East Asia & Pacific (excluding high income),1799071266.0
-EAP,1998,East Asia & Pacific (excluding high income),1779844165.0
-EAP,1997,East Asia & Pacific (excluding high income),1759276808.0
-EAP,1996,East Asia & Pacific (excluding high income),1737915021.0
-EAP,1995,East Asia & Pacific (excluding high income),1716380775.0
-EAP,1994,East Asia & Pacific (excluding high income),1694472843.0
-EAP,1993,East Asia & Pacific (excluding high income),1671998239.0
-EAP,1992,East Asia & Pacific (excluding high income),1649303152.0
-EAP,1991,East Asia & Pacific (excluding high income),1625952760.0
-EAP,1990,East Asia & Pacific (excluding high income),1601285150.0
-EAP,1989,East Asia & Pacific (excluding high income),1575696733.0
-EAP,1988,East Asia & Pacific (excluding high income),1549697035.0
-EAP,1987,East Asia & Pacific (excluding high income),1523142065.0
-EAP,1986,East Asia & Pacific (excluding high income),1496931223.0
-EAP,1985,East Asia & Pacific (excluding high income),1472188957.0
-EAP,1984,East Asia & Pacific (excluding high income),1448918429.0
-EAP,1983,East Asia & Pacific (excluding high income),1426292739.0
-EAP,1982,East Asia & Pacific (excluding high income),1402590107.0
-EAP,1981,East Asia & Pacific (excluding high income),1378975580.0
-EAP,1980,East Asia & Pacific (excluding high income),1357614061.0
-EAP,1979,East Asia & Pacific (excluding high income),1336925840.0
-EAP,1978,East Asia & Pacific (excluding high income),1315793402.0
-EAP,1977,East Asia & Pacific (excluding high income),1294889668.0
-EAP,1976,East Asia & Pacific (excluding high income),1274293809.0
-EAP,1975,East Asia & Pacific (excluding high income),1252514942.0
-EAP,1974,East Asia & Pacific (excluding high income),1228938255.0
-EAP,1973,East Asia & Pacific (excluding high income),1202841142.0
-EAP,1972,East Asia & Pacific (excluding high income),1175184255.0
-EAP,1971,East Asia & Pacific (excluding high income),1146552846.0
-EAP,1970,East Asia & Pacific (excluding high income),1116209215.0
-EAP,1969,East Asia & Pacific (excluding high income),1086485050.0
-EAP,1968,East Asia & Pacific (excluding high income),1057620453.0
-EAP,1967,East Asia & Pacific (excluding high income),1030478704.0
-EAP,1966,East Asia & Pacific (excluding high income),1004358015.0
-EAP,1965,East Asia & Pacific (excluding high income),977517019.0
-EAP,1964,East Asia & Pacific (excluding high income),954010411.0
-EAP,1963,East Asia & Pacific (excluding high income),931136006.0
-EAP,1962,East Asia & Pacific (excluding high income),907880207.0
-EAP,1961,East Asia & Pacific (excluding high income),896012881.0
-EAP,1960,East Asia & Pacific (excluding high income),896482332.0
-TEA,2022,East Asia & Pacific (IDA & IBRD countries),
+EAP,2022,East Asia & Pacific (excluding high income),2129112126.0
+EAP,2021,East Asia & Pacific (excluding high income),2123628421.0
+EAP,2020,East Asia & Pacific (excluding high income),2116378687.0
+EAP,2019,East Asia & Pacific (excluding high income),2106391925.0
+EAP,2018,East Asia & Pacific (excluding high income),2094524854.0
+EAP,2017,East Asia & Pacific (excluding high income),2080919319.0
+EAP,2016,East Asia & Pacific (excluding high income),2065173002.0
+EAP,2015,East Asia & Pacific (excluding high income),2049757846.0
+EAP,2014,East Asia & Pacific (excluding high income),2034264880.0
+EAP,2013,East Asia & Pacific (excluding high income),2018068461.0
+EAP,2012,East Asia & Pacific (excluding high income),2001264155.0
+EAP,2011,East Asia & Pacific (excluding high income),1984267781.0
+EAP,2010,East Asia & Pacific (excluding high income),1969186913.0
+EAP,2009,East Asia & Pacific (excluding high income),1955042105.0
+EAP,2008,East Asia & Pacific (excluding high income),1940768141.0
+EAP,2007,East Asia & Pacific (excluding high income),1926306467.0
+EAP,2006,East Asia & Pacific (excluding high income),1911721676.0
+EAP,2005,East Asia & Pacific (excluding high income),1896788261.0
+EAP,2004,East Asia & Pacific (excluding high income),1881561559.0
+EAP,2003,East Asia & Pacific (excluding high income),1866240858.0
+EAP,2002,East Asia & Pacific (excluding high income),1850472928.0
+EAP,2001,East Asia & Pacific (excluding high income),1834101877.0
+EAP,2000,East Asia & Pacific (excluding high income),1817006555.0
+EAP,1999,East Asia & Pacific (excluding high income),1799013672.0
+EAP,1998,East Asia & Pacific (excluding high income),1779787562.0
+EAP,1997,East Asia & Pacific (excluding high income),1759221230.0
+EAP,1996,East Asia & Pacific (excluding high income),1737860521.0
+EAP,1995,East Asia & Pacific (excluding high income),1716327374.0
+EAP,1994,East Asia & Pacific (excluding high income),1694420555.0
+EAP,1993,East Asia & Pacific (excluding high income),1671947065.0
+EAP,1992,East Asia & Pacific (excluding high income),1649253074.0
+EAP,1991,East Asia & Pacific (excluding high income),1625903768.0
+EAP,1990,East Asia & Pacific (excluding high income),1601237332.0
+EAP,1989,East Asia & Pacific (excluding high income),1575650445.0
+EAP,1988,East Asia & Pacific (excluding high income),1549652503.0
+EAP,1987,East Asia & Pacific (excluding high income),1523099223.0
+EAP,1986,East Asia & Pacific (excluding high income),1496890002.0
+EAP,1985,East Asia & Pacific (excluding high income),1472149294.0
+EAP,1984,East Asia & Pacific (excluding high income),1448880261.0
+EAP,1983,East Asia & Pacific (excluding high income),1426256004.0
+EAP,1982,East Asia & Pacific (excluding high income),1402554740.0
+EAP,1981,East Asia & Pacific (excluding high income),1378941521.0
+EAP,1980,East Asia & Pacific (excluding high income),1357581175.0
+EAP,1979,East Asia & Pacific (excluding high income),1336893795.0
+EAP,1978,East Asia & Pacific (excluding high income),1315761974.0
+EAP,1977,East Asia & Pacific (excluding high income),1294858852.0
+EAP,1976,East Asia & Pacific (excluding high income),1274263611.0
+EAP,1975,East Asia & Pacific (excluding high income),1252485369.0
+EAP,1974,East Asia & Pacific (excluding high income),1228909243.0
+EAP,1973,East Asia & Pacific (excluding high income),1202812613.0
+EAP,1972,East Asia & Pacific (excluding high income),1175156192.0
+EAP,1971,East Asia & Pacific (excluding high income),1146525253.0
+EAP,1970,East Asia & Pacific (excluding high income),1116182140.0
+EAP,1969,East Asia & Pacific (excluding high income),1086458654.0
+EAP,1968,East Asia & Pacific (excluding high income),1057594845.0
+EAP,1967,East Asia & Pacific (excluding high income),1030453856.0
+EAP,1966,East Asia & Pacific (excluding high income),1004333893.0
+EAP,1965,East Asia & Pacific (excluding high income),977493628.0
+EAP,1964,East Asia & Pacific (excluding high income),953987755.0
+EAP,1963,East Asia & Pacific (excluding high income),931114057.0
+EAP,1962,East Asia & Pacific (excluding high income),907858935.0
+EAP,1961,East Asia & Pacific (excluding high income),895992255.0
+EAP,1960,East Asia & Pacific (excluding high income),896462247.0
+TEA,2022,East Asia & Pacific (IDA & IBRD countries),2103055378.0
 TEA,2021,East Asia & Pacific (IDA & IBRD countries),2097669023.0
 TEA,2020,East Asia & Pacific (IDA & IBRD countries),2090523535.0
 TEA,2019,East Asia & Pacific (IDA & IBRD countries),2080648616.0
@@ -566,7 +566,7 @@ TEA,1963,East Asia & Pacific (IDA & IBRD countries),918644019.0
 TEA,1962,East Asia & Pacific (IDA & IBRD countries),895683380.0
 TEA,1961,East Asia & Pacific (IDA & IBRD countries),884080493.0
 TEA,1960,East Asia & Pacific (IDA & IBRD countries),884811163.0
-EMU,2022,Euro area,
+EMU,2022,Euro area,344519132.0
 EMU,2021,Euro area,343067846.0
 EMU,2020,Euro area,342913447.0
 EMU,2019,Euro area,342452734.0
@@ -629,12 +629,12 @@ EMU,1963,Euro area,272291865.0
 EMU,1962,Euro area,269908375.0
 EMU,1961,Euro area,267560575.0
 EMU,1960,Euro area,265244987.0
-ECS,2022,Europe & Central Asia,
-ECS,2021,Europe & Central Asia,923777214.0
-ECS,2020,Europe & Central Asia,923103879.0
+ECS,2022,Europe & Central Asia,920631231.0
+ECS,2021,Europe & Central Asia,923419216.0
+ECS,2020,Europe & Central Asia,923104113.0
 ECS,2019,Europe & Central Asia,921179725.0
 ECS,2018,Europe & Central Asia,918782553.0
-ECS,2017,Europe & Central Asia,915855416.0
+ECS,2017,Europe & Central Asia,915855417.0
 ECS,2016,Europe & Central Asia,912374705.0
 ECS,2015,Europe & Central Asia,908123143.0
 ECS,2014,Europe & Central Asia,903601049.0
@@ -692,8 +692,8 @@ ECS,1963,Europe & Central Asia,689682704.0
 ECS,1962,Europe & Central Asia,681809362.0
 ECS,1961,Europe & Central Asia,673957844.0
 ECS,1960,Europe & Central Asia,666273660.0
-ECA,2022,Europe & Central Asia (excluding high income),
-ECA,2021,Europe & Central Asia (excluding high income),401575218.0
+ECA,2022,Europe & Central Asia (excluding high income),397493238.0
+ECA,2021,Europe & Central Asia (excluding high income),401537489.0
 ECA,2020,Europe & Central Asia (excluding high income),400811771.0
 ECA,2019,Europe & Central Asia (excluding high income),399592320.0
 ECA,2018,Europe & Central Asia (excluding high income),398076771.0
@@ -755,8 +755,8 @@ ECA,1963,Europe & Central Asia (excluding high income),268409373.0
 ECA,1962,Europe & Central Asia (excluding high income),264183560.0
 ECA,1961,Europe & Central Asia (excluding high income),259951519.0
 ECA,1960,Europe & Central Asia (excluding high income),255726092.0
-TEC,2022,Europe & Central Asia (IDA & IBRD countries),
-TEC,2021,Europe & Central Asia (IDA & IBRD countries),462341222.0
+TEC,2022,Europe & Central Asia (IDA & IBRD countries),457865503.0
+TEC,2021,Europe & Central Asia (IDA & IBRD countries),462283493.0
 TEC,2020,Europe & Central Asia (IDA & IBRD countries),462023771.0
 TEC,2019,Europe & Central Asia (IDA & IBRD countries),460994696.0
 TEC,2018,Europe & Central Asia (IDA & IBRD countries),459613334.0
@@ -818,8 +818,8 @@ TEC,1963,Europe & Central Asia (IDA & IBRD countries),322144898.0
 TEC,1962,Europe & Central Asia (IDA & IBRD countries),317365322.0
 TEC,1961,Europe & Central Asia (IDA & IBRD countries),312638061.0
 TEC,1960,Europe & Central Asia (IDA & IBRD countries),307910628.0
-EUU,2022,European Union,
-EUU,2021,European Union,447199800.0
+EUU,2022,European Union,447956050.0
+EUU,2021,European Union,447179800.0
 EUU,2020,European Union,447692315.0
 EUU,2019,European Union,447367191.0
 EUU,2018,European Union,447001100.0
@@ -881,70 +881,70 @@ EUU,1963,European Union,366152978.0
 EUU,1962,European Union,362998792.0
 EUU,1961,European Union,359937892.0
 EUU,1960,European Union,356947129.0
-FCS,2022,Fragile and conflict affected situations,
-FCS,2021,Fragile and conflict affected situations,1001462452.0
-FCS,2020,Fragile and conflict affected situations,979418527.0
-FCS,2019,Fragile and conflict affected situations,957446713.0
-FCS,2018,Fragile and conflict affected situations,936387926.0
-FCS,2017,Fragile and conflict affected situations,916099469.0
-FCS,2016,Fragile and conflict affected situations,895949553.0
-FCS,2015,Fragile and conflict affected situations,876118480.0
-FCS,2014,Fragile and conflict affected situations,856705624.0
-FCS,2013,Fragile and conflict affected situations,837103087.0
-FCS,2012,Fragile and conflict affected situations,817111040.0
-FCS,2011,Fragile and conflict affected situations,797489095.0
-FCS,2010,Fragile and conflict affected situations,778427274.0
-FCS,2009,Fragile and conflict affected situations,759511035.0
-FCS,2008,Fragile and conflict affected situations,741028426.0
-FCS,2007,Fragile and conflict affected situations,723581503.0
-FCS,2006,Fragile and conflict affected situations,706884119.0
-FCS,2005,Fragile and conflict affected situations,690141498.0
-FCS,2004,Fragile and conflict affected situations,673751123.0
-FCS,2003,Fragile and conflict affected situations,657778626.0
-FCS,2002,Fragile and conflict affected situations,641576379.0
-FCS,2001,Fragile and conflict affected situations,626177896.0
-FCS,2000,Fragile and conflict affected situations,612395529.0
-FCS,1999,Fragile and conflict affected situations,598919585.0
-FCS,1998,Fragile and conflict affected situations,585589666.0
-FCS,1997,Fragile and conflict affected situations,572896408.0
-FCS,1996,Fragile and conflict affected situations,560707649.0
-FCS,1995,Fragile and conflict affected situations,548331145.0
-FCS,1994,Fragile and conflict affected situations,534202563.0
-FCS,1993,Fragile and conflict affected situations,519673066.0
-FCS,1992,Fragile and conflict affected situations,506088764.0
-FCS,1991,Fragile and conflict affected situations,493647883.0
-FCS,1990,Fragile and conflict affected situations,482851894.0
-FCS,1989,Fragile and conflict affected situations,470398622.0
-FCS,1988,Fragile and conflict affected situations,459924409.0
-FCS,1987,Fragile and conflict affected situations,449985688.0
-FCS,1986,Fragile and conflict affected situations,440018085.0
-FCS,1985,Fragile and conflict affected situations,430186538.0
-FCS,1984,Fragile and conflict affected situations,420273124.0
-FCS,1983,Fragile and conflict affected situations,410624537.0
-FCS,1982,Fragile and conflict affected situations,401392322.0
-FCS,1981,Fragile and conflict affected situations,392737776.0
-FCS,1980,Fragile and conflict affected situations,384693745.0
-FCS,1979,Fragile and conflict affected situations,376173441.0
-FCS,1978,Fragile and conflict affected situations,367353502.0
-FCS,1977,Fragile and conflict affected situations,358907071.0
-FCS,1976,Fragile and conflict affected situations,350322455.0
-FCS,1975,Fragile and conflict affected situations,341807747.0
-FCS,1974,Fragile and conflict affected situations,333812999.0
-FCS,1973,Fragile and conflict affected situations,326102434.0
-FCS,1972,Fragile and conflict affected situations,318771788.0
-FCS,1971,Fragile and conflict affected situations,311673977.0
-FCS,1970,Fragile and conflict affected situations,304777775.0
-FCS,1969,Fragile and conflict affected situations,298119407.0
-FCS,1968,Fragile and conflict affected situations,291600564.0
-FCS,1967,Fragile and conflict affected situations,285220313.0
-FCS,1966,Fragile and conflict affected situations,279032125.0
-FCS,1965,Fragile and conflict affected situations,272999177.0
-FCS,1964,Fragile and conflict affected situations,267057059.0
-FCS,1963,Fragile and conflict affected situations,261257220.0
-FCS,1962,Fragile and conflict affected situations,255628513.0
-FCS,1961,Fragile and conflict affected situations,250155682.0
-FCS,1960,Fragile and conflict affected situations,244896253.0
-HPC,2022,Heavily indebted poor countries (HIPC),
+FCS,2022,Fragile and conflict affected situations,1019139254.0
+FCS,2021,Fragile and conflict affected situations,1001814433.0
+FCS,2020,Fragile and conflict affected situations,979763631.0
+FCS,2019,Fragile and conflict affected situations,957785553.0
+FCS,2018,Fragile and conflict affected situations,936721531.0
+FCS,2017,Fragile and conflict affected situations,916427867.0
+FCS,2016,Fragile and conflict affected situations,896272698.0
+FCS,2015,Fragile and conflict affected situations,876436311.0
+FCS,2014,Fragile and conflict affected situations,857018106.0
+FCS,2013,Fragile and conflict affected situations,837410155.0
+FCS,2012,Fragile and conflict affected situations,817412582.0
+FCS,2011,Fragile and conflict affected situations,797785010.0
+FCS,2010,Fragile and conflict affected situations,778717407.0
+FCS,2009,Fragile and conflict affected situations,759795159.0
+FCS,2008,Fragile and conflict affected situations,741306396.0
+FCS,2007,Fragile and conflict affected situations,723853346.0
+FCS,2006,Fragile and conflict affected situations,707149927.0
+FCS,2005,Fragile and conflict affected situations,690401342.0
+FCS,2004,Fragile and conflict affected situations,674005044.0
+FCS,2003,Fragile and conflict affected situations,658026690.0
+FCS,2002,Fragile and conflict affected situations,641818620.0
+FCS,2001,Fragile and conflict affected situations,626414685.0
+FCS,2000,Fragile and conflict affected situations,612628069.0
+FCS,1999,Fragile and conflict affected situations,599148682.0
+FCS,1998,Fragile and conflict affected situations,585815261.0
+FCS,1997,Fragile and conflict affected situations,573118372.0
+FCS,1996,Fragile and conflict affected situations,560925893.0
+FCS,1995,Fragile and conflict affected situations,548545703.0
+FCS,1994,Fragile and conflict affected situations,534413493.0
+FCS,1993,Fragile and conflict affected situations,519880341.0
+FCS,1992,Fragile and conflict affected situations,506292313.0
+FCS,1991,Fragile and conflict affected situations,493847579.0
+FCS,1990,Fragile and conflict affected situations,483047361.0
+FCS,1989,Fragile and conflict affected situations,470589503.0
+FCS,1988,Fragile and conflict affected situations,460110602.0
+FCS,1987,Fragile and conflict affected situations,450167244.0
+FCS,1986,Fragile and conflict affected situations,440195317.0
+FCS,1985,Fragile and conflict affected situations,430359853.0
+FCS,1984,Fragile and conflict affected situations,420442959.0
+FCS,1983,Fragile and conflict affected situations,410791308.0
+FCS,1982,Fragile and conflict affected situations,401556230.0
+FCS,1981,Fragile and conflict affected situations,392898821.0
+FCS,1980,Fragile and conflict affected situations,384851768.0
+FCS,1979,Fragile and conflict affected situations,376328233.0
+FCS,1978,Fragile and conflict affected situations,367505626.0
+FCS,1977,Fragile and conflict affected situations,359057264.0
+FCS,1976,Fragile and conflict affected situations,350470843.0
+FCS,1975,Fragile and conflict affected situations,341954459.0
+FCS,1974,Fragile and conflict affected situations,333958141.0
+FCS,1973,Fragile and conflict affected situations,326245504.0
+FCS,1972,Fragile and conflict affected situations,318912229.0
+FCS,1971,Fragile and conflict affected situations,311811738.0
+FCS,1970,Fragile and conflict affected situations,304912795.0
+FCS,1969,Fragile and conflict affected situations,298251790.0
+FCS,1968,Fragile and conflict affected situations,291730814.0
+FCS,1967,Fragile and conflict affected situations,285348867.0
+FCS,1966,Fragile and conflict affected situations,279159120.0
+FCS,1965,Fragile and conflict affected situations,273124351.0
+FCS,1964,Fragile and conflict affected situations,267180143.0
+FCS,1963,Fragile and conflict affected situations,261378272.0
+FCS,1962,Fragile and conflict affected situations,255747541.0
+FCS,1961,Fragile and conflict affected situations,250272662.0
+FCS,1960,Fragile and conflict affected situations,245011384.0
+HPC,2022,Heavily indebted poor countries (HIPC),884288332.0
 HPC,2021,Heavily indebted poor countries (HIPC),861156745.0
 HPC,2020,Heavily indebted poor countries (HIPC),838066650.0
 HPC,2019,Heavily indebted poor countries (HIPC),815100831.0
@@ -1007,79 +1007,79 @@ HPC,1963,Heavily indebted poor countries (HIPC),175832578.0
 HPC,1962,Heavily indebted poor countries (HIPC),171555341.0
 HPC,1961,Heavily indebted poor countries (HIPC),167427839.0
 HPC,1960,Heavily indebted poor countries (HIPC),163453961.0
-,2022,High income,
-,2021,High income,1240629858.0
-,2020,High income,1240900955.0
-,2019,High income,1235869243.0
-,2018,High income,1230678232.0
-,2017,High income,1224733163.0
-,2016,High income,1218545401.0
-,2015,High income,1211637779.0
-,2014,High income,1204882945.0
-,2013,High income,1198018009.0
-,2012,High income,1191244446.0
-,2011,High income,1184675562.0
-,2010,High income,1179656335.0
-,2009,High income,1172260321.0
-,2008,High income,1163599191.0
-,2007,High income,1153978848.0
-,2006,High income,1144695047.0
-,2005,High income,1136164408.0
-,2004,High income,1128753775.0
-,2003,High income,1121696635.0
-,2002,High income,1114863356.0
-,2001,High income,1108051953.0
-,2000,High income,1101322358.0
-,1999,High income,1094621522.0
-,1998,High income,1087787919.0
-,1997,High income,1080857331.0
-,1996,High income,1073742216.0
-,1995,High income,1066496376.0
-,1994,High income,1059346414.0
-,1993,High income,1051828543.0
-,1992,High income,1043682026.0
-,1991,High income,1035082099.0
-,1990,High income,1026705783.0
-,1989,High income,1019351810.0
-,1988,High income,1011854016.0
-,1987,High income,1004863831.0
-,1986,High income,998064664.0
-,1985,High income,991412061.0
-,1984,High income,984970482.0
-,1983,High income,978592282.0
-,1982,High income,971818139.0
-,1981,High income,964531243.0
-,1980,High income,956797888.0
-,1979,High income,949009695.0
-,1978,High income,940958569.0
-,1977,High income,933185589.0
-,1976,High income,925484936.0
-,1975,High income,917684529.0
-,1974,High income,909299125.0
-,1973,High income,900708703.0
-,1972,High income,891951178.0
-,1971,High income,882886961.0
-,1970,High income,872549599.0
-,1969,High income,863859636.0
-,1968,High income,855113055.0
-,1967,High income,846472887.0
-,1966,High income,837733293.0
-,1965,High income,828628357.0
-,1964,High income,819057450.0
-,1963,High income,809189014.0
-,1962,High income,799296778.0
-,1961,High income,789309567.0
-,1960,High income,779546518.0
-IBD,2022,IBRD only,
-IBD,2021,IBRD only,4895364297.0
-IBD,2020,IBRD only,4867842166.0
-IBD,2019,IBRD only,4833830857.0
-IBD,2018,IBRD only,4795957754.0
-IBD,2017,IBRD only,4755029096.0
-IBD,2016,IBRD only,4710745335.0
-IBD,2015,IBRD only,4665080627.0
-IBD,2014,IBRD only,4617514836.0
-IBD,2013,IBRD only,4568405832.0
+,2022,High income,1244899026.0
+,2021,High income,1241269526.0
+,2020,High income,1241726323.0
+,2019,High income,1236715327.0
+,2018,High income,1231512170.0
+,2017,High income,1225545879.0
+,2016,High income,1219354936.0
+,2015,High income,1212444178.0
+,2014,High income,1205686277.0
+,2013,High income,1198818424.0
+,2012,High income,1192042103.0
+,2011,High income,1185474102.0
+,2010,High income,1180459116.0
+,2009,High income,1173066945.0
+,2008,High income,1164409232.0
+,2007,High income,1154791752.0
+,2006,High income,1145510251.0
+,2005,High income,1136981371.0
+,2004,High income,1129571825.0
+,2003,High income,1122515138.0
+,2002,High income,1115681856.0
+,2001,High income,1108870086.0
+,2000,High income,1102139639.0
+,1999,High income,1095437130.0
+,1998,High income,1088601219.0
+,1997,High income,1081668120.0
+,1996,High income,1074550287.0
+,1995,High income,1067301466.0
+,1994,High income,1060148248.0
+,1993,High income,1052626906.0
+,1992,High income,1044477102.0
+,1991,High income,1035875187.0
+,1990,High income,1027500717.0
+,1989,High income,1020150995.0
+,1988,High income,1012656998.0
+,1987,High income,1005670379.0
+,1986,High income,998874393.0
+,1985,High income,992224395.0
+,1984,High income,985784657.0
+,1983,High income,979407389.0
+,1982,High income,972633145.0
+,1981,High income,965344988.0
+,1980,High income,957608950.0
+,1979,High income,949816222.0
+,1978,High income,941758606.0
+,1977,High income,933977783.0
+,1976,High income,926268687.0
+,1975,High income,918459692.0
+,1974,High income,910065838.0
+,1973,High income,901467097.0
+,1972,High income,892701235.0
+,1971,High income,883628458.0
+,1970,High income,873281935.0
+,1969,High income,864581951.0
+,1968,High income,855824550.0
+,1967,High income,847172799.0
+,1966,High income,838420656.0
+,1965,High income,829301955.0
+,1964,High income,819716063.0
+,1963,High income,809831666.0
+,1962,High income,799922883.0
+,1961,High income,789918790.0
+,1960,High income,780138593.0
+IBD,2022,IBRD only,4914355242.0
+IBD,2021,IBRD only,4895306842.0
+IBD,2020,IBRD only,4867842440.0
+IBD,2019,IBRD only,4833831131.0
+IBD,2018,IBRD only,4795958028.0
+IBD,2017,IBRD only,4755029370.0
+IBD,2016,IBRD only,4710745609.0
+IBD,2015,IBRD only,4665080901.0
+IBD,2014,IBRD only,4617515110.0
+IBD,2013,IBRD only,4568406106.0
 IBD,2012,IBRD only,4519075289.0
 IBD,2011,IBRD only,4471134545.0
 IBD,2010,IBRD only,4425837971.0
@@ -1133,70 +1133,70 @@ IBD,1963,IBRD only,2007060959.0
 IBD,1962,IBRD only,1960606353.0
 IBD,1961,IBRD only,1926042536.0
 IBD,1960,IBRD only,1904346683.0
-IBT,2022,IDA & IBRD total,
-IBT,2021,IDA & IBRD total,6695397735.0
-IBT,2020,IDA & IBRD total,6628067973.0
-IBT,2019,IDA & IBRD total,6554880269.0
-IBT,2018,IDA & IBRD total,6479097294.0
-IBT,2017,IDA & IBRD total,6401367406.0
-IBT,2016,IDA & IBRD total,6321324033.0
-IBT,2015,IDA & IBRD total,6241291929.0
-IBT,2014,IDA & IBRD total,6160758687.0
-IBT,2013,IDA & IBRD total,6079383316.0
-IBT,2012,IDA & IBRD total,5997941575.0
-IBT,2011,IDA & IBRD total,5917205336.0
-IBT,2010,IDA & IBRD total,5838366631.0
-IBT,2009,IDA & IBRD total,5761813095.0
-IBT,2008,IDA & IBRD total,5686502257.0
-IBT,2007,IDA & IBRD total,5612664364.0
-IBT,2006,IDA & IBRD total,5539552227.0
-IBT,2005,IDA & IBRD total,5465865380.0
-IBT,2004,IDA & IBRD total,5391691968.0
-IBT,2003,IDA & IBRD total,5317497279.0
-IBT,2002,IDA & IBRD total,5243235123.0
-IBT,2001,IDA & IBRD total,5168697790.0
-IBT,2000,IDA & IBRD total,5093906989.0
-IBT,1999,IDA & IBRD total,5019059496.0
-IBT,1998,IDA & IBRD total,4943428031.0
-IBT,1997,IDA & IBRD total,4866774442.0
-IBT,1996,IDA & IBRD total,4789590179.0
-IBT,1995,IDA & IBRD total,4712210002.0
-IBT,1994,IDA & IBRD total,4634853168.0
-IBT,1993,IDA & IBRD total,4557052710.0
-IBT,1992,IDA & IBRD total,4478853646.0
-IBT,1991,IDA & IBRD total,4400223257.0
-IBT,1990,IDA & IBRD total,4319808510.0
-IBT,1989,IDA & IBRD total,4238233062.0
-IBT,1988,IDA & IBRD total,4156379922.0
-IBT,1987,IDA & IBRD total,4074089379.0
-IBT,1986,IDA & IBRD total,3992357188.0
-IBT,1985,IDA & IBRD total,3912799126.0
-IBT,1984,IDA & IBRD total,3835491349.0
-IBT,1983,IDA & IBRD total,3759767140.0
-IBT,1982,IDA & IBRD total,3684013868.0
-IBT,1981,IDA & IBRD total,3609134587.0
-IBT,1980,IDA & IBRD total,3537895456.0
-IBT,1979,IDA & IBRD total,3468694959.0
-IBT,1978,IDA & IBRD total,3400425764.0
-IBT,1977,IDA & IBRD total,3333786158.0
-IBT,1976,IDA & IBRD total,3268253604.0
-IBT,1975,IDA & IBRD total,3202458507.0
-IBT,1974,IDA & IBRD total,3136223372.0
-IBT,1973,IDA & IBRD total,3068589867.0
-IBT,1972,IDA & IBRD total,3000697180.0
-IBT,1971,IDA & IBRD total,2933897531.0
-IBT,1970,IDA & IBRD total,2866476260.0
-IBT,1969,IDA & IBRD total,2799467953.0
-IBT,1968,IDA & IBRD total,2733623400.0
-IBT,1967,IDA & IBRD total,2670178921.0
-IBT,1966,IDA & IBRD total,2608664220.0
-IBT,1965,IDA & IBRD total,2547296072.0
-IBT,1964,IDA & IBRD total,2488885360.0
-IBT,1963,IDA & IBRD total,2431394263.0
-IBT,1962,IDA & IBRD total,2374361440.0
-IBT,1961,IDA & IBRD total,2329592550.0
-IBT,1960,IDA & IBRD total,2298062888.0
-IDB,2022,IDA blend,
+IBT,2022,IDA & IBRD total,6754326592.0
+IBT,2021,IDA & IBRD total,6695340280.0
+IBT,2020,IDA & IBRD total,6628068247.0
+IBT,2019,IDA & IBRD total,6554880543.0
+IBT,2018,IDA & IBRD total,6479097568.0
+IBT,2017,IDA & IBRD total,6401430493.0
+IBT,2016,IDA & IBRD total,6321546801.0
+IBT,2015,IDA & IBRD total,6241658900.0
+IBT,2014,IDA & IBRD total,6161220418.0
+IBT,2013,IDA & IBRD total,6079930346.0
+IBT,2012,IDA & IBRD total,5998533722.0
+IBT,2011,IDA & IBRD total,5917666583.0
+IBT,2010,IDA & IBRD total,5838773450.0
+IBT,2009,IDA & IBRD total,5762172064.0
+IBT,2008,IDA & IBRD total,5686803916.0
+IBT,2007,IDA & IBRD total,5612900975.0
+IBT,2006,IDA & IBRD total,5539726956.0
+IBT,2005,IDA & IBRD total,5465994258.0
+IBT,2004,IDA & IBRD total,5391795246.0
+IBT,2003,IDA & IBRD total,5317576423.0
+IBT,2002,IDA & IBRD total,5243283354.0
+IBT,2001,IDA & IBRD total,5168706338.0
+IBT,2000,IDA & IBRD total,5093905754.0
+IBT,1999,IDA & IBRD total,5019066614.0
+IBT,1998,IDA & IBRD total,4943424234.0
+IBT,1997,IDA & IBRD total,4866752668.0
+IBT,1996,IDA & IBRD total,4789545395.0
+IBT,1995,IDA & IBRD total,4712144657.0
+IBT,1994,IDA & IBRD total,4634770438.0
+IBT,1993,IDA & IBRD total,4556953494.0
+IBT,1992,IDA & IBRD total,4478741276.0
+IBT,1991,IDA & IBRD total,4400104121.0
+IBT,1990,IDA & IBRD total,4319686835.0
+IBT,1989,IDA & IBRD total,4238116885.0
+IBT,1988,IDA & IBRD total,4156275472.0
+IBT,1987,IDA & IBRD total,4073992562.0
+IBT,1986,IDA & IBRD total,3992266322.0
+IBT,1985,IDA & IBRD total,3912715182.0
+IBT,1984,IDA & IBRD total,3835415425.0
+IBT,1983,IDA & IBRD total,3759700941.0
+IBT,1982,IDA & IBRD total,3683951411.0
+IBT,1981,IDA & IBRD total,3609060683.0
+IBT,1980,IDA & IBRD total,3537803261.0
+IBT,1979,IDA & IBRD total,3468586480.0
+IBT,1978,IDA & IBRD total,3400306889.0
+IBT,1977,IDA & IBRD total,3333671715.0
+IBT,1976,IDA & IBRD total,3268150880.0
+IBT,1975,IDA & IBRD total,3202366239.0
+IBT,1974,IDA & IBRD total,3136139717.0
+IBT,1973,IDA & IBRD total,3068507571.0
+IBT,1972,IDA & IBRD total,3000609403.0
+IBT,1971,IDA & IBRD total,2933804351.0
+IBT,1970,IDA & IBRD total,2866379293.0
+IBT,1969,IDA & IBRD total,2799372212.0
+IBT,1968,IDA & IBRD total,2733532608.0
+IBT,1967,IDA & IBRD total,2670092279.0
+IBT,1966,IDA & IBRD total,2608583276.0
+IBT,1965,IDA & IBRD total,2547220471.0
+IBT,1964,IDA & IBRD total,2488809469.0
+IBT,1963,IDA & IBRD total,2431314278.0
+IBT,1962,IDA & IBRD total,2374276327.0
+IBT,1961,IDA & IBRD total,2329503799.0
+IBT,1960,IDA & IBRD total,2297972283.0
+IDB,2022,IDA blend,607735968.0
 IDB,2021,IDA blend,595016031.0
 IDB,2020,IDA blend,582637127.0
 IDB,2019,IDA blend,570633332.0
@@ -1259,198 +1259,198 @@ IDB,1963,IDA blend,129620425.0
 IDB,1962,IDA blend,126404800.0
 IDB,1961,IDA blend,123340386.0
 IDB,1960,IDA blend,120380760.0
-IDX,2022,IDA only,
+IDX,2022,IDA only,1232235382.0
 IDX,2021,IDA only,1205017407.0
 IDX,2020,IDA only,1177588680.0
 IDX,2019,IDA only,1150416080.0
 IDX,2018,IDA only,1123983941.0
-IDX,2017,IDA only,1098353349.0
-IDX,2016,IDA only,1073220286.0
-IDX,2015,IDA only,1049035417.0
-IDX,2014,IDA only,1026343767.0
-IDX,2013,IDA only,1004534126.0
-IDX,2012,IDA only,982997764.0
-IDX,2011,IDA only,961150893.0
-IDX,2010,IDA only,939324150.0
-IDX,2009,IDA only,918168947.0
-IDX,2008,IDA only,897897773.0
-IDX,2007,IDA only,877951894.0
-IDX,2006,IDA only,857701159.0
-IDX,2005,IDA only,837588977.0
-IDX,2004,IDA only,818056404.0
-IDX,2003,IDA only,798812276.0
-IDX,2002,IDA only,779186598.0
-IDX,2001,IDA only,760127293.0
-IDX,2000,IDA only,742633702.0
-IDX,1999,IDA only,725594108.0
-IDX,1998,IDA only,708739303.0
-IDX,1997,IDA only,692351461.0
-IDX,1996,IDA only,676111052.0
-IDX,1995,IDA only,659833521.0
-IDX,1994,IDA only,643655696.0
-IDX,1993,IDA only,627316598.0
-IDX,1992,IDA only,610614294.0
-IDX,1991,IDA only,595053206.0
-IDX,1990,IDA only,580960910.0
-IDX,1989,IDA only,566916602.0
-IDX,1988,IDA only,553069900.0
-IDX,1987,IDA only,539628626.0
-IDX,1986,IDA only,526235634.0
-IDX,1985,IDA only,513060192.0
-IDX,1984,IDA only,499866464.0
-IDX,1983,IDA only,486771950.0
-IDX,1982,IDA only,473999021.0
-IDX,1981,IDA only,462320597.0
-IDX,1980,IDA only,452074856.0
-IDX,1979,IDA only,441548709.0
-IDX,1978,IDA only,430141742.0
-IDX,1977,IDA only,419266780.0
-IDX,1976,IDA only,409276710.0
-IDX,1975,IDA only,399575964.0
-IDX,1974,IDA only,389746668.0
-IDX,1973,IDA only,379861910.0
-IDX,1972,IDA only,370307465.0
-IDX,1971,IDA only,361816571.0
-IDX,1970,IDA only,353636849.0
-IDX,1969,IDA only,344750667.0
-IDX,1968,IDA only,335760491.0
-IDX,1967,IDA only,326944419.0
-IDX,1966,IDA only,318467630.0
-IDX,1965,IDA only,310306249.0
-IDX,1964,IDA only,302362098.0
-IDX,1963,IDA only,294712879.0
-IDX,1962,IDA only,287350287.0
-IDX,1961,IDA only,280209628.0
-IDX,1960,IDA only,273335445.0
-IDA,2022,IDA total,
+IDX,2017,IDA only,1098416162.0
+IDX,2016,IDA only,1073442780.0
+IDX,2015,IDA only,1049402114.0
+IDX,2014,IDA only,1026805224.0
+IDX,2013,IDA only,1005080882.0
+IDX,2012,IDA only,983589911.0
+IDX,2011,IDA only,961612140.0
+IDX,2010,IDA only,939730969.0
+IDX,2009,IDA only,918527916.0
+IDX,2008,IDA only,898199432.0
+IDX,2007,IDA only,878188505.0
+IDX,2006,IDA only,857875888.0
+IDX,2005,IDA only,837717855.0
+IDX,2004,IDA only,818159682.0
+IDX,2003,IDA only,798891420.0
+IDX,2002,IDA only,779234829.0
+IDX,2001,IDA only,760135841.0
+IDX,2000,IDA only,742632467.0
+IDX,1999,IDA only,725601226.0
+IDX,1998,IDA only,708735506.0
+IDX,1997,IDA only,692329687.0
+IDX,1996,IDA only,676066268.0
+IDX,1995,IDA only,659768176.0
+IDX,1994,IDA only,643572966.0
+IDX,1993,IDA only,627217382.0
+IDX,1992,IDA only,610501924.0
+IDX,1991,IDA only,594934070.0
+IDX,1990,IDA only,580839235.0
+IDX,1989,IDA only,566800425.0
+IDX,1988,IDA only,552965450.0
+IDX,1987,IDA only,539531809.0
+IDX,1986,IDA only,526144768.0
+IDX,1985,IDA only,512976248.0
+IDX,1984,IDA only,499790540.0
+IDX,1983,IDA only,486705751.0
+IDX,1982,IDA only,473936564.0
+IDX,1981,IDA only,462246693.0
+IDX,1980,IDA only,451982661.0
+IDX,1979,IDA only,441440230.0
+IDX,1978,IDA only,430022867.0
+IDX,1977,IDA only,419152337.0
+IDX,1976,IDA only,409173986.0
+IDX,1975,IDA only,399483696.0
+IDX,1974,IDA only,389663013.0
+IDX,1973,IDA only,379779614.0
+IDX,1972,IDA only,370219688.0
+IDX,1971,IDA only,361723391.0
+IDX,1970,IDA only,353539882.0
+IDX,1969,IDA only,344654926.0
+IDX,1968,IDA only,335669699.0
+IDX,1967,IDA only,326857777.0
+IDX,1966,IDA only,318386686.0
+IDX,1965,IDA only,310230648.0
+IDX,1964,IDA only,302286207.0
+IDX,1963,IDA only,294632894.0
+IDX,1962,IDA only,287265174.0
+IDX,1961,IDA only,280120877.0
+IDX,1960,IDA only,273244840.0
+IDA,2022,IDA total,1839971350.0
 IDA,2021,IDA total,1800033438.0
 IDA,2020,IDA total,1760225807.0
 IDA,2019,IDA total,1721049412.0
 IDA,2018,IDA total,1683139540.0
-IDA,2017,IDA total,1646338310.0
-IDA,2016,IDA total,1610578698.0
-IDA,2015,IDA total,1576211302.0
-IDA,2014,IDA total,1543243851.0
-IDA,2013,IDA total,1510977484.0
-IDA,2012,IDA total,1478866286.0
-IDA,2011,IDA total,1446070791.0
-IDA,2010,IDA total,1412528660.0
-IDA,2009,IDA total,1379579100.0
-IDA,2008,IDA total,1348167242.0
-IDA,2007,IDA total,1317528650.0
-IDA,2006,IDA total,1286951931.0
-IDA,2005,IDA total,1256926808.0
-IDA,2004,IDA total,1227678727.0
-IDA,2003,IDA total,1198807769.0
-IDA,2002,IDA total,1169891038.0
-IDA,2001,IDA total,1141269915.0
-IDA,2000,IDA total,1113544424.0
-IDA,1999,IDA total,1086601858.0
-IDA,1998,IDA total,1060588995.0
-IDA,1997,IDA total,1035166158.0
-IDA,1996,IDA total,1009989851.0
-IDA,1995,IDA total,984829027.0
-IDA,1994,IDA total,960132520.0
-IDA,1993,IDA total,935549639.0
-IDA,1992,IDA total,911086253.0
-IDA,1991,IDA total,887767729.0
-IDA,1990,IDA total,865382740.0
-IDA,1989,IDA total,843133179.0
-IDA,1988,IDA total,821137957.0
-IDA,1987,IDA total,799614775.0
-IDA,1986,IDA total,778322249.0
-IDA,1985,IDA total,757452533.0
-IDA,1984,IDA total,736968680.0
-IDA,1983,IDA total,717124328.0
-IDA,1982,IDA total,697422885.0
-IDA,1981,IDA total,678294745.0
-IDA,1980,IDA total,660289435.0
-IDA,1979,IDA total,642586965.0
-IDA,1978,IDA total,625040483.0
-IDA,1977,IDA total,608407558.0
-IDA,1976,IDA total,592873214.0
-IDA,1975,IDA total,577878573.0
-IDA,1974,IDA total,563005544.0
-IDA,1973,IDA total,548355654.0
-IDA,1972,IDA total,534279438.0
-IDA,1971,IDA total,521549693.0
-IDA,1970,IDA total,509261341.0
-IDA,1969,IDA total,496291860.0
-IDA,1968,IDA total,483347971.0
-IDA,1967,IDA total,470713164.0
-IDA,1966,IDA total,458531925.0
-IDA,1965,IDA total,446758934.0
-IDA,1964,IDA total,435329944.0
-IDA,1963,IDA total,424333304.0
-IDA,1962,IDA total,413755087.0
-IDA,1961,IDA total,403550014.0
-IDA,1960,IDA total,393716205.0
-LTE,2022,Late-demographic dividend,
-LTE,2021,Late-demographic dividend,2321862159.0
-LTE,2020,Late-demographic dividend,2317277311.0
-LTE,2019,Late-demographic dividend,2309491520.0
-LTE,2018,Late-demographic dividend,2298987320.0
-LTE,2017,Late-demographic dividend,2286564636.0
-LTE,2016,Late-demographic dividend,2272117455.0
-LTE,2015,Late-demographic dividend,2258039271.0
-LTE,2014,Late-demographic dividend,2243581628.0
-LTE,2013,Late-demographic dividend,2227938007.0
-LTE,2012,Late-demographic dividend,2211789266.0
-LTE,2011,Late-demographic dividend,2196050826.0
-LTE,2010,Late-demographic dividend,2182361368.0
-LTE,2009,Late-demographic dividend,2169498384.0
-LTE,2008,Late-demographic dividend,2155744556.0
-LTE,2007,Late-demographic dividend,2141896101.0
-LTE,2006,Late-demographic dividend,2128345264.0
-LTE,2005,Late-demographic dividend,2114766197.0
-LTE,2004,Late-demographic dividend,2101307817.0
-LTE,2003,Late-demographic dividend,2088012323.0
-LTE,2002,Late-demographic dividend,2074533503.0
-LTE,2001,Late-demographic dividend,2060700691.0
-LTE,2000,Late-demographic dividend,2046027286.0
-LTE,1999,Late-demographic dividend,2030605673.0
-LTE,1998,Late-demographic dividend,2013535099.0
-LTE,1997,Late-demographic dividend,1995102217.0
-LTE,1996,Late-demographic dividend,1975900628.0
-LTE,1995,Late-demographic dividend,1956396680.0
-LTE,1994,Late-demographic dividend,1936480746.0
-LTE,1993,Late-demographic dividend,1915723002.0
-LTE,1992,Late-demographic dividend,1894466166.0
-LTE,1991,Late-demographic dividend,1871924955.0
-LTE,1990,Late-demographic dividend,1847943137.0
-LTE,1989,Late-demographic dividend,1822904646.0
-LTE,1988,Late-demographic dividend,1796296994.0
-LTE,1987,Late-demographic dividend,1768473684.0
-LTE,1986,Late-demographic dividend,1740788890.0
-LTE,1985,Late-demographic dividend,1714565108.0
-LTE,1984,Late-demographic dividend,1689846932.0
-LTE,1983,Late-demographic dividend,1665839893.0
-LTE,1982,Late-demographic dividend,1640955937.0
-LTE,1981,Late-demographic dividend,1616030908.0
-LTE,1980,Late-demographic dividend,1593191224.0
-LTE,1979,Late-demographic dividend,1571028639.0
-LTE,1978,Late-demographic dividend,1548756457.0
-LTE,1977,Late-demographic dividend,1526481327.0
-LTE,1976,Late-demographic dividend,1503611831.0
-LTE,1975,Late-demographic dividend,1479365335.0
-LTE,1974,Late-demographic dividend,1454048305.0
-LTE,1973,Late-demographic dividend,1426541449.0
-LTE,1972,Late-demographic dividend,1397610263.0
-LTE,1971,Late-demographic dividend,1367752613.0
-LTE,1970,Late-demographic dividend,1336249906.0
-LTE,1969,Late-demographic dividend,1305331479.0
-LTE,1968,Late-demographic dividend,1275121742.0
-LTE,1967,Late-demographic dividend,1246377749.0
-LTE,1966,Late-demographic dividend,1218400606.0
-LTE,1965,Late-demographic dividend,1189561377.0
-LTE,1964,Late-demographic dividend,1163452598.0
-LTE,1963,Late-demographic dividend,1138051532.0
-LTE,1962,Late-demographic dividend,1112228010.0
-LTE,1961,Late-demographic dividend,1097817736.0
-LTE,1960,Late-demographic dividend,1095639330.0
-LCN,2022,Latin America & Caribbean,
-LCN,2021,Latin America & Caribbean,654981699.0
-LCN,2020,Latin America & Caribbean,650534967.0
+IDA,2017,IDA total,1646401123.0
+IDA,2016,IDA total,1610801192.0
+IDA,2015,IDA total,1576577999.0
+IDA,2014,IDA total,1543705308.0
+IDA,2013,IDA total,1511524240.0
+IDA,2012,IDA total,1479458433.0
+IDA,2011,IDA total,1446532038.0
+IDA,2010,IDA total,1412935479.0
+IDA,2009,IDA total,1379938069.0
+IDA,2008,IDA total,1348468901.0
+IDA,2007,IDA total,1317765261.0
+IDA,2006,IDA total,1287126660.0
+IDA,2005,IDA total,1257055686.0
+IDA,2004,IDA total,1227782005.0
+IDA,2003,IDA total,1198886913.0
+IDA,2002,IDA total,1169939269.0
+IDA,2001,IDA total,1141278463.0
+IDA,2000,IDA total,1113543189.0
+IDA,1999,IDA total,1086608976.0
+IDA,1998,IDA total,1060585198.0
+IDA,1997,IDA total,1035144384.0
+IDA,1996,IDA total,1009945067.0
+IDA,1995,IDA total,984763682.0
+IDA,1994,IDA total,960049790.0
+IDA,1993,IDA total,935450423.0
+IDA,1992,IDA total,910973883.0
+IDA,1991,IDA total,887648593.0
+IDA,1990,IDA total,865261065.0
+IDA,1989,IDA total,843017002.0
+IDA,1988,IDA total,821033507.0
+IDA,1987,IDA total,799517958.0
+IDA,1986,IDA total,778231383.0
+IDA,1985,IDA total,757368589.0
+IDA,1984,IDA total,736892756.0
+IDA,1983,IDA total,717058129.0
+IDA,1982,IDA total,697360428.0
+IDA,1981,IDA total,678220841.0
+IDA,1980,IDA total,660197240.0
+IDA,1979,IDA total,642478486.0
+IDA,1978,IDA total,624921608.0
+IDA,1977,IDA total,608293115.0
+IDA,1976,IDA total,592770490.0
+IDA,1975,IDA total,577786305.0
+IDA,1974,IDA total,562921889.0
+IDA,1973,IDA total,548273358.0
+IDA,1972,IDA total,534191661.0
+IDA,1971,IDA total,521456513.0
+IDA,1970,IDA total,509164374.0
+IDA,1969,IDA total,496196119.0
+IDA,1968,IDA total,483257179.0
+IDA,1967,IDA total,470626522.0
+IDA,1966,IDA total,458450981.0
+IDA,1965,IDA total,446683333.0
+IDA,1964,IDA total,435254053.0
+IDA,1963,IDA total,424253319.0
+IDA,1962,IDA total,413669974.0
+IDA,1961,IDA total,403461263.0
+IDA,1960,IDA total,393625600.0
+LTE,2022,Late-demographic dividend,2325466354.0
+LTE,2021,Late-demographic dividend,2321865172.0
+LTE,2020,Late-demographic dividend,2317278934.0
+LTE,2019,Late-demographic dividend,2309491804.0
+LTE,2018,Late-demographic dividend,2298987594.0
+LTE,2017,Late-demographic dividend,2286627723.0
+LTE,2016,Late-demographic dividend,2272340223.0
+LTE,2015,Late-demographic dividend,2258406242.0
+LTE,2014,Late-demographic dividend,2244043359.0
+LTE,2013,Late-demographic dividend,2228485037.0
+LTE,2012,Late-demographic dividend,2212381413.0
+LTE,2011,Late-demographic dividend,2196512073.0
+LTE,2010,Late-demographic dividend,2182768187.0
+LTE,2009,Late-demographic dividend,2169857353.0
+LTE,2008,Late-demographic dividend,2156046215.0
+LTE,2007,Late-demographic dividend,2142132712.0
+LTE,2006,Late-demographic dividend,2128519993.0
+LTE,2005,Late-demographic dividend,2114895075.0
+LTE,2004,Late-demographic dividend,2101411095.0
+LTE,2003,Late-demographic dividend,2088091467.0
+LTE,2002,Late-demographic dividend,2074581734.0
+LTE,2001,Late-demographic dividend,2060709239.0
+LTE,2000,Late-demographic dividend,2046026051.0
+LTE,1999,Late-demographic dividend,2030612791.0
+LTE,1998,Late-demographic dividend,2013531302.0
+LTE,1997,Late-demographic dividend,1995080443.0
+LTE,1996,Late-demographic dividend,1975855844.0
+LTE,1995,Late-demographic dividend,1956331335.0
+LTE,1994,Late-demographic dividend,1936398016.0
+LTE,1993,Late-demographic dividend,1915623786.0
+LTE,1992,Late-demographic dividend,1894353796.0
+LTE,1991,Late-demographic dividend,1871805819.0
+LTE,1990,Late-demographic dividend,1847821462.0
+LTE,1989,Late-demographic dividend,1822788469.0
+LTE,1988,Late-demographic dividend,1796192544.0
+LTE,1987,Late-demographic dividend,1768376867.0
+LTE,1986,Late-demographic dividend,1740698024.0
+LTE,1985,Late-demographic dividend,1714481164.0
+LTE,1984,Late-demographic dividend,1689771008.0
+LTE,1983,Late-demographic dividend,1665773694.0
+LTE,1982,Late-demographic dividend,1640893480.0
+LTE,1981,Late-demographic dividend,1615957004.0
+LTE,1980,Late-demographic dividend,1593099029.0
+LTE,1979,Late-demographic dividend,1570920160.0
+LTE,1978,Late-demographic dividend,1548637582.0
+LTE,1977,Late-demographic dividend,1526366884.0
+LTE,1976,Late-demographic dividend,1503509107.0
+LTE,1975,Late-demographic dividend,1479273067.0
+LTE,1974,Late-demographic dividend,1453964650.0
+LTE,1973,Late-demographic dividend,1426459153.0
+LTE,1972,Late-demographic dividend,1397522486.0
+LTE,1971,Late-demographic dividend,1367659433.0
+LTE,1970,Late-demographic dividend,1336152939.0
+LTE,1969,Late-demographic dividend,1305235738.0
+LTE,1968,Late-demographic dividend,1275030950.0
+LTE,1967,Late-demographic dividend,1246291107.0
+LTE,1966,Late-demographic dividend,1218319662.0
+LTE,1965,Late-demographic dividend,1189485776.0
+LTE,1964,Late-demographic dividend,1163376707.0
+LTE,1963,Late-demographic dividend,1137971547.0
+LTE,1962,Late-demographic dividend,1112142897.0
+LTE,1961,Late-demographic dividend,1097728985.0
+LTE,1960,Late-demographic dividend,1095548725.0
+LCN,2022,Latin America & Caribbean,659311105.0
+LCN,2021,Latin America & Caribbean,654980808.0
+LCN,2020,Latin America & Caribbean,650534986.0
 LCN,2019,Latin America & Caribbean,645295804.0
 LCN,2018,Latin America & Caribbean,639628226.0
 LCN,2017,Latin America & Caribbean,633797190.0
@@ -1511,70 +1511,70 @@ LCN,1963,Latin America & Caribbean,238127927.0
 LCN,1962,Latin America & Caribbean,231638540.0
 LCN,1961,Latin America & Caribbean,225304612.0
 LCN,1960,Latin America & Caribbean,219142626.0
-LAC,2022,Latin America & Caribbean (excluding high income),
-LAC,2021,Latin America & Caribbean (excluding high income),593308001.0
-LAC,2020,Latin America & Caribbean (excluding high income),588808380.0
-LAC,2019,Latin America & Caribbean (excluding high income),583500375.0
-LAC,2018,Latin America & Caribbean (excluding high income),577406030.0
-LAC,2017,Latin America & Caribbean (excluding high income),571144463.0
-LAC,2016,Latin America & Caribbean (excluding high income),565136972.0
-LAC,2015,Latin America & Caribbean (excluding high income),559317823.0
-LAC,2014,Latin America & Caribbean (excluding high income),553532904.0
-LAC,2013,Latin America & Caribbean (excluding high income),547701523.0
-LAC,2012,Latin America & Caribbean (excluding high income),541792264.0
-LAC,2011,Latin America & Caribbean (excluding high income),535759003.0
-LAC,2010,Latin America & Caribbean (excluding high income),529726237.0
-LAC,2009,Latin America & Caribbean (excluding high income),524224926.0
-LAC,2008,Latin America & Caribbean (excluding high income),518513539.0
-LAC,2007,Latin America & Caribbean (excluding high income),512746342.0
-LAC,2006,Latin America & Caribbean (excluding high income),506853151.0
-LAC,2005,Latin America & Caribbean (excluding high income),500836315.0
-LAC,2004,Latin America & Caribbean (excluding high income),494678215.0
-LAC,2003,Latin America & Caribbean (excluding high income),488449381.0
-LAC,2002,Latin America & Caribbean (excluding high income),482114041.0
-LAC,2001,Latin America & Caribbean (excluding high income),475577026.0
-LAC,2000,Latin America & Caribbean (excluding high income),468884433.0
-LAC,1999,Latin America & Caribbean (excluding high income),462047783.0
-LAC,1998,Latin America & Caribbean (excluding high income),455091659.0
-LAC,1997,Latin America & Caribbean (excluding high income),448045251.0
-LAC,1996,Latin America & Caribbean (excluding high income),440936764.0
-LAC,1995,Latin America & Caribbean (excluding high income),433762497.0
-LAC,1994,Latin America & Caribbean (excluding high income),426489693.0
-LAC,1993,Latin America & Caribbean (excluding high income),419178516.0
-LAC,1992,Latin America & Caribbean (excluding high income),411860418.0
-LAC,1991,Latin America & Caribbean (excluding high income),404512699.0
-LAC,1990,Latin America & Caribbean (excluding high income),397075672.0
-LAC,1989,Latin America & Caribbean (excluding high income),389686584.0
-LAC,1988,Latin America & Caribbean (excluding high income),382421060.0
-LAC,1987,Latin America & Caribbean (excluding high income),375167660.0
-LAC,1986,Latin America & Caribbean (excluding high income),367950983.0
-LAC,1985,Latin America & Caribbean (excluding high income),360717106.0
-LAC,1984,Latin America & Caribbean (excluding high income),353445326.0
-LAC,1983,Latin America & Caribbean (excluding high income),346145741.0
-LAC,1982,Latin America & Caribbean (excluding high income),338875311.0
-LAC,1981,Latin America & Caribbean (excluding high income),331730640.0
-LAC,1980,Latin America & Caribbean (excluding high income),324575237.0
-LAC,1979,Latin America & Caribbean (excluding high income),317287027.0
-LAC,1978,Latin America & Caribbean (excluding high income),309989301.0
-LAC,1977,Latin America & Caribbean (excluding high income),302771620.0
-LAC,1976,Latin America & Caribbean (excluding high income),295738054.0
-LAC,1975,Latin America & Caribbean (excluding high income),288871034.0
-LAC,1974,Latin America & Caribbean (excluding high income),282072456.0
-LAC,1973,Latin America & Caribbean (excluding high income),275343929.0
-LAC,1972,Latin America & Caribbean (excluding high income),268709154.0
-LAC,1971,Latin America & Caribbean (excluding high income),262183334.0
-LAC,1970,Latin America & Caribbean (excluding high income),255754540.0
-LAC,1969,Latin America & Caribbean (excluding high income),249397365.0
-LAC,1968,Latin America & Caribbean (excluding high income),243098703.0
-LAC,1967,Latin America & Caribbean (excluding high income),236851700.0
-LAC,1966,Latin America & Caribbean (excluding high income),230651625.0
-LAC,1965,Latin America & Caribbean (excluding high income),224497888.0
-LAC,1964,Latin America & Caribbean (excluding high income),218403471.0
-LAC,1963,Latin America & Caribbean (excluding high income),212414216.0
-LAC,1962,Latin America & Caribbean (excluding high income),206554232.0
-LAC,1961,Latin America & Caribbean (excluding high income),200839312.0
-LAC,1960,Latin America & Caribbean (excluding high income),195283102.0
-TLA,2022,Latin America & the Caribbean (IDA & IBRD countries),
+LAC,2022,Latin America & Caribbean (excluding high income),596596955.0
+LAC,2021,Latin America & Caribbean (excluding high income),592503434.0
+LAC,2020,Latin America & Caribbean (excluding high income),588011178.0
+LAC,2019,Latin America & Caribbean (excluding high income),582701622.0
+LAC,2018,Latin America & Caribbean (excluding high income),576620516.0
+LAC,2017,Latin America & Caribbean (excluding high income),570381211.0
+LAC,2016,Latin America & Caribbean (excluding high income),564377885.0
+LAC,2015,Latin America & Caribbean (excluding high income),558562792.0
+LAC,2014,Latin America & Caribbean (excluding high income),552781789.0
+LAC,2013,Latin America & Caribbean (excluding high income),546954103.0
+LAC,2012,Latin America & Caribbean (excluding high income),541048298.0
+LAC,2011,Latin America & Caribbean (excluding high income),535014773.0
+LAC,2010,Latin America & Caribbean (excluding high income),528978305.0
+LAC,2009,Latin America & Caribbean (excluding high income),523473668.0
+LAC,2008,Latin America & Caribbean (excluding high income),517759389.0
+LAC,2007,Latin America & Caribbean (excluding high income),511989821.0
+LAC,2006,Latin America & Caribbean (excluding high income),506094784.0
+LAC,2005,Latin America & Caribbean (excluding high income),500076606.0
+LAC,2004,Latin America & Caribbean (excluding high income),493917791.0
+LAC,2003,Latin America & Caribbean (excluding high income),487688819.0
+LAC,2002,Latin America & Caribbean (excluding high income),481353718.0
+LAC,2001,Latin America & Caribbean (excluding high income),474817217.0
+LAC,2000,Latin America & Caribbean (excluding high income),468125382.0
+LAC,1999,Latin America & Caribbean (excluding high income),461289769.0
+LAC,1998,Latin America & Caribbean (excluding high income),454334962.0
+LAC,1997,Latin America & Caribbean (excluding high income),447290040.0
+LAC,1996,Latin America & Caribbean (excluding high income),440183193.0
+LAC,1995,Latin America & Caribbean (excluding high income),433010808.0
+LAC,1994,Latin America & Caribbean (excluding high income),425740147.0
+LAC,1993,Latin America & Caribbean (excluding high income),418431327.0
+LAC,1992,Latin America & Caribbean (excluding high income),411115420.0
+LAC,1991,Latin America & Caribbean (excluding high income),403768603.0
+LAC,1990,Latin America & Caribbean (excluding high income),396328556.0
+LAC,1989,Latin America & Caribbean (excluding high income),388933687.0
+LAC,1988,Latin America & Caribbean (excluding high income),381662610.0
+LAC,1987,Latin America & Caribbean (excluding high income),374403954.0
+LAC,1986,Latin America & Caribbean (excluding high income),367182475.0
+LAC,1985,Latin America & Caribbean (excluding high income),359944435.0
+LAC,1984,Latin America & Caribbean (excluding high income),352669319.0
+LAC,1983,Latin America & Caribbean (excluding high income),345367369.0
+LAC,1982,Latin America & Caribbean (excluding high income),338095672.0
+LAC,1981,Latin America & Caribbean (excluding high income),330950954.0
+LAC,1980,Latin America & Caribbean (excluding high income),323797061.0
+LAC,1979,Latin America & Caribbean (excluding high income),316512545.0
+LAC,1978,Latin America & Caribbean (excluding high income),309220692.0
+LAC,1977,Latin America & Caribbean (excluding high income),302010242.0
+LAC,1976,Latin America & Caribbean (excluding high income),294984501.0
+LAC,1975,Latin America & Caribbean (excluding high income),288125444.0
+LAC,1974,Latin America & Caribbean (excluding high income),281334755.0
+LAC,1973,Latin America & Caribbean (excluding high income),274614064.0
+LAC,1972,Latin America & Caribbean (excluding high income),267987160.0
+LAC,1971,Latin America & Caribbean (excluding high income),261469430.0
+LAC,1970,Latin America & Caribbean (excluding high income),255049279.0
+LAC,1969,Latin America & Caribbean (excluding high income),248701446.0
+LAC,1968,Latin America & Caribbean (excluding high income),242412816.0
+LAC,1967,Latin America & Caribbean (excluding high income),236176636.0
+LAC,1966,Latin America & Caribbean (excluding high income),229988384.0
+LAC,1965,Latin America & Caribbean (excluding high income),223847681.0
+LAC,1964,Latin America & Caribbean (excluding high income),217767514.0
+LAC,1963,Latin America & Caribbean (excluding high income),211793513.0
+LAC,1962,Latin America & Caribbean (excluding high income),205949399.0
+LAC,1961,Latin America & Caribbean (excluding high income),200250715.0
+LAC,1960,Latin America & Caribbean (excluding high income),194711112.0
+TLA,2022,Latin America & the Caribbean (IDA & IBRD countries),643602758.0
 TLA,2021,Latin America & the Caribbean (IDA & IBRD countries),639188695.0
 TLA,2020,Latin America & the Caribbean (IDA & IBRD countries),634680385.0
 TLA,2019,Latin America & the Caribbean (IDA & IBRD countries),629515571.0
@@ -1637,7 +1637,7 @@ TLA,1963,Latin America & the Caribbean (IDA & IBRD countries),227259853.0
 TLA,1962,Latin America & the Caribbean (IDA & IBRD countries),221002830.0
 TLA,1961,Latin America & the Caribbean (IDA & IBRD countries),214886940.0
 TLA,1960,Latin America & the Caribbean (IDA & IBRD countries),208929539.0
-LDC,2022,Least developed countries: UN classification,
+LDC,2022,Least developed countries: UN classification,1125179454.0
 LDC,2021,Least developed countries: UN classification,1099568566.0
 LDC,2020,Least developed countries: UN classification,1073743450.0
 LDC,2019,Least developed countries: UN classification,1048193552.0
@@ -1700,197 +1700,197 @@ LDC,1963,Least developed countries: UN classification,262462495.0
 LDC,1962,Least developed countries: UN classification,256085777.0
 LDC,1961,Least developed countries: UN classification,249896083.0
 LDC,1960,Least developed countries: UN classification,243968890.0
-LMY,2022,Low & middle income,
-LMY,2021,Low & middle income,6619578961.0
-LMY,2020,Low & middle income,6551590116.0
-LMY,2019,Low & middle income,6477841008.0
-LMY,2018,Low & middle income,6401272453.0
-LMY,2017,Low & middle income,6322861019.0
-LMY,2016,Low & middle income,6242647248.0
-LMY,2015,Low & middle income,6162743397.0
-LMY,2014,Low & middle income,6082432550.0
-LMY,2013,Low & middle income,6001328521.0
-LMY,2012,Low & middle income,5920180850.0
-LMY,2011,Low & middle income,5839761629.0
-LMY,2010,Low & middle income,5761260544.0
-LMY,2009,Low & middle income,5684902603.0
-LMY,2008,Low & middle income,5609875336.0
-LMY,2007,Low & middle income,5536137785.0
-LMY,2006,Low & middle income,5463138510.0
-LMY,2005,Low & middle income,5389738377.0
-LMY,2004,Low & middle income,5315840366.0
-LMY,2003,Low & middle income,5241904688.0
-LMY,2002,Low & middle income,5167898454.0
-LMY,2001,Low & middle income,5093407382.0
-LMY,2000,Low & middle income,5018572610.0
-LMY,1999,Low & middle income,4943693250.0
-LMY,1998,Low & middle income,4868438618.0
-LMY,1997,Low & middle income,4792182844.0
-LMY,1996,Low & middle income,4715310660.0
-LMY,1995,Low & middle income,4638198171.0
-LMY,1994,Low & middle income,4561141517.0
-LMY,1993,Low & middle income,4483721894.0
-LMY,1992,Low & middle income,4405894460.0
-LMY,1991,Low & middle income,4327347752.0
-LMY,1990,Low & middle income,4247060780.0
-LMY,1989,Low & middle income,4164071609.0
-LMY,1988,Low & middle income,4082837542.0
-LMY,1987,Low & middle income,4001193677.0
-LMY,1986,Low & middle income,3920171832.0
-LMY,1985,Low & middle income,3841346502.0
-LMY,1984,Low & middle income,3764793089.0
-LMY,1983,Low & middle income,3689839948.0
-LMY,1982,Low & middle income,3614873999.0
-LMY,1981,Low & middle income,3540821585.0
-LMY,1980,Low & middle income,3470432143.0
-LMY,1979,Low & middle income,3402052538.0
-LMY,1978,Low & middle income,3334583209.0
-LMY,1977,Low & middle income,3268789968.0
-LMY,1976,Low & middle income,3204143618.0
-LMY,1975,Low & middle income,3139253601.0
-LMY,1974,Low & middle income,3073876678.0
-LMY,1973,Low & middle income,3006966199.0
-LMY,1972,Low & middle income,2939682552.0
-LMY,1971,Low & middle income,2873430546.0
-LMY,1970,Low & middle income,2806401853.0
-LMY,1969,Low & middle income,2739797605.0
-LMY,1968,Low & middle income,2674469106.0
-LMY,1967,Low & middle income,2611645433.0
-LMY,1966,Low & middle income,2550817246.0
-LMY,1965,Low & middle income,2489968128.0
-LMY,1964,Low & middle income,2432089033.0
-LMY,1963,Low & middle income,2375259912.0
-LMY,1962,Low & middle income,2318883865.0
-LMY,1961,Low & middle income,2274747879.0
-LMY,1960,Low & middle income,2243861384.0
-,2022,Low income,
-,2021,Low income,709088502.0
-,2020,Low income,690348650.0
-,2019,Low income,671675339.0
-,2018,Low income,653548434.0
-,2017,Low income,636002040.0
-,2016,Low income,618808132.0
-,2015,Low income,602130624.0
-,2014,Low income,585901331.0
-,2013,Low income,569757928.0
-,2012,Low income,553997264.0
-,2011,Low income,538619560.0
-,2010,Low income,523747422.0
-,2009,Low income,509339714.0
-,2008,Low income,495098463.0
-,2007,Low income,481667546.0
-,2006,Low income,468681735.0
-,2005,Low income,455590761.0
-,2004,Low income,443088256.0
-,2003,Low income,430915610.0
-,2002,Low income,418419495.0
-,2001,Low income,406599044.0
-,2000,Low income,396321175.0
-,1999,Low income,386290777.0
-,1998,Low income,376101321.0
-,1997,Low income,366352991.0
-,1996,Low income,356579515.0
-,1995,Low income,346654495.0
-,1994,Low income,337343654.0
-,1993,Low income,328266121.0
-,1992,Low income,318588712.0
-,1991,Low income,309562025.0
-,1990,Low income,302022411.0
-,1989,Low income,294664183.0
-,1988,Low income,287310512.0
-,1987,Low income,280281441.0
-,1986,Low income,273302851.0
-,1985,Low income,266541690.0
-,1984,Low income,259755601.0
-,1983,Low income,253129574.0
-,1982,Low income,246723804.0
-,1981,Low income,241102639.0
-,1980,Low income,236415631.0
-,1979,Low income,231243732.0
-,1978,Low income,225262794.0
-,1977,Low income,219561732.0
-,1976,Low income,214265228.0
-,1975,Low income,208894549.0
-,1974,Low income,203610185.0
-,1973,Low income,198443563.0
-,1972,Low income,193521882.0
-,1971,Low income,188742129.0
-,1970,Low income,183966629.0
-,1969,Low income,179269177.0
-,1968,Low income,174672012.0
-,1967,Low income,170169023.0
-,1966,Low income,165870652.0
-,1965,Low income,161770702.0
-,1964,Low income,157784485.0
-,1963,Low income,153963076.0
-,1962,Low income,150315566.0
-,1961,Low income,146800734.0
-,1960,Low income,143421125.0
-,2022,Lower middle income,
-,2021,Lower middle income,3398187527.0
-,2020,Lower middle income,3357118135.0
-,2019,Lower middle income,3313903477.0
-,2018,Lower middle income,3270214763.0
-,2017,Lower middle income,3225575822.0
-,2016,Lower middle income,3180221060.0
-,2015,Lower middle income,3134736445.0
-,2014,Lower middle income,3089095464.0
-,2013,Lower middle income,3042938624.0
-,2012,Lower middle income,2996702087.0
-,2011,Lower middle income,2950807764.0
-,2010,Lower middle income,2904506894.0
-,2009,Lower middle income,2858820038.0
-,2008,Lower middle income,2814667244.0
-,2007,Lower middle income,2770966712.0
-,2006,Lower middle income,2727263371.0
-,2005,Lower middle income,2683610483.0
-,2004,Lower middle income,2639297493.0
-,2003,Lower middle income,2594524373.0
-,2002,Lower middle income,2550242901.0
-,2001,Lower middle income,2505434958.0
-,2000,Lower middle income,2459549814.0
-,1999,Lower middle income,2414211939.0
-,1998,Lower middle income,2369629151.0
-,1997,Lower middle income,2325018791.0
-,1996,Lower middle income,2280816181.0
-,1995,Lower middle income,2236944577.0
-,1994,Lower middle income,2192932932.0
-,1993,Lower middle income,2149315809.0
-,1992,Lower middle income,2105910215.0
-,1991,Lower middle income,2061851931.0
-,1990,Lower middle income,2016581827.0
-,1989,Lower middle income,1969449405.0
-,1988,Lower middle income,1925160444.0
-,1987,Lower middle income,1881282598.0
-,1986,Lower middle income,1837720345.0
-,1985,Lower middle income,1794460935.0
-,1984,Lower middle income,1751864355.0
-,1983,Lower middle income,1710040416.0
-,1982,Lower middle income,1668725999.0
-,1981,Lower middle income,1627293257.0
-,1980,Lower middle income,1586297948.0
-,1979,Lower middle income,1547533078.0
-,1978,Lower middle income,1511268827.0
-,1977,Lower middle income,1476181007.0
-,1976,Lower middle income,1441553459.0
-,1975,Lower middle income,1407929201.0
-,1974,Lower middle income,1375210143.0
-,1973,Lower middle income,1343159962.0
-,1972,Lower middle income,1311855026.0
-,1971,Lower middle income,1282267001.0
-,1970,Lower middle income,1253637563.0
-,1969,Lower middle income,1224791091.0
-,1968,Lower middle income,1196324321.0
-,1967,Lower middle income,1168662089.0
-,1966,Lower middle income,1141895029.0
-,1965,Lower middle income,1115860345.0
-,1964,Lower middle income,1089851238.0
-,1963,Lower middle income,1063811983.0
-,1962,Lower middle income,1038393433.0
-,1961,Lower middle income,1013695846.0
-,1960,Lower middle income,989601453.0
-MEA,2022,Middle East & North Africa,
-MEA,2021,Middle East & North Africa,486167363.0
+LMY,2022,Low & middle income,6677948824.0
+LMY,2021,Low & middle income,6618691904.0
+LMY,2020,Low & middle income,6550746999.0
+LMY,2019,Low & middle income,6476995208.0
+LMY,2018,Low & middle income,6400438789.0
+LMY,2017,Low & middle income,6322111391.0
+LMY,2016,Low & middle income,6242060481.0
+LMY,2015,Low & middle income,6162303969.0
+LMY,2014,Low & middle income,6082090949.0
+LMY,2013,Low & middle income,6001075136.0
+LMY,2012,Low & middle income,5919975340.0
+LMY,2011,Low & middle income,5839424336.0
+LMY,2010,Low & middle income,5760864582.0
+LMY,2009,Low & middle income,5684454948.0
+LMY,2008,Low & middle income,5609366954.0
+LMY,2007,Low & middle income,5535561492.0
+LMY,2006,Low & middle income,5462498035.0
+LMY,2005,Low & middle income,5389050292.0
+LMY,2004,Low & middle income,5315125594.0
+LMY,2003,Low & middle income,5241165329.0
+LMY,2002,Low & middle income,5167128185.0
+LMY,2001,Low & middle income,5092597797.0
+LMY,2000,Low & middle income,5017754094.0
+LMY,1999,Low & middle income,4942884760.0
+LMY,1998,Low & middle income,4867621521.0
+LMY,1997,Low & middle income,4791350281.0
+LMY,1996,Low & middle income,4714457805.0
+LMY,1995,Low & middle income,4637327736.0
+LMY,1994,Low & middle income,4560256953.0
+LMY,1993,Low & middle income,4482824315.0
+LMY,1992,Low & middle income,4404987014.0
+LMY,1991,Low & middle income,4326435528.0
+LMY,1990,Low & middle income,4246144171.0
+LMY,1989,Low & middle income,4163156247.0
+LMY,1988,Low & middle income,4081930110.0
+LMY,1987,Low & middle income,4000290312.0
+LMY,1986,Low & middle income,3919271237.0
+LMY,1985,Low & middle income,3840450224.0
+LMY,1984,Low & middle income,3763902990.0
+LMY,1983,Low & middle income,3688958642.0
+LMY,1982,Low & middle income,3613996536.0
+LMY,1981,Low & middle income,3539933936.0
+LMY,1980,Low & middle income,3469528886.0
+LMY,1979,Low & middle income,3401137532.0
+LMY,1978,Low & middle income,3333664297.0
+LMY,1977,Low & middle income,3267883331.0
+LMY,1976,Low & middle income,3203257143.0
+LMY,1975,Low & middle income,3138386170.0
+LMY,1974,Low & middle income,3073026310.0
+LMY,1973,Low & middle income,3006125509.0
+LMY,1972,Low & middle income,2938844718.0
+LMY,1971,Low & middle income,2872595869.0
+LMY,1970,Low & middle income,2805572550.0
+LMY,1969,Low & middle income,2738979549.0
+LMY,1968,Low & middle income,2673666819.0
+LMY,1967,Low & middle income,2610858879.0
+LMY,1966,Low & middle income,2550048939.0
+LMY,1965,Low & middle income,2489218929.0
+LMY,1964,Low & middle income,2431354529.0
+LMY,1963,Low & middle income,2374537275.0
+LMY,1962,Low & middle income,2318172647.0
+LMY,1961,Low & middle income,2274049905.0
+LMY,1960,Low & middle income,2243178704.0
+,2022,Low income,703727949.0
+,2021,Low income,685250041.0
+,2020,Low income,667053670.0
+,2019,Low income,648755452.0
+,2018,Low income,630865826.0
+,2017,Low income,613946858.0
+,2016,Low income,597683499.0
+,2015,Low income,582173028.0
+,2014,Low income,567702296.0
+,2013,Low income,553835758.0
+,2012,Low income,540002626.0
+,2011,Low income,525506329.0
+,2010,Low income,510897321.0
+,2009,Low income,496609143.0
+,2008,Low income,482640782.0
+,2007,Low income,469010772.0
+,2006,Low income,455313027.0
+,2005,Low income,441886612.0
+,2004,Low income,429354375.0
+,2003,Low income,417212831.0
+,2002,Low income,404771898.0
+,2001,Low income,392924294.0
+,2000,Low income,382593480.0
+,1999,Low income,372579993.0
+,1998,Low income,362458276.0
+,1997,Low income,352755561.0
+,1996,Low income,343031111.0
+,1995,Low income,333181004.0
+,1994,Low income,323847963.0
+,1993,Low income,314673487.0
+,1992,Low income,304997572.0
+,1991,Low income,296103521.0
+,1990,Low income,288759638.0
+,1989,Low income,281571278.0
+,1988,Low income,274348618.0
+,1987,Low income,267469591.0
+,1986,Low income,260658473.0
+,1985,Low income,254069015.0
+,1984,Low income,247448306.0
+,1983,Low income,240996976.0
+,1982,Low income,234808317.0
+,1981,Low income,229413733.0
+,1980,Low income,225097677.0
+,1979,Low income,220230887.0
+,1978,Low income,214272852.0
+,1977,Low income,208592240.0
+,1976,Low income,203399737.0
+,1975,Low income,198178476.0
+,1974,Low income,193061843.0
+,1973,Low income,188076728.0
+,1972,Low income,183334870.0
+,1971,Low income,178729317.0
+,1970,Low income,174131565.0
+,1969,Low income,169632655.0
+,1968,Low income,165256142.0
+,1967,Low income,160978695.0
+,1966,Low income,156903784.0
+,1965,Low income,153026043.0
+,1964,Low income,149260915.0
+,1963,Low income,145659986.0
+,1962,Low income,142232863.0
+,1961,Low income,138934269.0
+,1960,Low income,135762574.0
+,2022,Lower middle income,3190012599.0
+,2021,Lower middle income,3157350729.0
+,2020,Lower middle income,3117225754.0
+,2019,Lower middle income,3075311775.0
+,2018,Lower middle income,3033153113.0
+,2017,Lower middle income,2990172548.0
+,2016,Lower middle income,2946639176.0
+,2015,Lower middle income,2902878488.0
+,2014,Lower middle income,2858673420.0
+,2013,Lower middle income,2813932332.0
+,2012,Lower middle income,2769675465.0
+,2011,Lower middle income,2726052485.0
+,2010,Lower middle income,2681991417.0
+,2009,Lower middle income,2638537324.0
+,2008,Lower middle income,2596637908.0
+,2007,Lower middle income,2555229019.0
+,2006,Lower middle income,2513577643.0
+,2005,Lower middle income,2471959522.0
+,2004,Lower middle income,2429871397.0
+,2003,Lower middle income,2387347922.0
+,2002,Lower middle income,2345451008.0
+,2001,Lower middle income,2303146181.0
+,2000,Lower middle income,2259879800.0
+,1999,Lower middle income,2217196774.0
+,1998,Lower middle income,2175317595.0
+,1997,Lower middle income,2133529481.0
+,1996,Lower middle income,2092206279.0
+,1995,Lower middle income,2051126886.0
+,1994,Lower middle income,2009876827.0
+,1993,Lower middle income,1968978416.0
+,1992,Lower middle income,1928297051.0
+,1991,Lower middle income,1887004231.0
+,1990,Lower middle income,1844475984.0
+,1989,Lower middle income,1802051624.0
+,1988,Lower middle income,1760619584.0
+,1987,Lower middle income,1719627844.0
+,1986,Lower middle income,1678965564.0
+,1985,Lower middle income,1638678142.0
+,1984,Lower middle income,1599194345.0
+,1983,Lower middle income,1560582055.0
+,1982,Lower middle income,1522502878.0
+,1981,Lower middle income,1484255406.0
+,1980,Lower middle income,1446429615.0
+,1979,Lower middle income,1410875210.0
+,1978,Lower middle income,1377817851.0
+,1977,Lower middle income,1345917410.0
+,1976,Lower middle income,1314446376.0
+,1975,Lower middle income,1283952858.0
+,1974,Lower middle income,1254330938.0
+,1973,Lower middle income,1225343879.0
+,1972,Lower middle income,1197065575.0
+,1971,Lower middle income,1170453002.0
+,1970,Lower middle income,1144754531.0
+,1969,Lower middle income,1118785775.0
+,1968,Lower middle income,1093114705.0
+,1967,Lower middle income,1068117815.0
+,1966,Lower middle income,1043853774.0
+,1965,Lower middle income,1020043942.0
+,1964,Lower middle income,996352837.0
+,1963,Lower middle income,972872519.0
+,1962,Lower middle income,949925376.0
+,1961,Lower middle income,927621191.0
+,1960,Lower middle income,905832820.0
+MEA,2022,Middle East & North Africa,493264873.0
+MEA,2021,Middle East & North Africa,486168063.0
 MEA,2020,Middle East & North Africa,479966649.0
 MEA,2019,Middle East & North Africa,473201775.0
 MEA,2018,Middle East & North Africa,465073490.0
@@ -1952,7 +1952,7 @@ MEA,1963,Middle East & North Africa,113518054.0
 MEA,1962,Middle East & North Africa,110538003.0
 MEA,1961,Middle East & North Africa,107670788.0
 MEA,1960,Middle East & North Africa,104958259.0
-MNA,2022,Middle East & North Africa (excluding high income),
+MNA,2022,Middle East & North Africa (excluding high income),424328381.0
 MNA,2021,Middle East & North Africa (excluding high income),418047201.0
 MNA,2020,Middle East & North Africa (excluding high income),411810124.0
 MNA,2019,Middle East & North Africa (excluding high income),405259403.0
@@ -2015,7 +2015,7 @@ MNA,1963,Middle East & North Africa (excluding high income),104817905.0
 MNA,1962,Middle East & North Africa (excluding high income),102159899.0
 MNA,1961,Middle East & North Africa (excluding high income),99620285.0
 MNA,1960,Middle East & North Africa (excluding high income),97179656.0
-TMN,2022,Middle East & North Africa (IDA & IBRD countries),
+TMN,2022,Middle East & North Africa (IDA & IBRD countries),419284769.0
 TMN,2021,Middle East & North Africa (IDA & IBRD countries),413124452.0
 TMN,2020,Middle East & North Africa (IDA & IBRD countries),407006855.0
 TMN,2019,Middle East & North Africa (IDA & IBRD countries),400574097.0
@@ -2078,72 +2078,72 @@ TMN,1963,Middle East & North Africa (IDA & IBRD countries),104817905.0
 TMN,1962,Middle East & North Africa (IDA & IBRD countries),102159899.0
 TMN,1961,Middle East & North Africa (IDA & IBRD countries),99620285.0
 TMN,1960,Middle East & North Africa (IDA & IBRD countries),97179656.0
-MIC,2022,Middle income,
-MIC,2021,Middle income,5901323889.0
-MIC,2020,Middle income,5852403578.0
-MIC,2019,Middle income,5797827540.0
-MIC,2018,Middle income,5740015870.0
-MIC,2017,Middle income,5679375318.0
-MIC,2016,Middle income,5616265003.0
-MIC,2015,Middle income,5552696141.0
-MIC,2014,Middle income,5487659096.0
-MIC,2013,Middle income,5421202357.0
-MIC,2012,Middle income,5354644874.0
-MIC,2011,Middle income,5289461774.0
-MIC,2010,Middle income,5226300409.0
-MIC,2009,Middle income,5164954050.0
-MIC,2008,Middle income,5104601803.0
-MIC,2007,Middle income,5045177858.0
-MIC,2006,Middle income,4986523291.0
-MIC,2005,Middle income,4927146781.0
-MIC,2004,Middle income,4866336912.0
-MIC,2003,Middle income,4805081630.0
-MIC,2002,Middle income,4744040472.0
-MIC,2001,Middle income,4681845407.0
-MIC,2000,Middle income,4617751027.0
-MIC,1999,Middle income,4553317122.0
-MIC,1998,Middle income,4488615367.0
-MIC,1997,Middle income,4422451321.0
-MIC,1996,Middle income,4355694415.0
-MIC,1995,Middle income,4288864685.0
-MIC,1994,Middle income,4221557226.0
-MIC,1993,Middle income,4153731393.0
-MIC,1992,Middle income,4085990356.0
-MIC,1991,Middle income,4016748031.0
-MIC,1990,Middle income,3944260596.0
-MIC,1989,Middle income,3868872890.0
-MIC,1988,Middle income,3795217424.0
-MIC,1987,Middle income,3720808127.0
-MIC,1986,Middle income,3646951012.0
-MIC,1985,Middle income,3575059377.0
-MIC,1984,Middle income,3505454627.0
-MIC,1983,Middle income,3437269628.0
-MIC,1982,Middle income,3368804133.0
-MIC,1981,Middle income,3300442944.0
-MIC,1980,Middle income,3234641419.0
-MIC,1979,Middle income,3171382990.0
-MIC,1978,Middle income,3110114076.0
-MIC,1977,Middle income,3050234061.0
-MIC,1976,Middle income,2991005466.0
-MIC,1975,Middle income,2931555870.0
-MIC,1974,Middle income,2871508724.0
-MIC,1973,Middle income,2809790975.0
-MIC,1972,Middle income,2747451889.0
-MIC,1971,Middle income,2686003223.0
-MIC,1970,Middle income,2623766243.0
-MIC,1969,Middle income,2561860749.0
-MIC,1968,Middle income,2501116458.0
-MIC,1967,Middle income,2442774690.0
-MIC,1966,Middle income,2386219002.0
-MIC,1965,Middle income,2329438987.0
-MIC,1964,Middle income,2275509844.0
-MIC,1963,Middle income,2222460600.0
-MIC,1962,Middle income,2169685251.0
-MIC,1961,Middle income,2129015528.0
-MIC,1960,Middle income,2101462566.0
-NAC,2022,North America,
-NAC,2021,North America,370203720.0
-NAC,2020,North America,369602177.0
+MIC,2022,Middle income,5974220875.0
+MIC,2021,Middle income,5933441863.0
+MIC,2020,Middle income,5883693329.0
+MIC,2019,Middle income,5828239756.0
+MIC,2018,Middle income,5769572963.0
+MIC,2017,Middle income,5708164533.0
+MIC,2016,Middle income,5644376982.0
+MIC,2015,Middle income,5580130941.0
+MIC,2014,Middle income,5514388653.0
+MIC,2013,Middle income,5447239378.0
+MIC,2012,Middle income,5379972714.0
+MIC,2011,Middle income,5313918007.0
+MIC,2010,Middle income,5249967261.0
+MIC,2009,Middle income,5187845805.0
+MIC,2008,Middle income,5126726172.0
+MIC,2007,Middle income,5066550720.0
+MIC,2006,Middle income,5007185008.0
+MIC,2005,Middle income,4947163680.0
+MIC,2004,Middle income,4885771219.0
+MIC,2003,Middle income,4823952498.0
+MIC,2002,Middle income,4762356287.0
+MIC,2001,Middle income,4699673503.0
+MIC,2000,Middle income,4635160614.0
+MIC,1999,Middle income,4570304767.0
+MIC,1998,Middle income,4505163245.0
+MIC,1997,Middle income,4438594720.0
+MIC,1996,Middle income,4371426694.0
+MIC,1995,Middle income,4304146732.0
+MIC,1994,Middle income,4236408990.0
+MIC,1993,Middle income,4168150828.0
+MIC,1992,Middle income,4099989442.0
+MIC,1991,Middle income,4030332007.0
+MIC,1990,Middle income,3957384533.0
+MIC,1989,Middle income,3881584969.0
+MIC,1988,Middle income,3807581492.0
+MIC,1987,Middle income,3732820721.0
+MIC,1986,Middle income,3658612764.0
+MIC,1985,Middle income,3586381209.0
+MIC,1984,Middle income,3516454684.0
+MIC,1983,Middle income,3447961666.0
+MIC,1982,Middle income,3379188219.0
+MIC,1981,Middle income,3310520203.0
+MIC,1980,Middle income,3244431209.0
+MIC,1979,Middle income,3180906645.0
+MIC,1978,Middle income,3119391445.0
+MIC,1977,Middle income,3059291091.0
+MIC,1976,Middle income,2999857406.0
+MIC,1975,Middle income,2940207694.0
+MIC,1974,Middle income,2879964467.0
+MIC,1973,Middle income,2818048781.0
+MIC,1972,Middle income,2755509848.0
+MIC,1971,Middle income,2693866552.0
+MIC,1970,Middle income,2631440985.0
+MIC,1969,Middle income,2569346894.0
+MIC,1968,Middle income,2508410677.0
+MIC,1967,Middle income,2449880184.0
+MIC,1966,Middle income,2393145155.0
+MIC,1965,Middle income,2336192886.0
+MIC,1964,Middle income,2282093614.0
+MIC,1963,Middle income,2228877289.0
+MIC,1962,Middle income,2175939784.0
+MIC,1961,Middle income,2135115636.0
+MIC,1960,Middle income,2107416130.0
+NAC,2022,North America,372280991.0
+NAC,2021,North America,370321816.0
+NAC,2020,North America,369582571.0
 NAC,2019,North America,365995094.0
 NAC,2018,North America,363967201.0
 NAC,2017,North America,361731237.0
@@ -2267,9 +2267,9 @@ NAC,1960,North America,198624756.0
 ,1962,Not classified,
 ,1961,Not classified,
 ,1960,Not classified,
-OED,2022,OECD members,
-OED,2021,OECD members,1372736513.0
-OED,2020,OECD members,1370241530.0
+OED,2022,OECD members,1377613713.0
+OED,2021,OECD members,1372543943.0
+OED,2020,OECD members,1370222158.0
 OED,2019,OECD members,1362922537.0
 OED,2018,OECD members,1356241793.0
 OED,2017,OECD members,1348646085.0
@@ -2330,16 +2330,16 @@ OED,1963,OECD members,841722274.0
 OED,1962,OECD members,830289099.0
 OED,1961,OECD members,818832113.0
 OED,1960,OECD members,807630906.0
-OSS,2022,Other small states,
-OSS,2021,Other small states,32708003.0
-OSS,2020,Other small states,32381190.0
-OSS,2019,Other small states,32005203.0
-OSS,2018,Other small states,31494217.0
-OSS,2017,Other small states,30940039.0
-OSS,2016,Other small states,30309723.0
-OSS,2015,Other small states,29620768.0
-OSS,2014,Other small states,28907278.0
-OSS,2013,Other small states,28225516.0
+OSS,2022,Other small states,33136283.0
+OSS,2021,Other small states,32708277.0
+OSS,2020,Other small states,32381464.0
+OSS,2019,Other small states,32005477.0
+OSS,2018,Other small states,31494491.0
+OSS,2017,Other small states,30940313.0
+OSS,2016,Other small states,30309997.0
+OSS,2015,Other small states,29621042.0
+OSS,2014,Other small states,28907552.0
+OSS,2013,Other small states,28225790.0
 OSS,2012,Other small states,27617274.0
 OSS,2011,Other small states,27072916.0
 OSS,2010,Other small states,26565994.0
@@ -2393,7 +2393,7 @@ OSS,1963,Other small states,9631390.0
 OSS,1962,Other small states,9436172.0
 OSS,1961,Other small states,9244843.0
 OSS,1960,Other small states,9080716.0
-PSS,2022,Pacific island small states,
+PSS,2022,Pacific island small states,2639019.0
 PSS,2021,Pacific island small states,2602173.0
 PSS,2020,Pacific island small states,2566819.0
 PSS,2019,Pacific island small states,2536070.0
@@ -2456,9 +2456,9 @@ PSS,1963,Pacific island small states,988767.0
 PSS,1962,Pacific island small states,960258.0
 PSS,1961,Pacific island small states,932520.0
 PSS,1960,Pacific island small states,905537.0
-PST,2022,Post-demographic dividend,
-PST,2021,Post-demographic dividend,1116796245.0
-PST,2020,Post-demographic dividend,1117443485.0
+PST,2022,Post-demographic dividend,1113419395.0
+PST,2021,Post-demographic dividend,1116545246.0
+PST,2020,Post-demographic dividend,1117424113.0
 PST,2019,Post-demographic dividend,1113310738.0
 PST,2018,Post-demographic dividend,1110126741.0
 PST,2017,Post-demographic dividend,1106214534.0
@@ -2519,7 +2519,7 @@ PST,1963,Post-demographic dividend,783063134.0
 PST,1962,Post-demographic dividend,773971699.0
 PST,1961,Post-demographic dividend,764678914.0
 PST,1960,Post-demographic dividend,755575073.0
-PRE,2022,Pre-demographic dividend,
+PRE,2022,Pre-demographic dividend,1038012552.0
 PRE,2021,Pre-demographic dividend,1011043183.0
 PRE,2020,Pre-demographic dividend,984213438.0
 PRE,2019,Pre-demographic dividend,957503246.0
@@ -2582,16 +2582,16 @@ PRE,1963,Pre-demographic dividend,202413011.0
 PRE,1962,Pre-demographic dividend,197549304.0
 PRE,1961,Pre-demographic dividend,192890980.0
 PRE,1960,Pre-demographic dividend,188484894.0
-SST,2022,Small states,
-SST,2021,Small states,42792053.0
-SST,2020,Small states,42392777.0
-SST,2019,Small states,41965375.0
-SST,2018,Small states,41379093.0
-SST,2017,Small states,40727936.0
-SST,2016,Small states,40032809.0
-SST,2015,Small states,39276796.0
-SST,2014,Small states,38493630.0
-SST,2013,Small states,37740469.0
+SST,2022,Small states,43280780.0
+SST,2021,Small states,42792327.0
+SST,2020,Small states,42393051.0
+SST,2019,Small states,41965649.0
+SST,2018,Small states,41379367.0
+SST,2017,Small states,40728210.0
+SST,2016,Small states,40033083.0
+SST,2015,Small states,39277070.0
+SST,2014,Small states,38493904.0
+SST,2013,Small states,37740743.0
 SST,2012,Small states,37059328.0
 SST,2011,Small states,36444557.0
 SST,2010,Small states,35871823.0
@@ -2645,142 +2645,142 @@ SST,1963,Small states,15063701.0
 SST,1962,Small states,14762850.0
 SST,1961,Small states,14466792.0
 SST,1960,Small states,14195394.0
-SAS,2022,South Asia,
+SAS,2022,South Asia,1919348000.0
 SAS,2021,South Asia,1901911604.0
 SAS,2020,South Asia,1882531620.0
 SAS,2019,South Asia,1861598514.0
 SAS,2018,South Asia,1840534093.0
-SAS,2017,South Asia,1818868706.0
-SAS,2016,South Asia,1796850154.0
-SAS,2015,South Asia,1775178483.0
-SAS,2014,South Asia,1753568847.0
-SAS,2013,South Asia,1731137145.0
-SAS,2012,South Asia,1708114582.0
-SAS,2011,South Asia,1684436757.0
-SAS,2010,South Asia,1660139325.0
-SAS,2009,South Asia,1636052663.0
-SAS,2008,South Asia,1612407426.0
-SAS,2007,South Asia,1589218004.0
-SAS,2006,South Asia,1565718156.0
-SAS,2005,South Asia,1541135031.0
-SAS,2004,South Asia,1515599723.0
-SAS,2003,South Asia,1489278936.0
-SAS,2002,South Asia,1462021914.0
-SAS,2001,South Asia,1434306106.0
-SAS,2000,South Asia,1406946728.0
-SAS,1999,South Asia,1379867738.0
-SAS,1998,South Asia,1352853147.0
-SAS,1997,South Asia,1326029761.0
-SAS,1996,South Asia,1299452085.0
-SAS,1995,South Asia,1272943087.0
-SAS,1994,South Asia,1246240229.0
-SAS,1993,South Asia,1219279298.0
-SAS,1992,South Asia,1192502803.0
-SAS,1991,South Asia,1166599697.0
-SAS,1990,South Asia,1141434379.0
-SAS,1989,South Asia,1116263876.0
-SAS,1988,South Asia,1091108954.0
-SAS,1987,South Asia,1066468674.0
-SAS,1986,South Asia,1042259867.0
-SAS,1985,South Asia,1018226720.0
-SAS,1984,South Asia,994421612.0
-SAS,1983,South Asia,971004522.0
-SAS,1982,South Asia,948106347.0
-SAS,1981,South Asia,926290449.0
-SAS,1980,South Asia,905085264.0
-SAS,1979,South Asia,884140063.0
-SAS,1978,South Asia,863971060.0
-SAS,1977,South Asia,844313926.0
-SAS,1976,South Asia,825242937.0
-SAS,1975,South Asia,806685026.0
-SAS,1974,South Asia,788296824.0
-SAS,1973,South Asia,770165966.0
-SAS,1972,South Asia,752485568.0
-SAS,1971,South Asia,736228624.0
-SAS,1970,South Asia,720496162.0
-SAS,1969,South Asia,704208559.0
-SAS,1968,South Asia,688104253.0
-SAS,1967,South Asia,672488495.0
-SAS,1966,South Asia,657462990.0
-SAS,1965,South Asia,642724630.0
-SAS,1964,South Asia,627943361.0
-SAS,1963,South Asia,613229525.0
-SAS,1962,South Asia,598869387.0
-SAS,1961,South Asia,584883506.0
-SAS,1960,South Asia,571283033.0
-TSA,2022,South Asia (IDA & IBRD),
+SAS,2017,South Asia,1818931519.0
+SAS,2016,South Asia,1797072648.0
+SAS,2015,South Asia,1775545180.0
+SAS,2014,South Asia,1754030304.0
+SAS,2013,South Asia,1731683901.0
+SAS,2012,South Asia,1708706729.0
+SAS,2011,South Asia,1684898004.0
+SAS,2010,South Asia,1660546144.0
+SAS,2009,South Asia,1636411632.0
+SAS,2008,South Asia,1612709085.0
+SAS,2007,South Asia,1589454615.0
+SAS,2006,South Asia,1565892885.0
+SAS,2005,South Asia,1541263909.0
+SAS,2004,South Asia,1515703001.0
+SAS,2003,South Asia,1489358080.0
+SAS,2002,South Asia,1462070145.0
+SAS,2001,South Asia,1434314654.0
+SAS,2000,South Asia,1406945493.0
+SAS,1999,South Asia,1379874856.0
+SAS,1998,South Asia,1352849350.0
+SAS,1997,South Asia,1326007987.0
+SAS,1996,South Asia,1299407301.0
+SAS,1995,South Asia,1272877742.0
+SAS,1994,South Asia,1246157499.0
+SAS,1993,South Asia,1219180082.0
+SAS,1992,South Asia,1192390433.0
+SAS,1991,South Asia,1166480561.0
+SAS,1990,South Asia,1141312704.0
+SAS,1989,South Asia,1116147699.0
+SAS,1988,South Asia,1091004504.0
+SAS,1987,South Asia,1066371857.0
+SAS,1986,South Asia,1042169001.0
+SAS,1985,South Asia,1018142776.0
+SAS,1984,South Asia,994345688.0
+SAS,1983,South Asia,970938323.0
+SAS,1982,South Asia,948043890.0
+SAS,1981,South Asia,926216545.0
+SAS,1980,South Asia,904993069.0
+SAS,1979,South Asia,884031584.0
+SAS,1978,South Asia,863852185.0
+SAS,1977,South Asia,844199483.0
+SAS,1976,South Asia,825140213.0
+SAS,1975,South Asia,806592758.0
+SAS,1974,South Asia,788213169.0
+SAS,1973,South Asia,770083670.0
+SAS,1972,South Asia,752397791.0
+SAS,1971,South Asia,736135444.0
+SAS,1970,South Asia,720399195.0
+SAS,1969,South Asia,704112818.0
+SAS,1968,South Asia,688013461.0
+SAS,1967,South Asia,672401853.0
+SAS,1966,South Asia,657382046.0
+SAS,1965,South Asia,642649029.0
+SAS,1964,South Asia,627867470.0
+SAS,1963,South Asia,613149540.0
+SAS,1962,South Asia,598784274.0
+SAS,1961,South Asia,584794755.0
+SAS,1960,South Asia,571192428.0
+TSA,2022,South Asia (IDA & IBRD),1919348000.0
 TSA,2021,South Asia (IDA & IBRD),1901911604.0
 TSA,2020,South Asia (IDA & IBRD),1882531620.0
 TSA,2019,South Asia (IDA & IBRD),1861598514.0
 TSA,2018,South Asia (IDA & IBRD),1840534093.0
-TSA,2017,South Asia (IDA & IBRD),1818868706.0
-TSA,2016,South Asia (IDA & IBRD),1796850154.0
-TSA,2015,South Asia (IDA & IBRD),1775178483.0
-TSA,2014,South Asia (IDA & IBRD),1753568847.0
-TSA,2013,South Asia (IDA & IBRD),1731137145.0
-TSA,2012,South Asia (IDA & IBRD),1708114582.0
-TSA,2011,South Asia (IDA & IBRD),1684436757.0
-TSA,2010,South Asia (IDA & IBRD),1660139325.0
-TSA,2009,South Asia (IDA & IBRD),1636052663.0
-TSA,2008,South Asia (IDA & IBRD),1612407426.0
-TSA,2007,South Asia (IDA & IBRD),1589218004.0
-TSA,2006,South Asia (IDA & IBRD),1565718156.0
-TSA,2005,South Asia (IDA & IBRD),1541135031.0
-TSA,2004,South Asia (IDA & IBRD),1515599723.0
-TSA,2003,South Asia (IDA & IBRD),1489278936.0
-TSA,2002,South Asia (IDA & IBRD),1462021914.0
-TSA,2001,South Asia (IDA & IBRD),1434306106.0
-TSA,2000,South Asia (IDA & IBRD),1406946728.0
-TSA,1999,South Asia (IDA & IBRD),1379867738.0
-TSA,1998,South Asia (IDA & IBRD),1352853147.0
-TSA,1997,South Asia (IDA & IBRD),1326029761.0
-TSA,1996,South Asia (IDA & IBRD),1299452085.0
-TSA,1995,South Asia (IDA & IBRD),1272943087.0
-TSA,1994,South Asia (IDA & IBRD),1246240229.0
-TSA,1993,South Asia (IDA & IBRD),1219279298.0
-TSA,1992,South Asia (IDA & IBRD),1192502803.0
-TSA,1991,South Asia (IDA & IBRD),1166599697.0
-TSA,1990,South Asia (IDA & IBRD),1141434379.0
-TSA,1989,South Asia (IDA & IBRD),1116263876.0
-TSA,1988,South Asia (IDA & IBRD),1091108954.0
-TSA,1987,South Asia (IDA & IBRD),1066468674.0
-TSA,1986,South Asia (IDA & IBRD),1042259867.0
-TSA,1985,South Asia (IDA & IBRD),1018226720.0
-TSA,1984,South Asia (IDA & IBRD),994421612.0
-TSA,1983,South Asia (IDA & IBRD),971004522.0
-TSA,1982,South Asia (IDA & IBRD),948106347.0
-TSA,1981,South Asia (IDA & IBRD),926290449.0
-TSA,1980,South Asia (IDA & IBRD),905085264.0
-TSA,1979,South Asia (IDA & IBRD),884140063.0
-TSA,1978,South Asia (IDA & IBRD),863971060.0
-TSA,1977,South Asia (IDA & IBRD),844313926.0
-TSA,1976,South Asia (IDA & IBRD),825242937.0
-TSA,1975,South Asia (IDA & IBRD),806685026.0
-TSA,1974,South Asia (IDA & IBRD),788296824.0
-TSA,1973,South Asia (IDA & IBRD),770165966.0
-TSA,1972,South Asia (IDA & IBRD),752485568.0
-TSA,1971,South Asia (IDA & IBRD),736228624.0
-TSA,1970,South Asia (IDA & IBRD),720496162.0
-TSA,1969,South Asia (IDA & IBRD),704208559.0
-TSA,1968,South Asia (IDA & IBRD),688104253.0
-TSA,1967,South Asia (IDA & IBRD),672488495.0
-TSA,1966,South Asia (IDA & IBRD),657462990.0
-TSA,1965,South Asia (IDA & IBRD),642724630.0
-TSA,1964,South Asia (IDA & IBRD),627943361.0
-TSA,1963,South Asia (IDA & IBRD),613229525.0
-TSA,1962,South Asia (IDA & IBRD),598869387.0
-TSA,1961,South Asia (IDA & IBRD),584883506.0
-TSA,1960,South Asia (IDA & IBRD),571283033.0
-SSF,2022,Sub-Saharan Africa,
-SSF,2021,Sub-Saharan Africa,1181162739.0
-SSF,2020,Sub-Saharan Africa,1151301807.0
-SSF,2019,Sub-Saharan Africa,1121548775.0
-SSF,2018,Sub-Saharan Africa,1092403699.0
-SSF,2017,Sub-Saharan Africa,1063885000.0
-SSF,2016,Sub-Saharan Africa,1036155715.0
-SSF,2015,Sub-Saharan Africa,1008698525.0
-SSF,2014,Sub-Saharan Africa,981506334.0
-SSF,2013,Sub-Saharan Africa,955096428.0
+TSA,2017,South Asia (IDA & IBRD),1818931519.0
+TSA,2016,South Asia (IDA & IBRD),1797072648.0
+TSA,2015,South Asia (IDA & IBRD),1775545180.0
+TSA,2014,South Asia (IDA & IBRD),1754030304.0
+TSA,2013,South Asia (IDA & IBRD),1731683901.0
+TSA,2012,South Asia (IDA & IBRD),1708706729.0
+TSA,2011,South Asia (IDA & IBRD),1684898004.0
+TSA,2010,South Asia (IDA & IBRD),1660546144.0
+TSA,2009,South Asia (IDA & IBRD),1636411632.0
+TSA,2008,South Asia (IDA & IBRD),1612709085.0
+TSA,2007,South Asia (IDA & IBRD),1589454615.0
+TSA,2006,South Asia (IDA & IBRD),1565892885.0
+TSA,2005,South Asia (IDA & IBRD),1541263909.0
+TSA,2004,South Asia (IDA & IBRD),1515703001.0
+TSA,2003,South Asia (IDA & IBRD),1489358080.0
+TSA,2002,South Asia (IDA & IBRD),1462070145.0
+TSA,2001,South Asia (IDA & IBRD),1434314654.0
+TSA,2000,South Asia (IDA & IBRD),1406945493.0
+TSA,1999,South Asia (IDA & IBRD),1379874856.0
+TSA,1998,South Asia (IDA & IBRD),1352849350.0
+TSA,1997,South Asia (IDA & IBRD),1326007987.0
+TSA,1996,South Asia (IDA & IBRD),1299407301.0
+TSA,1995,South Asia (IDA & IBRD),1272877742.0
+TSA,1994,South Asia (IDA & IBRD),1246157499.0
+TSA,1993,South Asia (IDA & IBRD),1219180082.0
+TSA,1992,South Asia (IDA & IBRD),1192390433.0
+TSA,1991,South Asia (IDA & IBRD),1166480561.0
+TSA,1990,South Asia (IDA & IBRD),1141312704.0
+TSA,1989,South Asia (IDA & IBRD),1116147699.0
+TSA,1988,South Asia (IDA & IBRD),1091004504.0
+TSA,1987,South Asia (IDA & IBRD),1066371857.0
+TSA,1986,South Asia (IDA & IBRD),1042169001.0
+TSA,1985,South Asia (IDA & IBRD),1018142776.0
+TSA,1984,South Asia (IDA & IBRD),994345688.0
+TSA,1983,South Asia (IDA & IBRD),970938323.0
+TSA,1982,South Asia (IDA & IBRD),948043890.0
+TSA,1981,South Asia (IDA & IBRD),926216545.0
+TSA,1980,South Asia (IDA & IBRD),904993069.0
+TSA,1979,South Asia (IDA & IBRD),884031584.0
+TSA,1978,South Asia (IDA & IBRD),863852185.0
+TSA,1977,South Asia (IDA & IBRD),844199483.0
+TSA,1976,South Asia (IDA & IBRD),825140213.0
+TSA,1975,South Asia (IDA & IBRD),806592758.0
+TSA,1974,South Asia (IDA & IBRD),788213169.0
+TSA,1973,South Asia (IDA & IBRD),770083670.0
+TSA,1972,South Asia (IDA & IBRD),752397791.0
+TSA,1971,South Asia (IDA & IBRD),736135444.0
+TSA,1970,South Asia (IDA & IBRD),720399195.0
+TSA,1969,South Asia (IDA & IBRD),704112818.0
+TSA,1968,South Asia (IDA & IBRD),688013461.0
+TSA,1967,South Asia (IDA & IBRD),672401853.0
+TSA,1966,South Asia (IDA & IBRD),657382046.0
+TSA,1965,South Asia (IDA & IBRD),642649029.0
+TSA,1964,South Asia (IDA & IBRD),627867470.0
+TSA,1963,South Asia (IDA & IBRD),613149540.0
+TSA,1962,South Asia (IDA & IBRD),598784274.0
+TSA,1961,South Asia (IDA & IBRD),584794755.0
+TSA,1960,South Asia (IDA & IBRD),571192428.0
+SSF,2022,Sub-Saharan Africa,1211170184.0
+SSF,2021,Sub-Saharan Africa,1181163013.0
+SSF,2020,Sub-Saharan Africa,1151302081.0
+SSF,2019,Sub-Saharan Africa,1121549049.0
+SSF,2018,Sub-Saharan Africa,1092403973.0
+SSF,2017,Sub-Saharan Africa,1063885274.0
+SSF,2016,Sub-Saharan Africa,1036155989.0
+SSF,2015,Sub-Saharan Africa,1008698799.0
+SSF,2014,Sub-Saharan Africa,981506608.0
+SSF,2013,Sub-Saharan Africa,955096702.0
 SSF,2012,Sub-Saharan Africa,929328653.0
 SSF,2011,Sub-Saharan Africa,904282154.0
 SSF,2010,Sub-Saharan Africa,879797419.0
@@ -2834,16 +2834,16 @@ SSF,1963,Sub-Saharan Africa,245298063.0
 SSF,1962,Sub-Saharan Africa,239280622.0
 SSF,1961,Sub-Saharan Africa,233483265.0
 SSF,1960,Sub-Saharan Africa,227948869.0
-SSA,2022,Sub-Saharan Africa (excluding high income),
-SSA,2021,Sub-Saharan Africa (excluding high income),1181063481.0
-SSA,2020,Sub-Saharan Africa (excluding high income),1151203345.0
-SSA,2019,Sub-Saharan Africa (excluding high income),1121451150.0
-SSA,2018,Sub-Saharan Africa (excluding high income),1092306937.0
-SSA,2017,Sub-Saharan Africa (excluding high income),1063789157.0
-SSA,2016,Sub-Saharan Africa (excluding high income),1036061038.0
-SSA,2015,Sub-Saharan Africa (excluding high income),1008605106.0
-SSA,2014,Sub-Saharan Africa (excluding high income),981414975.0
-SSA,2013,Sub-Saharan Africa (excluding high income),955006479.0
+SSA,2022,Sub-Saharan Africa (excluding high income),1211070124.0
+SSA,2021,Sub-Saharan Africa (excluding high income),1181063755.0
+SSA,2020,Sub-Saharan Africa (excluding high income),1151203619.0
+SSA,2019,Sub-Saharan Africa (excluding high income),1121451424.0
+SSA,2018,Sub-Saharan Africa (excluding high income),1092307211.0
+SSA,2017,Sub-Saharan Africa (excluding high income),1063789431.0
+SSA,2016,Sub-Saharan Africa (excluding high income),1036061312.0
+SSA,2015,Sub-Saharan Africa (excluding high income),1008605380.0
+SSA,2014,Sub-Saharan Africa (excluding high income),981415249.0
+SSA,2013,Sub-Saharan Africa (excluding high income),955006753.0
 SSA,2012,Sub-Saharan Africa (excluding high income),929240350.0
 SSA,2011,Sub-Saharan Africa (excluding high income),904194713.0
 SSA,2010,Sub-Saharan Africa (excluding high income),879707649.0
@@ -2897,16 +2897,16 @@ SSA,1963,Sub-Saharan Africa (excluding high income),245252887.0
 SSA,1962,Sub-Saharan Africa (excluding high income),239236580.0
 SSA,1961,Sub-Saharan Africa (excluding high income),233440376.0
 SSA,1960,Sub-Saharan Africa (excluding high income),227907169.0
-TSS,2022,Sub-Saharan Africa (IDA & IBRD countries),
-TSS,2021,Sub-Saharan Africa (IDA & IBRD countries),1181162739.0
-TSS,2020,Sub-Saharan Africa (IDA & IBRD countries),1151301807.0
-TSS,2019,Sub-Saharan Africa (IDA & IBRD countries),1121548775.0
-TSS,2018,Sub-Saharan Africa (IDA & IBRD countries),1092403699.0
-TSS,2017,Sub-Saharan Africa (IDA & IBRD countries),1063885000.0
-TSS,2016,Sub-Saharan Africa (IDA & IBRD countries),1036155715.0
-TSS,2015,Sub-Saharan Africa (IDA & IBRD countries),1008698525.0
-TSS,2014,Sub-Saharan Africa (IDA & IBRD countries),981506334.0
-TSS,2013,Sub-Saharan Africa (IDA & IBRD countries),955096428.0
+TSS,2022,Sub-Saharan Africa (IDA & IBRD countries),1211170184.0
+TSS,2021,Sub-Saharan Africa (IDA & IBRD countries),1181163013.0
+TSS,2020,Sub-Saharan Africa (IDA & IBRD countries),1151302081.0
+TSS,2019,Sub-Saharan Africa (IDA & IBRD countries),1121549049.0
+TSS,2018,Sub-Saharan Africa (IDA & IBRD countries),1092403973.0
+TSS,2017,Sub-Saharan Africa (IDA & IBRD countries),1063885274.0
+TSS,2016,Sub-Saharan Africa (IDA & IBRD countries),1036155989.0
+TSS,2015,Sub-Saharan Africa (IDA & IBRD countries),1008698799.0
+TSS,2014,Sub-Saharan Africa (IDA & IBRD countries),981506608.0
+TSS,2013,Sub-Saharan Africa (IDA & IBRD countries),955096702.0
 TSS,2012,Sub-Saharan Africa (IDA & IBRD countries),929328653.0
 TSS,2011,Sub-Saharan Africa (IDA & IBRD countries),904282154.0
 TSS,2010,Sub-Saharan Africa (IDA & IBRD countries),879797419.0
@@ -2960,133 +2960,133 @@ TSS,1963,Sub-Saharan Africa (IDA & IBRD countries),245298063.0
 TSS,1962,Sub-Saharan Africa (IDA & IBRD countries),239280622.0
 TSS,1961,Sub-Saharan Africa (IDA & IBRD countries),233483265.0
 TSS,1960,Sub-Saharan Africa (IDA & IBRD countries),227948869.0
-,2022,Upper middle income,
-,2021,Upper middle income,2503136362.0
-,2020,Upper middle income,2495285443.0
-,2019,Upper middle income,2483924063.0
-,2018,Upper middle income,2469801107.0
-,2017,Upper middle income,2453799496.0
-,2016,Upper middle income,2436043943.0
-,2015,Upper middle income,2417959696.0
-,2014,Upper middle income,2398563632.0
-,2013,Upper middle income,2378263733.0
-,2012,Upper middle income,2357942787.0
-,2011,Upper middle income,2338654010.0
-,2010,Upper middle income,2321793515.0
-,2009,Upper middle income,2306134012.0
-,2008,Upper middle income,2289934559.0
-,2007,Upper middle income,2274211146.0
-,2006,Upper middle income,2259259920.0
-,2005,Upper middle income,2243536298.0
-,2004,Upper middle income,2227039419.0
-,2003,Upper middle income,2210557257.0
-,2002,Upper middle income,2193797571.0
-,2001,Upper middle income,2176410449.0
-,2000,Upper middle income,2158201213.0
-,1999,Upper middle income,2139105183.0
-,1998,Upper middle income,2118986216.0
-,1997,Upper middle income,2097432530.0
-,1996,Upper middle income,2074878234.0
-,1995,Upper middle income,2051920108.0
-,1994,Upper middle income,2028624294.0
-,1993,Upper middle income,2004415584.0
-,1992,Upper middle income,1980080141.0
-,1991,Upper middle income,1954896100.0
-,1990,Upper middle income,1927678769.0
-,1989,Upper middle income,1899423485.0
-,1988,Upper middle income,1870056980.0
-,1987,Upper middle income,1839525529.0
-,1986,Upper middle income,1809230667.0
-,1985,Upper middle income,1780598442.0
-,1984,Upper middle income,1753590272.0
-,1983,Upper middle income,1727229212.0
-,1982,Upper middle income,1700078134.0
-,1981,Upper middle income,1673149687.0
-,1980,Upper middle income,1648343471.0
-,1979,Upper middle income,1623849912.0
-,1978,Upper middle income,1598845249.0
-,1977,Upper middle income,1574053054.0
-,1976,Upper middle income,1549452007.0
-,1975,Upper middle income,1523626669.0
-,1974,Upper middle income,1496298581.0
-,1973,Upper middle income,1466631013.0
-,1972,Upper middle income,1435596863.0
-,1971,Upper middle income,1403736222.0
-,1970,Upper middle income,1370128680.0
-,1969,Upper middle income,1337069658.0
-,1968,Upper middle income,1304792137.0
-,1967,Upper middle income,1274112601.0
-,1966,Upper middle income,1244323973.0
-,1965,Upper middle income,1213578642.0
-,1964,Upper middle income,1185658606.0
-,1963,Upper middle income,1158648617.0
-,1962,Upper middle income,1131291818.0
-,1961,Upper middle income,1115319682.0
-,1960,Upper middle income,1111861113.0
-WLD,2022,World,
-WLD,2021,World,7888408686.0
-WLD,2020,World,7820981524.0
-WLD,2019,World,7742681934.0
-WLD,2018,World,7661776338.0
-WLD,2017,World,7578157615.0
-WLD,2016,World,7491934113.0
-WLD,2015,World,7404910892.0
-WLD,2014,World,7317508753.0
-WLD,2013,World,7229184551.0
-WLD,2012,World,7140895722.0
-WLD,2011,World,7053533350.0
-WLD,2010,World,6969631901.0
-WLD,2009,World,6885490816.0
-WLD,2008,World,6801408360.0
-WLD,2007,World,6717641730.0
-WLD,2006,World,6634935638.0
-WLD,2005,World,6552571570.0
-WLD,2004,World,6470821068.0
-WLD,2003,World,6389383352.0
-WLD,2002,World,6308092739.0
-WLD,2001,World,6226339538.0
-WLD,2000,World,6144322697.0
-WLD,1999,World,6062281732.0
-WLD,1998,World,5979730356.0
-WLD,1997,World,5896077736.0
-WLD,1996,World,5811624986.0
-WLD,1995,World,5726801833.0
-WLD,1994,World,5642128764.0
-WLD,1993,World,5556722537.0
-WLD,1992,World,5470276947.0
-WLD,1991,World,5382656065.0
-WLD,1990,World,5293517142.0
-WLD,1989,World,5202698711.0
-WLD,1988,World,5113492328.0
-WLD,1987,World,5024386163.0
-WLD,1986,World,4936097368.0
-WLD,1985,World,4850160867.0
-WLD,1984,World,4766716805.0
-WLD,1983,World,4684941826.0
-WLD,1982,World,4602763792.0
-WLD,1981,World,4520991254.0
-WLD,1980,World,4442440474.0
-WLD,1979,World,4365850756.0
-WLD,1978,World,4289914737.0
-WLD,1977,World,4215940807.0
-WLD,1976,World,4143194666.0
-WLD,1975,World,4070114517.0
-WLD,1974,World,3995972023.0
-WLD,1973,World,3920099706.0
-WLD,1972,World,3843695351.0
-WLD,1971,World,3768023181.0
-WLD,1970,World,3690306927.0
-WLD,1969,World,3614668576.0
-WLD,1968,World,3540254815.0
-WLD,1967,World,3468457168.0
-WLD,1966,World,3398561224.0
-WLD,1965,World,3328284623.0
-WLD,1964,World,3260517816.0
-WLD,1963,World,3193508879.0
-WLD,1962,World,3126934725.0
-WLD,1961,World,3072510552.0
-WLD,1960,World,3031564839.0
-AFG,2022,Afghanistan,
+,2022,Upper middle income,2784208276.0
+,2021,Upper middle income,2776091134.0
+,2020,Upper middle income,2766467575.0
+,2019,Upper middle income,2752927981.0
+,2018,Upper middle income,2736419850.0
+,2017,Upper middle income,2717991985.0
+,2016,Upper middle income,2697737806.0
+,2015,Upper middle income,2677252453.0
+,2014,Upper middle income,2655715233.0
+,2013,Upper middle income,2633307046.0
+,2012,Upper middle income,2610297249.0
+,2011,Upper middle income,2587865522.0
+,2010,Upper middle income,2567975844.0
+,2009,Upper middle income,2549308481.0
+,2008,Upper middle income,2530088264.0
+,2007,Upper middle income,2511321701.0
+,2006,Upper middle income,2493607365.0
+,2005,Upper middle income,2475204158.0
+,2004,Upper middle income,2455899822.0
+,2003,Upper middle income,2436604576.0
+,2002,Upper middle income,2416905279.0
+,2001,Upper middle income,2396527322.0
+,2000,Upper middle income,2375280814.0
+,1999,Upper middle income,2353107993.0
+,1998,Upper middle income,2329845650.0
+,1997,Upper middle income,2305065239.0
+,1996,Upper middle income,2279220415.0
+,1995,Upper middle income,2253019846.0
+,1994,Upper middle income,2226532163.0
+,1993,Upper middle income,2199172412.0
+,1992,Upper middle income,2171692391.0
+,1991,Upper middle income,2143327776.0
+,1990,Upper middle income,2112908549.0
+,1989,Upper middle income,2079533345.0
+,1988,Upper middle income,2046961908.0
+,1987,Upper middle income,2013192877.0
+,1986,Upper middle income,1979647200.0
+,1985,Upper middle income,1947703067.0
+,1984,Upper middle income,1917260339.0
+,1983,Upper middle income,1887379611.0
+,1982,Upper middle income,1856685341.0
+,1981,Upper middle income,1826264797.0
+,1980,Upper middle income,1798001594.0
+,1979,Upper middle income,1770031435.0
+,1978,Upper middle income,1741573594.0
+,1977,Upper middle income,1713373681.0
+,1976,Upper middle income,1685411030.0
+,1975,Upper middle income,1656254836.0
+,1974,Upper middle income,1625633529.0
+,1973,Upper middle income,1592704902.0
+,1972,Upper middle income,1558444273.0
+,1971,Upper middle income,1523413550.0
+,1970,Upper middle income,1486686454.0
+,1969,Upper middle income,1450561119.0
+,1968,Upper middle income,1415295972.0
+,1967,Upper middle income,1381762369.0
+,1966,Upper middle income,1349291381.0
+,1965,Upper middle income,1316148944.0
+,1964,Upper middle income,1285740777.0
+,1963,Upper middle income,1256004770.0
+,1962,Upper middle income,1226014408.0
+,1961,Upper middle income,1207494445.0
+,1960,Upper middle income,1201583310.0
+WLD,2022,World,7951149546.0
+WLD,2021,World,7888161297.0
+WLD,2020,World,7820963775.0
+WLD,2019,World,7742682218.0
+WLD,2018,World,7661776612.0
+WLD,2017,World,7578220703.0
+WLD,2016,World,7492156881.0
+WLD,2015,World,7405277863.0
+WLD,2014,World,7317970484.0
+WLD,2013,World,7229731581.0
+WLD,2012,World,7141487869.0
+WLD,2011,World,7053994597.0
+WLD,2010,World,6970038720.0
+WLD,2009,World,6885849785.0
+WLD,2008,World,6801710019.0
+WLD,2007,World,6717878341.0
+WLD,2006,World,6635110367.0
+WLD,2005,World,6552700448.0
+WLD,2004,World,6470924346.0
+WLD,2003,World,6389462496.0
+WLD,2002,World,6308140970.0
+WLD,2001,World,6226348086.0
+WLD,2000,World,6144321462.0
+WLD,1999,World,6062288850.0
+WLD,1998,World,5979726559.0
+WLD,1997,World,5896055962.0
+WLD,1996,World,5811580202.0
+WLD,1995,World,5726736488.0
+WLD,1994,World,5642046034.0
+WLD,1993,World,5556623321.0
+WLD,1992,World,5470164577.0
+WLD,1991,World,5382536929.0
+WLD,1990,World,5293395467.0
+WLD,1989,World,5202582534.0
+WLD,1988,World,5113387878.0
+WLD,1987,World,5024289346.0
+WLD,1986,World,4936006502.0
+WLD,1985,World,4850076923.0
+WLD,1984,World,4766640881.0
+WLD,1983,World,4684875627.0
+WLD,1982,World,4602701335.0
+WLD,1981,World,4520917350.0
+WLD,1980,World,4442348279.0
+WLD,1979,World,4365742277.0
+WLD,1978,World,4289795862.0
+WLD,1977,World,4215826364.0
+WLD,1976,World,4143091942.0
+WLD,1975,World,4070022249.0
+WLD,1974,World,3995888368.0
+WLD,1973,World,3920017410.0
+WLD,1972,World,3843607574.0
+WLD,1971,World,3767930001.0
+WLD,1970,World,3690209960.0
+WLD,1969,World,3614572835.0
+WLD,1968,World,3540164023.0
+WLD,1967,World,3468370526.0
+WLD,1966,World,3398480280.0
+WLD,1965,World,3328209022.0
+WLD,1964,World,3260441925.0
+WLD,1963,World,3193428894.0
+WLD,1962,World,3126849612.0
+WLD,1961,World,3072421801.0
+WLD,1960,World,3031474234.0
+AFG,2022,Afghanistan,41128771.0
 AFG,2021,Afghanistan,40099462.0
 AFG,2020,Afghanistan,38972230.0
 AFG,2019,Afghanistan,37769499.0
@@ -3149,7 +3149,7 @@ AFG,1963,Afghanistan,9157465.0
 AFG,1962,Afghanistan,8969047.0
 AFG,1961,Afghanistan,8790140.0
 AFG,1960,Afghanistan,8622466.0
-ALB,2022,Albania,
+ALB,2022,Albania,2775634.0
 ALB,2021,Albania,2811666.0
 ALB,2020,Albania,2837849.0
 ALB,2019,Albania,2854191.0
@@ -3212,7 +3212,7 @@ ALB,1963,Albania,1762621.0
 ALB,1962,Albania,1711319.0
 ALB,1961,Albania,1659800.0
 ALB,1960,Albania,1608800.0
-DZA,2022,Algeria,
+DZA,2022,Algeria,44903225.0
 DZA,2021,Algeria,44177969.0
 DZA,2020,Algeria,43451666.0
 DZA,2019,Algeria,42705368.0
@@ -3275,7 +3275,7 @@ DZA,1963,Algeria,11969451.0
 DZA,1962,Algeria,11778260.0
 DZA,1961,Algeria,11598608.0
 DZA,1960,Algeria,11394307.0
-ASM,2022,American Samoa,
+ASM,2022,American Samoa,44273.0
 ASM,2021,American Samoa,45035.0
 ASM,2020,American Samoa,46189.0
 ASM,2019,American Samoa,47321.0
@@ -3338,7 +3338,7 @@ ASM,1963,American Samoa,21949.0
 ASM,1962,American Samoa,21272.0
 ASM,1961,American Samoa,20626.0
 ASM,1960,American Samoa,20085.0
-AND,2022,Andorra,
+AND,2022,Andorra,79824.0
 AND,2021,Andorra,79034.0
 AND,2020,Andorra,77700.0
 AND,2019,Andorra,76343.0
@@ -3401,7 +3401,7 @@ AND,1963,Andorra,11839.0
 AND,1962,Andorra,11014.0
 AND,1961,Andorra,10216.0
 AND,1960,Andorra,9443.0
-AGO,2022,Angola,
+AGO,2022,Angola,35588987.0
 AGO,2021,Angola,34503774.0
 AGO,2020,Angola,33428486.0
 AGO,2019,Angola,32353588.0
@@ -3464,7 +3464,7 @@ AGO,1963,Angola,5599827.0
 AGO,1962,Angola,5521400.0
 AGO,1961,Angola,5441333.0
 AGO,1960,Angola,5357195.0
-ATG,2022,Antigua and Barbuda,
+ATG,2022,Antigua and Barbuda,93763.0
 ATG,2021,Antigua and Barbuda,93219.0
 ATG,2020,Antigua and Barbuda,92664.0
 ATG,2019,Antigua and Barbuda,92117.0
@@ -3527,7 +3527,7 @@ ATG,1963,Antigua and Barbuda,57778.0
 ATG,1962,Antigua and Barbuda,57008.0
 ATG,1961,Antigua and Barbuda,56245.0
 ATG,1960,Antigua and Barbuda,55342.0
-ARG,2022,Argentina,
+ARG,2022,Argentina,46234830.0
 ARG,2021,Argentina,45808747.0
 ARG,2020,Argentina,45376763.0
 ARG,2019,Argentina,44938712.0
@@ -3590,7 +3590,7 @@ ARG,1963,Argentina,21364017.0
 ARG,1962,Argentina,21020359.0
 ARG,1961,Argentina,20680653.0
 ARG,1960,Argentina,20349744.0
-ARM,2022,Armenia,
+ARM,2022,Armenia,2780469.0
 ARM,2021,Armenia,2790974.0
 ARM,2020,Armenia,2805608.0
 ARM,2019,Armenia,2820602.0
@@ -3653,7 +3653,7 @@ ARM,1963,Armenia,2106142.0
 ARM,1962,Armenia,2039346.0
 ARM,1961,Armenia,1971530.0
 ARM,1960,Armenia,1904148.0
-ABW,2022,Aruba,
+ABW,2022,Aruba,106445.0
 ABW,2021,Aruba,106537.0
 ABW,2020,Aruba,106585.0
 ABW,2019,Aruba,106442.0
@@ -3716,7 +3716,7 @@ ABW,1963,Aruba,57475.0
 ABW,1962,Aruba,56682.0
 ABW,1961,Aruba,55811.0
 ABW,1960,Aruba,54608.0
-AUS,2022,Australia,
+AUS,2022,Australia,25978935.0
 AUS,2021,Australia,25688079.0
 AUS,2020,Australia,25655289.0
 AUS,2019,Australia,25340217.0
@@ -3779,7 +3779,7 @@ AUS,1963,Australia,10950000.0
 AUS,1962,Australia,10742000.0
 AUS,1961,Australia,10483000.0
 AUS,1960,Australia,10276477.0
-AUT,2022,Austria,
+AUT,2022,Austria,9042528.0
 AUT,2021,Austria,8955797.0
 AUT,2020,Austria,8916864.0
 AUT,2019,Austria,8879920.0
@@ -3842,7 +3842,7 @@ AUT,1963,Austria,7175811.0
 AUT,1962,Austria,7129864.0
 AUT,1961,Austria,7086299.0
 AUT,1960,Austria,7047539.0
-AZE,2022,Azerbaijan,
+AZE,2022,Azerbaijan,10175016.0
 AZE,2021,Azerbaijan,10137750.0
 AZE,2020,Azerbaijan,10093121.0
 AZE,2019,Azerbaijan,10024283.0
@@ -3905,7 +3905,7 @@ AZE,1963,Azerbaijan,4293550.0
 AZE,1962,Azerbaijan,4168150.0
 AZE,1961,Azerbaijan,4045750.0
 AZE,1960,Azerbaijan,3894500.0
-BHS,2022,"Bahamas, The",
+BHS,2022,"Bahamas, The",409984.0
 BHS,2021,"Bahamas, The",407906.0
 BHS,2020,"Bahamas, The",406471.0
 BHS,2019,"Bahamas, The",404557.0
@@ -3968,7 +3968,7 @@ BHS,1963,"Bahamas, The",132639.0
 BHS,1962,"Bahamas, The",126305.0
 BHS,1961,"Bahamas, The",120216.0
 BHS,1960,"Bahamas, The",114500.0
-BHR,2022,Bahrain,
+BHR,2022,Bahrain,1472233.0
 BHR,2021,Bahrain,1463265.0
 BHR,2020,Bahrain,1477469.0
 BHR,2019,Bahrain,1494188.0
@@ -4031,7 +4031,7 @@ BHR,1963,Bahrain,179891.0
 BHR,1962,Bahrain,173359.0
 BHR,1961,Bahrain,166970.0
 BHR,1960,Bahrain,160691.0
-BGD,2022,Bangladesh,
+BGD,2022,Bangladesh,171186372.0
 BGD,2021,Bangladesh,169356251.0
 BGD,2020,Bangladesh,167420951.0
 BGD,2019,Bangladesh,165516222.0
@@ -4094,7 +4094,7 @@ BGD,1963,Bangladesh,55094115.0
 BGD,1962,Bangladesh,53461661.0
 BGD,1961,Bangladesh,51882769.0
 BGD,1960,Bangladesh,50396429.0
-BRB,2022,Barbados,
+BRB,2022,Barbados,281635.0
 BRB,2021,Barbados,281200.0
 BRB,2020,Barbados,280693.0
 BRB,2019,Barbados,280180.0
@@ -4157,8 +4157,8 @@ BRB,1963,Barbados,235875.0
 BRB,1962,Barbados,234829.0
 BRB,1961,Barbados,233698.0
 BRB,1960,Barbados,232550.0
-BLR,2022,Belarus,
-BLR,2021,Belarus,9340314.0
+BLR,2022,Belarus,9208701.0
+BLR,2021,Belarus,9302585.0
 BLR,2020,Belarus,9379952.0
 BLR,2019,Belarus,9419758.0
 BLR,2018,Belarus,9438785.0
@@ -4220,7 +4220,7 @@ BLR,1963,Belarus,8437232.0
 BLR,1962,Belarus,8351928.0
 BLR,1961,Belarus,8271216.0
 BLR,1960,Belarus,8198000.0
-BEL,2022,Belgium,
+BEL,2022,Belgium,11669446.0
 BEL,2021,Belgium,11592952.0
 BEL,2020,Belgium,11538604.0
 BEL,2019,Belgium,11488980.0
@@ -4283,7 +4283,7 @@ BEL,1963,Belgium,9289770.0
 BEL,1962,Belgium,9220578.0
 BEL,1961,Belgium,9183948.0
 BEL,1960,Belgium,9153489.0
-BLZ,2022,Belize,
+BLZ,2022,Belize,405272.0
 BLZ,2021,Belize,400031.0
 BLZ,2020,Belize,394921.0
 BLZ,2019,Belize,389095.0
@@ -4346,7 +4346,7 @@ BLZ,1963,Belize,98862.0
 BLZ,1962,Belize,96188.0
 BLZ,1961,Belize,93757.0
 BLZ,1960,Belize,91403.0
-BEN,2022,Benin,
+BEN,2022,Benin,13352864.0
 BEN,2021,Benin,12996895.0
 BEN,2020,Benin,12643123.0
 BEN,2019,Benin,12290444.0
@@ -4409,8 +4409,8 @@ BEN,1963,Benin,2638082.0
 BEN,1962,Benin,2593302.0
 BEN,1961,Benin,2551216.0
 BEN,1960,Benin,2512284.0
-BMU,2022,Bermuda,
-BMU,2021,Bermuda,63867.0
+BMU,2022,Bermuda,63532.0
+BMU,2021,Bermuda,63764.0
 BMU,2020,Bermuda,63893.0
 BMU,2019,Bermuda,63911.0
 BMU,2018,Bermuda,63918.0
@@ -4472,7 +4472,7 @@ BMU,1963,Bermuda,47700.0
 BMU,1962,Bermuda,46600.0
 BMU,1961,Bermuda,45500.0
 BMU,1960,Bermuda,44400.0
-BTN,2022,Bhutan,
+BTN,2022,Bhutan,782455.0
 BTN,2021,Bhutan,777486.0
 BTN,2020,Bhutan,772506.0
 BTN,2019,Bhutan,767459.0
@@ -4535,7 +4535,7 @@ BTN,1963,Bhutan,240268.0
 BTN,1962,Bhutan,233417.0
 BTN,1961,Bhutan,227071.0
 BTN,1960,Bhutan,221266.0
-BOL,2022,Bolivia,
+BOL,2022,Bolivia,12224110.0
 BOL,2021,Bolivia,12079472.0
 BOL,2020,Bolivia,11936162.0
 BOL,2019,Bolivia,11777315.0
@@ -4598,7 +4598,7 @@ BOL,1963,Bolivia,3945729.0
 BOL,1962,Bolivia,3864140.0
 BOL,1961,Bolivia,3784744.0
 BOL,1960,Bolivia,3707515.0
-BIH,2022,Bosnia and Herzegovina,
+BIH,2022,Bosnia and Herzegovina,3233526.0
 BIH,2021,Bosnia and Herzegovina,3270943.0
 BIH,2020,Bosnia and Herzegovina,3318407.0
 BIH,2019,Bosnia and Herzegovina,3360711.0
@@ -4661,7 +4661,7 @@ BIH,1963,Bosnia and Herzegovina,3448532.0
 BIH,1962,Bosnia and Herzegovina,3387512.0
 BIH,1961,Bosnia and Herzegovina,3325333.0
 BIH,1960,Bosnia and Herzegovina,3262539.0
-BWA,2022,Botswana,
+BWA,2022,Botswana,2630296.0
 BWA,2021,Botswana,2588423.0
 BWA,2020,Botswana,2546402.0
 BWA,2019,Botswana,2499702.0
@@ -4724,7 +4724,7 @@ BWA,1963,Botswana,549041.0
 BWA,1962,Botswana,536428.0
 BWA,1961,Botswana,524403.0
 BWA,1960,Botswana,512865.0
-BRA,2022,Brazil,
+BRA,2022,Brazil,215313498.0
 BRA,2021,Brazil,214326223.0
 BRA,2020,Brazil,213196304.0
 BRA,2019,Brazil,211782878.0
@@ -4787,7 +4787,7 @@ BRA,1963,Brazil,79915555.0
 BRA,1962,Brazil,77599218.0
 BRA,1961,Brazil,75330008.0
 BRA,1960,Brazil,73092515.0
-VGB,2022,British Virgin Islands,
+VGB,2022,British Virgin Islands,31305.0
 VGB,2021,British Virgin Islands,31122.0
 VGB,2020,British Virgin Islands,30910.0
 VGB,2019,British Virgin Islands,30610.0
@@ -4850,7 +4850,7 @@ VGB,1963,British Virgin Islands,7919.0
 VGB,1962,British Virgin Islands,7902.0
 VGB,1961,British Virgin Islands,7885.0
 VGB,1960,British Virgin Islands,7850.0
-BRN,2022,Brunei Darussalam,
+BRN,2022,Brunei Darussalam,449002.0
 BRN,2021,Brunei Darussalam,445373.0
 BRN,2020,Brunei Darussalam,441725.0
 BRN,2019,Brunei Darussalam,438048.0
@@ -4913,7 +4913,7 @@ BRN,1963,Brunei Darussalam,98277.0
 BRN,1962,Brunei Darussalam,93837.0
 BRN,1961,Brunei Darussalam,89561.0
 BRN,1960,Brunei Darussalam,85346.0
-BGR,2022,Bulgaria,
+BGR,2022,Bulgaria,6465097.0
 BGR,2021,Bulgaria,6877743.0
 BGR,2020,Bulgaria,6934015.0
 BGR,2019,Bulgaria,6975761.0
@@ -4976,7 +4976,7 @@ BGR,1963,Bulgaria,8078145.0
 BGR,1962,Bulgaria,8012946.0
 BGR,1961,Bulgaria,7943118.0
 BGR,1960,Bulgaria,7867374.0
-BFA,2022,Burkina Faso,
+BFA,2022,Burkina Faso,22673762.0
 BFA,2021,Burkina Faso,22100683.0
 BFA,2020,Burkina Faso,21522626.0
 BFA,2019,Burkina Faso,20951639.0
@@ -5039,7 +5039,7 @@ BFA,1963,Burkina Faso,4998671.0
 BFA,1962,Burkina Faso,4924497.0
 BFA,1961,Burkina Faso,4852833.0
 BFA,1960,Burkina Faso,4783259.0
-BDI,2022,Burundi,
+BDI,2022,Burundi,12889576.0
 BDI,2021,Burundi,12551213.0
 BDI,2020,Burundi,12220227.0
 BDI,2019,Burundi,11874838.0
@@ -5102,7 +5102,7 @@ BDI,1963,Burundi,2948133.0
 BDI,1962,Burundi,2887398.0
 BDI,1961,Burundi,2815972.0
 BDI,1960,Burundi,2746628.0
-CPV,2022,Cabo Verde,
+CPV,2022,Cabo Verde,593149.0
 CPV,2021,Cabo Verde,587925.0
 CPV,2020,Cabo Verde,582640.0
 CPV,2019,Cabo Verde,577030.0
@@ -5165,7 +5165,7 @@ CPV,1963,Cabo Verde,228814.0
 CPV,1962,Cabo Verde,221484.0
 CPV,1961,Cabo Verde,214788.0
 CPV,1960,Cabo Verde,209849.0
-KHM,2022,Cambodia,
+KHM,2022,Cambodia,16767842.0
 KHM,2021,Cambodia,16589023.0
 KHM,2020,Cambodia,16396860.0
 KHM,2019,Cambodia,16207746.0
@@ -5228,7 +5228,7 @@ KHM,1963,Cambodia,5913680.0
 KHM,1962,Cambodia,5788854.0
 KHM,1961,Cambodia,5664654.0
 KHM,1960,Cambodia,5541676.0
-CMR,2022,Cameroon,
+CMR,2022,Cameroon,27914536.0
 CMR,2021,Cameroon,27198628.0
 CMR,2020,Cameroon,26491087.0
 CMR,2019,Cameroon,25782341.0
@@ -5291,9 +5291,9 @@ CMR,1963,Cameroon,5427511.0
 CMR,1962,Cameroon,5303841.0
 CMR,1961,Cameroon,5200355.0
 CMR,1960,Cameroon,5117608.0
-CAN,2022,Canada,
-CAN,2021,Canada,38246108.0
-CAN,2020,Canada,38037204.0
+CAN,2022,Canada,38929902.0
+CAN,2021,Canada,38226498.0
+CAN,2020,Canada,38007166.0
 CAN,2019,Canada,37601230.0
 CAN,2018,Canada,37065084.0
 CAN,2017,Canada,36545236.0
@@ -5354,7 +5354,7 @@ CAN,1963,Canada,18964000.0
 CAN,1962,Canada,18614000.0
 CAN,1961,Canada,18271000.0
 CAN,1960,Canada,17909356.0
-CYM,2022,Cayman Islands,
+CYM,2022,Cayman Islands,68706.0
 CYM,2021,Cayman Islands,68136.0
 CYM,2020,Cayman Islands,67311.0
 CYM,2019,Cayman Islands,66134.0
@@ -5417,7 +5417,7 @@ CYM,1963,Cayman Islands,8985.0
 CYM,1962,Cayman Islands,8799.0
 CYM,1961,Cayman Islands,8626.0
 CYM,1960,Cayman Islands,8473.0
-CAF,2022,Central African Republic,
+CAF,2022,Central African Republic,5579144.0
 CAF,2021,Central African Republic,5457154.0
 CAF,2020,Central African Republic,5343020.0
 CAF,2019,Central African Republic,5209324.0
@@ -5480,7 +5480,7 @@ CAF,1963,Central African Republic,1776214.0
 CAF,1962,Central African Republic,1742502.0
 CAF,1961,Central African Republic,1710364.0
 CAF,1960,Central African Republic,1679728.0
-TCD,2022,Chad,
+TCD,2022,Chad,17723315.0
 TCD,2021,Chad,17179740.0
 TCD,2020,Chad,16644701.0
 TCD,2019,Chad,16126866.0
@@ -5543,7 +5543,7 @@ TCD,1963,Chad,3210296.0
 TCD,1962,Chad,3148242.0
 TCD,1961,Chad,3087657.0
 TCD,1960,Chad,3028688.0
-CHI,2022,Channel Islands,
+CHI,2022,Channel Islands,174079.0
 CHI,2021,Channel Islands,172683.0
 CHI,2020,Channel Islands,171113.0
 CHI,2019,Channel Islands,169410.0
@@ -5606,7 +5606,7 @@ CHI,1963,Channel Islands,112410.0
 CHI,1962,Channel Islands,111281.0
 CHI,1961,Channel Islands,110225.0
 CHI,1960,Channel Islands,109186.0
-CHL,2022,Chile,
+CHL,2022,Chile,19603733.0
 CHL,2021,Chile,19493184.0
 CHL,2020,Chile,19300315.0
 CHL,2019,Chile,19039485.0
@@ -5669,7 +5669,7 @@ CHL,1963,Chile,8656006.0
 CHL,1962,Chile,8486120.0
 CHL,1961,Chile,8313535.0
 CHL,1960,Chile,8141820.0
-CHN,2022,China,
+CHN,2022,China,1412175000.0
 CHN,2021,China,1412360000.0
 CHN,2020,China,1411100000.0
 CHN,2019,China,1407745000.0
@@ -5732,7 +5732,7 @@ CHN,1963,China,682335000.0
 CHN,1962,China,665770000.0
 CHN,1961,China,660330000.0
 CHN,1960,China,667070000.0
-COL,2022,Colombia,
+COL,2022,Colombia,51874024.0
 COL,2021,Colombia,51516562.0
 COL,2020,Colombia,50930662.0
 COL,2019,Colombia,50187406.0
@@ -5795,7 +5795,7 @@ COL,1963,Colombia,17210956.0
 COL,1962,Colombia,16691282.0
 COL,1961,Colombia,16182414.0
 COL,1960,Colombia,15687688.0
-COM,2022,Comoros,
+COM,2022,Comoros,836774.0
 COM,2021,Comoros,821625.0
 COM,2020,Comoros,806166.0
 COM,2019,Comoros,790986.0
@@ -5858,7 +5858,7 @@ COM,1963,Comoros,206546.0
 COM,1962,Comoros,202527.0
 COM,1961,Comoros,198617.0
 COM,1960,Comoros,194852.0
-COD,2022,"Congo, Dem. Rep.",
+COD,2022,"Congo, Dem. Rep.",99010212.0
 COD,2021,"Congo, Dem. Rep.",95894118.0
 COD,2020,"Congo, Dem. Rep.",92853164.0
 COD,2019,"Congo, Dem. Rep.",89906890.0
@@ -5921,7 +5921,7 @@ COD,1963,"Congo, Dem. Rep.",16517995.0
 COD,1962,"Congo, Dem. Rep.",16086084.0
 COD,1961,"Congo, Dem. Rep.",15673284.0
 COD,1960,"Congo, Dem. Rep.",15276558.0
-COG,2022,"Congo, Rep.",
+COG,2022,"Congo, Rep.",5970424.0
 COG,2021,"Congo, Rep.",5835806.0
 COG,2020,"Congo, Rep.",5702174.0
 COG,2019,"Congo, Rep.",5570733.0
@@ -5984,7 +5984,7 @@ COG,1963,"Congo, Rep.",1142600.0
 COG,1962,"Congo, Rep.",1112348.0
 COG,1961,"Congo, Rep.",1083431.0
 COG,1960,"Congo, Rep.",1055693.0
-CRI,2022,Costa Rica,
+CRI,2022,Costa Rica,5180829.0
 CRI,2021,Costa Rica,5153957.0
 CRI,2020,Costa Rica,5123105.0
 CRI,2019,Costa Rica,5084532.0
@@ -6047,7 +6047,7 @@ CRI,1963,Costa Rica,1498647.0
 CRI,1962,Costa Rica,1447037.0
 CRI,1961,Costa Rica,1396138.0
 CRI,1960,Costa Rica,1346302.0
-CIV,2022,Cote d'Ivoire,
+CIV,2022,Cote d'Ivoire,28160542.0
 CIV,2021,Cote d'Ivoire,27478249.0
 CIV,2020,Cote d'Ivoire,26811790.0
 CIV,2019,Cote d'Ivoire,26147551.0
@@ -6110,8 +6110,8 @@ CIV,1963,Cote d'Ivoire,4156453.0
 CIV,1962,Cote d'Ivoire,3998287.0
 CIV,1961,Cote d'Ivoire,3848336.0
 CIV,1960,Cote d'Ivoire,3708661.0
-HRV,2022,Croatia,
-HRV,2021,Croatia,3899000.0
+HRV,2022,Croatia,3854000.0
+HRV,2021,Croatia,3879000.0
 HRV,2020,Croatia,4047680.0
 HRV,2019,Croatia,4065253.0
 HRV,2018,Croatia,4087843.0
@@ -6173,7 +6173,7 @@ HRV,1963,Croatia,4225675.0
 HRV,1962,Croatia,4196712.0
 HRV,1961,Croatia,4167292.0
 HRV,1960,Croatia,4140181.0
-CUB,2022,Cuba,
+CUB,2022,Cuba,11212191.0
 CUB,2021,Cuba,11256372.0
 CUB,2020,Cuba,11300698.0
 CUB,2019,Cuba,11316697.0
@@ -6236,7 +6236,7 @@ CUB,1963,Cuba,7736352.0
 CUB,1962,Cuba,7574265.0
 CUB,1961,Cuba,7418518.0
 CUB,1960,Cuba,7267395.0
-CUW,2022,Curacao,
+CUW,2022,Curacao,149996.0
 CUW,2021,Curacao,152369.0
 CUW,2020,Curacao,154947.0
 CUW,2019,Curacao,157441.0
@@ -6299,7 +6299,7 @@ CUW,1963,Curacao,130860.0
 CUW,1962,Curacao,128414.0
 CUW,1961,Curacao,126125.0
 CUW,1960,Curacao,124826.0
-CYP,2022,Cyprus,
+CYP,2022,Cyprus,1251488.0
 CYP,2021,Cyprus,1244188.0
 CYP,2020,Cyprus,1237537.0
 CYP,2019,Cyprus,1228836.0
@@ -6362,7 +6362,7 @@ CYP,1963,Cyprus,607072.0
 CYP,1962,Cyprus,601095.0
 CYP,1961,Cyprus,594771.0
 CYP,1960,Cyprus,585725.0
-CZE,2022,Czechia,
+CZE,2022,Czechia,10526073.0
 CZE,2021,Czechia,10505772.0
 CZE,2020,Czechia,10697858.0
 CZE,2019,Czechia,10671870.0
@@ -6425,7 +6425,7 @@ CZE,1963,Czechia,9670685.0
 CZE,1962,Czechia,9624660.0
 CZE,1961,Czechia,9586651.0
 CZE,1960,Czechia,9602006.0
-DNK,2022,Denmark,
+DNK,2022,Denmark,5903037.0
 DNK,2021,Denmark,5856733.0
 DNK,2020,Denmark,5831404.0
 DNK,2019,Denmark,5814422.0
@@ -6488,7 +6488,7 @@ DNK,1963,Denmark,4684483.0
 DNK,1962,Denmark,4647727.0
 DNK,1961,Denmark,4611687.0
 DNK,1960,Denmark,4579603.0
-DJI,2022,Djibouti,
+DJI,2022,Djibouti,1120849.0
 DJI,2021,Djibouti,1105557.0
 DJI,2020,Djibouti,1090156.0
 DJI,2019,Djibouti,1073994.0
@@ -6551,7 +6551,7 @@ DJI,1963,Djibouti,97670.0
 DJI,1962,Djibouti,93122.0
 DJI,1961,Djibouti,89270.0
 DJI,1960,Djibouti,85940.0
-DMA,2022,Dominica,
+DMA,2022,Dominica,72737.0
 DMA,2021,Dominica,72412.0
 DMA,2020,Dominica,71995.0
 DMA,2019,Dominica,71428.0
@@ -6614,7 +6614,7 @@ DMA,1963,Dominica,62031.0
 DMA,1962,Dominica,61224.0
 DMA,1961,Dominica,60395.0
 DMA,1960,Dominica,59379.0
-DOM,2022,Dominican Republic,
+DOM,2022,Dominican Republic,11228821.0
 DOM,2021,Dominican Republic,11117873.0
 DOM,2020,Dominican Republic,10999664.0
 DOM,2019,Dominican Republic,10881882.0
@@ -6677,7 +6677,7 @@ DOM,1963,Dominican Republic,3635798.0
 DOM,1962,Dominican Republic,3521164.0
 DOM,1961,Dominican Republic,3408415.0
 DOM,1960,Dominican Republic,3298021.0
-ECU,2022,Ecuador,
+ECU,2022,Ecuador,18001000.0
 ECU,2021,Ecuador,17797737.0
 ECU,2020,Ecuador,17588595.0
 ECU,2019,Ecuador,17343740.0
@@ -6740,7 +6740,7 @@ ECU,1963,Ecuador,5034334.0
 ECU,1962,Ecuador,4890425.0
 ECU,1961,Ecuador,4751507.0
 ECU,1960,Ecuador,4618158.0
-EGY,2022,"Egypt, Arab Rep.",
+EGY,2022,"Egypt, Arab Rep.",110990103.0
 EGY,2021,"Egypt, Arab Rep.",109262178.0
 EGY,2020,"Egypt, Arab Rep.",107465134.0
 EGY,2019,"Egypt, Arab Rep.",105618671.0
@@ -6803,7 +6803,7 @@ EGY,1963,"Egypt, Arab Rep.",29245936.0
 EGY,1962,"Egypt, Arab Rep.",28485022.0
 EGY,1961,"Egypt, Arab Rep.",27747867.0
 EGY,1960,"Egypt, Arab Rep.",27034499.0
-SLV,2022,El Salvador,
+SLV,2022,El Salvador,6336392.0
 SLV,2021,El Salvador,6314167.0
 SLV,2020,El Salvador,6292731.0
 SLV,2019,El Salvador,6280217.0
@@ -6866,7 +6866,7 @@ SLV,1963,El Salvador,3014885.0
 SLV,1962,El Salvador,2937821.0
 SLV,1961,El Salvador,2858896.0
 SLV,1960,El Salvador,2779327.0
-GNQ,2022,Equatorial Guinea,
+GNQ,2022,Equatorial Guinea,1674908.0
 GNQ,2021,Equatorial Guinea,1634466.0
 GNQ,2020,Equatorial Guinea,1596049.0
 GNQ,2019,Equatorial Guinea,1553031.0
@@ -6929,7 +6929,7 @@ GNQ,1963,Equatorial Guinea,283018.0
 GNQ,1962,Equatorial Guinea,277490.0
 GNQ,1961,Equatorial Guinea,272264.0
 GNQ,1960,Equatorial Guinea,267351.0
-ERI,2022,Eritrea,
+ERI,2022,Eritrea,3684032.0
 ERI,2021,Eritrea,3620312.0
 ERI,2020,Eritrea,3555868.0
 ERI,2019,Eritrea,3498818.0
@@ -6992,7 +6992,7 @@ ERI,1963,Eritrea,1067295.0
 ERI,1962,Eritrea,1041552.0
 ERI,1961,Eritrea,1016932.0
 ERI,1960,Eritrea,993568.0
-EST,2022,Estonia,
+EST,2022,Estonia,1344768.0
 EST,2021,Estonia,1330932.0
 EST,2020,Estonia,1329522.0
 EST,2019,Estonia,1326898.0
@@ -7055,7 +7055,7 @@ EST,1963,Estonia,1258857.0
 EST,1962,Estonia,1241623.0
 EST,1961,Estonia,1225077.0
 EST,1960,Estonia,1211537.0
-SWZ,2022,Eswatini,
+SWZ,2022,Eswatini,1201670.0
 SWZ,2021,Eswatini,1192271.0
 SWZ,2020,Eswatini,1180655.0
 SWZ,2019,Eswatini,1169613.0
@@ -7118,7 +7118,7 @@ SWZ,1963,Eswatini,369527.0
 SWZ,1962,Eswatini,361070.0
 SWZ,1961,Eswatini,352971.0
 SWZ,1960,Eswatini,345065.0
-ETH,2022,Ethiopia,
+ETH,2022,Ethiopia,123379924.0
 ETH,2021,Ethiopia,120283026.0
 ETH,2020,Ethiopia,117190911.0
 ETH,2019,Ethiopia,114120594.0
@@ -7181,7 +7181,7 @@ ETH,1963,Ethiopia,23448979.0
 ETH,1962,Ethiopia,22852158.0
 ETH,1961,Ethiopia,22281675.0
 ETH,1960,Ethiopia,21739710.0
-FRO,2022,Faroe Islands,
+FRO,2022,Faroe Islands,53090.0
 FRO,2021,Faroe Islands,52889.0
 FRO,2020,Faroe Islands,52415.0
 FRO,2019,Faroe Islands,51681.0
@@ -7244,7 +7244,7 @@ FRO,1963,Faroe Islands,35385.0
 FRO,1962,Faroe Islands,34963.0
 FRO,1961,Faroe Islands,34572.0
 FRO,1960,Faroe Islands,34154.0
-FJI,2022,Fiji,
+FJI,2022,Fiji,929766.0
 FJI,2021,Fiji,924610.0
 FJI,2020,Fiji,920422.0
 FJI,2019,Fiji,918465.0
@@ -7307,7 +7307,7 @@ FJI,1963,Fiji,441385.0
 FJI,1962,Fiji,427695.0
 FJI,1961,Fiji,414534.0
 FJI,1960,Fiji,401841.0
-FIN,2022,Finland,
+FIN,2022,Finland,5556880.0
 FIN,2021,Finland,5541017.0
 FIN,2020,Finland,5529543.0
 FIN,2019,Finland,5521606.0
@@ -7370,7 +7370,7 @@ FIN,1963,Finland,4523309.0
 FIN,1962,Finland,4491443.0
 FIN,1961,Finland,4461005.0
 FIN,1960,Finland,4429634.0
-FRA,2022,France,
+FRA,2022,France,67935660.0
 FRA,2021,France,67749632.0
 FRA,2020,France,67571107.0
 FRA,2019,France,67388001.0
@@ -7433,7 +7433,7 @@ FRA,1963,France,48189939.0
 FRA,1962,France,47679792.0
 FRA,1961,France,47161641.0
 FRA,1960,France,46649927.0
-PYF,2022,French Polynesia,
+PYF,2022,French Polynesia,306279.0
 PYF,2021,French Polynesia,304032.0
 PYF,2020,French Polynesia,301920.0
 PYF,2019,French Polynesia,299717.0
@@ -7496,7 +7496,7 @@ PYF,1963,French Polynesia,91963.0
 PYF,1962,French Polynesia,89208.0
 PYF,1961,French Polynesia,86921.0
 PYF,1960,French Polynesia,84851.0
-GAB,2022,Gabon,
+GAB,2022,Gabon,2388992.0
 GAB,2021,Gabon,2341179.0
 GAB,2020,Gabon,2292573.0
 GAB,2019,Gabon,2242785.0
@@ -7559,7 +7559,7 @@ GAB,1963,Gabon,532592.0
 GAB,1962,Gabon,525754.0
 GAB,1961,Gabon,519329.0
 GAB,1960,Gabon,513340.0
-GMB,2022,"Gambia, The",
+GMB,2022,"Gambia, The",2705992.0
 GMB,2021,"Gambia, The",2639916.0
 GMB,2020,"Gambia, The",2573995.0
 GMB,2019,"Gambia, The",2508883.0
@@ -7622,7 +7622,7 @@ GMB,1963,"Gambia, The",434173.0
 GMB,1962,"Gambia, The",422310.0
 GMB,1961,"Gambia, The",410801.0
 GMB,1960,"Gambia, The",399649.0
-GEO,2022,Georgia,
+GEO,2022,Georgia,3712502.0
 GEO,2021,Georgia,3708610.0
 GEO,2020,Georgia,3722716.0
 GEO,2019,Georgia,3720161.0
@@ -7685,7 +7685,7 @@ GEO,1963,Georgia,3816100.0
 GEO,1962,Georgia,3760300.0
 GEO,1961,Georgia,3703600.0
 GEO,1960,Georgia,3645600.0
-DEU,2022,Germany,
+DEU,2022,Germany,84079811.0
 DEU,2021,Germany,83196078.0
 DEU,2020,Germany,83160871.0
 DEU,2019,Germany,83092962.0
@@ -7748,7 +7748,7 @@ DEU,1963,Germany,74714353.0
 DEU,1962,Germany,74025784.0
 DEU,1961,Germany,73377632.0
 DEU,1960,Germany,72814900.0
-GHA,2022,Ghana,
+GHA,2022,Ghana,33475870.0
 GHA,2021,Ghana,32833031.0
 GHA,2020,Ghana,32180401.0
 GHA,2019,Ghana,31522290.0
@@ -7811,7 +7811,7 @@ GHA,1963,Ghana,7458243.0
 GHA,1962,Ghana,7281192.0
 GHA,1961,Ghana,7109029.0
 GHA,1960,Ghana,6911510.0
-GIB,2022,Gibraltar,
+GIB,2022,Gibraltar,32649.0
 GIB,2021,Gibraltar,32669.0
 GIB,2020,Gibraltar,32709.0
 GIB,2019,Gibraltar,32685.0
@@ -7874,7 +7874,7 @@ GIB,1963,Gibraltar,22796.0
 GIB,1962,Gibraltar,22249.0
 GIB,1961,Gibraltar,21907.0
 GIB,1960,Gibraltar,21822.0
-GRC,2022,Greece,
+GRC,2022,Greece,10566531.0
 GRC,2021,Greece,10641221.0
 GRC,2020,Greece,10698599.0
 GRC,2019,Greece,10721582.0
@@ -7937,12 +7937,12 @@ GRC,1963,Greece,8479625.0
 GRC,1962,Greece,8448233.0
 GRC,1961,Greece,8398050.0
 GRC,1960,Greece,8331725.0
-GRL,2022,Greenland,
+GRL,2022,Greenland,56661.0
 GRL,2021,Greenland,56653.0
 GRL,2020,Greenland,56367.0
 GRL,2019,Greenland,56225.0
 GRL,2018,Greenland,56023.0
-GRL,2017,Greenland,56171.0
+GRL,2017,Greenland,56172.0
 GRL,2016,Greenland,56186.0
 GRL,2015,Greenland,56114.0
 GRL,2014,Greenland,56295.0
@@ -8000,7 +8000,7 @@ GRL,1963,Greenland,36400.0
 GRL,1962,Greenland,35000.0
 GRL,1961,Greenland,33700.0
 GRL,1960,Greenland,32500.0
-GRD,2022,Grenada,
+GRD,2022,Grenada,125438.0
 GRD,2021,Grenada,124610.0
 GRD,2020,Grenada,123663.0
 GRD,2019,Grenada,122724.0
@@ -8063,7 +8063,7 @@ GRD,1963,Grenada,96882.0
 GRD,1962,Grenada,96052.0
 GRD,1961,Grenada,95096.0
 GRD,1960,Grenada,93772.0
-GUM,2022,Guam,
+GUM,2022,Guam,171774.0
 GUM,2021,Guam,170534.0
 GUM,2020,Guam,169231.0
 GUM,2019,Guam,168624.0
@@ -8126,7 +8126,7 @@ GUM,1963,Guam,76996.0
 GUM,1962,Guam,75412.0
 GUM,1961,Guam,73873.0
 GUM,1960,Guam,72374.0
-GTM,2022,Guatemala,
+GTM,2022,Guatemala,17357886.0
 GTM,2021,Guatemala,17109746.0
 GTM,2020,Guatemala,16858333.0
 GTM,2019,Guatemala,16604026.0
@@ -8189,7 +8189,7 @@ GTM,1963,Guatemala,4508444.0
 GTM,1962,Guatemala,4378604.0
 GTM,1961,Guatemala,4251911.0
 GTM,1960,Guatemala,4128880.0
-GIN,2022,Guinea,
+GIN,2022,Guinea,13859341.0
 GIN,2021,Guinea,13531906.0
 GIN,2020,Guinea,13205153.0
 GIN,2019,Guinea,12877539.0
@@ -8252,7 +8252,7 @@ GIN,1963,Guinea,3707945.0
 GIN,1962,Guinea,3642324.0
 GIN,1961,Guinea,3578631.0
 GIN,1960,Guinea,3516814.0
-GNB,2022,Guinea-Bissau,
+GNB,2022,Guinea-Bissau,2105566.0
 GNB,2021,Guinea-Bissau,2060721.0
 GNB,2020,Guinea-Bissau,2015828.0
 GNB,2019,Guinea-Bissau,1970457.0
@@ -8315,7 +8315,7 @@ GNB,1963,Guinea-Bissau,595802.0
 GNB,1962,Guinea-Bissau,590399.0
 GNB,1961,Guinea-Bissau,583107.0
 GNB,1960,Guinea-Bissau,577933.0
-GUY,2022,Guyana,
+GUY,2022,Guyana,808726.0
 GUY,2021,Guyana,804567.0
 GUY,2020,Guyana,797202.0
 GUY,2019,Guyana,798753.0
@@ -8378,7 +8378,7 @@ GUY,1963,Guyana,620703.0
 GUY,1962,Guyana,604833.0
 GUY,1961,Guyana,588597.0
 GUY,1960,Guyana,571990.0
-HTI,2022,Haiti,
+HTI,2022,Haiti,11584996.0
 HTI,2021,Haiti,11447569.0
 HTI,2020,Haiti,11306801.0
 HTI,2019,Haiti,11160438.0
@@ -8441,7 +8441,7 @@ HTI,1963,Haiti,4122260.0
 HTI,1962,Haiti,4049504.0
 HTI,1961,Haiti,3974934.0
 HTI,1960,Haiti,3901139.0
-HND,2022,Honduras,
+HND,2022,Honduras,10432860.0
 HND,2021,Honduras,10278345.0
 HND,2020,Honduras,10121763.0
 HND,2019,Honduras,9958829.0
@@ -8504,7 +8504,7 @@ HND,1963,Honduras,2267708.0
 HND,1962,Honduras,2202854.0
 HND,1961,Honduras,2139928.0
 HND,1960,Honduras,2078617.0
-HKG,2022,"Hong Kong SAR, China",
+HKG,2022,"Hong Kong SAR, China",7346100.0
 HKG,2021,"Hong Kong SAR, China",7413100.0
 HKG,2020,"Hong Kong SAR, China",7481000.0
 HKG,2019,"Hong Kong SAR, China",7507900.0
@@ -8567,7 +8567,7 @@ HKG,1963,"Hong Kong SAR, China",3420900.0
 HKG,1962,"Hong Kong SAR, China",3305200.0
 HKG,1961,"Hong Kong SAR, China",3168100.0
 HKG,1960,"Hong Kong SAR, China",3114671.0
-HUN,2022,Hungary,
+HUN,2022,Hungary,9683505.0
 HUN,2021,Hungary,9709891.0
 HUN,2020,Hungary,9750149.0
 HUN,2019,Hungary,9771141.0
@@ -8630,7 +8630,7 @@ HUN,1963,Hungary,10087947.0
 HUN,1962,Hungary,10061734.0
 HUN,1961,Hungary,10029321.0
 HUN,1960,Hungary,9983967.0
-ISL,2022,Iceland,
+ISL,2022,Iceland,381900.0
 ISL,2021,Iceland,372520.0
 ISL,2020,Iceland,366463.0
 ISL,2019,Iceland,360563.0
@@ -8693,7 +8693,7 @@ ISL,1963,Iceland,185653.0
 ISL,1962,Iceland,182378.0
 ISL,1961,Iceland,179029.0
 ISL,1960,Iceland,175574.0
-IND,2022,India,
+IND,2022,India,1417173173.0
 IND,2021,India,1407563842.0
 IND,2020,India,1396387127.0
 IND,2019,India,1383112050.0
@@ -8756,7 +8756,7 @@ IND,1963,India,477933619.0
 IND,1962,India,467024193.0
 IND,1961,India,456351876.0
 IND,1960,India,445954579.0
-IDN,2022,Indonesia,
+IDN,2022,Indonesia,275501339.0
 IDN,2021,Indonesia,273753191.0
 IDN,2020,Indonesia,271857970.0
 IDN,2019,Indonesia,269582878.0
@@ -8819,7 +8819,7 @@ IDN,1963,Indonesia,95962527.0
 IDN,1962,Indonesia,93345489.0
 IDN,1961,Indonesia,90816938.0
 IDN,1960,Indonesia,88382881.0
-IRN,2022,"Iran, Islamic Rep.",
+IRN,2022,"Iran, Islamic Rep.",88550570.0
 IRN,2021,"Iran, Islamic Rep.",87923432.0
 IRN,2020,"Iran, Islamic Rep.",87290193.0
 IRN,2019,"Iran, Islamic Rep.",86564202.0
@@ -8882,7 +8882,7 @@ IRN,1963,"Iran, Islamic Rep.",23259094.0
 IRN,1962,"Iran, Islamic Rep.",22605050.0
 IRN,1961,"Iran, Islamic Rep.",21983622.0
 IRN,1960,"Iran, Islamic Rep.",21388806.0
-IRQ,2022,Iraq,
+IRQ,2022,Iraq,44496122.0
 IRQ,2021,Iraq,43533592.0
 IRQ,2020,Iraq,42556984.0
 IRQ,2019,Iraq,41563520.0
@@ -8945,7 +8945,7 @@ IRQ,1963,Iraq,7735824.0
 IRQ,1962,Iraq,7481832.0
 IRQ,1961,Iraq,7260714.0
 IRQ,1960,Iraq,7084678.0
-IRL,2022,Ireland,
+IRL,2022,Ireland,5086988.0
 IRL,2021,Ireland,5033165.0
 IRL,2020,Ireland,4985382.0
 IRL,2019,Ireland,4934340.0
@@ -9008,7 +9008,7 @@ IRL,1963,Ireland,2852650.0
 IRL,1962,Ireland,2836050.0
 IRL,1961,Ireland,2824400.0
 IRL,1960,Ireland,2828600.0
-IMN,2022,Isle of Man,
+IMN,2022,Isle of Man,84519.0
 IMN,2021,Isle of Man,84263.0
 IMN,2020,Isle of Man,84046.0
 IMN,2019,Isle of Man,83933.0
@@ -9071,8 +9071,8 @@ IMN,1963,Isle of Man,49131.0
 IMN,1962,Isle of Man,48669.0
 IMN,1961,Isle of Man,48422.0
 IMN,1960,Isle of Man,48793.0
-ISR,2022,Israel,
-ISR,2021,Israel,9364000.0
+ISR,2022,Israel,9550600.0
+ISR,2021,Israel,9364700.0
 ISR,2020,Israel,9215100.0
 ISR,2019,Israel,9054000.0
 ISR,2018,Israel,8882800.0
@@ -9134,7 +9134,7 @@ ISR,1963,Israel,2379000.0
 ISR,1962,Israel,2293000.0
 ISR,1961,Israel,2185000.0
 ISR,1960,Israel,2114020.0
-ITA,2022,Italy,
+ITA,2022,Italy,58856847.0
 ITA,2021,Italy,59109668.0
 ITA,2020,Italy,59438851.0
 ITA,2019,Italy,59729081.0
@@ -9197,7 +9197,7 @@ ITA,1963,Italy,51252000.0
 ITA,1962,Italy,50879450.0
 ITA,1961,Italy,50536350.0
 ITA,1960,Italy,50199700.0
-JAM,2022,Jamaica,
+JAM,2022,Jamaica,2827377.0
 JAM,2021,Jamaica,2827695.0
 JAM,2020,Jamaica,2820436.0
 JAM,2019,Jamaica,2813773.0
@@ -9260,7 +9260,7 @@ JAM,1963,Jamaica,1703868.0
 JAM,1962,Jamaica,1683761.0
 JAM,1961,Jamaica,1663754.0
 JAM,1960,Jamaica,1642331.0
-JPN,2022,Japan,
+JPN,2022,Japan,125124989.0
 JPN,2021,Japan,125681593.0
 JPN,2020,Japan,126261000.0
 JPN,2019,Japan,126633000.0
@@ -9323,7 +9323,7 @@ JPN,1963,Japan,95900000.0
 JPN,1962,Japan,94933000.0
 JPN,1961,Japan,94055000.0
 JPN,1960,Japan,93216000.0
-JOR,2022,Jordan,
+JOR,2022,Jordan,11285869.0
 JOR,2021,Jordan,11148278.0
 JOR,2020,Jordan,10928721.0
 JOR,2019,Jordan,10698683.0
@@ -9386,7 +9386,7 @@ JOR,1963,Jordan,978607.0
 JOR,1962,Jordan,934615.0
 JOR,1961,Jordan,891848.0
 JOR,1960,Jordan,847936.0
-KAZ,2022,Kazakhstan,
+KAZ,2022,Kazakhstan,19621972.0
 KAZ,2021,Kazakhstan,19000988.0
 KAZ,2020,Kazakhstan,18755666.0
 KAZ,2019,Kazakhstan,18513673.0
@@ -9449,7 +9449,7 @@ KAZ,1963,Kazakhstan,10277790.0
 KAZ,1962,Kazakhstan,9959414.0
 KAZ,1961,Kazakhstan,9639302.0
 KAZ,1960,Kazakhstan,9319283.0
-KEN,2022,Kenya,
+KEN,2022,Kenya,54027487.0
 KEN,2021,Kenya,53005614.0
 KEN,2020,Kenya,51985780.0
 KEN,2019,Kenya,50951450.0
@@ -9512,7 +9512,7 @@ KEN,1963,Kenya,8697200.0
 KEN,1962,Kenya,8363578.0
 KEN,1961,Kenya,8047470.0
 KEN,1960,Kenya,7751435.0
-KIR,2022,Kiribati,
+KIR,2022,Kiribati,131232.0
 KIR,2021,Kiribati,128874.0
 KIR,2020,Kiribati,126463.0
 KIR,2019,Kiribati,124241.0
@@ -9575,7 +9575,7 @@ KIR,1963,Kiribati,50780.0
 KIR,1962,Kiribati,49508.0
 KIR,1961,Kiribati,48275.0
 KIR,1960,Kiribati,47093.0
-PRK,2022,"Korea, Dem. People's Rep.",
+PRK,2022,"Korea, Dem. People's Rep.",26069416.0
 PRK,2021,"Korea, Dem. People's Rep.",25971909.0
 PRK,2020,"Korea, Dem. People's Rep.",25867467.0
 PRK,2019,"Korea, Dem. People's Rep.",25755441.0
@@ -9638,7 +9638,7 @@ PRK,1963,"Korea, Dem. People's Rep.",12475236.0
 PRK,1962,"Korea, Dem. People's Rep.",12180505.0
 PRK,1961,"Korea, Dem. People's Rep.",11916515.0
 PRK,1960,"Korea, Dem. People's Rep.",11655666.0
-KOR,2022,"Korea, Rep.",
+KOR,2022,"Korea, Rep.",51628117.0
 KOR,2021,"Korea, Rep.",51744876.0
 KOR,2020,"Korea, Rep.",51836239.0
 KOR,2019,"Korea, Rep.",51764822.0
@@ -9701,7 +9701,7 @@ KOR,1963,"Korea, Rep.",27261747.0
 KOR,1962,"Korea, Rep.",26513030.0
 KOR,1961,"Korea, Rep.",25765673.0
 KOR,1960,"Korea, Rep.",25012374.0
-XKX,2022,Kosovo,
+XKX,2022,Kosovo,1761985.0
 XKX,2021,Kosovo,1786038.0
 XKX,2020,Kosovo,1790133.0
 XKX,2019,Kosovo,1788878.0
@@ -9764,7 +9764,7 @@ XKX,1963,Kosovo,1022000.0
 XKX,1962,Kosovo,994000.0
 XKX,1961,Kosovo,966000.0
 XKX,1960,Kosovo,947000.0
-KWT,2022,Kuwait,
+KWT,2022,Kuwait,4268873.0
 KWT,2021,Kuwait,4250114.0
 KWT,2020,Kuwait,4360444.0
 KWT,2019,Kuwait,4441100.0
@@ -9827,7 +9827,7 @@ KWT,1963,Kuwait,420494.0
 KWT,1962,Kuwait,378190.0
 KWT,1961,Kuwait,339697.0
 KWT,1960,Kuwait,305415.0
-KGZ,2022,Kyrgyz Republic,
+KGZ,2022,Kyrgyz Republic,6803300.0
 KGZ,2021,Kyrgyz Republic,6691800.0
 KGZ,2020,Kyrgyz Republic,6579900.0
 KGZ,2019,Kyrgyz Republic,6456200.0
@@ -9890,7 +9890,7 @@ KGZ,1963,Kyrgyz Republic,2413700.0
 KGZ,1962,Kyrgyz Republic,2333400.0
 KGZ,1961,Kyrgyz Republic,2255900.0
 KGZ,1960,Kyrgyz Republic,2172300.0
-LAO,2022,Lao PDR,
+LAO,2022,Lao PDR,7529475.0
 LAO,2021,Lao PDR,7425057.0
 LAO,2020,Lao PDR,7319399.0
 LAO,2019,Lao PDR,7212053.0
@@ -9953,7 +9953,7 @@ LAO,1963,Lao PDR,2273219.0
 LAO,1962,Lao PDR,2221615.0
 LAO,1961,Lao PDR,2171141.0
 LAO,1960,Lao PDR,2122532.0
-LVA,2022,Latvia,
+LVA,2022,Latvia,1883379.0
 LVA,2021,Latvia,1884490.0
 LVA,2020,Latvia,1900449.0
 LVA,2019,Latvia,1913822.0
@@ -10016,7 +10016,7 @@ LVA,1963,Latvia,2210919.0
 LVA,1962,Latvia,2181586.0
 LVA,1961,Latvia,2152681.0
 LVA,1960,Latvia,2120979.0
-LBN,2022,Lebanon,
+LBN,2022,Lebanon,5489739.0
 LBN,2021,Lebanon,5592631.0
 LBN,2020,Lebanon,5662923.0
 LBN,2019,Lebanon,5781907.0
@@ -10079,7 +10079,7 @@ LBN,1963,Lebanon,1971511.0
 LBN,1962,Lebanon,1911959.0
 LBN,1961,Lebanon,1853295.0
 LBN,1960,Lebanon,1798092.0
-LSO,2022,Lesotho,
+LSO,2022,Lesotho,2305825.0
 LSO,2021,Lesotho,2281454.0
 LSO,2020,Lesotho,2254100.0
 LSO,2019,Lesotho,2225702.0
@@ -10142,7 +10142,7 @@ LSO,1963,Lesotho,809138.0
 LSO,1962,Lesotho,784681.0
 LSO,1961,Lesotho,760895.0
 LSO,1960,Lesotho,737838.0
-LBR,2022,Liberia,
+LBR,2022,Liberia,5302681.0
 LBR,2021,Liberia,5193416.0
 LBR,2020,Liberia,5087584.0
 LBR,2019,Liberia,4985289.0
@@ -10205,7 +10205,7 @@ LBR,1963,Liberia,1224169.0
 LBR,1962,Liberia,1194085.0
 LBR,1961,Liberia,1165005.0
 LBR,1960,Liberia,1137026.0
-LBY,2022,Libya,
+LBY,2022,Libya,6812341.0
 LBY,2021,Libya,6735277.0
 LBY,2020,Libya,6653942.0
 LBY,2019,Libya,6569088.0
@@ -10268,7 +10268,7 @@ LBY,1963,Libya,1594758.0
 LBY,1962,Libya,1535157.0
 LBY,1961,Libya,1478760.0
 LBY,1960,Libya,1426986.0
-LIE,2022,Liechtenstein,
+LIE,2022,Liechtenstein,39327.0
 LIE,2021,Liechtenstein,39039.0
 LIE,2020,Liechtenstein,38756.0
 LIE,2019,Liechtenstein,38482.0
@@ -10331,7 +10331,7 @@ LIE,1963,Liechtenstein,17625.0
 LIE,1962,Liechtenstein,17221.0
 LIE,1961,Liechtenstein,16834.0
 LIE,1960,Liechtenstein,16472.0
-LTU,2022,Lithuania,
+LTU,2022,Lithuania,2833000.0
 LTU,2021,Lithuania,2800839.0
 LTU,2020,Lithuania,2794885.0
 LTU,2019,Lithuania,2794137.0
@@ -10394,7 +10394,7 @@ LTU,1963,Lithuania,2898950.0
 LTU,1962,Lithuania,2863350.0
 LTU,1961,Lithuania,2823550.0
 LTU,1960,Lithuania,2778550.0
-LUX,2022,Luxembourg,
+LUX,2022,Luxembourg,650774.0
 LUX,2021,Luxembourg,640064.0
 LUX,2020,Luxembourg,630419.0
 LUX,2019,Luxembourg,620001.0
@@ -10457,7 +10457,7 @@ LUX,1963,Luxembourg,324100.0
 LUX,1962,Luxembourg,320750.0
 LUX,1961,Luxembourg,316845.0
 LUX,1960,Luxembourg,313970.0
-MAC,2022,"Macao SAR, China",
+MAC,2022,"Macao SAR, China",695168.0
 MAC,2021,"Macao SAR, China",686607.0
 MAC,2020,"Macao SAR, China",676283.0
 MAC,2019,"Macao SAR, China",663653.0
@@ -10520,7 +10520,7 @@ MAC,1963,"Macao SAR, China",193618.0
 MAC,1962,"Macao SAR, China",186039.0
 MAC,1961,"Macao SAR, China",178672.0
 MAC,1960,"Macao SAR, China",177014.0
-MDG,2022,Madagascar,
+MDG,2022,Madagascar,29611714.0
 MDG,2021,Madagascar,28915653.0
 MDG,2020,Madagascar,28225177.0
 MDG,2019,Madagascar,27533134.0
@@ -10583,7 +10583,7 @@ MDG,1963,Madagascar,5484252.0
 MDG,1962,Madagascar,5343117.0
 MDG,1961,Madagascar,5206239.0
 MDG,1960,Madagascar,5073342.0
-MWI,2022,Malawi,
+MWI,2022,Malawi,20405317.0
 MWI,2021,Malawi,19889742.0
 MWI,2020,Malawi,19377061.0
 MWI,2019,Malawi,18867337.0
@@ -10646,7 +10646,7 @@ MWI,1963,Malawi,3893628.0
 MWI,1962,Malawi,3799155.0
 MWI,1961,Malawi,3708193.0
 MWI,1960,Malawi,3621081.0
-MYS,2022,Malaysia,
+MYS,2022,Malaysia,33938221.0
 MYS,2021,Malaysia,33573874.0
 MYS,2020,Malaysia,33199993.0
 MYS,2019,Malaysia,32804020.0
@@ -10709,7 +10709,7 @@ MYS,1963,Malaysia,8579350.0
 MYS,1962,Malaysia,8324218.0
 MYS,1961,Malaysia,8074805.0
 MYS,1960,Malaysia,7833782.0
-MDV,2022,Maldives,
+MDV,2022,Maldives,523787.0
 MDV,2021,Maldives,521457.0
 MDV,2020,Maldives,514438.0
 MDV,2019,Maldives,504508.0
@@ -10772,7 +10772,7 @@ MDV,1963,Maldives,98775.0
 MDV,1962,Maldives,96332.0
 MDV,1961,Maldives,93952.0
 MDV,1960,Maldives,91650.0
-MLI,2022,Mali,
+MLI,2022,Mali,22593590.0
 MLI,2021,Mali,21904983.0
 MLI,2020,Mali,21224040.0
 MLI,2019,Mali,20567424.0
@@ -10835,7 +10835,7 @@ MLI,1963,Mali,5570462.0
 MLI,1962,Mali,5494845.0
 MLI,1961,Mali,5420247.0
 MLI,1960,Mali,5346792.0
-MLT,2022,Malta,
+MLT,2022,Malta,523417.0
 MLT,2021,Malta,518536.0
 MLT,2020,Malta,515332.0
 MLT,2019,Malta,504062.0
@@ -10898,7 +10898,7 @@ MLT,1963,Malta,322550.0
 MLT,1962,Malta,323900.0
 MLT,1961,Malta,325250.0
 MLT,1960,Malta,326550.0
-MHL,2022,Marshall Islands,
+MHL,2022,Marshall Islands,41569.0
 MHL,2021,Marshall Islands,42050.0
 MHL,2020,Marshall Islands,43413.0
 MHL,2019,Marshall Islands,44728.0
@@ -10961,7 +10961,7 @@ MHL,1963,Marshall Islands,16947.0
 MHL,1962,Marshall Islands,16387.0
 MHL,1961,Marshall Islands,15867.0
 MHL,1960,Marshall Islands,15374.0
-MRT,2022,Mauritania,
+MRT,2022,Mauritania,4736139.0
 MRT,2021,Mauritania,4614974.0
 MRT,2020,Mauritania,4498604.0
 MRT,2019,Mauritania,4383849.0
@@ -11024,16 +11024,16 @@ MRT,1963,Mauritania,911290.0
 MRT,1962,Mauritania,885938.0
 MRT,1961,Mauritania,861663.0
 MRT,1960,Mauritania,838478.0
-MUS,2022,Mauritius,
-MUS,2021,Mauritius,1266060.0
-MUS,2020,Mauritius,1265740.0
-MUS,2019,Mauritius,1265711.0
-MUS,2018,Mauritius,1265303.0
-MUS,2017,Mauritius,1264613.0
-MUS,2016,Mauritius,1263473.0
-MUS,2015,Mauritius,1262605.0
-MUS,2014,Mauritius,1260934.0
-MUS,2013,Mauritius,1258653.0
+MUS,2022,Mauritius,1262523.0
+MUS,2021,Mauritius,1266334.0
+MUS,2020,Mauritius,1266014.0
+MUS,2019,Mauritius,1265985.0
+MUS,2018,Mauritius,1265577.0
+MUS,2017,Mauritius,1264887.0
+MUS,2016,Mauritius,1263747.0
+MUS,2015,Mauritius,1262879.0
+MUS,2014,Mauritius,1261208.0
+MUS,2013,Mauritius,1258927.0
 MUS,2012,Mauritius,1255882.0
 MUS,2011,Mauritius,1252404.0
 MUS,2010,Mauritius,1250400.0
@@ -11087,7 +11087,7 @@ MUS,1963,Mauritius,718861.0
 MUS,1962,Mauritius,700349.0
 MUS,1961,Mauritius,680757.0
 MUS,1960,Mauritius,676683.0
-MEX,2022,Mexico,
+MEX,2022,Mexico,127504125.0
 MEX,2021,Mexico,126705138.0
 MEX,2020,Mexico,125998302.0
 MEX,2019,Mexico,125085311.0
@@ -11150,7 +11150,7 @@ MEX,1963,Mexico,39982118.0
 MEX,1962,Mexico,38683283.0
 MEX,1961,Mexico,37439317.0
 MEX,1960,Mexico,36268055.0
-FSM,2022,"Micronesia, Fed. Sts.",
+FSM,2022,"Micronesia, Fed. Sts.",114164.0
 FSM,2021,"Micronesia, Fed. Sts.",113131.0
 FSM,2020,"Micronesia, Fed. Sts.",112106.0
 FSM,2019,"Micronesia, Fed. Sts.",111379.0
@@ -11213,7 +11213,7 @@ FSM,1963,"Micronesia, Fed. Sts.",47758.0
 FSM,1962,"Micronesia, Fed. Sts.",46200.0
 FSM,1961,"Micronesia, Fed. Sts.",44563.0
 FSM,1960,"Micronesia, Fed. Sts.",42986.0
-MDA,2022,Moldova,
+MDA,2022,Moldova,2592477.0
 MDA,2021,Moldova,2615199.0
 MDA,2020,Moldova,2635130.0
 MDA,2019,Moldova,2664224.0
@@ -11276,7 +11276,7 @@ MDA,1963,Moldova,2222675.0
 MDA,1962,Moldova,2177676.0
 MDA,1961,Moldova,2127854.0
 MDA,1960,Moldova,2074015.0
-MCO,2022,Monaco,
+MCO,2022,Monaco,36469.0
 MCO,2021,Monaco,36686.0
 MCO,2020,Monaco,36922.0
 MCO,2019,Monaco,37034.0
@@ -11339,7 +11339,7 @@ MCO,1963,Monaco,22442.0
 MCO,1962,Monaco,22106.0
 MCO,1961,Monaco,21907.0
 MCO,1960,Monaco,21797.0
-MNG,2022,Mongolia,
+MNG,2022,Mongolia,3398366.0
 MNG,2021,Mongolia,3347782.0
 MNG,2020,Mongolia,3294335.0
 MNG,2019,Mongolia,3232430.0
@@ -11402,7 +11402,7 @@ MNG,1963,Mongolia,1075888.0
 MNG,1962,Mongolia,1045315.0
 MNG,1961,Mongolia,1011502.0
 MNG,1960,Mongolia,977903.0
-MNE,2022,Montenegro,
+MNE,2022,Montenegro,616159.0
 MNE,2021,Montenegro,619211.0
 MNE,2020,Montenegro,621306.0
 MNE,2019,Montenegro,622028.0
@@ -11465,7 +11465,7 @@ MNE,1963,Montenegro,513409.0
 MNE,1962,Montenegro,502558.0
 MNE,1961,Montenegro,491140.0
 MNE,1960,Montenegro,480579.0
-MAR,2022,Morocco,
+MAR,2022,Morocco,37457971.0
 MAR,2021,Morocco,37076584.0
 MAR,2020,Morocco,36688772.0
 MAR,2019,Morocco,36304408.0
@@ -11528,7 +11528,7 @@ MAR,1963,Morocco,12726686.0
 MAR,1962,Morocco,12404757.0
 MAR,1961,Morocco,12081713.0
 MAR,1960,Morocco,11769774.0
-MOZ,2022,Mozambique,
+MOZ,2022,Mozambique,32969518.0
 MOZ,2021,Mozambique,32077072.0
 MOZ,2020,Mozambique,31178239.0
 MOZ,2019,Mozambique,30285595.0
@@ -11591,7 +11591,7 @@ MOZ,1963,Mozambique,7209807.0
 MOZ,1962,Mozambique,7060376.0
 MOZ,1961,Mozambique,6917521.0
 MOZ,1960,Mozambique,6788375.0
-MMR,2022,Myanmar,
+MMR,2022,Myanmar,54179306.0
 MMR,2021,Myanmar,53798084.0
 MMR,2020,Myanmar,53423198.0
 MMR,2019,Myanmar,53040212.0
@@ -11654,7 +11654,7 @@ MMR,1963,Myanmar,23210687.0
 MMR,1962,Myanmar,22699703.0
 MMR,1961,Myanmar,22203109.0
 MMR,1960,Myanmar,21720697.0
-NAM,2022,Namibia,
+NAM,2022,Namibia,2567012.0
 NAM,2021,Namibia,2530151.0
 NAM,2020,Namibia,2489098.0
 NAM,2019,Namibia,2446644.0
@@ -11717,7 +11717,7 @@ NAM,1963,Namibia,627358.0
 NAM,1962,Namibia,613808.0
 NAM,1961,Namibia,601424.0
 NAM,1960,Namibia,590181.0
-NRU,2022,Nauru,
+NRU,2022,Nauru,12668.0
 NRU,2021,Nauru,12511.0
 NRU,2020,Nauru,12315.0
 NRU,2019,Nauru,12132.0
@@ -11780,7 +11780,7 @@ NRU,1963,Nauru,5198.0
 NRU,1962,Nauru,4950.0
 NRU,1961,Nauru,4753.0
 NRU,1960,Nauru,4582.0
-NPL,2022,Nepal,
+NPL,2022,Nepal,30547580.0
 NPL,2021,Nepal,30034989.0
 NPL,2020,Nepal,29348627.0
 NPL,2019,Nepal,28832496.0
@@ -11843,7 +11843,7 @@ NPL,1963,Nepal,10782717.0
 NPL,1962,Nepal,10570716.0
 NPL,1961,Nepal,10365144.0
 NPL,1960,Nepal,10167941.0
-NLD,2022,Netherlands,
+NLD,2022,Netherlands,17703090.0
 NLD,2021,Netherlands,17533044.0
 NLD,2020,Netherlands,17441500.0
 NLD,2019,Netherlands,17344874.0
@@ -11906,10 +11906,10 @@ NLD,1963,Netherlands,11965966.0
 NLD,1962,Netherlands,11805689.0
 NLD,1961,Netherlands,11638712.0
 NLD,1960,Netherlands,11486631.0
-NCL,2022,New Caledonia,
-NCL,2021,New Caledonia,271030.0
-NCL,2020,New Caledonia,271130.0
-NCL,2019,New Caledonia,271230.0
+NCL,2022,New Caledonia,276780.0
+NCL,2021,New Caledonia,274660.0
+NCL,2020,New Caledonia,272460.0
+NCL,2019,New Caledonia,271240.0
 NCL,2018,New Caledonia,271170.0
 NCL,2017,New Caledonia,270810.0
 NCL,2016,New Caledonia,270220.0
@@ -11969,8 +11969,8 @@ NCL,1963,New Caledonia,85700.0
 NCL,1962,New Caledonia,83400.0
 NCL,1961,New Caledonia,81200.0
 NCL,1960,New Caledonia,79000.0
-NZL,2022,New Zealand,
-NZL,2021,New Zealand,5122600.0
+NZL,2022,New Zealand,5124100.0
+NZL,2021,New Zealand,5111400.0
 NZL,2020,New Zealand,5090200.0
 NZL,2019,New Zealand,4979200.0
 NZL,2018,New Zealand,4900600.0
@@ -12032,7 +12032,7 @@ NZL,1963,New Zealand,2531800.0
 NZL,1962,New Zealand,2482000.0
 NZL,1961,New Zealand,2419700.0
 NZL,1960,New Zealand,2371800.0
-NIC,2022,Nicaragua,
+NIC,2022,Nicaragua,6948392.0
 NIC,2021,Nicaragua,6850540.0
 NIC,2020,Nicaragua,6755895.0
 NIC,2019,Nicaragua,6663924.0
@@ -12095,7 +12095,7 @@ NIC,1963,Nicaragua,1960155.0
 NIC,1962,Nicaragua,1901451.0
 NIC,1961,Nicaragua,1844630.0
 NIC,1960,Nicaragua,1789684.0
-NER,2022,Niger,
+NER,2022,Niger,26207977.0
 NER,2021,Niger,25252722.0
 NER,2020,Niger,24333639.0
 NER,2019,Niger,23443393.0
@@ -12158,7 +12158,7 @@ NER,1963,Niger,3822697.0
 NER,1962,Niger,3711068.0
 NER,1961,Niger,3602530.0
 NER,1960,Niger,3497431.0
-NGA,2022,Nigeria,
+NGA,2022,Nigeria,218541212.0
 NGA,2021,Nigeria,213401323.0
 NGA,2020,Nigeria,208327405.0
 NGA,2019,Nigeria,203304492.0
@@ -12221,7 +12221,7 @@ NGA,1963,Nigeria,47822569.0
 NGA,1962,Nigeria,46821845.0
 NGA,1961,Nigeria,45855507.0
 NGA,1960,Nigeria,44928342.0
-MKD,2022,North Macedonia,
+MKD,2022,North Macedonia,2057679.0
 MKD,2021,North Macedonia,2065092.0
 MKD,2020,North Macedonia,2072531.0
 MKD,2019,North Macedonia,2076694.0
@@ -12284,7 +12284,7 @@ MKD,1963,North Macedonia,1511854.0
 MKD,1962,North Macedonia,1497338.0
 MKD,1961,North Macedonia,1481112.0
 MKD,1960,North Macedonia,1462368.0
-MNP,2022,Northern Mariana Islands,
+MNP,2022,Northern Mariana Islands,49551.0
 MNP,2021,Northern Mariana Islands,49481.0
 MNP,2020,Northern Mariana Islands,49587.0
 MNP,2019,Northern Mariana Islands,49858.0
@@ -12347,7 +12347,7 @@ MNP,1963,Northern Mariana Islands,9561.0
 MNP,1962,Northern Mariana Islands,9252.0
 MNP,1961,Northern Mariana Islands,8965.0
 MNP,1960,Northern Mariana Islands,8702.0
-NOR,2022,Norway,
+NOR,2022,Norway,5457127.0
 NOR,2021,Norway,5408320.0
 NOR,2020,Norway,5379475.0
 NOR,2019,Norway,5347896.0
@@ -12410,7 +12410,7 @@ NOR,1963,Norway,3666537.0
 NOR,1962,Norway,3638918.0
 NOR,1961,Norway,3609800.0
 NOR,1960,Norway,3581239.0
-OMN,2022,Oman,
+OMN,2022,Oman,4576298.0
 OMN,2021,Oman,4520471.0
 OMN,2020,Oman,4543399.0
 OMN,2019,Oman,4602768.0
@@ -12473,7 +12473,7 @@ OMN,1963,Oman,568603.0
 OMN,1962,Oman,557139.0
 OMN,1961,Oman,546443.0
 OMN,1960,Oman,536553.0
-PAK,2022,Pakistan,
+PAK,2022,Pakistan,235824862.0
 PAK,2021,Pakistan,231402117.0
 PAK,2020,Pakistan,227196741.0
 PAK,2019,Pakistan,223293280.0
@@ -12536,7 +12536,7 @@ PAK,1963,Pakistan,49325050.0
 PAK,1962,Pakistan,48161841.0
 PAK,1961,Pakistan,47060915.0
 PAK,1960,Pakistan,45954226.0
-PLW,2022,Palau,
+PLW,2022,Palau,18055.0
 PLW,2021,Palau,18024.0
 PLW,2020,Palau,17972.0
 PLW,2019,Palau,17916.0
@@ -12599,7 +12599,7 @@ PLW,1963,Palau,10076.0
 PLW,1962,Palau,9851.0
 PLW,1961,Palau,9639.0
 PLW,1960,Palau,9446.0
-PAN,2022,Panama,
+PAN,2022,Panama,4408581.0
 PAN,2021,Panama,4351267.0
 PAN,2020,Panama,4294396.0
 PAN,2019,Panama,4232532.0
@@ -12662,7 +12662,7 @@ PAN,1963,Panama,1233267.0
 PAN,1962,Panama,1196289.0
 PAN,1961,Panama,1160832.0
 PAN,1960,Panama,1126989.0
-PNG,2022,Papua New Guinea,
+PNG,2022,Papua New Guinea,10142619.0
 PNG,2021,Papua New Guinea,9949437.0
 PNG,2020,Papua New Guinea,9749640.0
 PNG,2019,Papua New Guinea,9542486.0
@@ -12725,7 +12725,7 @@ PNG,1963,Papua New Guinea,2129222.0
 PNG,1962,Papua New Guinea,2082562.0
 PNG,1961,Papua New Guinea,2035672.0
 PNG,1960,Papua New Guinea,1985666.0
-PRY,2022,Paraguay,
+PRY,2022,Paraguay,6780744.0
 PRY,2021,Paraguay,6703799.0
 PRY,2020,Paraguay,6618695.0
 PRY,2019,Paraguay,6530026.0
@@ -12788,7 +12788,7 @@ PRY,1963,Paraguay,2039390.0
 PRY,1962,Paraguay,1989376.0
 PRY,1961,Paraguay,1941208.0
 PRY,1960,Paraguay,1894829.0
-PER,2022,Peru,
+PER,2022,Peru,34049588.0
 PER,2021,Peru,33715471.0
 PER,2020,Peru,33304756.0
 PER,2019,Peru,32824861.0
@@ -12851,7 +12851,7 @@ PER,1963,Peru,11112665.0
 PER,1962,Peru,10792094.0
 PER,1961,Peru,10478096.0
 PER,1960,Peru,10172207.0
-PHL,2022,Philippines,
+PHL,2022,Philippines,115559009.0
 PHL,2021,Philippines,113880328.0
 PHL,2020,Philippines,112190977.0
 PHL,2019,Philippines,110380804.0
@@ -12914,7 +12914,7 @@ PHL,1963,Philippines,31043711.0
 PHL,1962,Philippines,30185979.0
 PHL,1961,Philippines,29342411.0
 PHL,1960,Philippines,28486871.0
-POL,2022,Poland,
+POL,2022,Poland,37561599.0
 POL,2021,Poland,37747124.0
 POL,2020,Poland,37899070.0
 POL,2019,Poland,37965475.0
@@ -12977,7 +12977,7 @@ POL,1963,Poland,30712000.0
 POL,1962,Poland,30308500.0
 POL,1961,Poland,29964000.0
 POL,1960,Poland,29637450.0
-PRT,2022,Portugal,
+PRT,2022,Portugal,10379007.0
 PRT,2021,Portugal,10325147.0
 PRT,2020,Portugal,10297081.0
 PRT,2019,Portugal,10286263.0
@@ -13040,9 +13040,9 @@ PRT,1963,Portugal,9030355.0
 PRT,1962,Portugal,8993985.0
 PRT,1961,Portugal,8929316.0
 PRT,1960,Portugal,8857716.0
-PRI,2022,Puerto Rico,
-PRI,2021,Puerto Rico,3263584.0
-PRI,2020,Puerto Rico,3281538.0
+PRI,2022,Puerto Rico,3221789.0
+PRI,2021,Puerto Rico,3262693.0
+PRI,2020,Puerto Rico,3281557.0
 PRI,2019,Puerto Rico,3193694.0
 PRI,2018,Puerto Rico,3193354.0
 PRI,2017,Puerto Rico,3325286.0
@@ -13103,7 +13103,7 @@ PRI,1963,Puerto Rico,2504530.0
 PRI,1962,Puerto Rico,2450322.0
 PRI,1961,Puerto Rico,2399722.0
 PRI,1960,Puerto Rico,2358000.0
-QAT,2022,Qatar,
+QAT,2022,Qatar,2695122.0
 QAT,2021,Qatar,2688235.0
 QAT,2020,Qatar,2760385.0
 QAT,2019,Qatar,2807235.0
@@ -13166,7 +13166,7 @@ QAT,1963,Qatar,50950.0
 QAT,1962,Qatar,45123.0
 QAT,1961,Qatar,40111.0
 QAT,1960,Qatar,36385.0
-ROU,2022,Romania,
+ROU,2022,Romania,18956666.0
 ROU,2021,Romania,19119880.0
 ROU,2020,Romania,19265250.0
 ROU,2019,Romania,19371648.0
@@ -13229,7 +13229,7 @@ ROU,1963,Romania,18797850.0
 ROU,1962,Romania,18676550.0
 ROU,1961,Romania,18555250.0
 ROU,1960,Romania,18406905.0
-RUS,2022,Russian Federation,
+RUS,2022,Russian Federation,143555736.0
 RUS,2021,Russian Federation,143449286.0
 RUS,2020,Russian Federation,144073139.0
 RUS,2019,Russian Federation,144406261.0
@@ -13292,7 +13292,7 @@ RUS,1963,Russian Federation,123960000.0
 RUS,1962,Russian Federation,122591000.0
 RUS,1961,Russian Federation,121236000.0
 RUS,1960,Russian Federation,119897000.0
-RWA,2022,Rwanda,
+RWA,2022,Rwanda,13776698.0
 RWA,2021,Rwanda,13461888.0
 RWA,2020,Rwanda,13146362.0
 RWA,2019,Rwanda,12835028.0
@@ -13355,7 +13355,7 @@ RWA,1963,Rwanda,3191311.0
 RWA,1962,Rwanda,3122124.0
 RWA,1961,Rwanda,3046654.0
 RWA,1960,Rwanda,2966162.0
-WSM,2022,Samoa,
+WSM,2022,Samoa,222382.0
 WSM,2021,Samoa,218764.0
 WSM,2020,Samoa,214929.0
 WSM,2019,Samoa,211905.0
@@ -13418,7 +13418,7 @@ WSM,1963,Samoa,123416.0
 WSM,1962,Samoa,120163.0
 WSM,1961,Samoa,116820.0
 WSM,1960,Samoa,113335.0
-SMR,2022,San Marino,
+SMR,2022,San Marino,33660.0
 SMR,2021,San Marino,33745.0
 SMR,2020,San Marino,34007.0
 SMR,2019,San Marino,34178.0
@@ -13481,7 +13481,7 @@ SMR,1963,San Marino,16583.0
 SMR,1962,San Marino,16242.0
 SMR,1961,San Marino,15895.0
 SMR,1960,San Marino,15556.0
-STP,2022,Sao Tome and Principe,
+STP,2022,Sao Tome and Principe,227380.0
 STP,2021,Sao Tome and Principe,223107.0
 STP,2020,Sao Tome and Principe,218641.0
 STP,2019,Sao Tome and Principe,214599.0
@@ -13544,7 +13544,7 @@ STP,1963,Sao Tome and Principe,70272.0
 STP,1962,Sao Tome and Principe,69520.0
 STP,1961,Sao Tome and Principe,68705.0
 STP,1960,Sao Tome and Principe,68038.0
-SAU,2022,Saudi Arabia,
+SAU,2022,Saudi Arabia,36408820.0
 SAU,2021,Saudi Arabia,35950396.0
 SAU,2020,Saudi Arabia,35997107.0
 SAU,2019,Saudi Arabia,35827362.0
@@ -13607,7 +13607,7 @@ SAU,1963,Saudi Arabia,4621655.0
 SAU,1962,Saudi Arabia,4458516.0
 SAU,1961,Saudi Arabia,4306048.0
 SAU,1960,Saudi Arabia,4165563.0
-SEN,2022,Senegal,
+SEN,2022,Senegal,17316449.0
 SEN,2021,Senegal,16876720.0
 SEN,2020,Senegal,16436120.0
 SEN,2019,Senegal,16000781.0
@@ -13670,7 +13670,7 @@ SEN,1963,Senegal,3562469.0
 SEN,1962,Senegal,3463524.0
 SEN,1961,Senegal,3367082.0
 SEN,1960,Senegal,3273177.0
-SRB,2022,Serbia,
+SRB,2022,Serbia,6760087.0
 SRB,2021,Serbia,6834326.0
 SRB,2020,Serbia,6899126.0
 SRB,2019,Serbia,6945235.0
@@ -13733,7 +13733,7 @@ SRB,1963,Serbia,6732000.0
 SRB,1962,Serbia,6696000.0
 SRB,1961,Serbia,6655000.0
 SRB,1960,Serbia,6608000.0
-SYC,2022,Seychelles,
+SYC,2022,Seychelles,100060.0
 SYC,2021,Seychelles,99258.0
 SYC,2020,Seychelles,98462.0
 SYC,2019,Seychelles,97625.0
@@ -13796,7 +13796,7 @@ SYC,1963,Seychelles,45176.0
 SYC,1962,Seychelles,44042.0
 SYC,1961,Seychelles,42889.0
 SYC,1960,Seychelles,41700.0
-SLE,2022,Sierra Leone,
+SLE,2022,Sierra Leone,8605718.0
 SLE,2021,Sierra Leone,8420641.0
 SLE,2020,Sierra Leone,8233970.0
 SLE,2019,Sierra Leone,8046828.0
@@ -13859,7 +13859,7 @@ SLE,1963,Sierra Leone,2426750.0
 SLE,1962,Sierra Leone,2382914.0
 SLE,1961,Sierra Leone,2341065.0
 SLE,1960,Sierra Leone,2301310.0
-SGP,2022,Singapore,
+SGP,2022,Singapore,5637022.0
 SGP,2021,Singapore,5453566.0
 SGP,2020,Singapore,5685807.0
 SGP,2019,Singapore,5703569.0
@@ -13922,7 +13922,7 @@ SGP,1963,Singapore,1795000.0
 SGP,1962,Singapore,1750200.0
 SGP,1961,Singapore,1702400.0
 SGP,1960,Singapore,1646400.0
-SXM,2022,Sint Maarten (Dutch part),
+SXM,2022,Sint Maarten (Dutch part),43389.0
 SXM,2021,Sint Maarten (Dutch part),42846.0
 SXM,2020,Sint Maarten (Dutch part),42310.0
 SXM,2019,Sint Maarten (Dutch part),41608.0
@@ -13985,7 +13985,7 @@ SXM,1963,Sint Maarten (Dutch part),3481.0
 SXM,1962,Sint Maarten (Dutch part),3171.0
 SXM,1961,Sint Maarten (Dutch part),2888.0
 SXM,1960,Sint Maarten (Dutch part),2646.0
-SVK,2022,Slovak Republic,
+SVK,2022,Slovak Republic,5431752.0
 SVK,2021,Slovak Republic,5447247.0
 SVK,2020,Slovak Republic,5458827.0
 SVK,2019,Slovak Republic,5454147.0
@@ -14048,7 +14048,7 @@ SVK,1963,Slovak Republic,4282017.0
 SVK,1962,Slovak Republic,4238188.0
 SVK,1961,Slovak Republic,4191667.0
 SVK,1960,Slovak Republic,4068095.0
-SVN,2022,Slovenia,
+SVN,2022,Slovenia,2108732.0
 SVN,2021,Slovenia,2108079.0
 SVN,2020,Slovenia,2102419.0
 SVN,2019,Slovenia,2088385.0
@@ -14111,7 +14111,7 @@ SVN,1963,Slovenia,1616971.0
 SVN,1962,Slovenia,1603649.0
 SVN,1961,Slovenia,1594131.0
 SVN,1960,Slovenia,1584720.0
-SLB,2022,Solomon Islands,
+SLB,2022,Solomon Islands,724273.0
 SLB,2021,Solomon Islands,707851.0
 SLB,2020,Solomon Islands,691191.0
 SLB,2019,Solomon Islands,674993.0
@@ -14174,7 +14174,7 @@ SLB,1963,Solomon Islands,143863.0
 SLB,1962,Solomon Islands,140254.0
 SLB,1961,Solomon Islands,136780.0
 SLB,1960,Solomon Islands,133440.0
-SOM,2022,Somalia,
+SOM,2022,Somalia,17597511.0
 SOM,2021,Somalia,17065581.0
 SOM,2020,Somalia,16537016.0
 SOM,2019,Somalia,15981300.0
@@ -14237,7 +14237,7 @@ SOM,1963,Somalia,3102170.0
 SOM,1962,Somalia,3022827.0
 SOM,1961,Somalia,2945662.0
 SOM,1960,Somalia,2870732.0
-ZAF,2022,South Africa,
+ZAF,2022,South Africa,59893885.0
 ZAF,2021,South Africa,59392255.0
 ZAF,2020,South Africa,58801927.0
 ZAF,2019,South Africa,58087055.0
@@ -14300,7 +14300,7 @@ ZAF,1963,South Africa,18042215.0
 ZAF,1962,South Africa,17503133.0
 ZAF,1961,South Africa,16989464.0
 ZAF,1960,South Africa,16520441.0
-SSD,2022,South Sudan,
+SSD,2022,South Sudan,10913164.0
 SSD,2021,South Sudan,10748272.0
 SSD,2020,South Sudan,10606227.0
 SSD,2019,South Sudan,10447666.0
@@ -14363,7 +14363,7 @@ SSD,1963,South Sudan,3036238.0
 SSD,1962,South Sudan,2992270.0
 SSD,1961,South Sudan,2948953.0
 SSD,1960,South Sudan,2907724.0
-ESP,2022,Spain,
+ESP,2022,Spain,47615034.0
 ESP,2021,Spain,47415750.0
 ESP,2020,Spain,47365655.0
 ESP,2019,Spain,47134837.0
@@ -14426,70 +14426,70 @@ ESP,1963,Spain,31296651.0
 ESP,1962,Spain,31023366.0
 ESP,1961,Spain,30739250.0
 ESP,1960,Spain,30455000.0
-LKA,2022,Sri Lanka,
+LKA,2022,Sri Lanka,22181000.0
 LKA,2021,Sri Lanka,22156000.0
 LKA,2020,Sri Lanka,21919000.0
 LKA,2019,Sri Lanka,21803000.0
 LKA,2018,Sri Lanka,21670000.0
-LKA,2017,Sri Lanka,21444000.0
-LKA,2016,Sri Lanka,21203000.0
-LKA,2015,Sri Lanka,20970000.0
-LKA,2014,Sri Lanka,20778000.0
-LKA,2013,Sri Lanka,20585000.0
-LKA,2012,Sri Lanka,20425000.0
-LKA,2011,Sri Lanka,20398496.0
-LKA,2010,Sri Lanka,20261738.0
-LKA,2009,Sri Lanka,20123508.0
-LKA,2008,Sri Lanka,19983984.0
-LKA,2007,Sri Lanka,19842044.0
-LKA,2006,Sri Lanka,19695977.0
-LKA,2005,Sri Lanka,19544988.0
-LKA,2004,Sri Lanka,19387153.0
-LKA,2003,Sri Lanka,19224036.0
-LKA,2002,Sri Lanka,19062476.0
-LKA,2001,Sri Lanka,18911727.0
-LKA,2000,Sri Lanka,18777606.0
-LKA,1999,Sri Lanka,18663293.0
-LKA,1998,Sri Lanka,18564595.0
-LKA,1997,Sri Lanka,18470897.0
-LKA,1996,Sri Lanka,18367290.0
-LKA,1995,Sri Lanka,18242917.0
-LKA,1994,Sri Lanka,18094474.0
-LKA,1993,Sri Lanka,17924827.0
-LKA,1992,Sri Lanka,17736827.0
-LKA,1991,Sri Lanka,17535732.0
-LKA,1990,Sri Lanka,17325769.0
-LKA,1989,Sri Lanka,17106752.0
-LKA,1988,Sri Lanka,16878186.0
-LKA,1987,Sri Lanka,16643956.0
-LKA,1986,Sri Lanka,16408861.0
-LKA,1985,Sri Lanka,16176282.0
-LKA,1984,Sri Lanka,15948501.0
-LKA,1983,Sri Lanka,15724641.0
-LKA,1982,Sri Lanka,15501210.0
-LKA,1981,Sri Lanka,15272822.0
-LKA,1980,Sri Lanka,15035840.0
-LKA,1979,Sri Lanka,14788866.0
-LKA,1978,Sri Lanka,14533691.0
-LKA,1977,Sri Lanka,14273495.0
-LKA,1976,Sri Lanka,14012894.0
-LKA,1975,Sri Lanka,13755141.0
-LKA,1974,Sri Lanka,13501931.0
-LKA,1973,Sri Lanka,13252033.0
-LKA,1972,Sri Lanka,13002234.0
-LKA,1971,Sri Lanka,12747831.0
-LKA,1970,Sri Lanka,12485736.0
-LKA,1969,Sri Lanka,12214948.0
-LKA,1968,Sri Lanka,11937607.0
-LKA,1967,Sri Lanka,11657650.0
-LKA,1966,Sri Lanka,11380665.0
-LKA,1965,Sri Lanka,11110825.0
-LKA,1964,Sri Lanka,10849977.0
-LKA,1963,Sri Lanka,10597516.0
-LKA,1962,Sri Lanka,10352180.0
-LKA,1961,Sri Lanka,10111639.0
-LKA,1960,Sri Lanka,9874476.0
-KNA,2022,St. Kitts and Nevis,
+LKA,2017,Sri Lanka,21506813.0
+LKA,2016,Sri Lanka,21425494.0
+LKA,2015,Sri Lanka,21336697.0
+LKA,2014,Sri Lanka,21239457.0
+LKA,2013,Sri Lanka,21131756.0
+LKA,2012,Sri Lanka,21017147.0
+LKA,2011,Sri Lanka,20859743.0
+LKA,2010,Sri Lanka,20668557.0
+LKA,2009,Sri Lanka,20482477.0
+LKA,2008,Sri Lanka,20285643.0
+LKA,2007,Sri Lanka,20078655.0
+LKA,2006,Sri Lanka,19870706.0
+LKA,2005,Sri Lanka,19673866.0
+LKA,2004,Sri Lanka,19490431.0
+LKA,2003,Sri Lanka,19303180.0
+LKA,2002,Sri Lanka,19110707.0
+LKA,2001,Sri Lanka,18920275.0
+LKA,2000,Sri Lanka,18776371.0
+LKA,1999,Sri Lanka,18670411.0
+LKA,1998,Sri Lanka,18560798.0
+LKA,1997,Sri Lanka,18449123.0
+LKA,1996,Sri Lanka,18322506.0
+LKA,1995,Sri Lanka,18177572.0
+LKA,1994,Sri Lanka,18011744.0
+LKA,1993,Sri Lanka,17825611.0
+LKA,1992,Sri Lanka,17624457.0
+LKA,1991,Sri Lanka,17416596.0
+LKA,1990,Sri Lanka,17204094.0
+LKA,1989,Sri Lanka,16990575.0
+LKA,1988,Sri Lanka,16773736.0
+LKA,1987,Sri Lanka,16547139.0
+LKA,1986,Sri Lanka,16317995.0
+LKA,1985,Sri Lanka,16092338.0
+LKA,1984,Sri Lanka,15872577.0
+LKA,1983,Sri Lanka,15658442.0
+LKA,1982,Sri Lanka,15438753.0
+LKA,1981,Sri Lanka,15198918.0
+LKA,1980,Sri Lanka,14943645.0
+LKA,1979,Sri Lanka,14680387.0
+LKA,1978,Sri Lanka,14414816.0
+LKA,1977,Sri Lanka,14159052.0
+LKA,1976,Sri Lanka,13910170.0
+LKA,1975,Sri Lanka,13662873.0
+LKA,1974,Sri Lanka,13418276.0
+LKA,1973,Sri Lanka,13169737.0
+LKA,1972,Sri Lanka,12914457.0
+LKA,1971,Sri Lanka,12654651.0
+LKA,1970,Sri Lanka,12388769.0
+LKA,1969,Sri Lanka,12119207.0
+LKA,1968,Sri Lanka,11846815.0
+LKA,1967,Sri Lanka,11571008.0
+LKA,1966,Sri Lanka,11299721.0
+LKA,1965,Sri Lanka,11035224.0
+LKA,1964,Sri Lanka,10774086.0
+LKA,1963,Sri Lanka,10517531.0
+LKA,1962,Sri Lanka,10267067.0
+LKA,1961,Sri Lanka,10022888.0
+LKA,1960,Sri Lanka,9783871.0
+KNA,2022,St. Kitts and Nevis,47657.0
 KNA,2021,St. Kitts and Nevis,47606.0
 KNA,2020,St. Kitts and Nevis,47642.0
 KNA,2019,St. Kitts and Nevis,47712.0
@@ -14552,7 +14552,7 @@ KNA,1963,St. Kitts and Nevis,54391.0
 KNA,1962,St. Kitts and Nevis,55404.0
 KNA,1961,St. Kitts and Nevis,56247.0
 KNA,1960,St. Kitts and Nevis,56660.0
-LCA,2022,St. Lucia,
+LCA,2022,St. Lucia,179857.0
 LCA,2021,St. Lucia,179651.0
 LCA,2020,St. Lucia,179237.0
 LCA,2019,St. Lucia,178583.0
@@ -14615,7 +14615,7 @@ LCA,1963,St. Lucia,94887.0
 LCA,1962,St. Lucia,93823.0
 LCA,1961,St. Lucia,92761.0
 LCA,1960,St. Lucia,91614.0
-MAF,2022,St. Martin (French part),
+MAF,2022,St. Martin (French part),31791.0
 MAF,2021,St. Martin (French part),31948.0
 MAF,2020,St. Martin (French part),32553.0
 MAF,2019,St. Martin (French part),33121.0
@@ -14678,7 +14678,7 @@ MAF,1963,St. Martin (French part),4524.0
 MAF,1962,St. Martin (French part),4388.0
 MAF,1961,St. Martin (French part),4258.0
 MAF,1960,St. Martin (French part),4135.0
-VCT,2022,St. Vincent and the Grenadines,
+VCT,2022,St. Vincent and the Grenadines,103948.0
 VCT,2021,St. Vincent and the Grenadines,104332.0
 VCT,2020,St. Vincent and the Grenadines,104632.0
 VCT,2019,St. Vincent and the Grenadines,104924.0
@@ -14741,7 +14741,7 @@ VCT,1963,St. Vincent and the Grenadines,88638.0
 VCT,1962,St. Vincent and the Grenadines,87183.0
 VCT,1961,St. Vincent and the Grenadines,85666.0
 VCT,1960,St. Vincent and the Grenadines,84141.0
-SDN,2022,Sudan,
+SDN,2022,Sudan,46874204.0
 SDN,2021,Sudan,45657202.0
 SDN,2020,Sudan,44440486.0
 SDN,2019,Sudan,43232093.0
@@ -14804,7 +14804,7 @@ SDN,1963,Sudan,9115091.0
 SDN,1962,Sudan,8841338.0
 SDN,1961,Sudan,8577490.0
 SDN,1960,Sudan,8326462.0
-SUR,2022,Suriname,
+SUR,2022,Suriname,618040.0
 SUR,2021,Suriname,612985.0
 SUR,2020,Suriname,607065.0
 SUR,2019,Suriname,600301.0
@@ -14867,7 +14867,7 @@ SUR,1963,Suriname,299332.0
 SUR,1962,Suriname,288291.0
 SUR,1961,Suriname,277969.0
 SUR,1960,Suriname,268396.0
-SWE,2022,Sweden,
+SWE,2022,Sweden,10486941.0
 SWE,2021,Sweden,10415811.0
 SWE,2020,Sweden,10353442.0
 SWE,2019,Sweden,10278887.0
@@ -14930,7 +14930,7 @@ SWE,1963,Sweden,7604328.0
 SWE,1962,Sweden,7561588.0
 SWE,1961,Sweden,7519998.0
 SWE,1960,Sweden,7484656.0
-CHE,2022,Switzerland,
+CHE,2022,Switzerland,8769741.0
 CHE,2021,Switzerland,8703405.0
 CHE,2020,Switzerland,8638167.0
 CHE,2019,Switzerland,8575280.0
@@ -14993,7 +14993,7 @@ CHE,1963,Switzerland,5694247.0
 CHE,1962,Switzerland,5573815.0
 CHE,1961,Switzerland,5434294.0
 CHE,1960,Switzerland,5327827.0
-SYR,2022,Syrian Arab Republic,
+SYR,2022,Syrian Arab Republic,22125249.0
 SYR,2021,Syrian Arab Republic,21324367.0
 SYR,2020,Syrian Arab Republic,20772595.0
 SYR,2019,Syrian Arab Republic,20098251.0
@@ -15056,7 +15056,7 @@ SYR,1963,Syrian Arab Republic,5045245.0
 SYR,1962,Syrian Arab Republic,4894995.0
 SYR,1961,Syrian Arab Republic,4751534.0
 SYR,1960,Syrian Arab Republic,4610712.0
-TJK,2022,Tajikistan,
+TJK,2022,Tajikistan,9952787.0
 TJK,2021,Tajikistan,9750064.0
 TJK,2020,Tajikistan,9543207.0
 TJK,2019,Tajikistan,9337003.0
@@ -15119,7 +15119,7 @@ TJK,1963,Tajikistan,2368868.0
 TJK,1962,Tajikistan,2287181.0
 TJK,1961,Tajikistan,2208026.0
 TJK,1960,Tajikistan,2131992.0
-TZA,2022,Tanzania,
+TZA,2022,Tanzania,65497748.0
 TZA,2021,Tanzania,63588334.0
 TZA,2020,Tanzania,61704518.0
 TZA,2019,Tanzania,59872579.0
@@ -15182,7 +15182,7 @@ TZA,1963,Tanzania,10960161.0
 TZA,1962,Tanzania,10644622.0
 TZA,1961,Tanzania,10337891.0
 TZA,1960,Tanzania,10042458.0
-THA,2022,Thailand,
+THA,2022,Thailand,71697030.0
 THA,2021,Thailand,71601103.0
 THA,2020,Thailand,71475664.0
 THA,2019,Thailand,71307763.0
@@ -15245,7 +15245,7 @@ THA,1963,Thailand,29114124.0
 THA,1962,Thailand,28242174.0
 THA,1961,Thailand,27399963.0
 THA,1960,Thailand,26596584.0
-TLS,2022,Timor-Leste,
+TLS,2022,Timor-Leste,1341296.0
 TLS,2021,Timor-Leste,1320942.0
 TLS,2020,Timor-Leste,1299995.0
 TLS,2019,Timor-Leste,1280438.0
@@ -15308,7 +15308,7 @@ TLS,1963,Timor-Leste,491117.0
 TLS,1962,Timor-Leste,483324.0
 TLS,1961,Timor-Leste,475796.0
 TLS,1960,Timor-Leste,468573.0
-TGO,2022,Togo,
+TGO,2022,Togo,8848699.0
 TGO,2021,Togo,8644829.0
 TGO,2020,Togo,8442580.0
 TGO,2019,Togo,8243094.0
@@ -15371,7 +15371,7 @@ TGO,1963,Togo,1736697.0
 TGO,1962,Togo,1706841.0
 TGO,1961,Togo,1678788.0
 TGO,1960,Togo,1651367.0
-TON,2022,Tonga,
+TON,2022,Tonga,106858.0
 TON,2021,Tonga,106017.0
 TON,2020,Tonga,105254.0
 TON,2019,Tonga,104951.0
@@ -15434,7 +15434,7 @@ TON,1963,Tonga,73441.0
 TON,1962,Tonga,71388.0
 TON,1961,Tonga,69391.0
 TON,1960,Tonga,67428.0
-TTO,2022,Trinidad and Tobago,
+TTO,2022,Trinidad and Tobago,1531044.0
 TTO,2021,Trinidad and Tobago,1525663.0
 TTO,2020,Trinidad and Tobago,1518147.0
 TTO,2019,Trinidad and Tobago,1519955.0
@@ -15497,7 +15497,7 @@ TTO,1963,Trinidad and Tobago,897658.0
 TTO,1962,Trinidad and Tobago,881519.0
 TTO,1961,Trinidad and Tobago,865028.0
 TTO,1960,Trinidad and Tobago,847063.0
-TUN,2022,Tunisia,
+TUN,2022,Tunisia,12356117.0
 TUN,2021,Tunisia,12262946.0
 TUN,2020,Tunisia,12161723.0
 TUN,2019,Tunisia,12049314.0
@@ -15560,7 +15560,7 @@ TUN,1963,Tunisia,4332926.0
 TUN,1962,Tunisia,4281744.0
 TUN,1961,Tunisia,4236386.0
 TUN,1960,Tunisia,4195467.0
-TUR,2022,Turkiye,
+TUR,2022,Turkiye,85341241.0
 TUR,2021,Turkiye,84775404.0
 TUR,2020,Turkiye,84135428.0
 TUR,2019,Turkiye,83481684.0
@@ -15623,7 +15623,7 @@ TUR,1963,Turkiye,29827877.0
 TUR,1962,Turkiye,29033647.0
 TUR,1961,Turkiye,28255002.0
 TUR,1960,Turkiye,27510980.0
-TKM,2022,Turkmenistan,
+TKM,2022,Turkmenistan,6430770.0
 TKM,2021,Turkmenistan,6341855.0
 TKM,2020,Turkmenistan,6250438.0
 TKM,2019,Turkmenistan,6158420.0
@@ -15686,7 +15686,7 @@ TKM,1963,Turkmenistan,1776387.0
 TKM,1962,Turkmenistan,1716868.0
 TKM,1961,Turkmenistan,1658569.0
 TKM,1960,Turkmenistan,1602052.0
-TCA,2022,Turks and Caicos Islands,
+TCA,2022,Turks and Caicos Islands,45703.0
 TCA,2021,Turks and Caicos Islands,45114.0
 TCA,2020,Turks and Caicos Islands,44276.0
 TCA,2019,Turks and Caicos Islands,43080.0
@@ -15749,7 +15749,7 @@ TCA,1963,Turks and Caicos Islands,5634.0
 TCA,1962,Turks and Caicos Islands,5633.0
 TCA,1961,Turks and Caicos Islands,5625.0
 TCA,1960,Turks and Caicos Islands,5604.0
-TUV,2022,Tuvalu,
+TUV,2022,Tuvalu,11312.0
 TUV,2021,Tuvalu,11204.0
 TUV,2020,Tuvalu,11069.0
 TUV,2019,Tuvalu,10956.0
@@ -15812,7 +15812,7 @@ TUV,1963,Tuvalu,5503.0
 TUV,1962,Tuvalu,5471.0
 TUV,1961,Tuvalu,5436.0
 TUV,1960,Tuvalu,5404.0
-UGA,2022,Uganda,
+UGA,2022,Uganda,47249585.0
 UGA,2021,Uganda,45853778.0
 UGA,2020,Uganda,44404611.0
 UGA,2019,Uganda,42949080.0
@@ -15875,7 +15875,7 @@ UGA,1963,Uganda,8311013.0
 UGA,1962,Uganda,8068828.0
 UGA,1961,Uganda,7838440.0
 UGA,1960,Uganda,7617746.0
-UKR,2022,Ukraine,
+UKR,2022,Ukraine,38000000.0
 UKR,2021,Ukraine,43792855.0
 UKR,2020,Ukraine,44132049.0
 UKR,2019,Ukraine,44386203.0
@@ -15938,7 +15938,7 @@ UKR,1963,Ukraine,44445903.0
 UKR,1962,Ukraine,43924755.0
 UKR,1961,Ukraine,43365219.0
 UKR,1960,Ukraine,42767251.0
-ARE,2022,United Arab Emirates,
+ARE,2022,United Arab Emirates,9441129.0
 ARE,2021,United Arab Emirates,9365145.0
 ARE,2020,United Arab Emirates,9287289.0
 ARE,2019,United Arab Emirates,9211657.0
@@ -16001,9 +16001,9 @@ ARE,1963,United Arab Emirates,157006.0
 ARE,1962,United Arab Emirates,148877.0
 ARE,1961,United Arab Emirates,140984.0
 ARE,1960,United Arab Emirates,133426.0
-GBR,2022,United Kingdom,
-GBR,2021,United Kingdom,67326569.0
-GBR,2020,United Kingdom,67081000.0
+GBR,2022,United Kingdom,66971411.0
+GBR,2021,United Kingdom,67026300.0
+GBR,2020,United Kingdom,67081234.0
 GBR,2019,United Kingdom,66836327.0
 GBR,2018,United Kingdom,66460344.0
 GBR,2017,United Kingdom,66058859.0
@@ -16064,9 +16064,9 @@ GBR,1963,United Kingdom,53650000.0
 GBR,1962,United Kingdom,53250000.0
 GBR,1961,United Kingdom,52800000.0
 GBR,1960,United Kingdom,52400000.0
-USA,2022,United States,
-USA,2021,United States,331893745.0
-USA,2020,United States,331501080.0
+USA,2022,United States,333287557.0
+USA,2021,United States,332031554.0
+USA,2020,United States,331511512.0
 USA,2019,United States,328329953.0
 USA,2018,United States,326838199.0
 USA,2017,United States,325122128.0
@@ -16127,7 +16127,7 @@ USA,1963,United States,189242000.0
 USA,1962,United States,186538000.0
 USA,1961,United States,183691000.0
 USA,1960,United States,180671000.0
-URY,2022,Uruguay,
+URY,2022,Uruguay,3422794.0
 URY,2021,Uruguay,3426260.0
 URY,2020,Uruguay,3429086.0
 URY,2019,Uruguay,3428409.0
@@ -16190,7 +16190,7 @@ URY,1963,Uruguay,2622936.0
 URY,1962,Uruguay,2592441.0
 URY,1961,Uruguay,2561153.0
 URY,1960,Uruguay,2529021.0
-UZB,2022,Uzbekistan,
+UZB,2022,Uzbekistan,35648100.0
 UZB,2021,Uzbekistan,34915100.0
 UZB,2020,Uzbekistan,34232050.0
 UZB,2019,Uzbekistan,33580350.0
@@ -16253,7 +16253,7 @@ UZB,1963,Uzbekistan,9394588.0
 UZB,1962,Uzbekistan,9038222.0
 UZB,1961,Uzbekistan,8692048.0
 UZB,1960,Uzbekistan,8372311.0
-VUT,2022,Vanuatu,
+VUT,2022,Vanuatu,326740.0
 VUT,2021,Vanuatu,319137.0
 VUT,2020,Vanuatu,311685.0
 VUT,2019,Vanuatu,304404.0
@@ -16316,7 +16316,7 @@ VUT,1963,Vanuatu,70400.0
 VUT,1962,Vanuatu,68391.0
 VUT,1961,Vanuatu,66462.0
 VUT,1960,Vanuatu,64608.0
-VEN,2022,"Venezuela, RB",
+VEN,2022,"Venezuela, RB",28301696.0
 VEN,2021,"Venezuela, RB",28199867.0
 VEN,2020,"Venezuela, RB",28490453.0
 VEN,2019,"Venezuela, RB",28971683.0
@@ -16379,70 +16379,70 @@ VEN,1963,"Venezuela, RB",9059953.0
 VEN,1962,"Venezuela, RB",8754082.0
 VEN,1961,"Venezuela, RB",8453106.0
 VEN,1960,"Venezuela, RB",8156937.0
-VNM,2022,Vietnam,
-VNM,2021,Vietnam,97468029.0
-VNM,2020,Vietnam,96648685.0
-VNM,2019,Vietnam,95776716.0
-VNM,2018,Vietnam,94914330.0
-VNM,2017,Vietnam,94033048.0
-VNM,2016,Vietnam,93126529.0
-VNM,2015,Vietnam,92191398.0
-VNM,2014,Vietnam,91235504.0
-VNM,2013,Vietnam,90267739.0
-VNM,2012,Vietnam,89301326.0
-VNM,2011,Vietnam,88349117.0
-VNM,2010,Vietnam,87411012.0
-VNM,2009,Vietnam,86482923.0
-VNM,2008,Vietnam,85597241.0
-VNM,2007,Vietnam,84762269.0
-VNM,2006,Vietnam,83951800.0
-VNM,2005,Vietnam,83142095.0
-VNM,2004,Vietnam,82311227.0
-VNM,2003,Vietnam,81475825.0
-VNM,2002,Vietnam,80642308.0
-VNM,2001,Vietnam,79817777.0
-VNM,2000,Vietnam,79001142.0
-VNM,1999,Vietnam,78123713.0
-VNM,1998,Vietnam,77128424.0
-VNM,1997,Vietnam,76058603.0
-VNM,1996,Vietnam,74946448.0
-VNM,1995,Vietnam,73759110.0
-VNM,1994,Vietnam,72501087.0
-VNM,1993,Vietnam,71176405.0
-VNM,1992,Vietnam,69788747.0
-VNM,1991,Vietnam,68358820.0
-VNM,1990,Vietnam,66912613.0
-VNM,1989,Vietnam,65466361.0
-VNM,1988,Vietnam,64037514.0
-VNM,1987,Vietnam,62630787.0
-VNM,1986,Vietnam,61221107.0
-VNM,1985,Vietnam,59811313.0
-VNM,1984,Vietnam,58406863.0
-VNM,1983,Vietnam,57011444.0
-VNM,1982,Vietnam,55632153.0
-VNM,1981,Vietnam,54280394.0
-VNM,1980,Vietnam,52968270.0
-VNM,1979,Vietnam,51831389.0
-VNM,1978,Vietnam,50701458.0
-VNM,1977,Vietnam,49418150.0
-VNM,1976,Vietnam,48163573.0
-VNM,1975,Vietnam,46969616.0
-VNM,1974,Vietnam,45898698.0
-VNM,1973,Vietnam,44891281.0
-VNM,1972,Vietnam,43906019.0
-VNM,1971,Vietnam,42916624.0
-VNM,1970,Vietnam,41928849.0
-VNM,1969,Vietnam,41015865.0
-VNM,1968,Vietnam,40145287.0
-VNM,1967,Vietnam,39282564.0
-VNM,1966,Vietnam,38388210.0
-VNM,1965,Vietnam,37466077.0
-VNM,1964,Vietnam,36509166.0
-VNM,1963,Vietnam,35526727.0
-VNM,1962,Vietnam,34533889.0
-VNM,1961,Vietnam,33621982.0
-VNM,1960,Vietnam,32718461.0
-VIR,2022,Virgin Islands (U.S.),
+VNM,2022,Viet Nam,98186856.0
+VNM,2021,Viet Nam,97468029.0
+VNM,2020,Viet Nam,96648685.0
+VNM,2019,Viet Nam,95776716.0
+VNM,2018,Viet Nam,94914330.0
+VNM,2017,Viet Nam,94033048.0
+VNM,2016,Viet Nam,93126529.0
+VNM,2015,Viet Nam,92191398.0
+VNM,2014,Viet Nam,91235504.0
+VNM,2013,Viet Nam,90267739.0
+VNM,2012,Viet Nam,89301326.0
+VNM,2011,Viet Nam,88349117.0
+VNM,2010,Viet Nam,87411012.0
+VNM,2009,Viet Nam,86482923.0
+VNM,2008,Viet Nam,85597241.0
+VNM,2007,Viet Nam,84762269.0
+VNM,2006,Viet Nam,83951800.0
+VNM,2005,Viet Nam,83142095.0
+VNM,2004,Viet Nam,82311227.0
+VNM,2003,Viet Nam,81475825.0
+VNM,2002,Viet Nam,80642308.0
+VNM,2001,Viet Nam,79817777.0
+VNM,2000,Viet Nam,79001142.0
+VNM,1999,Viet Nam,78123713.0
+VNM,1998,Viet Nam,77128424.0
+VNM,1997,Viet Nam,76058603.0
+VNM,1996,Viet Nam,74946448.0
+VNM,1995,Viet Nam,73759110.0
+VNM,1994,Viet Nam,72501087.0
+VNM,1993,Viet Nam,71176405.0
+VNM,1992,Viet Nam,69788747.0
+VNM,1991,Viet Nam,68358820.0
+VNM,1990,Viet Nam,66912613.0
+VNM,1989,Viet Nam,65466361.0
+VNM,1988,Viet Nam,64037514.0
+VNM,1987,Viet Nam,62630787.0
+VNM,1986,Viet Nam,61221107.0
+VNM,1985,Viet Nam,59811313.0
+VNM,1984,Viet Nam,58406863.0
+VNM,1983,Viet Nam,57011444.0
+VNM,1982,Viet Nam,55632153.0
+VNM,1981,Viet Nam,54280394.0
+VNM,1980,Viet Nam,52968270.0
+VNM,1979,Viet Nam,51831389.0
+VNM,1978,Viet Nam,50701458.0
+VNM,1977,Viet Nam,49418150.0
+VNM,1976,Viet Nam,48163573.0
+VNM,1975,Viet Nam,46969616.0
+VNM,1974,Viet Nam,45898698.0
+VNM,1973,Viet Nam,44891281.0
+VNM,1972,Viet Nam,43906019.0
+VNM,1971,Viet Nam,42916624.0
+VNM,1970,Viet Nam,41928849.0
+VNM,1969,Viet Nam,41015865.0
+VNM,1968,Viet Nam,40145287.0
+VNM,1967,Viet Nam,39282564.0
+VNM,1966,Viet Nam,38388210.0
+VNM,1965,Viet Nam,37466077.0
+VNM,1964,Viet Nam,36509166.0
+VNM,1963,Viet Nam,35526727.0
+VNM,1962,Viet Nam,34533889.0
+VNM,1961,Viet Nam,33621982.0
+VNM,1960,Viet Nam,32718461.0
+VIR,2022,Virgin Islands (U.S.),105413.0
 VIR,2021,Virgin Islands (U.S.),105870.0
 VIR,2020,Virgin Islands (U.S.),106290.0
 VIR,2019,Virgin Islands (U.S.),106669.0
@@ -16505,7 +16505,7 @@ VIR,1963,Virgin Islands (U.S.),39800.0
 VIR,1962,Virgin Islands (U.S.),35000.0
 VIR,1961,Virgin Islands (U.S.),34300.0
 VIR,1960,Virgin Islands (U.S.),32500.0
-PSE,2022,West Bank and Gaza,
+PSE,2022,West Bank and Gaza,5043612.0
 PSE,2021,West Bank and Gaza,4922749.0
 PSE,2020,West Bank and Gaza,4803269.0
 PSE,2019,West Bank and Gaza,4685306.0
@@ -16568,7 +16568,7 @@ PSE,1963,West Bank and Gaza,
 PSE,1962,West Bank and Gaza,
 PSE,1961,West Bank and Gaza,
 PSE,1960,West Bank and Gaza,
-YEM,2022,"Yemen, Rep.",
+YEM,2022,"Yemen, Rep.",33696614.0
 YEM,2021,"Yemen, Rep.",32981641.0
 YEM,2020,"Yemen, Rep.",32284046.0
 YEM,2019,"Yemen, Rep.",31546691.0
@@ -16631,7 +16631,7 @@ YEM,1963,"Yemen, Rep.",5860197.0
 YEM,1962,"Yemen, Rep.",5753386.0
 YEM,1961,"Yemen, Rep.",5646668.0
 YEM,1960,"Yemen, Rep.",5542459.0
-ZMB,2022,Zambia,
+ZMB,2022,Zambia,20017675.0
 ZMB,2021,Zambia,19473125.0
 ZMB,2020,Zambia,18927715.0
 ZMB,2019,Zambia,18380477.0
@@ -16694,7 +16694,7 @@ ZMB,1963,Zambia,3431381.0
 ZMB,1962,Zambia,3323427.0
 ZMB,1961,Zambia,3219451.0
 ZMB,1960,Zambia,3119430.0
-ZWE,2022,Zimbabwe,
+ZWE,2022,Zimbabwe,16320537.0
 ZWE,2021,Zimbabwe,15993524.0
 ZWE,2020,Zimbabwe,15669666.0
 ZWE,2019,Zimbabwe,15354608.0
