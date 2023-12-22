@@ -59,28 +59,35 @@ class GdpMaddissonPerZoneAndCountryProcessor:
 
 class GdpWorldBankPerZoneAndCountryProcessor:
 
-    def __init__(self, year_min=1970):
+    def __init__(self, year_min=1950):
         self.year_min = year_min
+        self.country_codes_to_drop = ['ARB', 'CEB', 'CSS', 'EAP', 'EAR', 'EAS', 'ECA', 'ECS', 'EMU', 'EUU', 'FCS', 'HIC',
+                                      'HPC', 'IBD', 'IBT', 'IDA', 'IDB', 'IDX', 'LAC', 'LCN', 'LDC', 'LIC', 'LMC', 'LMY',
+                                      'LTE', 'MEA', 'MIC', 'MNA', 'NAC', 'OED', 'OSS', 'PRE', 'PSS', 'PST', 'SAS', 'SSA',
+                                      'SSF', 'SST', 'TEA', 'TEC', 'TLA', 'TMN', 'TSA', 'TSS', 'UMC', 'WLD']
 
     @staticmethod
     def melt_years(df: pd.DataFrame):
-        return pd.melt(df, id_vars=["country", "country_code", "gdp_unit", "indicator_code"], 
-                   var_name="year", 
-                   value_name="gdp")
+        return pd.melt(df, id_vars=["country", "country_code", "gdp_unit", "indicator_code"],
+                       var_name="year",
+                       value_name="gdp")
 
-    def run(self, df_gdp_world_bank, df_gdp_constant, df_country):
+    def run(self, df_gdp_worldbank, df_country):
         
         # rename columns and clean countries
-        df_gdp_worldbank = pd.concat([df_gdp_world_bank, df_gdp_constant], axis=0)
+        df_gdp_worldbank = df_gdp_worldbank[~(df_gdp_worldbank['Country Code'].isin(self.country_codes_to_drop))]
         renamed_columns = {"Country Name": "country",
                            "Country Code": "country_code",
                            "Indicator Name": "gdp_unit",
                            "Indicator Code": "indicator_code"
                            }
-        df_gdp_worldbank.rename(renamed_columns, axis="columns", inplace=True)
+        df_gdp_worldbank.rename(renamed_columns, axis="columns", inplace=True)  # TODO - ajouter la traduction de pays ?
         df_gdp_worldbank["country"] = CountryTranslatorFrenchToEnglish().run(df_gdp_worldbank["country"], raise_errors=False)
+        df_gdp_worldbank = df_gdp_worldbank.dropna(subset=["country"])
 
         # Filter years, empty gdp values, and drop unused columns
+        df_gdp_worldbank = self.melt_years(df_gdp_worldbank)
+        df_gdp_worldbank["year"] = pd.to_numeric(df_gdp_worldbank["year"])
         df_gdp_worldbank = df_gdp_worldbank[(df_gdp_worldbank["year"] >= self.year_min) & (df_gdp_worldbank["gdp"].notnull())]
         df_gdp_worldbank = df_gdp_worldbank[["country", "gdp_unit", "year", "gdp"]]
 
@@ -93,12 +100,15 @@ class GdpWorldBankPerZoneAndCountryProcessor:
         
         # compute GDP per country
         df_gdp_per_country = df_gdp_worldbank.copy()
-        df_gdp_per_country = df_gdp_worldbank.rename({"country": "group_name"}, axis=1)
+        df_gdp_per_country = df_gdp_per_country.rename({"country": "group_name"}, axis=1)
         df_gdp_per_country["group_type"] = "country"
-        df_gdp_per_country = df_gdp_worldbank[["group_type", "group_name", "year", "gdp", "gdp_unit"]]
+        df_gdp_per_country = df_gdp_per_country[["group_type", "group_name", "year", "gdp", "gdp_unit"]]
 
         # concatenate countries and zones populations
         df_gdp_per_zone_and_countries = pd.concat([df_gdp_per_zone, df_gdp_per_country], axis=0)
         df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries.sort_values(by=['group_type', 'group_name', 'year', "gdp_unit"])
+
+        # filter on certain dates TODO - supprimer ctte condition de filtrage pas utile ?
+        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries[(df_gdp_per_zone_and_countries["group_type"] == "country") | (df_gdp_per_zone_and_countries["year"] >= 1990)]
 
         return df_gdp_per_zone_and_countries
