@@ -5,7 +5,7 @@ from sdp_data.utils.iso3166 import countries_by_alpha3
 
 class GdpMaddissonPerZoneAndCountryProcessor:
 
-    def __init__(self, year_min=1970):
+    def __init__(self, year_min=1950):
         self.countries_by_alpha3 = countries_by_alpha3
         self.countries_by_alpha3 = {k: v.name for k, v in self.countries_by_alpha3.items()}
         self.year_min = year_min
@@ -26,10 +26,8 @@ class GdpMaddissonPerZoneAndCountryProcessor:
         Computes the total gdp maddisson for each year, each country and each geographic zone.
         """
         # convert countries names
-        df_gdp_maddison = df_gdp_maddison.rename({"country": "country_raw_name"}, axis=1)
-        df_gdp_maddison["country_apolitical_name"] = self.translate_country_code_to_country_name(df_gdp_maddison["country_raw_name"], raise_errors=True)
-        df_gdp_maddison = df_gdp_maddison.dropna(subset=["country_apolitical_name"])
-        df_gdp_maddison["country"] = CountryTranslatorFrenchToEnglish().run(df_gdp_maddison["country_apolitical_name"], raise_errors=False)
+        df_gdp_maddison = df_gdp_maddison[~df_gdp_maddison["country"].isin(["Former USSR", "Former Yugoslavia", "Czechoslovakia"])] # TODO - fixer l'union soviétique t autres pays ?
+        df_gdp_maddison["country"] = CountryTranslatorFrenchToEnglish().run(df_gdp_maddison["country"], raise_errors=False)
 
         # compute gdp from gdp per capita
         df_gdp_maddison["population"] = df_gdp_maddison["pop"] * 1000
@@ -48,9 +46,9 @@ class GdpMaddissonPerZoneAndCountryProcessor:
         
         # compute GDP per country
         df_gdp_per_country = df_gdp_maddison.copy()
-        df_gdp_per_country = df_gdp_maddison.rename({"country": "group_name"}, axis=1)
+        df_gdp_per_country = df_gdp_per_country.rename({"country": "group_name"}, axis=1)
         df_gdp_per_country["group_type"] = "country"
-        df_gdp_per_country = df_gdp_maddison[["group_type", "group_name", "year", "gdp", "gdp_unit"]]
+        df_gdp_per_country = df_gdp_per_country[["group_type", "group_name", "year", "gdp", "gdp_unit"]]
 
         # concatenate countries and zones populations
         df_gdp_per_zone_and_countries = pd.concat([df_gdp_per_zone, df_gdp_per_country], axis=0)
