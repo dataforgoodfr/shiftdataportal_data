@@ -23,7 +23,10 @@ class GdpMaddissonPerZoneAndCountryProcessor:
 
     def run(self, df_gdp_maddison, df_country):
         """
-        Computes the total gdp maddisson for each year, each country and each geographic zone.
+        Computes the GDP (Maddison) per year for each country and zone.
+        :param df_gdp_maddison: (dataframe) containing the GDP (Maddison)
+        :param df_country: (dataframe) containing countries and zones.
+        :return: df_gdp_per_zone_and_countries (Maddison)
         """
         # convert countries names
         df_gdp_maddison = df_gdp_maddison[~df_gdp_maddison["country"].isin(["Former USSR", "Former Yugoslavia", "Czechoslovakia"])] # TODO - fixer l'union soviétique t autres pays ?
@@ -42,7 +45,7 @@ class GdpMaddissonPerZoneAndCountryProcessor:
                                     .groupby(['group_type', 'group_name', 'year', 'gdp_unit'])
                                     .agg({'gdp': 'sum'})
                                     .reset_index()
-                                )
+                           )
         
         # compute GDP per country
         df_gdp_per_country = df_gdp_maddison.copy()
@@ -73,7 +76,12 @@ class GdpWorldBankPerZoneAndCountryProcessor:
                        value_name="gdp")
 
     def run(self, df_gdp_worldbank, df_country):
-        
+        """
+        Computes the GDP (World Bank) per year for each country and zone.
+        :param df_gdp_worldbank: (dataframe) containing the GDP (World Bank)
+        :param df_country: (dataframe) containing countries and zones.
+        :return: df_gdp_per_zone_and_countries (World Bank)
+        """
         # rename columns and clean countries
         df_gdp_worldbank = df_gdp_worldbank[~(df_gdp_worldbank['Country Code'].isin(self.country_codes_to_drop))]
         renamed_columns = {"Country Name": "country",
@@ -81,7 +89,7 @@ class GdpWorldBankPerZoneAndCountryProcessor:
                            "Indicator Name": "gdp_unit",
                            "Indicator Code": "indicator_code"
                            }
-        df_gdp_worldbank.rename(renamed_columns, axis="columns", inplace=True)  # TODO - ajouter la traduction de pays ?
+        df_gdp_worldbank.rename(renamed_columns, axis="columns", inplace=True)
         df_gdp_worldbank["country"] = CountryTranslatorFrenchToEnglish().run(df_gdp_worldbank["country"], raise_errors=False)
         df_gdp_worldbank = df_gdp_worldbank.dropna(subset=["country"])
 
@@ -96,7 +104,7 @@ class GdpWorldBankPerZoneAndCountryProcessor:
                                     .groupby(['group_type', 'group_name', 'year', 'gdp_unit'])
                                     .agg({'gdp': 'sum'})
                                     .reset_index()
-                                )
+                           )
         
         # compute GDP per country
         df_gdp_per_country = df_gdp_worldbank.copy()
