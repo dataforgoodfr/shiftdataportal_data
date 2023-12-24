@@ -1,5 +1,5 @@
-from sdp_data.transformation.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
-from sdp_data.transformation.population import StatisticsPerCapitaJoiner
+from src.sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
+from src.sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
 from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
 from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
 import pandas as pd

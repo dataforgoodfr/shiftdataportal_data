@@ -1,4 +1,7 @@
 import pandas as pd
+from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
+
 
 class HistoricalCo2PerZoneAndCountryProcessor:
 
@@ -46,20 +49,13 @@ class HistoricalCo2PerZoneAndCountryProcessor:
 
         # join PIK data, EAI data and countries
         df_us_eia_pik = pd.concat([df_pik_energy, df_eia_raw], axis=0)
-        df_us_eia_pik_per_zone = (pd.merge(df_country, df_us_eia_pik, how='left', left_on='country', right_on='country')
-                                    .groupby(['group_type', 'group_name', 'year', 'energy_family', 'co2_unit', 'source'])
-                                    .agg({'co2': 'sum'})
-                                    .reset_index()
-                           )
-        
-        df_us_eia_per_country = df_us_eia_per_country.copy()
-        df_us_eia_per_country = df_us_eia_per_country.rename({"country": "group_name"}, axis=1)
-        df_us_eia_per_country["group_type"] = "country"
-        df_us_eia_per_country = df_us_eia_per_country[["group_type", "group_name", "year", "energy_family", "co2", "co2_unit", "source"]]
+        list_group_by = ["group_type", "group_name", "year", "energy_family", "co2_unit", "source"]
+        dict_aggregation = {"co2": "sum"}
+        df_eia_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_us_eia_pik, df_country, list_group_by, dict_aggregation)
+        df_eia_per_zone_and_countries = df_eia_per_zone_and_countries[['group_type', 'group_name', 'year', 'energy_family', 'co2_unit', 'source', 'co2']]
 
-        # concatenate countries and zones
-        df_us_eia_per_zone_and_countries = pd.concat([df_us_eia_pik_per_zone, df_us_eia_per_country], axis=0)
-        df_eia_with_zones_aggregated = (df_us_eia_per_zone_and_countries
+        # aggregate or each source
+        df_eia_with_zones_aggregated = (df_eia_per_zone_and_countries
                                         .groupby(["group_type", "group_name", "year", "source"])
                                         .agg(ghg=('co2', 'sum'), ghg_unit=("co2_unit", "first"))
                                         )
