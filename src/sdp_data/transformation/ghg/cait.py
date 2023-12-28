@@ -33,7 +33,7 @@ class CaitProcessor:
             'Total F-Gas (MtCO2e)': "F-Gases"
         }
 
-    def melt_gases_and_sectors(self, df_calt: pd.DataFrame):
+    def compute_total_gas_per_country(self, df_calt: pd.DataFrame):
         """
 
         :param df_calt:
@@ -53,6 +53,14 @@ class CaitProcessor:
                 list_df_gas_melted_gas.append(df_calt_gas_with_lucf)
         df_gas_melted = pd.concat(list_df_gas_melted_gas, axis=0)
 
+        return df_gas_melted
+
+    def compute_total_co2eq_per_sector(self, df_calt: pd.DataFrame):
+        """
+
+        :param df_calt:
+        :return:
+        """
         # compute and melt for each sector.
         list_df_gas_melted_sector = []
         for sector in self.list_sectors:
@@ -61,7 +69,8 @@ class CaitProcessor:
             df_calt_sector["sector"] = sector.split(" (MtCO2")[0]
             list_df_gas_melted_sector.append(df_calt_sector.copy(deep=True))
         df_sector_melted = pd.concat(list_df_gas_melted_sector, axis=0)
-        return pd.concat([df_gas_melted, df_sector_melted], axis=0)
+
+        return df_sector_melted
 
     @staticmethod
     def remove_energy_sector(df_calt):
@@ -75,23 +84,28 @@ class CaitProcessor:
         # Remove LUCF sector because values can be negative and we don't have a solution at the moment to visualize it
         return df_calt[df_calt["sector"] != "LUCF"]
 
-    @staticmethod
-    def compute_cait_data_stacked_sector(df_cait_group_by_sector, df_cait_prepared):
+    def compute_cait_data_stacked_sector(self, df_cait_group_by_sector, df_cait_prepared):
         """
 
         :param df_cait_group_by:
         :param df_cait_prepared:
         :return:
         """
+        list_cols_to_select = ["group_type", "group_name", "year", "sector", "ghg", "ghg_unit"]
         df_cait_group_by_sector_not_world = df_cait_group_by_sector[df_cait_group_by_sector["group_name"] != "World"]
+        df_cait_group_by_sector_not_world = df_cait_group_by_sector_not_world[list_cols_to_select]
 
         # compute statistics per country
         df_cait_prepared_not_world = df_cait_prepared[(df_cait_prepared["sector"].notnull()) & (df_cait_prepared["country"] != "World")]
         df_cait_prepared_not_world["group_type"] = 'country'
+        df_cait_prepared_not_world = df_cait_prepared_not_world.rename({"country": "group_name"}, axis=1)
+        df_cait_prepared_not_world = df_cait_prepared_not_world[list_cols_to_select]
 
         # compute statistics per zone
         df_cait_prepared_world = df_cait_prepared[(df_cait_prepared["sector"].notnull()) & (df_cait_prepared["country"] == "World")]
         df_cait_prepared_world["group_type"] = 'zone'
+        df_cait_prepared_world = df_cait_prepared_world.rename({"country": "group_name"}, axis=1)
+        df_cait_prepared_world = df_cait_prepared_world[list_cols_to_select]
 
         return pd.concat([df_cait_group_by_sector_not_world, df_cait_prepared_not_world, df_cait_prepared_world], axis=0)
 
@@ -108,13 +122,15 @@ class CaitProcessor:
         df_cait_group_by_gas_not_world = df_cait_group_by_gas_not_world[list_cols_to_select]
 
         # compute statistics per country
-        df_cait_prepared_not_world = df_cait_prepared[(df_cait_prepared["gas"].notnull()) & (df_cait_prepared["country"] != "World")]
+        df_cait_prepared_not_world = df_cait_prepared[(df_cait_prepared["gas"].notnull()) & (df_cait_prepared["country"] != "World") & (df_cait_prepared["gas"].notnull())]
         df_cait_prepared_not_world["group_type"] = 'country'
+        df_cait_prepared_not_world = df_cait_prepared_not_world.rename({"country": "group_name"}, axis=1)
         df_cait_prepared_not_world = df_cait_prepared_not_world[list_cols_to_select]
 
         # compute statistics per zone
-        df_cait_prepared_world = df_cait_prepared[(df_cait_prepared["country"].notnull()) & (df_cait_prepared["country"] == "World")]
+        df_cait_prepared_world = df_cait_prepared[(df_cait_prepared["country"].notnull()) & (df_cait_prepared["country"] == "World") & (df_cait_prepared["gas"].notnull())]
         df_cait_prepared_world["group_type"] = 'zone'
+        df_cait_prepared_world = df_cait_prepared_world.rename({"country": "group_name"}, axis=1)
         df_cait_prepared_world = df_cait_prepared_world[list_cols_to_select]
 
         return pd.concat([df_cait_group_by_gas_not_world, df_cait_prepared_not_world, df_cait_prepared_world], axis=0)
@@ -125,20 +141,21 @@ class CaitProcessor:
         # clean dataframe
         df_cait = df_cait.rename({"Country": "country", "Year": "year"}, axis=1)
         df_cait["country"] = CountryTranslatorFrenchToEnglish().run(df_cait["country"], raise_errors=False)
-        df_cait_prepared = self.melt_gases_and_sectors(df_cait)
+        df_cait_total_per_gas = self.compute_total_gas_per_country(df_cait)
+        df_cait_total_per_sector = self.compute_total_co2eq_per_sector(df_cait)
+        df_cait_prepared = pd.concat([df_cait_total_per_gas, df_cait_total_per_sector], axis=0)
         df_cait_prepared = self.remove_energy_sector(df_cait_prepared)
         df_cait_prepared = self.remove_lucf_sector(df_cait_prepared)
         df_cait_prepared["ghg_unit"] = "MtCO2eq"
 
         # merge CAIT with countries
         df_cait_and_countries = df_country.merge(df_cait_prepared, how="left", left_on="country", right_on="country")
-        print(df_cait_and_countries)
+
         # compute total CAIT per sector
         df_cait_group_by_sector = df_cait_and_countries[df_cait_and_countries["sector"].notnull()]
         df_cait_group_by_sector = df_cait_group_by_sector.groupby(["group_type", "group_name", "year", "sector"])
         df_cait_group_by_sector = df_cait_group_by_sector.agg(ghg=('ghg', 'sum'), ghg_unit=("ghg_unit", "first"))
         df_cait_group_by_sector = df_cait_group_by_sector.reset_index()
-        print(df_cait_group_by_sector)
 
         # compute total CAIT per country
         df_cait_group_by_country = df_cait_and_countries[df_cait_and_countries["sector"].isnull()]
