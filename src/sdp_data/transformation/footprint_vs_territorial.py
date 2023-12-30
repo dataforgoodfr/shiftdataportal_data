@@ -1,8 +1,9 @@
 """
-Footprint versus territorial
+Footprint versus territorial emissions
 """
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
 
 
 class EoraCbaPerZoneAndCountryProcessor:
@@ -51,9 +52,9 @@ class EoraCbaPerZoneAndCountryProcessor:
             group_type, group_name, year, scope, co2_unit, source and co2.
         """
         # clean and filter countries
-        print("\n----- compute EORA CBA for each country and each zone")
+        print("-- compute EORA CBA for each country and each zone")
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
-        # df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier avec la team que faire de l'URSS.
+        # df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier que faire de l'URSS.
         df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["country"], raise_errors=False)
         df_eora_cba = df_eora_cba.dropna(subset=["country"])
 
@@ -68,22 +69,10 @@ class EoraCbaPerZoneAndCountryProcessor:
         df_eora_cba = self.compute_co2_unit_from_record_code(df_eora_cba)
         df_eora_cba["source"] = "Eora"
 
-        # join with countries
-        df_eora_cba_per_zone = (pd.merge(df_country, df_eora_cba, on='country', how='left')
-                                .groupby(['group_type', 'group_name', 'year', 'scope', 'co2_unit', 'source'])
-                                .agg({'co2': "sum"})
-                                .reset_index()
-                                )
-
-        # compute total co2 per country
-        df_eora_cba_per_country = df_eora_cba.copy()
-        df_eora_cba_per_country = df_eora_cba_per_country.rename({"country": "group_name"}, axis=1)
-        df_eora_cba_per_country["group_type"] = "country"
-        df_eora_cba_per_country = df_eora_cba_per_country[["group_type", "group_name", "year", "scope",
-                                                           "co2", "co2_unit", "source"]]
-
-        # concatenate countries and zones populations
-        df_eora_cba_per_zone_and_countries = pd.concat([df_eora_cba_per_zone, df_eora_cba_per_country], axis=0)
+        # merge with countries
+        list_group_by = ['group_type', 'group_name', 'year', 'scope', 'co2_unit', 'source']
+        dict_aggregation = {"co2": "sum"}
+        df_eora_cba_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_eora_cba, df_country, list_group_by, dict_aggregation)
 
         return df_eora_cba_per_zone_and_countries
 
@@ -106,7 +95,7 @@ class GcbPerZoneAndCountryProcessor:
         :return:
         """
         # transpose, unstack years and prepare concatenate df_gcb_territorial + df_gcb_cba
-        print("\n----- compute GCB Territorial for each country and each zone")
+        print("-- compute GCB (Global Carbon Budget) for each country and each zone")
         df_gcb_territorial = self.transpose_and_unstack_gcb(df_gcb_territorial)
         df_gcb_territorial["scope"] = "Territorial Emissions"
         df_gcb_cba = self.transpose_and_unstack_gcb(df_gcb_cba)
@@ -128,22 +117,10 @@ class GcbPerZoneAndCountryProcessor:
         df_gcb_stacked["source"] = "Global Carbon Budget"
         df_gcb_stacked["scope"] = df_gcb_stacked["scope"].str.replace('Carbon Footprint', 'CO2 Footprint')
 
-        # join with countries
-        df_gcb_per_zone = (pd.merge(df_country, df_gcb_stacked, on='country', how='left')
-                           .groupby(['group_type', 'group_name', 'year', 'scope', 'co2_unit', 'source'])
-                           .agg({'co2': "sum"})
-                           .reset_index()
-                           )
-
-        # compute total co2 per country
-        df_gcb_per_country = df_gcb_stacked.copy()
-        df_gcb_per_country = df_gcb_per_country.rename({"country": "group_name"}, axis=1)
-        df_gcb_per_country["group_type"] = "country"
-        df_gcb_per_country = df_gcb_per_country[["group_type", "group_name", "year", "scope",
-                                                 "co2", "co2_unit", "source"]]
-
-        # concatenate countries and zones populations
-        df_gcb_per_zone_and_countries = pd.concat([df_gcb_per_zone, df_gcb_per_country], axis=0)
+        # merge with countries
+        list_group_by = ["group_type", "group_name", "year", "scope", "co2_unit", "source"]
+        dict_aggregation = {"co2": "sum"}
+        df_gcb_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_gcb_stacked, df_country, list_group_by, dict_aggregation)
 
         return df_gcb_per_zone_and_countries
 
@@ -164,6 +141,7 @@ class FootprintVsTerrotorialProcessor:
         :return:
         """
         # compute the EORA CBA per zones and countries
+        print("\n----- compute footprint vs. territorial emissions")
         list_scope_to_filter = ["Territorial Emissions", "CO2 Footprint"]
         df_eora_cba_per_zone_and_countries = EoraCbaPerZoneAndCountryProcessor().run(df_eora_cba, df_country)
         df_eora_cba_per_zone_and_countries = df_eora_cba_per_zone_and_countries[
@@ -174,5 +152,6 @@ class FootprintVsTerrotorialProcessor:
 
         # stack the two datasets together
         df_footprint_vs_territorial = pd.concat([df_eora_cba_per_zone_and_countries, df_gcb_per_zone_and_countries], axis=0)
+        df_footprint_vs_territorial = df_footprint_vs_territorial.sort_values(by=["group_type", "group_name", "year", "scope"])
 
         return df_footprint_vs_territorial
