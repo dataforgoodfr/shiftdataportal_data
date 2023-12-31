@@ -2,8 +2,8 @@
 Footprint versus territorial emissions
 """
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from src.sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
 
 
 class EoraCbaPerZoneAndCountryProcessor:
@@ -54,13 +54,15 @@ class EoraCbaPerZoneAndCountryProcessor:
         # clean and filter countries
         print("\n----- compute EORA CBA for each country and each zone")
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
-        # df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier que faire de l'URSS.
+        # df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier avec la team que faire de l'URSS.
         df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["country"], raise_errors=False)
         df_eora_cba = df_eora_cba.dropna(subset=["country"])
 
         # melt the years so to get resulting columns country, record_code, year and co2
         df_eora_cba = self.melt_years(df_eora_cba)
-        df_eora_cba["year"] = df_eora_cba["year"].astype(int)
+        df_eora_cba["year"] = pd.to_numeric(df_eora_cba["year"], errors="coerce")
+        df_eora_cba = df_eora_cba.dropna(subset=["year"])
+        df_eora_cba["year"] = df_eora_cba["year"].astype(int).astype(str)
 
         # create new columns scope, co2_unit and Source
         df_eora_cba = self.convert_giga_units(df_eora_cba)
@@ -95,7 +97,7 @@ class GcbPerZoneAndCountryProcessor:
         :return:
         """
         # transpose, unstack years and prepare concatenate df_gcb_territorial + df_gcb_cba
-        print("-- compute GCB (Global Carbon Budget) for each country and each zone")
+        print("\n----- compute GCB Territorial for each country and each zone")
         df_gcb_territorial = self.transpose_and_unstack_gcb(df_gcb_territorial)
         df_gcb_territorial["scope"] = "Territorial Emissions"
         df_gcb_cba = self.transpose_and_unstack_gcb(df_gcb_cba)
@@ -108,8 +110,10 @@ class GcbPerZoneAndCountryProcessor:
         df_gcb_stacked = df_gcb_stacked.dropna(subset=["country", "co2"])
 
         # filter time
-        df_gcb_stacked["year"] = df_gcb_stacked["year"].astype(int)
-        df_gcb_stacked = df_gcb_stacked[df_gcb_stacked["year"] >= 1990]
+        df_gcb_stacked["year"] = pd.to_numeric(df_gcb_stacked["year"], errors="coerce")
+        df_gcb_stacked = df_gcb_stacked.dropna(subset=["year"])
+        df_gcb_stacked["year"] = df_gcb_stacked["year"].astype(str)
+        df_gcb_stacked = df_gcb_stacked[df_gcb_stacked["year"] >= "1990"]
 
         # create new columns scope, co2_unit and Source
         df_gcb_stacked["co2"] *= 3.664
