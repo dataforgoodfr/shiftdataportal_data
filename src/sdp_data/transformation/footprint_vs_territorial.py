@@ -10,20 +10,20 @@ class EoraCbaPerZoneAndCountryProcessor:
 
     def __init__(self):
         self.dict_translation_record_code_to_scope = {
-            "PBA_GgCO2PerBnUSDGDP": "Territorial Emissions per GDP",
-            "CBA_GgCO2PerBnUSDGDP": "Carbon Footprint per GDP",
-            "PBA_GgCO2": "Territorial Emissions",
-            "CBA_GgCO2": "Carbon Footprint",
-            "PBA_tCO2perCap": "Territorial Emissions per Capita",
-            "CBA_tCO2perCap": "Carbon Footprint per Capita"
+            "PBA_GgCO2eqPerBnUSDGDP": "Territorial Emissions per GDP",
+            "CBA_GgCO2eqPerBnUSDGDP": "Carbon Footprint per GDP",
+            "PBA_GgCO2eq": "Territorial Emissions",
+            "CBA_GgCO2eq": "Carbon Footprint",
+            "PBA_tCO2eqperCap": "Territorial Emissions per Capita",
+            "CBA_tCO2eqperCap": "Carbon Footprint per Capita"
         }
         self.dict_translation_record_code_to_co2_unit = {
-            "PBA_GgCO2PerBnUSDGDP": "MtCO2 per Trillion $ GDP",
-            "CBA_GgCO2PerBnUSDGDP": "MtCO2 per Trillion $ GDP",
-            "PBA_GgCO2": "MtCO2",
-            "CBA_GgCO2": "MtCO2",
-            "PBA_tCO2perCap": "tCO2 per capita",
-            "CBA_tCO2perCap": "tCO2 per capita"
+            "PBA_GgCO2eqPerBnUSDGDP": "MtCO2 per Trillion $ GDP",
+            "CBA_GgCO2eqPerBnUSDGDP": "MtCO2 per Trillion $ GDP",
+            "PBA_GgCO2eq": "MtCO2",
+            "CBA_GgCO2eq": "MtCO2",
+            "PBA_tCO2eqperCap": "tCO2 per capita",
+            "CBA_tCO2eqperCap": "tCO2 per capita"
         }
 
     @staticmethod
@@ -52,7 +52,7 @@ class EoraCbaPerZoneAndCountryProcessor:
             group_type, group_name, year, scope, co2_unit, source and co2.
         """
         # clean and filter countries
-        print("-- compute EORA CBA for each country and each zone")
+        print("\n----- compute EORA CBA for each country and each zone")
         df_eora_cba = df_eora_cba.rename({"Country": "country", "Record": "record_code"}, axis=1)
         # df_eora_cba = df_eora_cba[df_eora_cba["country"] != "Former USSR"]  # TODO - vérifier que faire de l'URSS.
         df_eora_cba["country"] = CountryTranslatorFrenchToEnglish().run(df_eora_cba["country"], raise_errors=False)
