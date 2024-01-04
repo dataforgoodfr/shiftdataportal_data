@@ -1,7 +1,7 @@
-from src.sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
-from src.sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
-from src.sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
-from src.sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
+from sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
+from sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
+from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
+from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
 import pandas as pd
 import os
 RAW_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/raw_new_data")

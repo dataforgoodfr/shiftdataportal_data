@@ -2,8 +2,8 @@
 Footprint versus territorial emissions
 """
 import pandas as pd
-from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from src.sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
+from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
 
 
 class EoraCbaPerZoneAndCountryProcessor:

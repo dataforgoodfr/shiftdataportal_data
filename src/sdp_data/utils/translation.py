@@ -127,6 +127,7 @@ country_translations = {"ALM": "ALM SRES",
                         "Egypte": "Egypt", "Egypt": "Egypt", "Egypt, Arab Rep.": "Egypt", "Salvador": "El Salvador",
                         "El Salvador": "El Salvador", "Eritrea": "Eritrea", "Erythrée": "Eritrea", "Estonie": "Estonia",
                         "Estonia": "Estonia",
+                        "European Union (28)": "European Union (28)",  # TODO - fixer la traduction de European Union (28) dans des fichiers comme cait.py ?
                         "Eswatini": "Eswatini",
                         "Swaziland": "Eswatini",  # TODO - vérifier quel nom utiliser entre Swaziland et Eswatini
                         "Ethiopia PDR": "Ethiopia",
@@ -215,8 +216,11 @@ country_translations = {"ALM": "ALM SRES",
                         "Martinique": "Martinique",
                         "Mauritania": "Mauritania",
                         "Mauritius": "Mauritius", "Mexico": "Mexico", "Mexique": "Mexico",
-                        "Micronesia (Federated States of)": "Micronesia", "Micronesia": "Micronesia",
-                        "Micronesia, Federated State": "Micronesia", "Moldova, Republic of": "Moldova",
+                        "Micronesia (Federated States of)": "Micronesia",
+                        "Micronesia": "Micronesia",
+                        "Micronesia, Federated State": "Micronesia",
+                        "Micronesia, Federated States of": "Micronesia",
+                        "Moldova, Republic of": "Moldova",
                         "Republic of Moldova": "Moldova", "Moldova": "Moldova", "République de Moldavie": "Moldova",
                         "Monaco": "Monaco", "Mongolie": "Mongolia", "Mongolia": "Mongolia", "Montenegro": "Montenegro",
                         "Montserrat": "Montserrat",
@@ -359,6 +363,7 @@ country_translations = {"ALM": "ALM SRES",
                         "South Vietnam (R.V.)": "Viet Nam", "Viet Nam": "Viet Nam", "Vietnam": "Viet Nam",
                         "Wake Island": "Wake Island",
                         "Western Sahara": "Western Sahara",
+                        "World": "World",  # TODO - fixer la traduction de World dans des fichiers comme cait.py ?
                         "Yemen": "Yemen",
                         "Yémen": "Yemen",
                         "Yemen, Rep.": "Yemen",
@@ -501,7 +506,6 @@ class CountryTranslatorFrenchToEnglish:
                 raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
 
         return serie_country_translate
-
 
 class SectorTranslator:
 
