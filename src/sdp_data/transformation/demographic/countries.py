@@ -14,10 +14,7 @@ class StatisticsPerCountriesAndZonesJoiner:
         dict_countries_missing_per_zones = df_countries_missing.groupby("group_name")["country"].apply(list).to_dict()
         for group_name, list_countries_in_zone in sorted(dict_countries_missing_per_zones.items()):
             if len(list_countries_in_zone) > 0:
-                print(f"\nWARNING: {len(list_countries_in_zone)} countries are missing in the statistics dataset for zone {group_name}")
-                print("Zone : %s" % group_name)
-                print("The statistics per zone will be affected.")
-                print("Please check the following list:")
+                print(f"\nWARNING: {len(list_countries_in_zone)} countries are missing in the statistics dataset for zone : {group_name}")
                 print(list_countries_in_zone)
 
     @staticmethod

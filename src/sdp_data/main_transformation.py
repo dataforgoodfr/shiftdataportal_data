@@ -2,6 +2,8 @@ from sdp_data.transformation.demographic.population import GapMinderPerZoneAndCo
 from sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
 from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
 from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
+from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
+from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
 import pandas as pd
 import os
 RAW_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/raw_new_data")
@@ -20,7 +22,10 @@ class TransformationPipeline:
         df_country = df_country.sort_values(by=["group_type", "group_name", "country"])
         df_country.to_csv(f"{RESULTS_DIR}/COUNTRY_country_groups_prod.csv", index=False)
 
-        # update population data
+        # update population data (World Bank)
+        df_population_raw = WorldBankScrapper().run("population")
+        df_population = PopulationPerZoneAndCountryProcessor().run(df_population_raw, df_country)
+        df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_prod.csv", index=False)
 
         # update footprint vs territorial emissions
         df_eora_cba = pd.read_csv(f"{RAW_DATA_DIR}/co2_cba/national.cba.report.1990.2022.txt", sep="\t")

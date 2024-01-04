@@ -1,5 +1,6 @@
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
 # TODO - à revoir
 """
 -> Revue des valeurs manquantes "zone supprimées" pour PopulationCleaner.
@@ -55,31 +56,21 @@ class GapMinderPerZoneAndCountryProcessor:
         df_gapminder["country"] = CountryTranslatorFrenchToEnglish().run(df_gapminder["country"], raise_errors=False)
 
         # join with countries
-        df_total_gapminder_per_zone = (pd.merge(df_country, df_gapminder, how='left', left_on='country', right_on='country')
-                                       .groupby(['group_type', 'group_name', 'year'])
-                                       .agg({'population': 'sum'})
-                                       .reset_index()
-                                       )
-
-        # compute total gapminder per country
-        df_total_gapminder_per_country = df_gapminder.copy()
-        df_total_gapminder_per_country = df_total_gapminder_per_country.rename({"country": "group_name"}, axis=1)
-        df_total_gapminder_per_country["group_type"] = "country"
-        df_total_gapminder_per_country = df_total_gapminder_per_country[["group_type", "group_name", "year", "population"]]
-
-        # concatenate countries and zones populations
-        df_gapminder_per_zone_and_countries = pd.concat([df_total_gapminder_per_zone, df_total_gapminder_per_country], axis=0)
+        list_cols_group_by = ['group_type', 'group_name', 'year']
+        dict_aggregation = {'population': 'sum'}
+        df_gapminder_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_gapminder, df_country, list_cols_group_by, dict_aggregation)
+        df_gapminder_per_zone_and_countries = df_gapminder_per_zone_and_countries.sort_values(list_cols_group_by)
 
         return df_gapminder_per_zone_and_countries
 
 
 class PopulationPerZoneAndCountryProcessor:
 
-    def run(self, df_population: pd.DataFrame, df_countries_and_zones: pd.DataFrame) -> pd.DataFrame:
+    def run(self, df_population: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
         """
         Computes the total population for each year, each country and each geographic zone.
         :param df_population: (dataframe) where each row is a country, each column a year and each value, the population for this year and country.
-        :param df_countries_and_zones: (dataframe) listing all countries through columns "group_type", "group_name" and "country"
+        :param df_country: (dataframe) listing all countries through columns "group_type", "group_name" and "country"
         :return:
         """
         # only keep useful columns for population and unstack to a unique pandas serie
@@ -93,20 +84,11 @@ class PopulationPerZoneAndCountryProcessor:
         df_population = df_population.dropna(axis=0, subset=["country"])
         df_population = df_population[df_population["country"] != "Delete"]
 
-        # compute total population per zone
-        df_total_population_per_zone = (
-            pd.merge(df_countries_and_zones, df_population, how='left', left_on='country', right_on='country')
-            .groupby(['group_type', 'group_name', 'year'])
-            .agg({'population': 'sum'})
-            .reset_index()
-            )
-
-        # compute total population per country
-        df_total_population_per_country = df_population.rename({"country": "group_name"}, axis=1)
-        df_total_population_per_country["group_type"] = "country"
-
-        # concatenate countries and zones populations
-        df_population_per_zone_and_countries = pd.concat([df_total_population_per_zone, df_total_population_per_country], axis=0)
+        # merge with countries
+        list_cols_group_by = ['group_type', 'group_name', 'year']
+        dict_aggregation = {'population': 'sum'}
+        df_population_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_population, df_country, list_cols_group_by, dict_aggregation)
+        df_population_per_zone_and_countries = df_population_per_zone_and_countries.sort_values(list_cols_group_by)
 
         return df_population_per_zone_and_countries
 
