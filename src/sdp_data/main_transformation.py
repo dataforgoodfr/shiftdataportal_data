@@ -6,6 +6,8 @@ from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrappe
 from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
 import pandas as pd
 import os
+import requests
+from pandas import json_normalize
 RAW_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/raw_new_data")
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "../../results/new_prod_data")
 
@@ -27,13 +29,23 @@ class TransformationPipeline:
         df_population = PopulationPerZoneAndCountryProcessor().run(df_population_raw, df_country)
         df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_prod.csv", index=False)
 
-        # update footprint vs territorial emissions
+        # update GDP data (World Bank)
+        """
+        df_gdp_raw = WorldBankScrapper().run("gdp")
+        df_population = GdpWorldBankPerZoneAndCountryProcessor().run(df_gdp_raw, df_country)
+        df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_GDP_prod.csv", index=False)
+        """
+
+        # update footprint vs territorial
         df_eora_cba = pd.read_csv(f"{RAW_DATA_DIR}/co2_cba/national.cba.report.1990.2022.txt", sep="\t")
         df_gcb_territorial = pd.read_excel(f"{RAW_DATA_DIR}/co2_cba/National_Fossil_Carbon_Emissions_2023v1.0.xlsx", sheet_name="Territorial Emissions")
         df_gcb_cba = pd.read_excel(f"{RAW_DATA_DIR}/co2_cba/National_Fossil_Carbon_Emissions_2023v1.0.xlsx", sheet_name="Consumption Emissions")
         df_footprint_vs_territorial = FootprintVsTerrotorialProcessor().run(df_gcb_territorial, df_gcb_cba, df_eora_cba, df_country)
         df_footprint_vs_territorial.to_csv(f"{RESULTS_DIR}/CO2_CONSUMPTION_BASED_ACCOUNTING_footprint_vs_territorial_prod.csv", index=False)
 
+        df_footprint_vs_territorial_per_capita = StatisticsPerCapitaJoiner().run_footprint_vs_territorial_per_capita(df_footprint_vs_territorial, df_population)
+        df_footprint_vs_territorial_per_capita.to_csv(f"{RESULTS_DIR}/CO2_CBA_PER_CAPITA_eora_cba_zones_per_capita_prod.csv", index=False)
+        
         # Compute populations
         """
         df_gapminder = pd.read_excel("../../data/thibaud/gapminder_population_raw_2.xlsx")

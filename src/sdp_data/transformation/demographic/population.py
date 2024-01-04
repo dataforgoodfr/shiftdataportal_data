@@ -113,7 +113,7 @@ class StatisticsPerCapitaJoiner:
         df_stats_per_capita["co2_per_capita"] = df_stats_per_capita["co2"] / df_stats_per_capita["population"]
         return df_stats_per_capita
 
-    def run_eora_cba_per_capita(self, df_footprint_vs_territorial, df_population):
+    def run_footprint_vs_territorial_per_capita(self, df_footprint_vs_territorial, df_population):
         df_stats_per_capita = self.join_inner(df_footprint_vs_territorial, df_population)
         df_stats_per_capita["co2_per_capita"] = df_stats_per_capita["co2"] / df_stats_per_capita["population"]
         df_stats_per_capita["co2_per_capita_unit"] = "MtCO2 per capita"
