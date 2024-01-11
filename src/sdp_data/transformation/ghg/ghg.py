@@ -75,7 +75,31 @@ class FaoDataProcessor:
         df_fao_per_country_and_zones = pd.concat([df_fao_per_zones, df_fao_per_country], axis=0)
 
         return df_fao_per_country_and_zones
-    
+
+class CombinatorEdgarAndUnfcccAnnexes:
+
+     def run(self, df_edgar_clean, df_unfccc_annex_clean, df_country):
+         
+        # stack Unfccc and Edgar data
+        df_unfccc_annex_clean["source"] = "unfccc"
+        df_edgar_clean["source"] = "edgar"
+        df_edgar_unfccc_stacked = pd.concat([df_edgar_clean, df_unfccc_annex_clean], axis=0)
+
+        # merge with countries
+        list_group_by = ["group_type", "group_name", "source", "year", "sector", "gas", "ghg_unit"]
+        dict_aggregation = {"ghg": "sum"}
+        df_edgar_unfccc_stacked_per_zones_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_edgar_unfccc_stacked, df_country, list_group_by, dict_aggregation)
+
+        # aggregate per gas and per sector
+        groupby_by_gas = ["source", "group_type", "group_name", "year", "gas"]
+        df_ghg_edunf_by_gas = df_edgar_unfccc_stacked_per_zones_and_countries.groupby(groupby_by_gas).agg(ghg=('ghg', 'sum'), ghg_unit=('ghg_unit', 'first')).reset_index()
+        
+        groupby_by_sector = ["source", "group_type", "group_name", "year", "sector"]
+        df_ghg_edunf_by_sector = df_edgar_unfccc_stacked_per_zones_and_countries.groupby(groupby_by_sector).agg(ghg=('ghg', 'sum'), ghg_unit=('ghg_unit', 'first')).reset_index()
+
+        return df_ghg_edunf_by_gas, df_ghg_edunf_by_sector
+
+
 class GhgAllDatasetsProcessor:
 
     def compute_pik_edgar(self, df_pik_clean, df_edgar_clean):
@@ -109,15 +133,9 @@ class GhgAllDatasetsProcessor:
         df_pik_unfccc["source"] = "unfccc"
         df_edgar_clean["source"] = "edgar_cleaned2"
         df_pik_edgar_stacked = pd.concat([df_pik_unfccc, df_edgar_clean], axis=0)
-
         list_group_by = ["group_type", "group_name", "source", "year", "sector", "gas", "ghg_unit"]
         dict_aggregation = {"ghg": "sum"}
         df_pik_edgar_stacked_per_zones_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_pik_edgar_stacked, df_country, list_group_by, dict_aggregation)
-
-
-        groupby_by_gas = [["source", "group_type", "group_name", "year", "gas"]]
-        df_ghg_edunf_by_gas = df_ghg_edunf_by_gas.groupby(groupby_by_gas)
-
 
 
 
