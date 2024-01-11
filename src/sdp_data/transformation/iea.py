@@ -181,7 +181,7 @@ class EiaConsumptionGasBySectorProcessor:
         self.list_final_cols_to_drop = ["energy_family", "original_dataset"]
 
 
-class EiaConsumptionOilProductsProcessor(EiaDataProcessor):
+class EiaConsumptionOilPerProductProcessor(EiaDataProcessor):
 
     def __init__(self) -> None:
         EiaDataProcessor.__init__(self)
@@ -189,27 +189,32 @@ class EiaConsumptionOilProductsProcessor(EiaDataProcessor):
         self.dataset_label = "eia_api_final_cons_oil_products"
 
 
-class EiaConsumptionOilProductsPerSectorProcessor(EiaDataProcessor):
+class EiaConsumptionOilsPerSectorProcessor(EiaDataProcessor):
 
     def __init__(self) -> None:
         self.end_url = "&series=BALANCES&products=TOTPRODS&flows=TOTIND,TOTTRANS,RESIDENT,COMMPUB,AGRICULT,FISHING,ONONSPEC,NONENUSE"
         self.dataset_label = "eia_api_final_cons_oil_products_by_sector"
         self.list_final_cols_to_drop = ["energy_family", "original_dataset"]
 
-
-class EiaFinalEnergyPerSectorPerEnergyProcessor(EiaDataProcessor):
+class EiaFinalEnergyConsumptionProcessor(EiaDataProcessor):
     
     def __init__(self) -> None:
-        self.end_url = "&series=BALANCES&products=COAL,CRNGFEED,NATGAS,ELECTR,HEAT,TOTPRODS,COMRENEW,GEOTHERM&flows=TOTIND,TOTTRANS,RESIDENT,COMMPUB,AGRICULT,FISHING,ONONSPEC,NONENUSE"
-        self.dataset_label = "eia_api_final_energy_by_sector_by_energy_family"
+        self.end_url = "&series=BALANCES&products=COAL,CRNGFEED,NATGAS,ELECTR,HEAT,TOTPRODS,COMRENEW,GEOTHERM&flows=TFC"
+        self.dataset_label = "eia_api_final_energy_consumption"
+        self.list_final_cols_to_drop = ["energy_family"]
 
-class EiaFinalConsumptionPerSector(EiaDataProcessor):
+class EiaFinalEnergyConsumptionPerSectorProcessor(EiaDataProcessor):
     
     def __init__(self) -> None:
         self.end_url = "&series=BALANCES&products=TOTAL&flows=TOTIND,TOTTRANS,RESIDENT,COMMPUB,AGRICULT,FISHING,ONONSPEC,NONENUSE"
         self.dataset_label = "eia_api_final_cons_by_sector"
         self.list_final_cols_to_drop = ["energy_family"]
 
+class EiaFinalEnergyPerSectorPerEnergyProcessor(EiaDataProcessor):
+    
+    def __init__(self) -> None:
+        self.end_url = "&series=BALANCES&products=COAL,CRNGFEED,NATGAS,ELECTR,HEAT,TOTPRODS,COMRENEW,GEOTHERM&flows=TOTIND,TOTTRANS,RESIDENT,COMMPUB,AGRICULT,FISHING,ONONSPEC,NONENUSE"
+        self.dataset_label = "eia_api_final_energy_by_sector_by_energy_family"
 class EiaElectricityGenerationByEnergyProcessor(EiaDataProcessor):
         
     def __init__(self) -> None:
@@ -222,6 +227,8 @@ class EiaElectricityGenerationByEnergyProcessor(EiaDataProcessor):
         df_electricity_by_energy_family = super().prepare_data(df_eia_data, df_country)
         df_electricity_by_energy_family["source"] = "IEA"
         df_electricity_by_energy_family = df_electricity_by_energy_family.rename({"sector": "energy_family"}, axis=1)
+        self.df_electricity_by_energy_family = df_electricity_by_energy_family
+        return self
 
     def compute_nuclear_share_in_electricity(self):
         """
