@@ -4,7 +4,7 @@ from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2Trad
 from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
 from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
 from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
-from sdp_data.transformation.iea import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaConsumptionOilPerSectorProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalConsumptionPerSector, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor
+from sdp_data.transformation.iea import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
 import pandas as pd
 import os
 import requests
@@ -51,14 +51,14 @@ class TransformationPipeline:
         df_oil_cons_per_product = EiaConsumptionOilPerProductProcessor().prepare_data(df_country)
         df_oil_cons_per_product.to_csv(f"{RESULTS_DIR}/FINAL_CONS_OIL_BY_PRODUCT_prod.csv", index=False)
 
-        df_oil_cons_per_sector = EiaConsumptionOilPerSectorProcessor().prepare_data(df_country)
+        df_oil_cons_per_sector = EiaConsumptionOilsPerSectorProcessor().prepare_data(df_country)
         df_oil_cons_per_sector.to_csv(f"{RESULTS_DIR}/FINAL_CONS_OIL_BY_SECTOR_prod.csv", index=False)
 
         # final energy
         df_final_energy_consumption = EiaFinalEnergyConsumptionProcessor().prepare_data(df_country)
         df_final_energy_consumption.to_csv(f"{RESULTS_DIR}/FINAL_ENERGY_CONSUMPTION_prod.csv", index=False)
 
-        df_final_energy_consumption_per_sector = EiaFinalConsumptionPerSector().prepare_data(df_country)
+        df_final_energy_consumption_per_sector = EiaFinalEnergyConsumptionPerSectorProcessor().prepare_data(df_country)
         df_final_energy_consumption_per_sector.to_csv(f"{RESULTS_DIR}/FINAL_ENERGY_CONSUMPTION_PER_SECTOR_prod.csv", index=False)
 
         df_energy_per_sector_per_energy_family = EiaFinalEnergyPerSectorPerEnergyProcessor().prepare_data(df_country)
@@ -83,10 +83,10 @@ class TransformationPipeline:
         """
         # demographic data
         df_country = self.process_country_data()
-        df_population = self.process_population_data(df_country)
+        # df_population = self.process_population_data(df_country)
 
         # consumption-based accounting
-        self.process_footprint_vs_territorial_data(df_country)
+        # self.process_footprint_vs_territorial_data(df_country)
 
         # EAI data
         self.process_iea_data(df_country)
