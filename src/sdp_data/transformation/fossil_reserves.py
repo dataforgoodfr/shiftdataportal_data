@@ -5,44 +5,28 @@ sys.path.insert(0, r'C:\Users\HP\Desktop\shiftdataportal_data')
 from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 
 
-class coal_reserves_consolidated_prod_Genertor:
+class CoalReservesConsolidatedProdGenerator:
 
     def __init__(self):
         # Initialize any necessary variables or state here
-        pass
+        self.dict_energy_converter = {'Hard Coal': 1.5, 'Brown Coal': 3}
 
-    def process(self, row):
-        row["year"] = int(row["year"])
-        if not pd.isna(row["proven_reserves"]) and isinstance(row["proven_reserves"], str):
-            row["proven_reserves"] = row["proven_reserves"].replace(" ", "").replace("-", "")
-        try:
-            row["proven_reserves"] = int(row["proven_reserves"])
-        except ValueError:
-            # Handle cases where conversion to int fails
-            row["proven_reserves"] = np.nan
+    def process(self, df):
+        df["year"] = df["year"].astype(int)
+        df["proven_reserves"] = df["proven_reserves"].str.replace(" ", "").replace("-", "")
+        df['proven_reserves'] = pd.to_numeric(df['proven_reserves'], errors='coerce')
+        df["proven_reserves_energy"] = df.apply(
+            lambda row: row['proven_reserves'] / self.dict_energy_converter.get(row['coal_type'], np.nan), axis=1)
+        df["proven_reserves_energy_unit"] = "Mtoe"
+        df.rename(columns={'country': 'group_name'}, inplace=True)
+        df['source'] = "Survey of Energy Resources, World Energy Council 2010"
+        return df
 
-        if row["coal_type"] == "Hard Coal":
-            # 1.5 tons of hard coal = 1 ton of
-            row["proven_reserves_energy"] = row["proven_reserves"] / 1.5
-        elif row["coal_type"] == "Brown Coal":
-            # 3 tons of brown coal = 1 ton of oil
-            row["proven_reserves_energy"] = row["proven_reserves"] / 3
-        else:
-            row["proven_reserves_energy"] = None
-
-        row["proven_reserves_energy_unit"] = "Mtoe"
-        return row
-
-    def run(self, df_coal_reserves: pd.DataFrame) -> pd.DataFrame:
-        """
-        Computes Coal proven reserves for each country, zone.
-        """
+    def run(self, df_coal_reserves):
         df_coal_reserves = pd.melt(df_coal_reserves, id_vars=["country", "unit", "coal_type"], var_name='year',
                                    value_name='proven_reserves')
-
-        df_coal_reserves = df_coal_reserves.apply(self.process, axis=1)
-        df_coal_reserves.rename(columns={'country': 'group_name'}, inplace=True)
-        df_coal_reserves['source'] = "Survey of Energy Resources, World Energy Council 2010"
+        # print(df_coal_reserves.info())
+        df_coal_reserves = self.process(df_coal_reserves)
         df_coal_reserves_grouped = df_coal_reserves.groupby(
             ['group_name', 'year', 'proven_reserves_energy_unit', 'source'])
         df_coal_reserves_consoliated = df_coal_reserves_grouped['proven_reserves_energy'].sum().reset_index()
@@ -52,14 +36,20 @@ class coal_reserves_consolidated_prod_Genertor:
         return df_coal_reserves_consoliated
 
 
-class oil_proven_reserves_normalized_Generator:
+class OilProvenReservesNormalizedGenerator:
 
     def __init__(self):
         pass
 
     def run(self, df_oil_proven_reserves: pd.DataFrame) -> pd.DataFrame:
         """
-        Computes the translation of countries names of the data of oil proven reserves.
+        Translates the country names in the oil proven reserves DataFrame from French to English.
+
+        Parameters:
+        df_oil_proven_reserves (pd.DataFrame): DataFrame containing oil proven reserves data.
+
+        Returns:
+        pd.DataFrame: Updated DataFrame with translated country names.
         """
         df_oil_proven_reserves["country"] = CountryTranslatorFrenchToEnglish().run(df_oil_proven_reserves["country"],
                                                                                    raise_errors=False)
@@ -68,7 +58,7 @@ class oil_proven_reserves_normalized_Generator:
         return df_oil_proven_reserves
 
 
-class oil_proven_reserves_prod_Genertor:
+class OilProvenReservesProdGenerator:
 
     def __init__(self):
         # Initialize any necessary variables or state here
@@ -76,7 +66,14 @@ class oil_proven_reserves_prod_Genertor:
 
     def run(self, df_country: pd.DataFrame, df_oil_proven_reserves_normalized: pd.DataFrame) -> pd.DataFrame:
         """
-        Computes oil proven reserves for each country, zone.
+        Computes oil proven reserves for each group (country, zone, etc.) by merging and aggregating data.
+
+        Parameters:
+        df_country (pd.DataFrame): DataFrame containing country or zone grouping information.
+        df_oil_proven_reserves_normalized (pd.DataFrame): DataFrame containing normalized oil proven reserves data.
+
+        Returns:
+        pd.DataFrame: Aggregated DataFrame with proven reserves by group.
         """
         # Perform a left join between the groups and reserves dataframes on the 'country' column
         merged_df = pd.merge(df_country, df_oil_proven_reserves_normalized, on='country', how='left')
@@ -95,7 +92,7 @@ class oil_proven_reserves_prod_Genertor:
         return final_df
 
 
-class gas_proven_reserves_normalized_Genertor:
+class GasProvenReservesNormalizedGenerator:
 
     def __init__(self):
         pass
@@ -111,26 +108,22 @@ class gas_proven_reserves_normalized_Genertor:
         return df_gas_proven_reserves
 
 
-class bp_fossil_with_zones_prod_Genertor:
+class BpFossilWithZonesProdGenerator:
 
     def __init__(self):
         # Initialize any necessary variables or state here
-        pass
+        self.dict_unit_converter = {'Gas': 'Bcm', 'Oil': 'Gb'}
 
-    def process(self, row):
-        row["year"] = int(row["year"])
-        if not pd.isna(row["proven_reserves"]) and isinstance(row["proven_reserves"], str):
-            row["proven_reserves"] = row["proven_reserves"].replace(" ", "").replace("-", "")
-        try:
-            row["proven_reserves"] = float(row["proven_reserves"])
-        except ValueError:
-            # Handle cases where conversion to int fails
-            row["proven_reserves"] = np.nan
+    def process(self, df):
+        df["year"] = df["year"].astype(int)
+        df['proven_reserves'] = pd.to_numeric(df['proven_reserves'], errors='coerce')
+        df["proven_reserves_unit"] = df.apply(lambda row: self.dict_unit_converter.get(row['energy_source'], np.nan),
+                                              axis=1)
 
-        row["proven_reserves_unit"] = "Bcm" if row['energy_source'] == 'Gas' else 'Gb'
-        return row
+        return df
 
-    def run(self, df_bp_gas_proven_reserves: pd.DataFrame, df_bp_oil_proven_reserves: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
+    def run(self, df_bp_gas_proven_reserves: pd.DataFrame, df_bp_oil_proven_reserves: pd.DataFrame,
+            df_country: pd.DataFrame) -> pd.DataFrame:
         """
         Computes fossil (gas,oil) proven reserves for each country, zone for the source BP.
         """
@@ -147,7 +140,7 @@ class bp_fossil_with_zones_prod_Genertor:
                                                        value_name='proven_reserves')
 
         # Applies the process method to clean and convert proven reserves data.
-        df_bp_oilgal_proven_reserves_stacked = df_bp_oilgal_proven_reserves_stacked.apply(self.process, axis=1)
+        df_bp_oilgal_proven_reserves_stacked = self.process(df_bp_oilgal_proven_reserves_stacked)
 
         df_bp_oilgal_proven_reserves_stacked.dropna(subset='proven_reserves', inplace=True)
 
@@ -182,24 +175,11 @@ class bp_fossil_with_zones_prod_Genertor:
         return final_df
 
 
-class fossil_proven_reserves_prod_Genertor:
+class FossilProvenReservesProdGenerator:
 
     def __init__(self):
         # Initialize any necessary variables or state here
         pass
-
-    def process(self, row):
-        row["year"] = int(row["year"])
-        if not pd.isna(row["proven_reserves"]) and isinstance(row["proven_reserves"], str):
-            row["proven_reserves"] = row["proven_reserves"].replace(" ", "").replace("-", "")
-        try:
-            row["proven_reserves"] = float(row["proven_reserves"])
-        except ValueError:
-            # Handle cases where conversion to int fails
-            row["proven_reserves"] = np.nan
-
-        row["proven_reserves_unit"] = "Bcm" if row['energy_source'] == 'Gas' else 'Gb'
-        return row
 
     def run(self, df_gas_proven_reserves: pd.DataFrame, df_oil_proven_reserves: pd.DataFrame,
                                             df_coal_proven_reserves: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
