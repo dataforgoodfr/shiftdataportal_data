@@ -127,6 +127,7 @@ country_translations = {"ALM": "ALM SRES",
                         "Egypte": "Egypt", "Egypt": "Egypt", "Egypt, Arab Rep.": "Egypt", "Salvador": "El Salvador",
                         "El Salvador": "El Salvador", "Eritrea": "Eritrea", "Erythrée": "Eritrea", "Estonie": "Estonia",
                         "Estonia": "Estonia",
+                        "European Union (28)": "European Union (28)",  # TODO - fixer la traduction de European Union (28) dans des fichiers comme cait.py ?
                         "Eswatini": "Eswatini",
                         "Swaziland": "Eswatini",  # TODO - vérifier quel nom utiliser entre Swaziland et Eswatini
                         "Ethiopia PDR": "Ethiopia",
@@ -215,8 +216,11 @@ country_translations = {"ALM": "ALM SRES",
                         "Martinique": "Martinique",
                         "Mauritania": "Mauritania",
                         "Mauritius": "Mauritius", "Mexico": "Mexico", "Mexique": "Mexico",
-                        "Micronesia (Federated States of)": "Micronesia", "Micronesia": "Micronesia",
-                        "Micronesia, Federated State": "Micronesia", "Moldova, Republic of": "Moldova",
+                        "Micronesia (Federated States of)": "Micronesia",
+                        "Micronesia": "Micronesia",
+                        "Micronesia, Federated State": "Micronesia",
+                        "Micronesia, Federated States of": "Micronesia",
+                        "Moldova, Republic of": "Moldova",
                         "Republic of Moldova": "Moldova", "Moldova": "Moldova", "République de Moldavie": "Moldova",
                         "Monaco": "Monaco", "Mongolie": "Mongolia", "Mongolia": "Mongolia", "Montenegro": "Montenegro",
                         "Montserrat": "Montserrat",
@@ -228,6 +232,7 @@ country_translations = {"ALM": "ALM SRES",
                         "Antilles néerlandaises": "Netherlands Antilles", "Nlle Caledonie": "New Caledonia",
                         "New Caledonia": "New Caledonia", "Nouvelle-Zélande": "New Zealand",
                         "Nouvelle Zélande": "New Zealand", "Nlle Zelande": "New Zealand", "New Zealand": "New Zealand",
+                        "NZ": "New Zealand",
                         "Nigeria": "Nigeria", "Nigéria": "Nigeria", "Norfolk Island": "Norfolk Island",
                         "Corée, République populaire dém.": "North Korea",
                         "Korea, North": "North Korea",
@@ -359,6 +364,7 @@ country_translations = {"ALM": "ALM SRES",
                         "South Vietnam (R.V.)": "Viet Nam", "Viet Nam": "Viet Nam", "Vietnam": "Viet Nam",
                         "Wake Island": "Wake Island",
                         "Western Sahara": "Western Sahara",
+                        "World": "World",  # TODO - fixer la traduction de World dans des fichiers comme cait.py ?
                         "Yemen": "Yemen",
                         "Yémen": "Yemen",
                         "Yemen, Rep.": "Yemen",
@@ -371,6 +377,112 @@ country_translations = {"ALM": "ALM SRES",
                         "Zambia": "Zambia",
                         "Zimbabwe": "Zimbabwe"
                     }
+
+sector_translations_unfccc = {
+    "1.A.1  Energy Industries": "Electricity & Heat",
+    "1.A.2  Manufacturing Industries and Construction": "Industry and Construction",
+    "1.A.3  Transport": "Transport",
+    "1.A.4  Other Sectors": "Other Energy",
+    "1.A.5  Other (Not specified elsewhere)": "Other Energy",
+    "1.A.5  Other (Not elsewhere specified)": "Other Energy",
+    "1.A.5 Other (Not elsewhere specified)": "Other Energy",
+    "1.B  Fugitive Emissions from Fuels": "Other Energy",
+    "1.C  CO₂ Transport and Storage": "Other Energy",
+    "2.A Mineral Products": "Industry and Construction",
+    "2.A  Mineral Products": "Industry and Construction",
+    "2.A  Mineral Industry": "Industry and Construction",
+    "2.B  Chemical Industry": "Industry and Construction",
+    "2.C  Metal Industry": "Industry and Construction",
+    "2.D  Non-energy Products from Fuels and Solvent Use": "Industry and Construction",
+    "2.E  Electronics Industry": "Industry and Construction",
+    "2.F  Product Uses as Substitutes for ODS": "Industry and Construction",
+    "2.G  Other Product Manufacture and Use": "Industry and Construction",
+    "2.H  Other": "Industry and Construction",
+    "3.A  Enteric Fermentation": "Agriculture",
+    "3.B  Manure Management": "Agriculture",
+    "3.C  Rice Cultivation": "Agriculture",
+    "3.D  Agricultural Soils": "Other Agriculture",
+    "3.E  Prescribed Burning of Savannas": "Other Agriculture",
+    "3.F  Field Burning of Agricultural Residues": "Other Agriculture",
+    "3.G  Liming": "Other Agriculture",
+    "4.  Land Use, Land-Use Change and Forestry": "Land-Use Change and Forestry",
+    "5.A  Solid Waste Disposal": "Waste",
+    "5.B  Biological Treatment of Solid Waste": "Waste",
+    "5.C  Incineration and Open Burning of Waste": "Waste",
+    "5.D  Wastewater Treatment and Discharge": "Waste",
+    "5.E  Other": "Waste",
+    "6.  Other": "Other Sectors",
+    "2.C  Metal Production": "Industry and Construction",
+    "2.D  Other Production": "Industry and Construction",
+    "2.E  Production of Halocarbons and SF₆": "Industry and Construction",
+    "2.F  Consumption of Halocarbons and SF₆": "Industry and Construction",
+    "2.G  Other": "Industry and Construction",
+    "3.  Solvent and Other Product Use": "Industry and Construction",
+    "4.A  Enteric Fermentation": "Agriculture",
+    "4.B  Manure Management": "Agriculture",
+    "4.C  Rice Cultivation": "Agriculture",
+    "4.E  Prescribed Burning of Savannas": "Other Agriculture",
+    "4.F  Field Burning of Agricultural Residues": "Other Agriculture",
+    "4.G  Other": "Other Agriculture",
+    "5.  Land-Use Change and Forestry": "Land-Use Change and Forestry",
+    "6.A  Solid Waste Disposal on Land": "Waste",
+    "6.B  Wastewater Handling": "Waste",
+    "6.C  Waste Incineration": "Waste",
+    "6.D  Other": "Waste",
+    "7.  Other": "Other Sectors"
+}
+
+sector_translations_edgar = {
+    "Public electricity and heat production": "Electricity & Heat",
+    "Other Energy Industries": "Other Energy",
+    "Manufacturing Industries and Construction": "Industry and Construction",
+    "Domestic aviation": "Transport",
+    "Road transportation": "Transport",
+    "Rail transportation": "Transport",
+    "Inland navigation": "Transport",
+    "Other transportation": "Transport",
+    "Residential and other sectors": "Other Energy",
+    "Fugitive emissions from solid fuels": "Other Energy",
+    "Fugitive emissions from oil and gas": "Other Energy",
+    "Fugitive emissions from gaseous fuels": "Other Energy",
+    "Memo: International aviation": "Transport",
+    "Memo: International navigation": "Transport",
+    "Cement production": "Industry and Construction",
+    "Lime production": "Industry and Construction",
+    "Limestone and dolomite use": "Industry and Construction",
+    "Soda ash production and use": "Industry and Construction",
+    "Production of other minerals": "Industry and Construction",
+    "Production of chemicals": "Industry and Construction",
+    "Production of metals": "Industry and Construction",
+    "Non-energy use of lubricants/waxes (CO2)": "Industry and Construction",
+    "Solvent and other product use: paint": "Industry and Construction",
+    "Solvent and other product use: degrease": "Industry and Construction",
+    "Solvent and other product use: chemicals": "Industry and Construction",
+    "Solvent and other product use: other": "Industry and Construction",
+    "Enteric fermentation": "Agriculture",
+    "Manure management": "Agriculture",
+    "Rice cultivation": "Agriculture",
+    "Direct soil emissions": "Other Agriculture",
+    "Manure in pasture/range/paddock": "Other Agriculture",
+    "Indirect N2O from agriculture": "Other Agriculture",
+    "Other direct soil emissions": "Other Agriculture",
+    "Agricultural waste burning": "Other Agriculture",
+    "Solid waste disposal on land": "Waste",
+    "Wastewater handling": "Waste",
+    "Waste incineration": "Waste",
+    "Other waste handling": "Waste",
+    "Fossil fuel fires": "Other Sectors",
+    "Indirect N2O from non-agricultural NOx": "Other Sectors",
+    "Indirect N2O from non-agricultural NH3": "Other Sectors",
+    "Other F-gas use": "Other Sectors",
+    "Semiconductor/Electronics Manufacture": "Industry and Construction",
+    "F-gas as Solvent": "Industry and Construction",
+    "Electrical Equipment": "Industry and Construction",
+    "Refrigeration and Air Conditioning": "Industry and Construction",
+    "Fire Extinguishers": "Industry and Construction",
+    "Production of halocarbons and SF6": "Industry and Construction"
+}
+
 
 class CountryTranslatorFrenchToEnglish:
 
@@ -395,3 +507,34 @@ class CountryTranslatorFrenchToEnglish:
                 raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
 
         return serie_country_translate
+
+class SectorTranslator:
+
+    def __init__(self):
+        self.dict_sectors_translations_edgar = sector_translations_edgar
+        self.dict_sectors_translations_unfccc = sector_translations_unfccc
+
+    @staticmethod
+    def translate_sector(serie_sector_to_translate: pd.Series, raise_errors: bool, dict_translate: dict) -> pd.Series:
+        """
+        Translates the sectors using sector_translations. If no correspondance is found in the
+        dict, the sector is replace by a NaN value.
+        :param serie_sector_to_translate: (pandas Series) to translate.
+        :param raise_errors: (bool) True to raise error if no translation. Else False to ignore.
+        :param dict_translate: (dict) which dict is used to translate
+        :return:
+        """
+        serie_sector_translate = serie_sector_to_translate.map(dict_translate)
+        sectors_no_translating = list(set(serie_sector_to_translate[serie_sector_translate.isnull()].values.tolist()))
+        if serie_sector_translate.isnull().sum() > 0:
+            print("WARN : no translating found for sectors %s" % sectors_no_translating)
+            if raise_errors:
+                raise ValueError("ERROR : no translating found for sectors %s" % sectors_no_translating)
+
+        return serie_sector_translate
+
+    def translate_sector_unfccc_data(self, serie_sector_to_translate: pd.Series, raise_errors: bool):
+        return self.translate_sector(serie_sector_to_translate, raise_errors, self.dict_sectors_translations_unfccc)
+
+    def translate_sector_edgar_data(self, serie_sector_to_translate: pd.Series, raise_errors: bool):
+        return self.translate_sector(serie_sector_to_translate, raise_errors, self.dict_sectors_translations_edgar)

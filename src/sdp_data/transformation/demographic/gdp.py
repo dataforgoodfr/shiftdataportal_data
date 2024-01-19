@@ -1,5 +1,6 @@
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
 from sdp_data.utils.iso3166 import countries_by_alpha3
 
 
@@ -41,21 +42,11 @@ class GdpMaddissonPerZoneAndCountryProcessor:
         df_gdp_maddison = df_gdp_maddison[df_gdp_maddison["year"] >= self.year_min]
 
         # join with countries
-        df_gdp_per_zone = (pd.merge(df_country, df_gdp_maddison, how='left', left_on='country', right_on='country')
-                                    .groupby(['group_type', 'group_name', 'year', 'gdp_unit'])
-                                    .agg({'gdp': 'sum'})
-                                    .reset_index()
-                           )
-        
-        # compute GDP per country
-        df_gdp_per_country = df_gdp_maddison.copy()
-        df_gdp_per_country = df_gdp_per_country.rename({"country": "group_name"}, axis=1)
-        df_gdp_per_country["group_type"] = "country"
-        df_gdp_per_country = df_gdp_per_country[["group_type", "group_name", "year", "gdp", "gdp_unit"]]
-
-        # concatenate countries and zones populations
-        df_gdp_per_zone_and_countries = pd.concat([df_gdp_per_zone, df_gdp_per_country], axis=0)
-        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries.sort_values(by=['group_type', 'group_name', 'year', "gdp_unit"])
+        list_cols_group_by = ['group_type', 'group_name', 'year', 'gdp_unit']
+        dict_aggregation = {'gdp': 'sum'}
+        df_gdp_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_gdp_maddison, df_country, list_cols_group_by, dict_aggregation)
+        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries.sort_values(by=list_cols_group_by)
+        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries[list_cols_group_by + ["gdp"]]
 
         return df_gdp_per_zone_and_countries
 
@@ -83,13 +74,8 @@ class GdpWorldBankPerZoneAndCountryProcessor:
         :return: df_gdp_per_zone_and_countries (World Bank)
         """
         # rename columns and clean countries
-        df_gdp_worldbank = df_gdp_worldbank[~(df_gdp_worldbank['Country Code'].isin(self.country_codes_to_drop))]
-        renamed_columns = {"Country Name": "country",
-                           "Country Code": "country_code",
-                           "Indicator Name": "gdp_unit",
-                           "Indicator Code": "indicator_code"
-                           }
-        df_gdp_worldbank.rename(renamed_columns, axis="columns", inplace=True)
+        df_gdp_worldbank = df_gdp_worldbank[~(df_gdp_worldbank['country_code_a3'].isin(self.country_codes_to_drop))]
+        df_gdp_worldbank.rename({"country_name": "country"}, axis="columns", inplace=True)
         df_gdp_worldbank["country"] = CountryTranslatorFrenchToEnglish().run(df_gdp_worldbank["country"], raise_errors=False)
         df_gdp_worldbank = df_gdp_worldbank.dropna(subset=["country"])
 
@@ -100,23 +86,11 @@ class GdpWorldBankPerZoneAndCountryProcessor:
         df_gdp_worldbank = df_gdp_worldbank[["country", "gdp_unit", "year", "gdp"]]
 
         # join with countries
-        df_gdp_per_zone = (pd.merge(df_country, df_gdp_worldbank, how='left', left_on='country', right_on='country')
-                                    .groupby(['group_type', 'group_name', 'year', 'gdp_unit'])
-                                    .agg({'gdp': 'sum'})
-                                    .reset_index()
-                           )
-        
-        # compute GDP per country
-        df_gdp_per_country = df_gdp_worldbank.copy()
-        df_gdp_per_country = df_gdp_per_country.rename({"country": "group_name"}, axis=1)
-        df_gdp_per_country["group_type"] = "country"
-        df_gdp_per_country = df_gdp_per_country[["group_type", "group_name", "year", "gdp", "gdp_unit"]]
-
-        # concatenate countries and zones populations
-        df_gdp_per_zone_and_countries = pd.concat([df_gdp_per_zone, df_gdp_per_country], axis=0)
-        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries.sort_values(by=['group_type', 'group_name', 'year', "gdp_unit"])
-
-        # filter on certain dates TODO - supprimer ctte condition de filtrage pas utile ?
+        list_cols_group_by = ['group_type', 'group_name', 'year', 'gdp_unit']
+        dict_aggregation = {'gdp': 'sum'}
+        df_gdp_per_zone_and_countries = StatisticsPerCountriesAndZonesJoiner().run(df_gdp_worldbank, df_country, list_cols_group_by, dict_aggregation)
+        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries.sort_values(by=list_cols_group_by)
+        df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries[list_cols_group_by + ["gdp"]]
         df_gdp_per_zone_and_countries = df_gdp_per_zone_and_countries[(df_gdp_per_zone_and_countries["group_type"] == "country") | (df_gdp_per_zone_and_countries["year"] >= 1990)]
 
         return df_gdp_per_zone_and_countries

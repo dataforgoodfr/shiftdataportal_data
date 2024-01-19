@@ -428,10 +428,10 @@ _records = [
     Country("Zimbabwe", "ZW", "ZWE", "716", "Zimbabwe"),
 
     # custom code added for the shift data portal
-    Country("Netherlands", "CUSTOM", "ANT", "CUSTOM", "Netherlands"),
-    Country("South Sudan", "CUSTOM", "SDS", "CUSTOM", "South Sudan"),
-    Country("Russian Federation & USSR", "CUSTOM", "USR", "CUSTOM", "Russian Federation & USSR"),
-    Country("Sudan", "CUSTOM", "SUD", "CUSTOM", "Sudan")
+    Country("Netherlands", "CUSTOM", "ANT", "999", "Netherlands"),
+    Country("South Sudan", "CUSTOM", "SDS", "999", "South Sudan"),
+    Country("Russian Federation & USSR", "CUSTOM", "USR", "999", "Russian Federation & USSR"),
+    Country("Sudan", "CUSTOM", "SUD", "999", "Sudan")
 
 ]
 
