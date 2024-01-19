@@ -8,7 +8,7 @@ class StatisticsDataframeFormatter:
         """
         Formats the Shift data portal data by selecting and sorting the columns
         """
-        list_cols_common = ["group_type", "group_name", "year"]
+        list_cols_common = [col for col in ["group_type", "group_name", "country", "year"] if col in df.columns]
         list_other_cols = sorted([col for col in df.columns if col not in list_cols_common + [col_statistics]])
         list_cols_sort_select = list_cols_common + list_other_cols + [col_statistics]
 
