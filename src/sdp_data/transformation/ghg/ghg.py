@@ -9,6 +9,7 @@ from sdp_data.transformation.demographic.countries import (
     StatisticsPerCountriesAndZonesJoiner,
 )
 import numpy as np
+from sdp_data.utils.format import StatisticsDataframeFormatter
 
 
 class CombinatorEdgarAndUnfcccAnnexes:
@@ -55,7 +56,14 @@ class CombinatorEdgarAndUnfcccAnnexes:
         return df_ghg_edunf_by_gas, df_ghg_edunf_by_sector
 
 
-class GhgAllDatasetsProcessor:
+class GhgPikEdgarCombinator:
+
+    @staticmethod
+    def compute_pik_edgr_stacked(df_pik_clean, df_edgar_clean):
+        df_pik_edgar_stacked = pd.concat([df_pik_clean, df_edgar_clean], axis=0)
+        df_pik_edgar_stacked = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_stacked, "ghg", round_statistics=4)
+        return df_pik_edgar_stacked
+
     def compute_pik_edgar(self, df_pik_clean, df_edgar_clean):
         # filter Edgat on relevant sectors
         df_edgar_filter_sector = df_edgar_clean[

@@ -6,6 +6,9 @@ from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrappe
 from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
 from sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
 from sdp_data.utils.format import StatisticsDataframeFormatter
+from sdp_data.transformation.ghg.pik import PikCleaner
+from sdp_data.transformation.ghg.edgar import EdgarCleaner
+from sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator
 import pandas as pd
 import os
 import requests
@@ -32,7 +35,7 @@ class TransformationPipeline:
         df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_prod.csv", index=False)
         return df_population
 
-    def process_footprint_vs_territorial_data(self, df_country):
+    def process_footprint_vs_territorial_data(self, df_country, df_population):
         # update footprint vs territorial
         df_eora_cba = pd.read_csv(f"{RAW_DATA_DIR}/co2_cba/national.cba.report.1990.2022.txt", sep="\t")
         df_gcb_territorial = pd.read_excel(f"{RAW_DATA_DIR}/co2_cba/National_Fossil_Carbon_Emissions_2023v1.0.xlsx", sheet_name="Territorial Emissions")
@@ -106,6 +109,32 @@ class TransformationPipeline:
         df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "co2_intensity", round_statistics=3)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/ELECTRICITY_CO2_INTENSITY_prod.csv", index=False)
 
+    def process_ghg_data(self, df_country):
+
+        # update PIK data
+        df_pik = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_raw.xlsx"))
+        df_pik_cleaned = PikCleaner().run(df_pik)
+        df_pik_cleaned.to_csv(f"{RESULTS_DIR}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_with_edgar_sectors.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
+
+        # update EDGAR data
+        df_edgar_gases = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_f_gases.xlsx"))
+        df_edgar_n2o = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_n2o_raw.xlsx"))
+        df_edgar_ch4 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_ch4_raw.xlsx"))
+        df_edgar_co2_short_cycle = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_co2_shortcycle_raw.xlsx"))
+        df_edgar_co2_short_without_cycle = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_co2_withoutshortcycle_raw.xlsx"))
+        df_edgar_clean = EdgarCleaner().run(df_edgar_gases, df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle, df_edgar_co2_short_without_cycle)
+
+        # combine PIK and EDGAR data
+        df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgr_stacked(df_pik_cleaned, df_edgar_clean)
+        df_pik_edgar_stacked.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
+
+
 
     def run(self):
         """
@@ -120,7 +149,10 @@ class TransformationPipeline:
         # self.process_footprint_vs_territorial_data(df_country)
 
         # EAI data
-        self.process_iea_data(df_country)
+        # self.process_iea_data(df_country)
+
+        # update GHG emissions data
+        self.process_ghg_data(df_country)
 
 
         # update GDP data (World Bank)
