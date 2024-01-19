@@ -4,7 +4,8 @@ from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2Trad
 from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
 from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
 from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
-from sdp_data.transformation.iea import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
+from sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
+from sdp_data.utils.format import StatisticsDataframeFormatter
 import pandas as pd
 import os
 import requests
@@ -12,7 +13,8 @@ from pandas import json_normalize
 
 RAW_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/raw_new_data")
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "../../results/new_prod_data")
-
+CURRENT_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/current_data")
+CURRENT_PROD_DATA = os.path.join(os.path.dirname(__file__), "../../results/current_prod_data")
 
 class TransformationPipeline:
 
@@ -46,34 +48,63 @@ class TransformationPipeline:
         # gas products
         df_gas_cons_by_sector = EiaConsumptionGasBySectorProcessor().prepare_data(df_country)
         df_gas_cons_by_sector.to_csv(f"{RESULTS_DIR}/FINAL_CONS_GAS_BY_SECTOR_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/final_cons_gas_by_sector_prod.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/FINAL_CONS_GAS_BY_SECTOR_prod.csv", index=False)
 
-        # oild products 
+        # oil products 
         df_oil_cons_per_product = EiaConsumptionOilPerProductProcessor().prepare_data(df_country)
         df_oil_cons_per_product.to_csv(f"{RESULTS_DIR}/FINAL_CONS_OIL_BY_PRODUCT_prod.csv", index=False)
-
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/final_cons_oil_products_by_product.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/FINAL_CONS_OIL_BY_PRODUCT_prod.csv", index=False)
+        
         df_oil_cons_per_sector = EiaConsumptionOilsPerSectorProcessor().prepare_data(df_country)
         df_oil_cons_per_sector.to_csv(f"{RESULTS_DIR}/FINAL_CONS_OIL_BY_SECTOR_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/final_cons_oil_products_by_sector_prod.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/FINAL_CONS_OIL_BY_SECTOR_prod.csv", index=False)
 
         # final energy
         df_final_energy_consumption = EiaFinalEnergyConsumptionProcessor().prepare_data(df_country)
         df_final_energy_consumption.to_csv(f"{RESULTS_DIR}/FINAL_ENERGY_CONSUMPTION_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/final_cons_by_energy_family_prepared.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/FINAL_ENERGY_CONSUMPTION_prod.csv", index=False)
 
         df_final_energy_consumption_per_sector = EiaFinalEnergyConsumptionPerSectorProcessor().prepare_data(df_country)
         df_final_energy_consumption_per_sector.to_csv(f"{RESULTS_DIR}/FINAL_ENERGY_CONSUMPTION_PER_SECTOR_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/final_cons_by_sector_prod.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/FINAL_ENERGY_CONSUMPTION_PER_SECTOR_prod.csv", index=False)
 
         df_energy_per_sector_per_energy_family = EiaFinalEnergyPerSectorPerEnergyProcessor().prepare_data(df_country)
         df_energy_per_sector_per_energy_family.to_csv(f"{RESULTS_DIR}/FINAL_ENERGY_PER_SECTOR_PER_ENERGY_FAMILY_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/final_cons_by_sector_by_energy_family_prod.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/FINAL_ENERGY_PER_SECTOR_PER_ENERGY_FAMILY_prod.csv", index=False)
 
         # electricity generation
         electricity_generator = EiaElectricityGenerationByEnergyProcessor().prepare_data(df_country)
         df_electricity_generation = electricity_generator.df_electricity_by_energy_family
         df_electricity_generation.to_csv(f"{RESULTS_DIR}/ELECTRICITY_GENERATION_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/electricity_by_energy_family_prepared_prod.csv", sep=',')
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "final_energy", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/ELECTRICITY_CO2_INTENSITY_prod.csv", index=False)
 
         df_electricity_nuclear_share = electricity_generator.compute_nuclear_share_in_electricity()
         df_electricity_nuclear_share.to_csv(f"{RESULTS_DIR}/ELECTRICITY_NUCLEAR_SHARE_prod.csv", index=False)
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/nuclear_share_of_electricity_generation_prod.csv", sep=',')
+        df_original["nuclear"] = df_original["nuclear"].round(4)
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "nuclear_share_of_electricity_generation", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/ELECTRICITY_NUCLEAR_SHARE_prod.csv", index=False)
 
-        df_electricity_co2_intensity = electricity_generator.compute_co2_intensity_in_electricity()
-        df_electricity_co2_intensity.to_csv(f"{RESULTS_DIR}/ELECTRICITY_CO2_INTENSITY_prod.csv", index=False)
+        df_intensity_co2_per_energy = pd.read_excel(os.path.join(os.path.join(os.path.dirname(__file__), "../../data/thibaud/eia_api/co2_intensity_electricity_by_energy.xlsx")))
+        df_electricity_co2_intensity = electricity_generator.compute_electricity_co2_intensity(df_intensity_co2_per_energy)
+        df_electricity_co2_intensity.to_csv(f"{RESULTS_DIR}/ELECTRICITY_CO2_INTENSITY_prod.csv", index=False, sep=',')
+        df_original = pd.read_csv(f"{CURRENT_DATA_DIR}/country_co2_intensity.csv")
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "co2_intensity", round_statistics=3)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/ELECTRICITY_CO2_INTENSITY_prod.csv", index=False)
 
 
     def run(self):

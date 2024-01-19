@@ -30,36 +30,20 @@ class FaoDataProcessor:
             "Energy (energy, manufacturing and construction industries and fugitive emissions)": "Energy",
         }
 
-    def translate_country_code_to_country_name(self, serie_country_code_to_translate: pd.Series, raise_errors: bool):
-        """
-        Translate country code to country name
-        """
-        serie_country_translated = serie_country_code_to_translate.map(self.countries_by_name)
-        countries_no_translating = list(set(serie_country_code_to_translate[serie_country_translated.isnull()].values.tolist()))
-        if serie_country_translated.isnull().sum() > 0:
-            print("WARN : no translating found for countries %s. Please add it in iso3166.py" % countries_no_translating)
-            if raise_errors:
-                raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
-
-        return serie_country_translated
-
     def run(self, df_fao: pd.DataFrame, df_country):
         """
 
         :return:
         """
         # clean countries
-        print(df_fao["Area"])
         df_fao["Area"] = CountryTranslatorFrenchToEnglish().run(df_fao["Area"], raise_errors=False)
         df_fao["Area"] = df_fao[df_fao["Area"] != "Delete"]
-        print(df_fao["Area"])
 
         # clean and add new columns
         df_fao = df_fao.rename(self.dict_cols_to_rename, axis=1)
         df_fao["ghg_unit"] = "MtCO2eq"
         df_fao["source"] = "FAO"
         df_fao["ghg"] = df_fao["ghg"] * 0.001
-        print(df_fao["Area"])
 
         # Extract gas
         df_fao = df_fao[~df_fao["gas_before"].str.contains("Share")]
