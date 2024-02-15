@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
 
 class EdgarCleaner:
 

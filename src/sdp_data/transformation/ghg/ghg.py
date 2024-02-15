@@ -1,15 +1,15 @@
 import pandas as pd
-from sdp_data.utils.translation import (
+from src.sdp_data.utils.translation import (
     CountryTranslatorFrenchToEnglish,
     SectorTranslator,
 )
-from sdp_data.utils.iso3166 import countries_by_name
-from sdp_data.transformation.ghg.edgar import EdgarCleaner
-from sdp_data.transformation.demographic.countries import (
+from src.sdp_data.utils.iso3166 import countries_by_name
+from src.sdp_data.transformation.ghg.edgar import EdgarCleaner
+from src.sdp_data.transformation.demographic.countries import (
     StatisticsPerCountriesAndZonesJoiner,
 )
 import numpy as np
-from sdp_data.utils.format import StatisticsDataframeFormatter
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
 
 class CombinatorEdgarAndUnfcccAnnexes:

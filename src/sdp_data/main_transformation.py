@@ -1,14 +1,16 @@
-from sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
-from sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
-from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
-from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
-from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
-from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
-from sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
-from sdp_data.utils.format import StatisticsDataframeFormatter
-from sdp_data.transformation.ghg.pik import PikCleaner
-from sdp_data.transformation.ghg.edgar import EdgarCleaner
-from sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator
+import sys
+sys.path.append("../../")
+from src.sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
+from src.sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
+from src.sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
+from src.sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
+from src.sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
+from src.sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
+from src.sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
+from src.sdp_data.transformation.ghg.pik import PikCleaner
+from src.sdp_data.transformation.ghg.edgar import EdgarCleaner
+from src.sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator
 import pandas as pd
 import os
 import requests
@@ -33,7 +35,12 @@ class TransformationPipeline:
         df_population_raw = WorldBankScrapper().run("population")
         df_population = PopulationPerZoneAndCountryProcessor().run(df_population_raw, df_country)
         df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_prod.csv", index=False)
-        return df_population
+        
+        # update GapMinder data (source GapMinder)
+        df_population_gapmidner_raw = pd.read_excel(f"{RAW_DATA_DIR}/population/GM-Population - Dataset - v7.xlsx", sheet_name="data-pop-gmv6-in-columns")
+        df_gapminder = GapMinderPerZoneAndCountryProcessor().run(df_population_gapmidner_raw, df_country)
+        df_gapminder.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_GAPMINDER_prod.csv", index=False)
+        return df_population, df_gapminder
 
     def process_footprint_vs_territorial_data(self, df_country, df_population):
         # update footprint vs territorial
@@ -143,7 +150,7 @@ class TransformationPipeline:
         """
         # demographic data
         df_country = self.process_country_data()
-        # df_population = self.process_population_data(df_country)
+        df_population, df_gapminder = self.process_population_data(df_country)
 
         # consumption-based accounting
         # self.process_footprint_vs_territorial_data(df_country)
