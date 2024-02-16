@@ -41,6 +41,7 @@ class EdgarCleaner:
         :return:
         """
         # stack the different gas together
+        print("\n----- Clean EDGAR dataset")
         df_edgar_n2o["gas"] = "N2O"
         df_edgar_ch4["gas"] = "CH4"
         df_edgar_co2_short_cycle["gas"] = "CO2"

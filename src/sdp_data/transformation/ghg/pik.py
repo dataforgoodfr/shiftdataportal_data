@@ -26,7 +26,7 @@ class PikCleaner:
         :return:
         """
         # cleaning data
-        print("----- Clean PIK dataset")
+        print("\n----- Clean PIK dataset")
         df_pik = df_pik.rename({"Country": "country", "Data source": "source", "Sector": "sector",
                                 "Gas": "gas", "Unit": "ghg_unit"}, axis=1)
         df_pik = df_pik[df_pik["sector"] != "Total excluding LULUCF"]

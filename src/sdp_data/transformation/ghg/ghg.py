@@ -63,6 +63,7 @@ class GhgPikEdgarCombinator:
         df_edgar_clean["source"] = "edgar"
         df_pik_edgar_stacked = pd.concat([df_pik_clean, df_edgar_clean], axis=0)
         df_pik_edgar_stacked = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_stacked, "ghg", round_statistics=4)
+        df_pik_edgar_stacked = df_pik_edgar_stacked.sort_values(["country", "year", "gas", "ghg_unit", "sector", "source"])  # TODO - to remoove
         return df_pik_edgar_stacked
 
     def compute_pik_edgar_filter_sector(self, df_pik_clean, df_edgar_clean):
@@ -94,6 +95,8 @@ class GhgPikEdgarCombinator:
         # filter on dates
         df_pik_clean = df_pik_clean[(df_pik_clean["year"] >= 2008) & (df_pik_clean["year"] <= 2012)]
         df_edgar_clean = df_edgar_clean[(df_edgar_clean["year"] >= 2008) & (df_edgar_clean["year"] <= 2012)]
+        df_pik_clean["year"] = pd.to_numeric(df_pik_clean["year"])
+        df_edgar_clean["year"] = pd.to_numeric(df_edgar_clean["year"])
         
         # Compute difference of GHG between Edgar Industry and PIK Industry
         df_edgar_industry = df_edgar_clean[df_edgar_clean["sector"] == "Industry and Construction"]
@@ -155,9 +158,6 @@ class GhgPikEdgarCombinator:
 
     def run(self, df_edgar_clean, df_unfccc_annex_clean, df_pik_clean, df_country):
         """ """
-        # merge PIK data and UNFCC data and Edgar data
-        df_pik_unfccc = pd.concat([df_pik_clean, df_unfccc_annex_clean], axis=0)
-
         # merge PIK data and Edgar data
         df_pik_edgar_stacked = pd.concat([df_pik_unfccc, df_edgar_clean], axis=0)
         df_pik_edgar_merge = self.compute_pik_edgar(df_pik_clean, df_edgar_clean)
@@ -181,3 +181,10 @@ class GhgPikEdgarCombinator:
                 df_pik_edgar_stacked, df_country, list_group_by, dict_aggregation
             )
         )
+
+
+class PikUnfcccAnnexesCombinator:
+
+     def run(self, df_pik_clean, df_unfccc_clean):
+        df_pik_unfccc_annexes = pd.concat([df_pik_clean, df_unfccc_clean], axis=0)
+        return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=4)
