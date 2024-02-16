@@ -34,7 +34,7 @@ class TransformationPipeline:
         # update population data (World Bank)
         df_population_raw = WorldBankScrapper().run("population")
         df_population = PopulationPerZoneAndCountryProcessor().run(df_population_raw, df_country)
-        df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_prod.csv", index=False)
+        df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_WORLDBANK_prod.csv", index=False)
         
         # update GapMinder data (source GapMinder)
         df_population_gapmidner_raw = pd.read_excel(f"{RAW_DATA_DIR}/population/GM-Population - Dataset - v7.xlsx", sheet_name="data-pop-gmv6-in-columns")
