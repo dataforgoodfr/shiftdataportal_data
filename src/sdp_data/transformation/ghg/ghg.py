@@ -59,7 +59,8 @@ class CombinatorEdgarAndUnfcccAnnexes:
 class GhgPikEdgarCombinator:
 
     @staticmethod
-    def compute_pik_edgr_stacked(df_pik_clean, df_edgar_clean):
+    def compute_pik_edgar_stacked(df_pik_clean, df_edgar_clean):
+        df_edgar_clean["source"] = "edgar"
         df_pik_edgar_stacked = pd.concat([df_pik_clean, df_edgar_clean], axis=0)
         df_pik_edgar_stacked = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_stacked, "ghg", round_statistics=4)
         return df_pik_edgar_stacked
