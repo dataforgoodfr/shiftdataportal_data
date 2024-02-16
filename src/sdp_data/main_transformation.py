@@ -124,7 +124,7 @@ class TransformationPipeline:
         df_pik_cleaned.to_csv(f"{RESULTS_DIR}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_with_edgar_sectors.xlsx"))
         df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
-        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)  # TODO - to remove once this is OK
 
         # update EDGAR data
         df_edgar_gases = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_f_gases.xlsx"))
@@ -134,13 +134,27 @@ class TransformationPipeline:
         df_edgar_co2_short_without_cycle = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_co2_withoutshortcycle_raw.xlsx"))
         df_edgar_clean = EdgarCleaner().run(df_edgar_gases, df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle, df_edgar_co2_short_without_cycle)
 
-        # combine PIK and EDGAR data
-        df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgr_stacked(df_pik_cleaned, df_edgar_clean)
+        # combine PIK and EDGAR data STACKED
+        df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgar_stacked(df_pik_cleaned, df_edgar_clean)
         df_pik_edgar_stacked.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.xlsx"))
+        df_original["source"] = df_original["source"].fillna("edgar")
         df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
 
+        # combine PIK and EDGAR data FILTER SECTOR
+        df_pik_edgar_sector = GhgPikEdgarCombinator().compute_pik_edgar_filter_sector(df_pik_cleaned, df_edgar_clean)
+        df_pik_edgar_sector.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_SECTOR_prod.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_1.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_SECTOR_prod.csv", index=False)
+
+        # combine PIK and EDGAR EXTRAPOLATED GLUED
+        df_pik_edgar_extrapolated = GhgPikEdgarCombinator().compute_pik_edgar_extrapolated_glued(df_pik_cleaned, df_edgar_clean)
+        df_pik_edgar_extrapolated.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_PROD.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_pik_extrapolated_glued_prod.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_PROD.csv", index=False)
 
 
     def run(self):
@@ -150,7 +164,7 @@ class TransformationPipeline:
         """
         # demographic data
         df_country = self.process_country_data()
-        df_population, df_gapminder = self.process_population_data(df_country)
+        # df_population, df_gapminder = self.process_population_data(df_country)
 
         # consumption-based accounting
         # self.process_footprint_vs_territorial_data(df_country)

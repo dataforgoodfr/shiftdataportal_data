@@ -65,37 +65,93 @@ class GhgPikEdgarCombinator:
         df_pik_edgar_stacked = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_stacked, "ghg", round_statistics=4)
         return df_pik_edgar_stacked
 
-    def compute_pik_edgar(self, df_pik_clean, df_edgar_clean):
-        # filter Edgat on relevant sectors
-        df_edgar_filter_sector = df_edgar_clean[
-            df_edgar_clean["sector"].isin(
-                "Transport", "Electricity & Heat", "Other Energy"
-            )
-        ]
+    def compute_pik_edgar_filter_sector(self, df_pik_clean, df_edgar_clean):
+        # filter Edgar on relevant sectors
+        df_edgar_filter_sector = df_edgar_clean[df_edgar_clean["sector"].isin(["Transport", "Electricity & Heat", "Other Energy"])]
 
         # Select rows from with sector = 'Industry and Construction' and merge
-        df_edgar_industry = df_edgar_clean[
-            df_edgar_clean["sector"] == "Industry and Construction"
-        ]
-        df_pik_industry = df_pik_clean[
-            df_pik_clean["sector"] == "Industry and Construction"
-        ]
+        df_edgar_industry = df_edgar_clean[df_edgar_clean["sector"] == "Industry and Construction"]
+        df_pik_industry = df_pik_clean[df_pik_clean["sector"] == "Industry and Construction"]
         df_union_industry = pd.merge(
             df_edgar_industry,
             df_pik_industry,
             on=["country", "year", "gas"],
             suffixes=("_edgar", "_pik"),
         )
-        df_union_industry["ghg"] = (
-            df_union_industry["ghg_edgar"] - df_union_industry["ghg_pik"]
-        )
-        df_union_industry = df_union_industry[
-            ["country", "sector", "gas", "year", "ghg", "ghg_unit"]
-        ]
+        df_union_industry["ghg"] = (df_union_industry["ghg_edgar"] - df_union_industry["ghg_pik"])
+        df_union_industry = df_union_industry[["country", "sector", "gas", "year", "ghg", "ghg_unit"]]
+        df_pik_edgar_sector = pd.concat([df_edgar_filter_sector, df_union_industry])
+        df_pik_edgar_sector = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_sector, "ghg", round_statistics=4)
+        return df_pik_edgar_sector
+    
+    def merge_edgar_pik_per_sector(self, df_pik_clean, df_edgar_clean, pik_sectors, edgar_sectors):
+        df_pik_sector = df_pik_clean[(df_pik_clean["sector"].isin(pik_sectors)) & (df_pik_clean["ghg"] > 0)]
+        df_edgar_sector = df_edgar_clean[df_edgar_clean["sector"].isin(edgar_sectors)]
+        return df_pik_sector.merge(df_edgar_sector.drop(columns="ghg_unit"), how="inner", on=["country", "year", "gas"], suffixes=("_pik", "_edgar"))
 
-        # finally Concatenate df_c1 and df_union
-        df_result = pd.concat([df_edgar_filter_sector, df_union_industry])
-        return df_result
+    def compute_pik_edgar_energy_ratio(self, df_pik_clean, df_edgar_clean):
+
+        # filter on dates
+        df_pik_clean = df_pik_clean[(df_pik_clean["year"] >= 2008) & (df_pik_clean["year"] <= 2012)]
+        df_edgar_clean = df_edgar_clean[(df_edgar_clean["year"] >= 2008) & (df_edgar_clean["year"] <= 2012)]
+        
+        # Compute difference of GHG between Edgar Industry and PIK Industry
+        df_edgar_industry = df_edgar_clean[df_edgar_clean["sector"] == "Industry and Construction"]
+        df_pik_industry = df_pik_clean[(df_pik_clean["sector"] == "Industry and Construction")]
+        df_pik_edgar_diff_industry = df_edgar_industry.merge(df_pik_industry, on=["country", "year", "gas"], suffixes=("_edgar", "_pik"))
+        df_pik_edgar_diff_industry["ghg"] = df_pik_edgar_diff_industry["ghg_edgar"] - df_pik_edgar_diff_industry["ghg_pik"]
+        df_pik_edgar_diff_industry["sector"] = "Energy from Industry"
+        df_pik_edgar_diff_industry = df_pik_edgar_diff_industry.drop(columns=["ghg_unit_edgar", "ghg_unit_pik", "sector_pik", "sector_edgar"])
+
+        # concatenate with transport and energy
+        df_edgar_transport_energy = df_edgar_clean[df_edgar_clean["sector"].isin(["Transport", "Electricity & Heat", "Other Energy"])] 
+        df_pik_edgar_diff_industry_transport = pd.concat([df_pik_edgar_diff_industry, df_edgar_transport_energy], axis=0)
+
+        # merge on PIK energy
+        df_pik_energy = df_pik_clean[(df_pik_clean["sector"] == "Energy") & (df_pik_clean["ghg"] > 0)]
+        df_pik_energy_transport = df_pik_energy.merge(df_pik_edgar_diff_industry_transport, how="inner", on=["country", "year", "gas"], suffixes=("_pik", "_edgar"))
+
+        # Filter and joint PIK and EDGAR on Agriculture, Waste and Industry
+        df_pik_edgar_agriculture = self.merge_edgar_pik_per_sector(df_pik_clean, df_edgar_clean, ["Agriculture"], ["Agriculture", "Other Agriculture"])
+        df_pik_edgar_waste = self.merge_edgar_pik_per_sector(df_pik_clean, df_edgar_clean, ['Waste', 'Other Sectors'], ['Waste', 'Other Sectors'])
+        df_pik_edgar_industry = self.merge_edgar_pik_per_sector(df_pik_clean, df_edgar_clean, ['Industry and Construction'], ['Industry and Construction'])    # TODO -vérifier si erreur dans la requete SQL car dans dans la requete SQL originale, on fait ici le ratio PIK par PIK
+
+        df_pik_edgar_ratio = pd.concat([df_pik_energy_transport, df_pik_edgar_agriculture, df_pik_edgar_waste, df_pik_edgar_industry], axis=0)
+        df_pik_edgar_ratio["ratio"] = df_pik_edgar_ratio["ghg_edgar"] / df_pik_edgar_ratio["ghg_pik"]
+        return df_pik_edgar_ratio
+    
+    def compute_pik_edgar_extrapolated(self, df_pik_clean, df_edgar_clean): # TODO - revoir complètement cette méthode. Dette technique monstrueuse...
+        # compute the energy ratio between PIK and Edgar
+        df_pik_edgar_energy_ratio = self.compute_pik_edgar_energy_ratio(df_pik_clean, df_edgar_clean)
+        df_pik_edgar_energy_ratio = df_pik_edgar_energy_ratio.groupby(["country","gas","sector_edgar","sector_pik"]).agg(averaged_ratio=("ratio","mean")).reset_index()
+
+        # concatenate with the rest of PIK
+        df_pik_clean = df_pik_clean.rename(columns={"ghg": "ghg_pik"})
+        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_ratio.merge(df_pik_clean,
+                                                                           how="inner",
+                                                                           left_on=["country", "gas", "sector"],
+                                                                           right_on=["country", "gas", "sector_pik"]
+                                                                           )
+        df_pik_edgar_energy_extrapolated["ghg_edgar_extrapolated"] = df_pik_edgar_energy_extrapolated["averaged_ratio"] * df_pik_edgar_energy_extrapolated["ghg"]
+        df_pik_edgar_energy_extrapolated["source"] = "pik_extrapolation"
+        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"sector_edgar": "sector"})
+
+        # concatenate with PIK data greater than 2012
+        df_pik_2012 = df_pik_clean[df_pik_clean["year"] > 2012]
+        df_pik_edgar_extrapolated_computed = pd.concat([df_pik_edgar_energy_extrapolated, df_pik_2012])
+
+        # Select columns from "GHG_EMISSIONS_edgar_cleaned2"
+        df_edgar_clean = df_edgar_clean[["country", "sector", "gas", "year", "ghg", "ghg_unit"]]
+        df_edgar_clean["source"] = "edgar"
+
+        # Select columns from "GHG_EMISSIONS_pik_edgar_extrapolated"
+        df_pik_edgar_extrapolated = df_pik_edgar_extrapolated_computed[["source", "country", "sector", "gas", "year", "ghg", "ghg_unit"]]
+        df_pik_edgar_extrapolated["sector"] = np.where(df_pik_edgar_extrapolated["sector"] == "Energy from Industry", "Industry and Construction", df_pik_edgar_extrapolated["sector"])
+        df_pik_edgar_extrapolated = df_pik_edgar_extrapolated[df_pik_edgar_extrapolated["sector"] != "Energy"]
+
+        # Concatenate the two dataframes
+        df_pik_edgar_extrapolated_glued = pd.concat([df_edgar_clean, df_pik_edgar_extrapolated], ignore_index=True)
+        return df_pik_edgar_extrapolated_glued
 
     def run(self, df_edgar_clean, df_unfccc_annex_clean, df_pik_clean, df_country):
         """ """
