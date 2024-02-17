@@ -41,6 +41,7 @@ class PikCleaner:
         df_pik["country"] = CountryTranslatorFrenchToEnglish().run(df_pik["country"], raise_errors=False)
         df_pik = df_pik.dropna(subset=["country"])
         df_pik = df_pik[df_pik["country"] != "Delete"]
+        df_pik["year"] = df_pik["year"].astype(int)
         df_pik = StatisticsDataframeFormatter.select_and_sort_values(df_pik, "ghg", round_statistics=4)
 
         return df_pik

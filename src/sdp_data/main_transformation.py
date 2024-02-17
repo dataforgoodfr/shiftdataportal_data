@@ -143,7 +143,7 @@ class TransformationPipeline:
         # combine PIK and EDGAR data STACKED
         df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgar_stacked(df_pik_cleaned, df_edgar_clean)
         df_pik_edgar_stacked.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
-        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.xlsx"))
+        df_original = pd.read_csv(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.csv"))
         df_original["source"] = df_original["source"].fillna("edgar")
         df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
@@ -194,17 +194,6 @@ class TransformationPipeline:
         df_gdp_raw = WorldBankScrapper().run("gdp")
         df_population = GdpWorldBankPerZoneAndCountryProcessor().run(df_gdp_raw, df_country)
         df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_GDP_prod.csv", index=False)
-        """
-
-
-
-        # Compute populations
-        """
-        df_gapminder = pd.read_excel("../../data/thibaud/gapminder_population_raw_2.xlsx")
-        df_population = pd.read_csv(f"../../data/_processed/_processed/processed_population_worldbank.csv")
-        df_country = pd.read_excel("../../data/thibaud/country_groups.xlsx")
-        df_gapminder_per_zone_and_countries = GapMinderPerZoneAndCountryProcessor().run(df_gapminder, df_country)
-        df_population_per_zone_and_countries = PopulationPerZoneAndCountryProcessor().run(df_population, df_country)
 
         # Compute CO2 consumption based accounting
         df_gcb_territorial = pd.read_excel("../../data/thibaud/co2_consumption_based_accounting/gcb_territorial.xlsx")
