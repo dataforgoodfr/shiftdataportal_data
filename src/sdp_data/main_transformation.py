@@ -10,7 +10,7 @@ from src.sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, 
 from src.sdp_data.utils.format import StatisticsDataframeFormatter
 from src.sdp_data.transformation.ghg.pik import PikCleaner
 from src.sdp_data.transformation.ghg.edgar import EdgarCleaner
-from src.sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator, PikUnfcccAnnexesCombinator
+from src.sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator, PikUnfcccAnnexesCombinator, EdgarUnfcccAnnexesCombinator
 from src.sdp_data.transformation.ghg.unfcc import UnfcccAnnexesCleaner
 import pandas as pd
 import os
@@ -138,7 +138,7 @@ class TransformationPipeline:
         # update UNFCCC data
         df_unfccc_annex_1 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex1.xlsx"))
         df_unfccc_annex_2 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex2.xlsx"))
-        df_unfccc_annexes = UnfcccAnnexesCleaner().run(df_unfccc_annex_1, df_unfccc_annex_2)
+        df_unfccc_annex_clean = UnfcccAnnexesCleaner().run(df_unfccc_annex_1, df_unfccc_annex_2)
         
         # combine PIK and EDGAR data STACKED
         df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgar_stacked(df_pik_cleaned, df_edgar_clean)
@@ -163,11 +163,22 @@ class TransformationPipeline:
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_PROD.csv", index=False)
 
         # combine PIK and UNFCCC data
-        df_pik_unfccc_annexes = PikUnfcccAnnexesCombinator().run(df_pik_cleaned, df_unfccc_annexes)
+        df_pik_unfccc_annexes = PikUnfcccAnnexesCombinator().run(df_pik_cleaned, df_unfccc_annex_clean)
         df_pik_unfccc_annexes.to_csv(f"{RESULTS_DIR}/GHG_PIK_UNFCCC.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_unfccc.xlsx"))
         df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_UNFCCC.csv", index=False)
+
+        # combine EDGR and UNFCCC data
+        df_ghg_edunf_by_gas, df_ghg_edunf_by_sector = EdgarUnfcccAnnexesCombinator().run(df_edgar_clean, df_unfccc_annex_clean, df_country)
+        df_ghg_edunf_by_gas.to_csv(f"{RESULTS_DIR}/GHG_EDUNF_BY_GAS.csv", index=False)
+        df_ghg_edunf_by_sector.to_csv(f"{RESULTS_DIR}/GHG_EDUNF_BY_SECTOR.csv", index=False)
+        df_original_gas = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_gas_prod.xlsx"))
+        df_original_gas = StatisticsDataframeFormatter.select_and_sort_values(df_original_gas, "ghg", round_statistics=5)
+        df_original_gas.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_GAS.csv", index=False)
+        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_gas_prod.xlsx"))
+        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
+        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_SECTOR.csv", index=False)
 
 
     def run(self):
