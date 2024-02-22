@@ -10,8 +10,10 @@ from src.sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, 
 from src.sdp_data.utils.format import StatisticsDataframeFormatter
 from src.sdp_data.transformation.ghg.pik import PikCleaner
 from src.sdp_data.transformation.ghg.edgar import EdgarCleaner
-from src.sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator, PikUnfcccAnnexesCombinator, EdgarUnfcccAnnexesCombinator
-from src.sdp_data.transformation.ghg.unfcc import UnfcccAnnexesCleaner
+from src.sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator, PikUnfcccAnnexesCombinator, EdgarUnfcccAnnexesCombinator, GhgMultiSourcesCombinator
+from src.sdp_data.transformation.ghg.unfcc import UnfcccAnnexesCleaner, UnfccProcessor
+from src.sdp_data.transformation.ghg.fao import FaoDataProcessor
+from src.sdp_data.transformation.ghg.cait import CaitProcessor
 import pandas as pd
 import os
 import requests
@@ -135,11 +137,6 @@ class TransformationPipeline:
         df_edgar_co2_short_without_cycle = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_co2_withoutshortcycle_raw.xlsx"))
         df_edgar_clean = EdgarCleaner().run(df_edgar_gases, df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle, df_edgar_co2_short_without_cycle)
 
-        # update UNFCCC data
-        df_unfccc_annex_1 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex1.xlsx"))
-        df_unfccc_annex_2 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex2.xlsx"))
-        df_unfccc_annex_clean = UnfcccAnnexesCleaner().run(df_unfccc_annex_1, df_unfccc_annex_2)
-        
         # combine PIK and EDGAR data STACKED
         df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgar_stacked(df_pik_cleaned, df_edgar_clean)
         df_pik_edgar_stacked.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
@@ -162,7 +159,12 @@ class TransformationPipeline:
         df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_PROD.csv", index=False)
 
-        # combine PIK and UNFCCC data
+        # update UNFCCC annexes data
+        df_unfccc_annex_1 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex1.xlsx"))
+        df_unfccc_annex_2 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex2.xlsx"))
+        df_unfccc_annex_clean = UnfcccAnnexesCleaner().run(df_unfccc_annex_1, df_unfccc_annex_2)
+        
+        # combine PIK and UNFCCC annexes data
         df_pik_unfccc_annexes = PikUnfcccAnnexesCombinator().run(df_pik_cleaned, df_unfccc_annex_clean)
         df_pik_unfccc_annexes.to_csv(f"{RESULTS_DIR}/GHG_PIK_UNFCCC.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_unfccc.xlsx"))
@@ -180,6 +182,27 @@ class TransformationPipeline:
         df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
         df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_SECTOR.csv", index=False)
 
+        # update UNFCC data
+        df_unfcc = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfcc.xlsx"))
+        df_unfcc_clean = UnfccProcessor().run(df_unfcc)
+
+        # update FAO data
+        df_fao = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "fao_raw.xlsx"))
+        df_fao_clean = FaoDataProcessor().run(df_fao)
+
+        # update CAIT data
+        df_cait = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "cait_raw.xlsx"))
+        df_cait_sector_stacked, df_cait_gas_stacked = CaitProcessor().run(df_cait)
+
+        # combine all sources together
+        list_df_multi_sources = GhgMultiSourcesCombinator().run(df_pik_clean=df_pik_cleaned,
+                                                                df_edgar_clean=df_edgar_clean,
+                                                                df_unfccc_clean=df_unfcc_clean,
+                                                                df_fao_clean=df_fao_clean,
+                                                                df_cait_sector_stacked=df_cait_sector_stacked,
+                                                                df_cait_gas_stacked=df_cait_gas_stacked
+                                                                )
+        df_ghg_full_by_gas, df_ghg_full_by_sector, df_ghg_full_aggregated = list_df_multi_sources
 
     def run(self):
         """
