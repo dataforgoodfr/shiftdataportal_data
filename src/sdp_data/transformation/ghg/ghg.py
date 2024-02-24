@@ -168,11 +168,12 @@ class EdgarUnfcccAnnexesCombinator:
 
 class GhgMultiSourcesCombinator:
 
-    def run(self, df_pik_clean, df_edgar_clean, df_fao_clean, df_country, df_cait_stacked_sector, df_cait_stacked_gas):  # TODO - améliorer la jointures des données multi-sources ? données annexe plus utilisées depuis 2017
+    def run(self, df_pik_clean, df_edgar_clean, df_fao_clean, df_cait_sector_stacked, df_cait_gas_stacked, df_country):  # TODO - améliorer la jointures des données multi-sources ? données annexe plus utilisées depuis 2017
         """
 
         :param df_pik_clean:
         :param df_edgar_clean:
+        :param
         :return:
         """
         # concatenate EDGAR and PIK
@@ -191,18 +192,18 @@ class GhgMultiSourcesCombinator:
         df_ghg_multi_with_zones = pd.concat([df_multi_sources, df_multi_sources_sum_per_country, df_fao_clean], axis=0)
         
         # group by GAS and merge with CAIT        
-        list_group_by_gas = ["sector", "group_type", "group_name", "year", "gas"]
+        list_group_by_gas = ["source", "group_type", "group_name", "year", "gas"]
         df_ghg_multi_by_gas = df_ghg_multi_with_zones.groupby(list_group_by_gas).agg(ghg=("ghg", "sum"), ghg_unit=("ghg_unit", "first")).reset_index()
-        df_cait_stacked_gas["source"] = "CAIT"
+        df_cait_gas_stacked["source"] = "CAIT"
         df_ghg_multi_by_gas["including_lucf"] = np.nan
-        df_cait_stacked_gas = df_cait_stacked_gas[(df_cait_stacked_gas["gas"] != "") | (df_cait_stacked_gas["gas"].notnull())]
+        df_cait_stacked_gas = df_cait_gas_stacked[(df_cait_gas_stacked["gas"] != "") | (df_cait_gas_stacked["gas"].notnull())]
         df_ghg_full_by_gas = pd.concat([df_ghg_multi_by_gas, df_cait_stacked_gas], axis=0)
         df_ghg_full_by_gas = StatisticsDataframeFormatter().select_and_sort_values(df_ghg_full_by_gas, "ghg", 5)
 
         # group by SECTOR and merge with CAIT
-        list_group_by_sector = ["sector", "group_type", "group_name", "year", "sector"]
+        list_group_by_sector = ["source", "group_type", "group_name", "year", "sector"]
         df_ghg_multi_by_sector = df_ghg_multi_with_zones.groupby(list_group_by_sector).agg(ghg=("ghg", "sum"), ghg_unit=("ghg_unit", "first")).reset_index()
-        df_ghg_full_by_sector = pd.concat([df_ghg_multi_by_sector, df_cait_stacked_sector.drop(columns="including_lucf")], axis=0)
+        df_ghg_full_by_sector = pd.concat([df_ghg_multi_by_sector, df_cait_sector_stacked], axis=0)
         df_ghg_full_by_sector = StatisticsDataframeFormatter().select_and_sort_values(df_ghg_full_by_sector, "ghg", 5)
 
         # compute full aggregated

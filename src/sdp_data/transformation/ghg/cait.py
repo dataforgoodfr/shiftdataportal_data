@@ -40,6 +40,7 @@ class CaitProcessor:
         :return:
         """
         # compute and melt for each gas.
+        print("\n----- Clean CAIT dataset")
         list_df_gas_melted_gas = []
         for gas in self.list_gases:
             df_calt_gas = df_calt[["country", "year", gas]]

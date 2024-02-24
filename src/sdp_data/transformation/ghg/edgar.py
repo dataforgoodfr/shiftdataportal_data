@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
+
 
 class EdgarCleaner:
 
@@ -67,6 +69,6 @@ class EdgarCleaner:
         df_edgar_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_edgar_stacked["country"], raise_errors=False)
         df_edgar_stacked["country"] = df_edgar_stacked["country"].replace({"Reunion": "Réunion"})  # TODO - à corriger dans fichier translation
         df_edgar_stacked = df_edgar_stacked.dropna(subset=["country"])
-        df_edgar_stacked["year"] = df_edgar_stacked["year"].astype(int)
+        df_edgar_stacked = StatisticsDataframeFormatter.select_and_sort_values(df_edgar_stacked, "ghg", round_statistics=4)
 
         return df_edgar_stacked

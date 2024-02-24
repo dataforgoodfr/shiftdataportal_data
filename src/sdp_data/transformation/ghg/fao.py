@@ -36,6 +36,7 @@ class FaoDataProcessor:
         :return:
         """
         # clean countries
+        print("\n----- Clean FAO dataset")
         df_fao = df_fao.drop("Area Code", axis=1)
         df_fao["Area"] = CountryTranslatorFrenchToEnglish().run(df_fao["Area"], raise_errors=False)
         df_fao["Area"] = df_fao[df_fao["Area"] != "Delete"]
@@ -45,7 +46,6 @@ class FaoDataProcessor:
         df_fao["ghg_unit"] = "MtCO2eq"
         df_fao["source"] = "FAO"
         df_fao["ghg"] = df_fao["ghg"] * 0.001
-        df_fao["year"] = df_fao["year"].astype(int)
 
         # Extract gas
         df_fao = df_fao[~df_fao["gas_before"].str.contains("Share")]

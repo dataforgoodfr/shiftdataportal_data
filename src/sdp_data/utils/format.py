@@ -12,6 +12,10 @@ class StatisticsDataframeFormatter:
         list_other_cols = sorted([col for col in df.columns if col not in list_cols_common + [col_statistics]])
         list_cols_sort_select = list_cols_common + list_other_cols + [col_statistics]
 
+        # format
+        if "year" in df.columns.tolist():
+            df["year"] = df["year"].astype(int).astype(str)
+
         # round values
         if round_statistics is not None:
             df[col_statistics] = df[col_statistics].round(round_statistics)
