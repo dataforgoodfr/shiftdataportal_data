@@ -1,10 +1,4 @@
 import pandas as pd
-from src.sdp_data.utils.translation import (
-    CountryTranslatorFrenchToEnglish,
-    SectorTranslator,
-)
-from src.sdp_data.utils.iso3166 import countries_by_name
-from src.sdp_data.transformation.ghg.edgar import EdgarCleaner
 from src.sdp_data.transformation.demographic.countries import (
     StatisticsPerCountriesAndZonesJoiner,
 )
@@ -26,6 +20,7 @@ class GhgPikEdgarCombinator:
         compute the difference between PIK and EDGAR on sector Industry and Construction
         :return:
         """
+        # TODO -  transformation peu claire. Manque de confiance sur cette partie. A re-vérifier
         df_edgar_industry = df_edgar_clean[df_edgar_clean["sector"] == "Industry and Construction"]
         df_pik_industry = df_pik_clean[df_pik_clean["sector"] == "Industry and Construction"]
         df_diff_industry = pd.merge(
@@ -50,6 +45,7 @@ class GhgPikEdgarCombinator:
         # concat with other EDGAR sectors
         df_edgar_filter_sector = df_edgar_clean[df_edgar_clean["sector"].isin(["Transport", "Electricity & Heat", "Other Energy"])]
         df_pik_edgar_sector = pd.concat([df_edgar_filter_sector, df_pik_edgar_diff_industry])
+        df_pik_edgar_sector = df_pik_edgar_sector.drop(columns=["source"])
         df_pik_edgar_sector = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_sector, "ghg", round_statistics=4)
         return df_pik_edgar_sector
 
@@ -105,19 +101,23 @@ class GhgPikEdgarCombinator:
         df_pik_edgar_energy_ratio = df_pik_edgar_energy_ratio.groupby(["country", "gas", "sector_edgar", "sector_pik"]).agg(averaged_ratio=("ratio", "mean")).reset_index()
 
         # concatenate with the rest of PIK
-        df_pik_clean = df_pik_clean.rename(columns={"ghg": "ghg_pik"})
+        df_pik_clean = df_pik_clean.rename(columns={"sector": "sector_pik"})
         df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_ratio.merge(df_pik_clean,
                                                                            how="inner",
                                                                            left_on=["country", "gas", "sector_pik"],
-                                                                           right_on=["country", "gas", "sector"]
+                                                                           right_on=["country", "gas", "sector_pik"]
                                                                            )
+        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"ghg": "ghg_pik"})
         df_pik_edgar_energy_extrapolated["ghg_edgar_extrapolated"] = df_pik_edgar_energy_extrapolated["averaged_ratio"] * df_pik_edgar_energy_extrapolated["ghg_pik"]
         df_pik_edgar_energy_extrapolated["source"] = "pik_extrapolation"
-        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"sector_edgar": "sector"})
 
         # concatenate with PIK data greater than 2012
         df_pik_2012 = df_pik_clean[df_pik_clean["year"] > 2012]
-        df_pik_edgar_extrapolated_computed = pd.concat([df_pik_edgar_energy_extrapolated, df_pik_2012])
+        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"sector_edgar": "sector"})
+        list_col_extrapolation_to_concat = ["country", "sector", "gas", "ghg_unit", "year", "ghg_edgar_extrapolated"]
+        df_pik_edgar_extrapolated_computed = pd.concat([df_pik_edgar_energy_extrapolated[list_col_extrapolation_to_concat],
+                                                         df_pik_2012])
+        df_pik_edgar_extrapolated_computed["source"] = "pik_extrapolation"
 
         # Select columns from "GHG_EMISSIONS_edgar_cleaned2"
         df_edgar_clean = df_edgar_clean[["country", "sector", "gas", "year", "ghg", "ghg_unit"]]
@@ -136,10 +136,6 @@ class GhgPikEdgarCombinator:
 class PikUnfcccAnnexesCombinator:
 
      def run(self, df_pik_clean, df_unfccc_clean):
-        print(df_pik_clean)
-        print(df_pik_clean.columns)
-        print(df_unfccc_clean)
-        print(df_unfccc_clean.columns)
         df_pik_unfccc_annexes = pd.concat([df_pik_clean, df_unfccc_clean], axis=0)
         return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=4)
 
@@ -172,7 +168,7 @@ class EdgarUnfcccAnnexesCombinator:
 
 class GhgMultiSourcesCombinator:
 
-    def run(self, df_pik_clean, df_edgar_clean, df_fao_clean, df_country, df_cait_stacked):  # TODO - améliorer la jointures des données multi-sources ? données annexe plus utilisées depuis 2017
+    def run(self, df_pik_clean, df_edgar_clean, df_fao_clean, df_country, df_cait_stacked_sector, df_cait_stacked_gas):  # TODO - améliorer la jointures des données multi-sources ? données annexe plus utilisées depuis 2017
         """
 
         :param df_pik_clean:
