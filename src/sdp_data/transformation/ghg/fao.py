@@ -36,6 +36,7 @@ class FaoDataProcessor:
         :return:
         """
         # clean countries
+        df_fao = df_fao.drop("Area Code", axis=1)
         df_fao["Area"] = CountryTranslatorFrenchToEnglish().run(df_fao["Area"], raise_errors=False)
         df_fao["Area"] = df_fao[df_fao["Area"] != "Delete"]
 
@@ -44,6 +45,7 @@ class FaoDataProcessor:
         df_fao["ghg_unit"] = "MtCO2eq"
         df_fao["source"] = "FAO"
         df_fao["ghg"] = df_fao["ghg"] * 0.001
+        df_fao["year"] = df_fao["year"].astype(int)
 
         # Extract gas
         df_fao = df_fao[~df_fao["gas_before"].str.contains("Share")]
@@ -59,7 +61,7 @@ class FaoDataProcessor:
         df_fao["country"] = df_fao["country"].replace({"China, mainland": "China"})
         df_fao = df_fao[~df_fao["sector"].isin(self.list_sectors_to_exclude)]
         df_fao["sector"] = df_fao["sector"].replace(self.dict_translation_sectors)
-        df_fao = df_fao.drop(["Area Code", "Item Code", "Element Code", "Year Code", "Flag", "gas_before"], axis=1)
+        df_fao = df_fao.drop(["Item Code", "Element Code", "Year Code", "Flag", "gas_before"], axis=1)
         # TODO - ajouter un vrai module commun de traduction de secteurs.
         # TODO - ajouter le filtrage Regex.
 
@@ -68,7 +70,4 @@ class FaoDataProcessor:
         dict_agg = {"ghg": "sum"}
         df_fao_per_country_and_zones = StatisticsPerCountriesAndZonesJoiner().run(df_fao, df_country, list_cols_group_by, dict_agg)
 
-        # format and return
-        df_fao_per_country_and_zones = df_fao_per_country_and_zones.sort_values(list_cols_group_by)
-        df_fao_per_country_and_zones = df_fao_per_country_and_zones[list_cols_group_by + ["ghg"]]
         return df_fao_per_country_and_zones

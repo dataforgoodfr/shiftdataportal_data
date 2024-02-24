@@ -157,11 +157,11 @@ class EdgarUnfcccAnnexesCombinator:
         # aggregate per gas and per sector
         groupby_by_gas = ["source", "group_type", "group_name", "year", "gas"]
         df_ghg_edunf_by_gas = df_edgar_unfccc_stacked_per_zones_and_countries.groupby(groupby_by_gas).agg(ghg=("ghg", "sum"), ghg_unit=("ghg_unit", "first")).reset_index()
-        df_ghg_edunf_by_gas = StatisticsDataframeFormatter().run(df_ghg_edunf_by_gas, "ghg", 5)
+        df_ghg_edunf_by_gas = StatisticsDataframeFormatter().select_and_sort_values(df_ghg_edunf_by_gas, "ghg", 5)
 
         groupby_by_sector = ["source", "group_type", "group_name", "year", "sector"]
         df_ghg_edunf_by_sector = df_edgar_unfccc_stacked_per_zones_and_countries.groupby(groupby_by_sector).agg(ghg=("ghg", "sum"), ghg_unit=("ghg_unit", "first")).reset_index()
-        df_ghg_edunf_by_sector = StatisticsDataframeFormatter().run(df_ghg_edunf_by_sector, "ghg", 5)
+        df_ghg_edunf_by_sector = StatisticsDataframeFormatter().select_and_sort_values(df_ghg_edunf_by_sector, "ghg", 5)
 
         return df_ghg_edunf_by_gas, df_ghg_edunf_by_sector
 
