@@ -142,21 +142,21 @@ class TransformationPipeline:
         df_pik_edgar_stacked.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
         df_original = pd.read_csv(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.csv"))
         df_original["source"] = df_original["source"].fillna("edgar")
-        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
 
         # combine PIK and EDGAR data FILTER SECTOR
         df_pik_edgar_sector = GhgPikEdgarCombinator().compute_pik_edgar_filter_sector(df_pik_cleaned, df_edgar_clean)
         df_pik_edgar_sector.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_SECTOR_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_1.xlsx"))
-        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_SECTOR_prod.csv", index=False)
 
         # combine PIK and EDGAR EXTRAPOLATED GLUED
         df_pik_edgar_extrapolated = GhgPikEdgarCombinator().compute_pik_edgar_extrapolated_glued(df_pik_cleaned, df_edgar_clean)
         df_pik_edgar_extrapolated.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_pik_extrapolated_glued_prod.xlsx"))
-        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_prod.csv", index=False)
 
         # update UNFCCC annexes data
@@ -168,7 +168,7 @@ class TransformationPipeline:
         df_pik_unfccc_annexes = PikUnfcccAnnexesCombinator().run(df_pik_cleaned, df_unfccc_annex_clean)
         df_pik_unfccc_annexes.to_csv(f"{RESULTS_DIR}/GHG_PIK_UNFCCC_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_unfccc.xlsx"))
-        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_UNFCCC_prod.csv", index=False)
 
         # combine EDGR and UNFCCC data
@@ -184,23 +184,23 @@ class TransformationPipeline:
 
         # update UNFCC data
         df_unfcc = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfcc.xlsx"))
-        df_unfcc_clean = UnfccProcessor().run(df_unfcc)
+        df_unfcc_clean = UnfccProcessor().run(df_unfcc)  # TODO - à fixer - We can't use UNFCCC because for non annex 1 countries (ex:China) we only have data every 5 years
 
         # update FAO data
         df_fao = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "fao_raw.xlsx"))
-        df_fao_clean = FaoDataProcessor().run(df_fao)
+        df_fao_clean = FaoDataProcessor().run(df_fao, df_country)
 
         # update CAIT data
         df_cait = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "cait_raw.xlsx"))
-        df_cait_sector_stacked, df_cait_gas_stacked = CaitProcessor().run(df_cait)
+        df_cait_sector_stacked, df_cait_gas_stacked = CaitProcessor().run(df_cait, df_country)
 
         # combine all sources together
         list_df_multi_sources = GhgMultiSourcesCombinator().run(df_pik_clean=df_pik_cleaned,
                                                                 df_edgar_clean=df_edgar_clean,
-                                                                df_unfccc_clean=df_unfcc_clean,
                                                                 df_fao_clean=df_fao_clean,
                                                                 df_cait_sector_stacked=df_cait_sector_stacked,
-                                                                df_cait_gas_stacked=df_cait_gas_stacked
+                                                                df_cait_gas_stacked=df_cait_gas_stacked,
+                                                                df_country=df_country
                                                                 )
         df_ghg_full_by_gas, df_ghg_full_by_sector, df_ghg_full_aggregated = list_df_multi_sources
         df_ghg_full_by_gas.to_csv(f"{RESULTS_DIR}/GHG_FULL_BY_GAS_prod.csv", index=False)

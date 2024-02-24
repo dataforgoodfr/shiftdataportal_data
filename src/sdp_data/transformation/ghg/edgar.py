@@ -69,6 +69,6 @@ class EdgarCleaner:
         df_edgar_stacked["country"] = CountryTranslatorFrenchToEnglish().run(df_edgar_stacked["country"], raise_errors=False)
         df_edgar_stacked["country"] = df_edgar_stacked["country"].replace({"Reunion": "Réunion"})  # TODO - à corriger dans fichier translation
         df_edgar_stacked = df_edgar_stacked.dropna(subset=["country"])
-        df_edgar_stacked = StatisticsDataframeFormatter.select_and_sort_values(df_edgar_stacked, "ghg", round_statistics=4)
+        df_edgar_stacked = StatisticsDataframeFormatter.select_and_sort_values(df_edgar_stacked, "ghg", round_statistics=5)
 
         return df_edgar_stacked

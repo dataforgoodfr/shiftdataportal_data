@@ -32,6 +32,7 @@ class UnfccProcessor:
     def run(self, df_unfcc: pd.DataFrame):
 
         # Clean data
+        print("\n----- Clean UNFCC dataset")
         df_unfcc = df_unfcc.rename({"Country": "country", "Source": "source", "Sector": "sector", "Gas": "gas"}, axis=1)
         df_unfcc["country"] = self.translate_country_code_to_country_name(df_unfcc["country"], raise_errors=False)
         df_unfcc["country"] = CountryTranslatorFrenchToEnglish().run(df_unfcc["country"], raise_errors=False)
@@ -66,6 +67,7 @@ class UnfcccAnnexesCleaner:
         :param df_unfccc_annex_2: (dataframe) contains the second part of Unfccc data.
         :return: dataframe Unfccc data cleaned.
         """
+        print("\n----- Clean UNFCC annexes")
         list_cols_annex_1 = [col for col in df_unfccc_annex_1.columns if "Last Inventory" not in col]
         list_cols_annex_2 = [col for col in df_unfccc_annex_2.columns if "Last Inventory" not in col]
         df_unfccc_annex_1 = df_unfccc_annex_1[list_cols_annex_1]

@@ -12,7 +12,7 @@ class GhgPikEdgarCombinator:
     def compute_pik_edgar_stacked(df_pik_clean, df_edgar_clean):
         df_edgar_clean["source"] = "edgar"
         df_pik_edgar_stacked = pd.concat([df_pik_clean, df_edgar_clean], axis=0)
-        df_pik_edgar_stacked = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_stacked, "ghg", round_statistics=4)
+        df_pik_edgar_stacked = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_stacked, "ghg", round_statistics=5)
         return df_pik_edgar_stacked
 
     def compute_difference_pik_edgar_on_sector_industry(self, df_pik_clean, df_edgar_clean):
@@ -46,7 +46,7 @@ class GhgPikEdgarCombinator:
         df_edgar_filter_sector = df_edgar_clean[df_edgar_clean["sector"].isin(["Transport", "Electricity & Heat", "Other Energy"])]
         df_pik_edgar_sector = pd.concat([df_edgar_filter_sector, df_pik_edgar_diff_industry])
         df_pik_edgar_sector = df_pik_edgar_sector.drop(columns=["source"])
-        df_pik_edgar_sector = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_sector, "ghg", round_statistics=4)
+        df_pik_edgar_sector = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_sector, "ghg", round_statistics=5)
         return df_pik_edgar_sector
 
     @staticmethod
@@ -97,7 +97,7 @@ class GhgPikEdgarCombinator:
         # compute the energy ratio between PIK and Edgar
         print("\n----- Combine PIK and EDGAR extrapolated")
         df_pik_edgar_energy_ratio = self.compute_pik_edgar_energy_ratio(df_pik_clean, df_edgar_clean)
-        df_pik_edgar_energy_ratio = df_pik_edgar_energy_ratio[(df_pik_edgar_energy_ratio["year"] >= 2008) & (df_pik_edgar_energy_ratio["year"] <= 2012)]
+        df_pik_edgar_energy_ratio = df_pik_edgar_energy_ratio[(df_pik_edgar_energy_ratio["year"] >= "2008") & (df_pik_edgar_energy_ratio["year"] <= "2012")]
         df_pik_edgar_energy_ratio = df_pik_edgar_energy_ratio.groupby(["country", "gas", "sector_edgar", "sector_pik"]).agg(averaged_ratio=("ratio", "mean")).reset_index()
 
         # concatenate with the rest of PIK
@@ -112,7 +112,7 @@ class GhgPikEdgarCombinator:
         df_pik_edgar_energy_extrapolated["source"] = "pik_extrapolation"
 
         # concatenate with PIK data greater than 2012
-        df_pik_2012 = df_pik_clean[df_pik_clean["year"] > 2012]
+        df_pik_2012 = df_pik_clean[df_pik_clean["year"] > "2012"]
         df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"sector_edgar": "sector"})
         list_col_extrapolation_to_concat = ["country", "sector", "gas", "ghg_unit", "year", "ghg_edgar_extrapolated"]
         df_pik_edgar_extrapolated_computed = pd.concat([df_pik_edgar_energy_extrapolated[list_col_extrapolation_to_concat],
@@ -130,6 +130,7 @@ class GhgPikEdgarCombinator:
 
         # Concatenate the two dataframes
         df_pik_edgar_extrapolated_glued = pd.concat([df_edgar_clean, df_pik_edgar_extrapolated], ignore_index=True)
+        df_pik_edgar_extrapolated_glued = StatisticsDataframeFormatter().select_and_sort_values(df_pik_edgar_extrapolated_glued, "ghg", round_statistics=5)
         return df_pik_edgar_extrapolated_glued
 
 
@@ -137,7 +138,7 @@ class PikUnfcccAnnexesCombinator:
 
      def run(self, df_pik_clean, df_unfccc_clean):
         df_pik_unfccc_annexes = pd.concat([df_pik_clean, df_unfccc_clean], axis=0)
-        return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=4)
+        return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=5)
 
 
 
@@ -173,7 +174,10 @@ class GhgMultiSourcesCombinator:
 
         :param df_pik_clean:
         :param df_edgar_clean:
-        :param
+        :param df_fao_clean:
+        :param df_cait_sector_stacked:
+        :param df_cait_gas_stacked:
+        :param df_country: (DataFrame
         :return:
         """
         # concatenate EDGAR and PIK
@@ -188,7 +192,7 @@ class GhgMultiSourcesCombinator:
         df_multi_sources_sum_per_country = df_multi_sources_per_country.groupby(list_group_by).agg(ghg=("ghg", "sum"),
                                                                                                    ghg_unit=("ghg_unit", "first")).reset_index()
         df_multi_sources_sum_per_country["group_type"] = "country"
-        df_multi_sources_sum_per_country["group_name"] = "country"
+        df_multi_sources_sum_per_country = df_multi_sources_sum_per_country.rename(columns={"group_name": "country"})
         df_ghg_multi_with_zones = pd.concat([df_multi_sources, df_multi_sources_sum_per_country, df_fao_clean], axis=0)
         
         # group by GAS and merge with CAIT        

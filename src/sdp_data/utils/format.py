@@ -14,7 +14,7 @@ class StatisticsDataframeFormatter:
 
         # format
         if "year" in df.columns.tolist():
-            df["year"] = df["year"].astype(int).astype(str)
+            df["year"] = df["year"].fillna("0").astype(int).astype(str)
 
         # round values
         if round_statistics is not None:
