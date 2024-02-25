@@ -138,7 +138,7 @@ class PikUnfcccAnnexesCombinator:
 
      def run(self, df_pik_clean, df_unfccc_clean):
         df_pik_unfccc_annexes = pd.concat([df_pik_clean, df_unfccc_clean], axis=0)
-        return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=5)
+        return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=4)
 
 
 
