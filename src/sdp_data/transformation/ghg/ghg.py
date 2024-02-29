@@ -113,8 +113,8 @@ class GhgPikEdgarCombinator:
 
         # concatenate with PIK data greater than 2012
         df_pik_2012 = df_pik_clean[df_pik_clean["year"] > "2012"]
-        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"sector_edgar": "sector"})
-        list_col_extrapolation_to_concat = ["country", "sector", "gas", "ghg_unit", "year", "ghg_edgar_extrapolated"]
+        df_pik_edgar_energy_extrapolated = df_pik_edgar_energy_extrapolated.rename(columns={"sector_edgar": "sector", "ghg_edgar_extrapolated": "ghg"})
+        list_col_extrapolation_to_concat = ["country", "sector", "gas", "ghg_unit", "year", "ghg"]
         df_pik_edgar_extrapolated_computed = pd.concat([df_pik_edgar_energy_extrapolated[list_col_extrapolation_to_concat],
                                                          df_pik_2012])
         df_pik_edgar_extrapolated_computed["source"] = "pik_extrapolation"
@@ -136,8 +136,11 @@ class GhgPikEdgarCombinator:
 
 class PikUnfcccAnnexesCombinator:
 
-     def run(self, df_pik_clean, df_unfccc_clean):
-        df_pik_unfccc_annexes = pd.concat([df_pik_clean, df_unfccc_clean], axis=0)
+     def run(self, df_pik_clean, df_unfccc_annexes_clean):
+        # TODO - revoir les données PIK et UNFCC. Deux problèmes relevés (voir note 25/02)
+        # - la source n'est pas indiquée pour les données UNFCCC
+        # - il existe plusieurs paires (country, year, gas, ghg_unit, sector, source) avec certaines entrées qui semblent dupliquées
+        df_pik_unfccc_annexes = pd.concat([df_pik_clean, df_unfccc_annexes_clean], axis=0)
         return StatisticsDataframeFormatter().select_and_sort_values(df_pik_unfccc_annexes, "ghg", round_statistics=4)
 
 
