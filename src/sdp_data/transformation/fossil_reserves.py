@@ -108,7 +108,7 @@ class GasProvenReservesNormalizedGenerator:
         return df_gas_proven_reserves
 
 
-class BpFossilWithZonesProdGenerator:
+class BpFossilWithZonesProdGeneratorOLD:
 
     def __init__(self):
         # Initialize any necessary variables or state here
@@ -174,6 +174,86 @@ class BpFossilWithZonesProdGenerator:
 
         return final_df
 
+
+class BpFossilWithZonesProdGeneratorNEW:
+
+    def __init__(self):
+        # Initialize necessary variables, including a dictionary for unit conversion.
+        self.dict_units_coef = {
+            'Oil': {'Gb': 1, 'bbl': 1},
+            'Gas': {'Tcm': 0.001, 'Bcm': 1}
+        }
+        self.default_unit = {'Oil': 'Gb', 'Gas': 'Bcm'}
+
+    def process(self, df):
+        """
+         Clean and preprocess the DataFrame
+        """
+        df = df.dropna(subset=['Value', 'Country', 'Year']).reset_index(drop=True)
+        df['proven_reserves_unit'] = np.where(df['Var'] == 'gasreserves_tcm', 'Tcm',
+                                              np.where(df['Var'] == 'oilreserves_bbl', 'bbl', ''))
+        df['energy_source'] = np.where(df['Var'] == 'gasreserves_tcm', 'Gas',
+                                       np.where(df['Var'] == 'oilreserves_bbl', 'Oil', ''))
+        df = df[['Country', 'Year', 'energy_source', 'proven_reserves_unit', 'Value']]
+
+        column_renames = {
+            'Year': 'year',
+            'Country': 'country',
+            'Value': 'proven_reserves',
+        }
+        df.rename(columns=column_renames, inplace=True)
+        df["year"] = df["year"].astype(int)
+        df['proven_reserves'] = pd.to_numeric(df['proven_reserves'], errors='coerce')
+
+        return df
+
+    def run(self, df_bp_api: pd.DataFrame, df_country: pd.DataFrame) -> pd.DataFrame:
+        """
+        Computes fossil (gas,oil) proven reserves for each country, zone for the source BP.
+        """
+        df_bp_oilgal_proven_reserves_stacked = df_bp_api[
+            df_bp_api.Var.isin(['gasreserves_tcm', 'oilreserves_bbl'])].reset_index(drop=True)
+
+        # Applies the process method to clean and convert proven reserves data.
+        df_bp_oilgal_proven_reserves_stacked = self.process(df_bp_oilgal_proven_reserves_stacked)
+
+        df_bp_oilgal_proven_reserves_stacked.dropna(subset='proven_reserves', inplace=True)
+
+        df_bp_oilgal_proven_reserves_stacked = df_bp_oilgal_proven_reserves_stacked.reset_index(drop=True)
+
+        df_bp_oilgal_proven_reserves_stacked['proven_reserves'] = df_bp_oilgal_proven_reserves_stacked.apply(
+            lambda x: self.dict_units_coef[x['energy_source']][x['proven_reserves_unit']] * x['proven_reserves'],
+            axis=1)
+        df_bp_oilgal_proven_reserves_stacked['proven_reserves_unit'] = df_bp_oilgal_proven_reserves_stacked[
+            'energy_source'].map(self.default_unit)
+
+        # Apply translation to countries names from frensh to english
+        df_bp_oilgal_proven_reserves_stacked["country"] = CountryTranslatorFrenchToEnglish().run(
+            df_bp_oilgal_proven_reserves_stacked["country"], raise_errors=False)
+        df_bp_oilgal_proven_reserves_stacked = df_bp_oilgal_proven_reserves_stacked[
+            df_bp_oilgal_proven_reserves_stacked["country"] != "Delete"]
+
+        # Perform a left join between the two DataFrames on the 'country' column
+        merged_df = pd.merge(df_country, df_bp_oilgal_proven_reserves_stacked, on='country', how='left')
+
+        # Group by the necessary columns and calculate the sum of proven reserves
+        grouped_df = merged_df.groupby(['group_type', 'group_name', 'energy_source', 'year', 'proven_reserves_unit'],
+                                       as_index=False)['proven_reserves'].sum()
+
+        # Filter out groups where the sum of proven reserves is not null
+        grouped_df = grouped_df[grouped_df['proven_reserves'].notnull()].reset_index(drop=True)
+
+        # For the second part of the union, select the rows directly with their original columns
+        countries_df = df_bp_oilgal_proven_reserves_stacked[
+            ['country', 'energy_source', 'year', 'proven_reserves', 'proven_reserves_unit']].copy()
+        countries_df.rename(columns={'country': 'group_name'}, inplace=True)
+        countries_df['group_type'] = 'country'
+
+        # Concatenate the two DataFrames to mimic the UNION ALL operation
+        final_df = pd.concat([grouped_df, countries_df], ignore_index=True, sort=False)
+        # diference there is no other cis and other europpe, in translatio n I added them+6
+
+        return final_df
 
 class FossilProvenReservesProdGenerator:
 
