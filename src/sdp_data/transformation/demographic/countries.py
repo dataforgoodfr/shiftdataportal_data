@@ -52,6 +52,5 @@ class StatisticsPerCountriesAndZonesJoiner:
 
         # concatenate countries and zones
         df_stats_per_zone_and_countries = pd.concat([df_stats_per_zone, df_stats_per_countries], axis=0)
-        print(df_stats_per_zone_and_countries.shape)
-        
+
         return df_stats_per_zone_and_countries

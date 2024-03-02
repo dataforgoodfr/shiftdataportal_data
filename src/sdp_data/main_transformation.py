@@ -24,6 +24,7 @@ RESULTS_DIR = os.path.join(os.path.dirname(__file__), "../../results/new_prod_da
 CURRENT_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/current_data")
 CURRENT_PROD_DATA = os.path.join(os.path.dirname(__file__), "../../results/current_prod_data")
 
+
 class TransformationPipeline:
 
     def process_country_data(self):
@@ -176,10 +177,10 @@ class TransformationPipeline:
         df_ghg_edunf_by_gas.to_csv(f"{RESULTS_DIR}/GHG_EDUNF_BY_GAS_prod.csv", index=False)
         df_ghg_edunf_by_sector.to_csv(f"{RESULTS_DIR}/GHG_EDUNF_BY_SECTOR_prod.csv", index=False)
         df_original_gas = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_edunf_by_gas_prod.xlsx"))
-        df_original_gas = StatisticsDataframeFormatter.select_and_sort_values(df_original_gas, "ghg", round_statistics=5)
+        df_original_gas = StatisticsDataframeFormatter.select_and_sort_values(df_original_gas, "ghg", round_statistics=4)
         df_original_gas.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_GAS_prod.csv", index=False)
         df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_edunf_by_sector_prod.xlsx"))
-        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
+        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=4)
         df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_SECTOR_prod.csv", index=False)
 
         # update UNFCC data

@@ -89,8 +89,7 @@ class UnfcccAnnexesCleaner:
         # convert ghg and drop missing values # TODO - ajouter la conversion des données non CO2 comme dans les données Edgar ?
         df_unfccc_annex["ghg"] = 0.001 * pd.to_numeric(df_unfccc_annex["ghg"], errors="coerce")
         df_unfccc_annex["ghg_unit"] = "MtCO2eq"
-        df_unfccc_annex = df_unfccc_annex.dropna(subset=["country", "ghg"], axis=0)
+        df_unfccc_annex = df_unfccc_annex.dropna(subset=["country"], axis=0)  # TODO - to fix dans les données originales se trouvent des données avec GHG manquant. A corriger ?
         df_unfccc_annex = df_unfccc_annex[df_unfccc_annex["ghg"] != 0.0]  # TODO - TOFIX, dans le pipeline actuel, ces donénes sont supprimées mais cea ne fait pas sens. Proposition de les garder.
-
         return df_unfccc_annex
 
