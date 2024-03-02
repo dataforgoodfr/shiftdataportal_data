@@ -1,6 +1,7 @@
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
+from sdp_data.utils.format import StatisticsDataframeFormatter
 
 
 class FaoDataProcessor:
@@ -69,5 +70,5 @@ class FaoDataProcessor:
         list_cols_group_by = ["group_type", "group_name", "year", "sector", "gas", "source", "ghg_unit"]
         dict_agg = {"ghg": "sum"}
         df_fao_per_country_and_zones = StatisticsPerCountriesAndZonesJoiner().run(df_fao, df_country, list_cols_group_by, dict_agg)
-
+        df_fao_per_country_and_zones = StatisticsDataframeFormatter.select_and_sort_values(df_fao_per_country_and_zones, "ghg", round_statistics=5)
         return df_fao_per_country_and_zones
