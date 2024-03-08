@@ -35,6 +35,7 @@ def _update_multi_selection_country_groups(raw_multi_selection_country_groups: p
 
     # Replace EU28 with EU27
     multi_selection_country_groups.loc[multi_selection_country_groups.group == "EU28", "group"] = "EU27"
+    multi_selection_country_groups.loc[multi_selection_country_groups.country == "EU28", "country"] = "EU27"
 
     # Add Indonesia to Top GHG Emitters
     multi_selection_country_groups = add_new_members_to_group(
