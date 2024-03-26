@@ -1,5 +1,5 @@
 import pandas as pd
-from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, CountryIsoCodeTranslator
 from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
 
@@ -10,10 +10,7 @@ class PikCleaner:
                                          "BASIC countries (Brazil, South Africa, India and China)", "Umbrella Group",
                                          "Umbrella Group (28)", "Least Developed Countries", "European Union (28)",
                                          "Alliance of Small Island States (AOSIS)"]
-        self.list_sectors_to_replace = {
-            "Other": "Other Sectors",
-            "Industrial Processes and Product Use": "Industry and Construction"
-        }
+        self.list_sectors_to_replace = {}
 
     @staticmethod
     def melt_years(df_pik: pd.DataFrame):
@@ -27,11 +24,15 @@ class PikCleaner:
         """
         # cleaning data
         print("\n----- Clean PIK dataset")
-        df_pik = df_pik.rename({"Country": "country", "Data source": "source", "Sector": "sector",
-                                "Gas": "gas", "Unit": "ghg_unit"}, axis=1)
-        df_pik = df_pik[df_pik["sector"] != "Total excluding LULUCF"]
+        df_pik = df_pik.rename({"area (ISO3)": "country", "category (IPCC2006_PRIMAP)": "sector",
+                                "scenario (PRIMAP-hist)": "scenario",
+                                "entity": "gas", "unit": "ghg_unit"}, axis=1)
+        df_pik = df_pik[df_pik["scenario"] == "HISTTP"]
+        df_pik = df_pik[df_pik["sector"] != "Total excluding LULUCF"]  # TODO - revoir traitement des secteurs
         df_pik["sector"] = df_pik["sector"].replace(self.list_sectors_to_replace)
+        df_pik["country"] = CountryIsoCodeTranslator().run(df_pik["country"], raise_errors=True)
         df_pik = df_pik[~df_pik["country"].isin(self.list_countries_to_remove)]
+        df_pik = df_pik.drop(columns=["provenance", "scenario"])
 
         # melt years
         df_pik = self.melt_years(df_pik)
