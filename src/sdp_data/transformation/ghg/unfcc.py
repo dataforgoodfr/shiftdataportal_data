@@ -1,6 +1,6 @@
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
-from sdp_data.utils.iso3166 import countries_by_alpha3
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, SectorTranslator
+from src.sdp_data.utils.iso3166 import countries_by_alpha3
 
 
 class UnfccProcessor:
@@ -25,6 +25,7 @@ class UnfccProcessor:
                 raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
 
         return serie_country_translated
+
     @staticmethod
     def melt_years(df_unfcc: pd.DataFrame):
         return pd.melt(df_unfcc, id_vars=["country", "source", "sector", "gas"], var_name='year', value_name='ghg')
@@ -32,6 +33,7 @@ class UnfccProcessor:
     def run(self, df_unfcc: pd.DataFrame):
 
         # Clean data
+        print("\n----- Clean UNFCC dataset")
         df_unfcc = df_unfcc.rename({"Country": "country", "Source": "source", "Sector": "sector", "Gas": "gas"}, axis=1)
         df_unfcc["country"] = self.translate_country_code_to_country_name(df_unfcc["country"], raise_errors=False)
         df_unfcc["country"] = CountryTranslatorFrenchToEnglish().run(df_unfcc["country"], raise_errors=False)
@@ -66,6 +68,7 @@ class UnfcccAnnexesCleaner:
         :param df_unfccc_annex_2: (dataframe) contains the second part of Unfccc data.
         :return: dataframe Unfccc data cleaned.
         """
+        print("\n----- Clean UNFCC annexes")
         list_cols_annex_1 = [col for col in df_unfccc_annex_1.columns if "Last Inventory" not in col]
         list_cols_annex_2 = [col for col in df_unfccc_annex_2.columns if "Last Inventory" not in col]
         df_unfccc_annex_1 = df_unfccc_annex_1[list_cols_annex_1]
@@ -86,7 +89,7 @@ class UnfcccAnnexesCleaner:
         # convert ghg and drop missing values # TODO - ajouter la conversion des données non CO2 comme dans les données Edgar ?
         df_unfccc_annex["ghg"] = 0.001 * pd.to_numeric(df_unfccc_annex["ghg"], errors="coerce")
         df_unfccc_annex["ghg_unit"] = "MtCO2eq"
-        df_unfccc_annex = df_unfccc_annex.dropna(subset=["country", "ghg"], axis=0)
-
+        df_unfccc_annex = df_unfccc_annex.dropna(subset=["country"], axis=0)  # TODO - to fix dans les données originales se trouvent des données avec GHG manquant. A corriger ?
+        df_unfccc_annex = df_unfccc_annex[df_unfccc_annex["ghg"] != 0.0]  # TODO - TOFIX, dans le pipeline actuel, ces donénes sont supprimées mais cea ne fait pas sens. Proposition de les garder.
         return df_unfccc_annex
 

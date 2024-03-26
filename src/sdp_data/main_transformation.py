@@ -1,14 +1,19 @@
-from sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
-from sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
-from sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
-from sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
-from sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
-from sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
-from sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
-from sdp_data.utils.format import StatisticsDataframeFormatter
-from sdp_data.transformation.ghg.pik import PikCleaner
-from sdp_data.transformation.ghg.edgar import EdgarCleaner
-from sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator
+import sys
+sys.path.append("../../")
+from src.sdp_data.transformation.demographic.population import GapMinderPerZoneAndCountryProcessor, PopulationPerZoneAndCountryProcessor
+from src.sdp_data.transformation.demographic.population import StatisticsPerCapitaJoiner
+from src.sdp_data.transformation.co2_consumption_based_accounting import EoraCo2TradePerZoneAndCountryProcessor
+from src.sdp_data.transformation.footprint_vs_territorial import FootprintVsTerrotorialProcessor
+from src.sdp_data.transformation.demographic.worldbank_scrap import WorldBankScrapper
+from src.sdp_data.transformation.demographic.gdp import GdpMaddissonPerZoneAndCountryProcessor, GdpWorldBankPerZoneAndCountryProcessor
+from src.sdp_data.transformation.eia import EiaConsumptionGasBySectorProcessor, EiaConsumptionOilPerProductProcessor, EiaFinalEnergyConsumptionProcessor, EiaFinalEnergyPerSectorPerEnergyProcessor, EiaElectricityGenerationByEnergyProcessor, EiaConsumptionOilsPerSectorProcessor, EiaFinalEnergyConsumptionPerSectorProcessor
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
+from src.sdp_data.transformation.ghg.pik import PikCleaner
+from src.sdp_data.transformation.ghg.edgar import EdgarCleaner
+from src.sdp_data.transformation.ghg.ghg import GhgPikEdgarCombinator, PikUnfcccAnnexesCombinator, EdgarUnfcccAnnexesCombinator, GhgMultiSourcesCombinator
+from src.sdp_data.transformation.ghg.unfcc import UnfcccAnnexesCleaner, UnfccProcessor
+from src.sdp_data.transformation.ghg.fao import FaoDataProcessor
+from src.sdp_data.transformation.ghg.cait import CaitProcessor
 import pandas as pd
 import os
 import requests
@@ -18,6 +23,7 @@ RAW_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/raw_new_da
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "../../results/new_prod_data")
 CURRENT_DATA_DIR = os.path.join(os.path.dirname(__file__), "../../results/current_data")
 CURRENT_PROD_DATA = os.path.join(os.path.dirname(__file__), "../../results/current_prod_data")
+
 
 class TransformationPipeline:
 
@@ -32,8 +38,13 @@ class TransformationPipeline:
         # update population data (World Bank)
         df_population_raw = WorldBankScrapper().run("population")
         df_population = PopulationPerZoneAndCountryProcessor().run(df_population_raw, df_country)
-        df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_prod.csv", index=False)
-        return df_population
+        df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_WORLDBANK_prod.csv", index=False)
+        
+        # update GapMinder data (source GapMinder)
+        df_population_gapmidner_raw = pd.read_excel(f"{RAW_DATA_DIR}/population/GM-Population - Dataset - v7.xlsx", sheet_name="data-pop-gmv6-in-columns")
+        df_gapminder = GapMinderPerZoneAndCountryProcessor().run(df_population_gapmidner_raw, df_country)
+        df_gapminder.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_POPULATION_GAPMINDER_prod.csv", index=False)
+        return df_population, df_gapminder
 
     def process_footprint_vs_territorial_data(self, df_country, df_population):
         # update footprint vs territorial
@@ -127,13 +138,87 @@ class TransformationPipeline:
         df_edgar_co2_short_without_cycle = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_co2_withoutshortcycle_raw.xlsx"))
         df_edgar_clean = EdgarCleaner().run(df_edgar_gases, df_edgar_n2o, df_edgar_ch4, df_edgar_co2_short_cycle, df_edgar_co2_short_without_cycle)
 
-        # combine PIK and EDGAR data
-        df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgr_stacked(df_pik_cleaned, df_edgar_clean)
+        # combine PIK and EDGAR data STACKED
+        df_pik_edgar_stacked = GhgPikEdgarCombinator().compute_pik_edgar_stacked(df_pik_cleaned, df_edgar_clean)
         df_pik_edgar_stacked.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
-        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.xlsx"))
-        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original = pd.read_csv(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_stacked.csv"))
+        df_original["source"] = df_original["source"].fillna("edgar")
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_STACKED_prod.csv", index=False)
 
+        # combine PIK and EDGAR data FILTER SECTOR
+        df_pik_edgar_sector = GhgPikEdgarCombinator().compute_pik_edgar_filter_sector(df_pik_cleaned, df_edgar_clean)
+        df_pik_edgar_sector.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_SECTOR_prod.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_edgar_1.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_SECTOR_prod.csv", index=False)
+
+        # combine PIK and EDGAR EXTRAPOLATED GLUED
+        df_pik_edgar_extrapolated = GhgPikEdgarCombinator().compute_pik_edgar_extrapolated_glued(df_pik_cleaned, df_edgar_clean)
+        df_pik_edgar_extrapolated.to_csv(f"{RESULTS_DIR}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_prod.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "edgar_pik_extrapolated_glued_prod.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_EDGAR_EXTRAPOLATED_GLUED_prod.csv", index=False)
+
+        # update UNFCCC annexes data
+        df_unfccc_annex_1 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex1.xlsx"))
+        df_unfccc_annex_2 = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfccc_annex2.xlsx"))
+        df_unfccc_annex_clean = UnfcccAnnexesCleaner().run(df_unfccc_annex_1, df_unfccc_annex_2)
+        
+        # combine PIK and UNFCCC annexes data
+        df_pik_unfccc_annexes = PikUnfcccAnnexesCombinator().run(df_pik_cleaned, df_unfccc_annex_clean)
+        df_pik_unfccc_annexes.to_csv(f"{RESULTS_DIR}/GHG_PIK_UNFCCC_prod.csv", index=False)
+        df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_unfccc.xlsx"))
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_UNFCCC_prod.csv", index=False)
+
+        # combine EDGR and UNFCCC data
+        df_ghg_edunf_by_gas, df_ghg_edunf_by_sector = EdgarUnfcccAnnexesCombinator().run(df_edgar_clean, df_unfccc_annex_clean, df_country)
+        df_ghg_edunf_by_gas.to_csv(f"{RESULTS_DIR}/GHG_EDUNF_BY_GAS_prod.csv", index=False)
+        df_ghg_edunf_by_sector.to_csv(f"{RESULTS_DIR}/GHG_EDUNF_BY_SECTOR_prod.csv", index=False)
+        df_original_gas = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_edunf_by_gas_prod.xlsx"))
+        df_original_gas = StatisticsDataframeFormatter.select_and_sort_values(df_original_gas, "ghg", round_statistics=4)
+        df_original_gas.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_GAS_prod.csv", index=False)
+        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_edunf_by_sector_prod.xlsx"))
+        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=4)
+        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_EDUNF_BY_SECTOR_prod.csv", index=False)
+
+        # update UNFCC data
+        df_unfcc = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "unfcc.xlsx"))
+        df_unfcc_clean = UnfccProcessor().run(df_unfcc)  # TODO - à fixer - We can't use UNFCCC because for non annex 1 countries (ex:China) we only have data every 5 years
+
+        # update FAO data
+        df_fao = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "fao_raw.xlsx"))
+        df_fao_clean = FaoDataProcessor().run(df_fao, df_country)
+
+        # update CAIT data
+        df_cait = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "cait_raw.xlsx"))
+        df_cait_sector_stacked, df_cait_gas_stacked = CaitProcessor().run(df_cait, df_country)
+
+        # combine all sources together
+        list_df_multi_sources = GhgMultiSourcesCombinator().run(df_pik_clean=df_pik_cleaned,
+                                                                df_edgar_clean=df_edgar_clean,
+                                                                df_fao_clean=df_fao_clean,
+                                                                df_cait_sector_stacked=df_cait_sector_stacked,
+                                                                df_cait_gas_stacked=df_cait_gas_stacked,
+                                                                df_country=df_country
+                                                                )
+        df_ghg_full_by_gas, df_ghg_full_by_sector, df_ghg_full_aggregated = list_df_multi_sources
+        df_ghg_full_by_gas.to_csv(f"{RESULTS_DIR}/GHG_FULL_BY_GAS_prod.csv", index=False)
+        df_ghg_full_by_sector.to_csv(f"{RESULTS_DIR}/GHG_FULL_BY_SECTOR_prod.csv", index=False)
+        df_ghg_edunf_by_gas.to_csv(f"{RESULTS_DIR}/GHG_FULL_AGGREGATED_prod.csv", index=False)
+
+        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_gas_prod.xlsx"))
+        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
+        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_BY_GAS_prod.csv", index=False)
+
+        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_sector_prod.xlsx"))
+        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
+        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_BY_SECTOR_prod.csv", index=False)
+
+        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_aggregated.xlsx"))
+        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
+        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_AGGREGATED_prod.csv", index=False)
 
 
     def run(self):
@@ -143,7 +228,7 @@ class TransformationPipeline:
         """
         # demographic data
         df_country = self.process_country_data()
-        # df_population = self.process_population_data(df_country)
+        # df_population, df_gapminder = self.process_population_data(df_country)
 
         # consumption-based accounting
         # self.process_footprint_vs_territorial_data(df_country)
@@ -160,17 +245,6 @@ class TransformationPipeline:
         df_gdp_raw = WorldBankScrapper().run("gdp")
         df_population = GdpWorldBankPerZoneAndCountryProcessor().run(df_gdp_raw, df_country)
         df_population.to_csv(f"{RESULTS_DIR}/DEMOGRAPHIC_GDP_prod.csv", index=False)
-        """
-
-
-
-        # Compute populations
-        """
-        df_gapminder = pd.read_excel("../../data/thibaud/gapminder_population_raw_2.xlsx")
-        df_population = pd.read_csv(f"../../data/_processed/_processed/processed_population_worldbank.csv")
-        df_country = pd.read_excel("../../data/thibaud/country_groups.xlsx")
-        df_gapminder_per_zone_and_countries = GapMinderPerZoneAndCountryProcessor().run(df_gapminder, df_country)
-        df_population_per_zone_and_countries = PopulationPerZoneAndCountryProcessor().run(df_population, df_country)
 
         # Compute CO2 consumption based accounting
         df_gcb_territorial = pd.read_excel("../../data/thibaud/co2_consumption_based_accounting/gcb_territorial.xlsx")

@@ -1,6 +1,6 @@
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from sdp_data.utils.format import StatisticsDataframeFormatter
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
 
 class PikCleaner:
@@ -26,7 +26,7 @@ class PikCleaner:
         :return:
         """
         # cleaning data
-        print("----- Clean PIK dataset")
+        print("\n----- Clean PIK dataset")
         df_pik = df_pik.rename({"Country": "country", "Data source": "source", "Sector": "sector",
                                 "Gas": "gas", "Unit": "ghg_unit"}, axis=1)
         df_pik = df_pik[df_pik["sector"] != "Total excluding LULUCF"]
@@ -41,6 +41,6 @@ class PikCleaner:
         df_pik["country"] = CountryTranslatorFrenchToEnglish().run(df_pik["country"], raise_errors=False)
         df_pik = df_pik.dropna(subset=["country"])
         df_pik = df_pik[df_pik["country"] != "Delete"]
-        df_pik = StatisticsDataframeFormatter.select_and_sort_values(df_pik, "ghg", round_statistics=4)
+        df_pik = StatisticsDataframeFormatter.select_and_sort_values(df_pik, "ghg", round_statistics=5)
 
         return df_pik

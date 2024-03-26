@@ -1,6 +1,6 @@
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from sdp_data.utils.iso3166 import countries_by_alpha3
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from src.sdp_data.utils.iso3166 import countries_by_alpha3
 
 
 class EoraCo2TradePerZoneAndCountryProcessor:

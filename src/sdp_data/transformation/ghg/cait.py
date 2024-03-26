@@ -1,6 +1,7 @@
 import pandas as pd
 from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
 
+
 class CaitProcessor:
 
     def __init__(self):
@@ -40,6 +41,7 @@ class CaitProcessor:
         :return:
         """
         # compute and melt for each gas.
+        print("\n----- Clean CAIT dataset")
         list_df_gas_melted_gas = []
         for gas in self.list_gases:
             df_calt_gas = df_calt[["country", "year", gas]]
@@ -139,6 +141,7 @@ class CaitProcessor:
     def run(self, df_cait: pd.DataFrame, df_country: pd.DataFrame):
 
         # clean dataframe
+        print("\n----- Clean CAIT dataset")
         df_cait = df_cait.rename({"Country": "country", "Year": "year"}, axis=1)
         df_cait["country"] = CountryTranslatorFrenchToEnglish().run(df_cait["country"], raise_errors=False)
         df_cait_total_per_gas = self.compute_total_gas_per_country(df_cait)
