@@ -13,6 +13,17 @@ class PikCleaner:
         self.list_sectors_to_replace = {}
 
     @staticmethod
+    def convert_ghg_unit(df_pik: pd.DataFrame):
+        """
+        Convert the GHG unit to CO2eq.
+        :param df_pik:
+        :return:
+        """
+        df_pik["ghg"] *= 1000
+        df_pik["ghg_unit"] = "MtCO2eq"
+        return df_pik
+
+    @staticmethod
     def melt_years(df_pik: pd.DataFrame):
         return pd.melt(df_pik, id_vars=["country", "source", "sector", "gas", "ghg_unit"], var_name='year', value_name='ghg')
 
@@ -31,12 +42,13 @@ class PikCleaner:
         df_pik = df_pik[df_pik["sector"] != "Total excluding LULUCF"]  # TODO - revoir traitement des secteurs
         df_pik["sector"] = df_pik["sector"].replace(self.list_sectors_to_replace)
         df_pik["country"] = CountryIsoCodeTranslator().run(df_pik["country"], raise_errors=True)
+        df_pik["source"] = "PIK"
         df_pik = df_pik[~df_pik["country"].isin(self.list_countries_to_remove)]
         df_pik = df_pik.drop(columns=["provenance", "scenario"])
 
-        # melt years
+        # melt years and converts units
         df_pik = self.melt_years(df_pik)
-        # df_pik = df_pik.dropna(subset=["ghg"])  # TODO - jeter valeurs manquante ? Legacy Dataiku
+        df_pik = self.convert_ghg_unit(df_pik)
 
         # translate countries
         df_pik["country"] = CountryTranslatorFrenchToEnglish().run(df_pik["country"], raise_errors=False)
