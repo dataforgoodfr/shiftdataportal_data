@@ -123,7 +123,7 @@ class TransformationPipeline:
     def process_ghg_data(self, df_country):
 
         # update PIK data
-        df_pik = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_raw.xlsx"))
+        df_pik = pd.read_csv(f"{RAW_DATA_DIR}/ghg/Guetschow_et_al_2023b-PRIMAP-hist_v2.5_final_15-Oct-2023.csv")
         df_pik_cleaned = PikCleaner().run(df_pik)
         df_pik_cleaned.to_csv(f"{RESULTS_DIR}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_with_edgar_sectors.xlsx"))

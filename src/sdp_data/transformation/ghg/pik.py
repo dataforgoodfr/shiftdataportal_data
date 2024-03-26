@@ -2,6 +2,11 @@ import pandas as pd
 from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, CountryIsoCodeTranslator
 from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
+# TODO - question à poser
+# - valider que l'on garder bien uniquement les données HISTTP.
+# - valider les secteurs que l'on garde et avec quoi on les mappe dans le référentiel.
+# - valider la conversion des données.
+# - valider les gaz spéciaux que l'on garde. Même s'il y a moins de points de données ?
 
 class PikCleaner:
 
