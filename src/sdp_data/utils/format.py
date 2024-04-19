@@ -4,7 +4,7 @@ import pandas as pd
 class StatisticsDataframeFormatter:
 
     @staticmethod
-    def select_and_sort_values(df: pd.DataFrame, col_statistics: str, round_statistics=None):
+    def select_and_sort_values(df: pd.DataFrame, col_statistics: str, round_statistics=None, remove_0=True):
         """
         Formats the Shift data portal data by selecting and sorting the columns
         """
@@ -15,6 +15,10 @@ class StatisticsDataframeFormatter:
         # format
         if "year" in df.columns.tolist():
             df["year"] = df["year"].fillna("0").astype(int).astype(str)
+            
+        # remove 0 values
+        if remove_0:
+            df = df[df[col_statistics] != 0]
 
         # round values
         if round_statistics is not None:

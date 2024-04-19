@@ -1,7 +1,7 @@
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
-from sdp_data.utils.format import StatisticsDataframeFormatter
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from src.sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
 
 class FaoDataProcessor:

@@ -16,9 +16,9 @@ class EdgarCleaner:
     @staticmethod
     def convert_ghg_with_gas(ghg, gas):
         if gas == "N2O":
-            return ghg * 298
+            return ghg * 273
         elif gas == "CH4":
-            return ghg * 25
+            return ghg * 28
         elif gas == "CO2":
             return ghg
         elif gas in ["SF6", "HFC", "HFCs", "PFC", "F-Gas"]:  # TODO - ajouter une conversion pour ces gas ?

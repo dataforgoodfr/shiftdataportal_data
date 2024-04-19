@@ -127,7 +127,7 @@ class TransformationPipeline:
         df_pik_cleaned = PikCleaner().run(df_pik)
         df_pik_cleaned.to_csv(f"{RESULTS_DIR}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
         df_original = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "pik_with_edgar_sectors.xlsx"))
-        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=4)
+        df_original = StatisticsDataframeFormatter.select_and_sort_values(df_original, "ghg", round_statistics=5)
         df_original.to_csv(f"{CURRENT_PROD_DATA}/GHG_PIK_WITH_EDGAR_SECTORS_prod.csv", index=False)
 
         # update EDGAR data
