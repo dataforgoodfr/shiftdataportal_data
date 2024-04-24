@@ -134,6 +134,12 @@ dmypy.json
 # Large files of raw data
 data/_raw/**
 
+# Database backup files
+data/database_backup/
+
+# Database access
+database_access.csv
+
 # API key
 .github/workflows/api_key.yml
 
