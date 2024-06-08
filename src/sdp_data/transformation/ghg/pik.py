@@ -2,9 +2,6 @@ import pandas as pd
 from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, CountryIsoCodeTranslator
 from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
-# TODO - question à poser
-# - valider les secteurs que l'on garde et avec quoi on les mappe dans le référentiel.
-# - valider la conversion des données.
 
 class PikCleaner:
 
@@ -24,7 +21,7 @@ class PikCleaner:
                                     }
 
     @staticmethod
-    def convert_ghg_with_gas(self, ghg, ghg_unit):
+    def convert_ghg_with_gas(ghg, ghg_unit):
         if ghg_unit == "CO2 * gigagram / a":
             return ghg
         elif ghg_unit == "N2O * gigagram / a":
