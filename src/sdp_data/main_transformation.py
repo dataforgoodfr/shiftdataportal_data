@@ -208,17 +208,17 @@ class TransformationPipeline:
         df_ghg_full_by_sector.to_csv(f"{RESULTS_DIR}/GHG_FULL_BY_SECTOR_prod.csv", index=False)
         df_ghg_full_aggregated.to_csv(f"{RESULTS_DIR}/GHG_FULL_AGGREGATED_prod.csv", index=False)
 
-        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_gas_prod.xlsx"))
-        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
-        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_BY_GAS_prod.csv", index=False)
+        df_original_gas = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_gas_prod.xlsx"))
+        df_original_gas = StatisticsDataframeFormatter.select_and_sort_values(df_original_gas, "ghg", round_statistics=5)
+        df_original_gas.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_BY_GAS_prod.csv", index=False)
 
         df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_by_sector_prod.xlsx"))
         df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
         df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_BY_SECTOR_prod.csv", index=False)
 
-        df_original_sector = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_aggregated.xlsx"))
-        df_original_sector = StatisticsDataframeFormatter.select_and_sort_values(df_original_sector, "ghg", round_statistics=5)
-        df_original_sector.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_AGGREGATED_prod.csv", index=False)
+        df_original_agg = pd.read_excel(os.path.join(os.path.dirname(__file__), "../../data/thibaud/ghg/" + "ghg_full_aggregated.xlsx"))
+        df_original_agg = StatisticsDataframeFormatter.select_and_sort_values(df_original_agg, "ghg", round_statistics=5)
+        df_original_agg.to_csv(f"{CURRENT_PROD_DATA}/GHG_FULL_AGGREGATED_prod.csv", index=False)
 
 
     def run(self):
