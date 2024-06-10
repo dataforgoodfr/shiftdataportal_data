@@ -222,8 +222,8 @@ class GhgMultiSourcesCombinator:
         df_ghg_full_by_sector = StatisticsDataframeFormatter().select_and_sort_values(df_ghg_full_by_sector, "ghg", 5)
 
         # compute full aggregated
-        list_group_by_all = ["sector", "group_type", "group_name", "year"]
-        df_ghg_full_aggregated = df_ghg_multi_with_zones.groupby(list_group_by_all).agg(ghg=("ghg", "sum")).reset_index()
+        list_group_by_all = ["source", "group_type", "group_name", "year", "ghg_unit"]
+        df_ghg_full_aggregated = df_ghg_full_by_sector.groupby(list_group_by_all).agg(ghg=("ghg", "sum")).reset_index()
         df_ghg_full_aggregated = StatisticsDataframeFormatter().select_and_sort_values(df_ghg_full_aggregated, "ghg", 5)
 
         return df_ghg_full_by_gas, df_ghg_full_by_sector, df_ghg_full_aggregated
