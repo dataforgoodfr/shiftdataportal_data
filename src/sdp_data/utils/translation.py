@@ -372,7 +372,6 @@ country_translations = {"ALM": "ALM SRES",
                         "South Vietnam (R.V.)": "Viet Nam", "Viet Nam": "Viet Nam", "Vietnam": "Viet Nam",
                         "Wake Island": "Wake Island",
                         "Western Sahara": "Western Sahara",
-                        "World": "World",  # TODO - fixer la traduction de World dans des fichiers comme cait.py ?
                         "Yemen": "Yemen",
                         "Yémen": "Yemen",
                         "Yemen, Rep.": "Yemen",
