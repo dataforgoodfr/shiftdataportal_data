@@ -31,6 +31,7 @@ class GhgPikEdgarCombinator:
         )
         df_diff_industry["ghg"] = (df_diff_industry["ghg_edgar"] - df_diff_industry["ghg_pik"])
         df_diff_industry = df_diff_industry[["country", "sector", "gas", "year", "ghg", "ghg_unit"]]
+        df_diff_industry["sector"] = "Energy from Industry"
         return df_diff_industry
 
     def compute_pik_edgar_filter_sector(self, df_pik_clean, df_edgar_clean):
@@ -69,6 +70,7 @@ class GhgPikEdgarCombinator:
         df_pik_edgar_diff_industry["sector"] = "Energy from Industry"
         df_pik_edgar_diff_industry = df_pik_edgar_diff_industry.drop(columns=["ghg_unit_edgar", "ghg_unit_pik",
                                                                               "sector_pik", "sector_edgar",
+                                                                             "source_pik", "source_edgar",
                                                                               "ghg_pik", "ghg_edgar"])
 
         # concatenate with EDGAR and PIK transport and energy
@@ -187,18 +189,21 @@ class GhgMultiSourcesCombinator:
         """
         # concatenate EDGAR and PIK
         df_edgar_clean["source"] = "EDGAR"
-        df_edgar_sum = df_edgar_clean.groupby(["country", "year", "gas", "sector", "ghg_unit"]).agg(ghg=("ghg", "sum")).reset_index()
+        df_edgar_sum = df_edgar_clean.groupby(["country", "year", "gas", "sector", "ghg_unit", "source"]).agg(ghg=("ghg", "sum")).reset_index()
         df_multi_sources = pd.concat([df_pik_clean, df_edgar_sum], axis=0)
 
         # merge with countries and FAO
-        df_multi_sources_per_country = df_country.merge(df_multi_sources, how="left", on="country")
-        df_multi_sources_per_country = df_multi_sources_per_country[df_multi_sources_per_country["gas"].notnull()]
         list_group_by = ["sector", "gas", "year", "source", "group_name", "group_type"]
-        df_multi_sources_sum_per_country = df_multi_sources_per_country.groupby(list_group_by).agg(ghg=("ghg", "sum"),
-                                                                                                   ghg_unit=("ghg_unit", "first")).reset_index()
-        df_multi_sources_sum_per_country["group_type"] = "country"
-        df_multi_sources_sum_per_country = df_multi_sources_sum_per_country.rename(columns={"group_name": "country"})
+        df_multi_sources_merge_country = df_multi_sources.merge(df_country, on="country", how="left")
+        df_multi_sources_sum_per_country = (df_multi_sources_merge_country.groupby(list_group_by)
+                                            .agg(ghg=("ghg", "sum"),
+                                                 ghg_unit=("ghg_unit", "first"))
+                                            .reset_index())
+
+        df_multi_sources["group_type"] = "country"
+        df_multi_sources["group_name"] = df_multi_sources["country"]
         df_ghg_multi_with_zones = pd.concat([df_multi_sources, df_multi_sources_sum_per_country, df_fao_clean], axis=0)
+        df_ghg_multi_with_zones = df_ghg_multi_with_zones.drop("country", axis=1)
         
         # group by GAS and merge with CAIT        
         list_group_by_gas = ["source", "group_type", "group_name", "year", "gas"]
