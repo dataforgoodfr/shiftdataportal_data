@@ -1,24 +1,11 @@
 import pandas as pd
-from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from src.sdp_data.utils.iso3166 import countries_by_alpha3
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish, CountryIsoCodeTranslator
 
 
 class EoraCo2TradePerZoneAndCountryProcessor:
 
     def __init__(self):
-        self.countries_by_alpha3 = countries_by_alpha3
-        self.countries_by_alpha3 = {k: v.name for k, v in self.countries_by_alpha3.items()}
         self.dict_sectors_to_replace = {"Finacial Intermediation and Business Activities": "Financial Intermediation and Business Activities"}
-
-    def translate_country_code_to_country_name(self, serie_country_code_to_translate: pd.Series, raise_errors: bool):
-        serie_country_translated = serie_country_code_to_translate.map(self.countries_by_alpha3)
-        countries_no_translating = list(set(serie_country_code_to_translate[serie_country_translated.isnull()].values.tolist()))
-        if serie_country_code_to_translate.isnull().sum() > 0:
-            print("WARN : no translating found for countries %s. Please add it in iso3166.py" % countries_no_translating)
-            if raise_errors:
-                raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
-
-        return serie_country_translated
 
     @staticmethod
     def melt_countries(df: pd.DataFrame):
@@ -124,10 +111,10 @@ class EoraCo2TradePerZoneAndCountryProcessor:
         df_eora_co2_trade = df_eora_co2_trade.rename({"country": "country_from"}, axis=1)
         df_eora_co2_trade = df_eora_co2_trade.drop("ROW", axis=1)
         df_eora_co2_trade["sector"] = df_eora_co2_trade["sector"].replace(self.dict_sectors_to_replace)
-        df_eora_co2_trade["country_from"] = self.translate_country_code_to_country_name(df_eora_co2_trade["country_from"], raise_errors=True)
+        df_eora_co2_trade["country_from"] = CountryIsoCodeTranslator().run(df_eora_co2_trade["country_from"], raise_errors=True)
         df_eora_co2_trade["country_from"] = CountryTranslatorFrenchToEnglish().run(df_eora_co2_trade["country_from"], raise_errors=False)  # TODO - passer en raise_errors True
         df_eora_co2_trade = df_eora_co2_trade.set_index(["country_from", "sector"])
-        df_eora_co2_trade.columns = self.translate_country_code_to_country_name(df_eora_co2_trade.columns, raise_errors=True)
+        df_eora_co2_trade.columns = CountryIsoCodeTranslator().run(df_eora_co2_trade.columns, raise_errors=True)
         df_eora_co2_trade.columns = CountryTranslatorFrenchToEnglish().run(df_eora_co2_trade.columns, raise_errors=False)  # TODO - passer en raise_errors True
         df_eora_co2_trade = df_eora_co2_trade.reset_index()
 

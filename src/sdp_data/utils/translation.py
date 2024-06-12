@@ -1,4 +1,6 @@
 import pandas as pd
+from src.sdp_data.utils.iso3166 import countries_by_alpha3
+
 
 # TODO - country_translations à refactoer plus proprement à l'aide d'un fichier JSON
 
@@ -232,7 +234,9 @@ country_translations = {"ALM": "ALM SRES",
                         "Népal": "Nepal", "Niger": "Niger", "Niue": "Niue", "Nicaragua": "Nicaragua",
                         "Pays Bas": "Netherlands", "Pays-Bas": "Netherlands", "Netherlands (Offshore)": "Netherlands",
                         "Netherlands": "Netherlands", "Netherlands Antilles": "Netherlands Antilles",
-                        "Antilles néerlandaises": "Netherlands Antilles", "Nlle Caledonie": "New Caledonia",
+                        "Antilles néerlandaises": "Netherlands Antilles",
+                        "Netherlands Antilles (former)": "Netherlands Antilles",
+                        "Nlle Caledonie": "New Caledonia",
                         "New Caledonia": "New Caledonia", "Nouvelle-Zélande": "New Zealand",
                         "Nouvelle Zélande": "New Zealand", "Nlle Zelande": "New Zealand", "New Zealand": "New Zealand",
                         "NZ": "New Zealand",
@@ -284,6 +288,7 @@ country_translations = {"ALM": "ALM SRES",
                         "Réunion": "Reunion", "Rwanda": "Rwanda",
                         "Saint Helena": "Saint Helena",
                         "Saint Kitts & Nevis": "Saint Kitts and Nevis",
+                        "Saint Helena, Ascension and Tristan da Cunha": "Saint Helena",
                         "Saint Kitts and Nevis": "Saint Kitts and Nevis", "St. Kitts and Nevis": "Saint Kitts and Nevis",
                         "Saint Lucia": "Saint Lucia",
                         "St. Lucia": "Saint Lucia",
@@ -367,7 +372,6 @@ country_translations = {"ALM": "ALM SRES",
                         "South Vietnam (R.V.)": "Viet Nam", "Viet Nam": "Viet Nam", "Vietnam": "Viet Nam",
                         "Wake Island": "Wake Island",
                         "Western Sahara": "Western Sahara",
-                        "World": "World",  # TODO - fixer la traduction de World dans des fichiers comme cait.py ?
                         "Yemen": "Yemen",
                         "Yémen": "Yemen",
                         "Yemen, Rep.": "Yemen",
@@ -487,6 +491,30 @@ sector_translations_edgar = {
     "Fire Extinguishers": "Industry and Construction",
     "Production of halocarbons and SF6": "Industry and Construction"
 }
+
+
+class CountryIsoCodeTranslator:
+
+    def __init__(self) -> None:
+        self.countries_by_alpha3 = countries_by_alpha3
+        self.countries_by_alpha3 = {k: v.name for k, v in self.countries_by_alpha3.items()}
+        
+    def run(self, serie_country_code_to_translate: pd.Series, raise_errors: bool):
+        """
+        Translates the ISO3166 codes to countries names. If no correspondance is found in the
+        dict, the country is replace by a NaN value.
+        :param serie_country_to_translate: (pandas Series) to translate.
+        :param raise_errors: (bool) True to raise error if no translation. Else False to ignore.
+        :return:
+        """
+        serie_country_translated = serie_country_code_to_translate.map(self.countries_by_alpha3)
+        countries_no_translating = list(set(serie_country_code_to_translate[serie_country_translated.isnull()].values.tolist()))
+        if serie_country_code_to_translate.isnull().sum() > 0:
+            print("WARN : no translating found for countries %s. Please add it in iso3166.py" % countries_no_translating)
+            if raise_errors:
+                raise ValueError("ERROR : no translating found for countries %s" % countries_no_translating)
+
+        return serie_country_translated
 
 
 class CountryTranslatorFrenchToEnglish:

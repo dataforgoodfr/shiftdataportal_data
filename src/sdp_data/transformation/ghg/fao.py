@@ -1,7 +1,7 @@
 import pandas as pd
-from sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
-from sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
-from sdp_data.utils.format import StatisticsDataframeFormatter
+from src.sdp_data.utils.translation import CountryTranslatorFrenchToEnglish
+from src.sdp_data.transformation.demographic.countries import StatisticsPerCountriesAndZonesJoiner
+from src.sdp_data.utils.format import StatisticsDataframeFormatter
 
 
 class FaoDataProcessor:
@@ -40,7 +40,7 @@ class FaoDataProcessor:
         print("\n----- Clean FAO dataset")
         df_fao = df_fao.drop("Area Code", axis=1)
         df_fao["Area"] = CountryTranslatorFrenchToEnglish().run(df_fao["Area"], raise_errors=False)
-        df_fao["Area"] = df_fao[df_fao["Area"] != "Delete"]
+        df_fao = df_fao[df_fao["Area"] != "Delete"]
 
         # clean and add new columns
         df_fao = df_fao.rename(self.dict_cols_to_rename, axis=1)
